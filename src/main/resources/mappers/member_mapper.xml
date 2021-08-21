@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="Member">
+
+	<insert id="memberSign">
+		insert into camp_mem values(mem_seq.nextval, #{cm_id}, #{cm_pw}, #{cm_name}, #{cm_email}, #{cm_phone}, #{cm_zipcode}, #{cm_address1}, #{cm_address2})
+	</insert>
+	<select id="idDuplCheck" parameterType="kh.spring.dto.MemberDTO" resultType="int">
+		select count(cm_id) from camp_mem where cm_id=#{cm_id}
+	</select>
+	<select id="login" parameterType="kh.spring.dto.MemberDTO" resultType="kh.spring.dto.MemberDTO">
+		select * from camp_mem where cm_id = #{cm_id} 
+	</select>
+</mapper>
