@@ -352,82 +352,22 @@
     <div class="content">
       <div class="container">
         <div class="wrap">
-
           <div class="fix-10-12 toCenter">
-
             <h1 class="ae-1">캠핑장</h1>
             <p class="ae-2"><span class="opacity-8">인기있는,</span></p>
           </div>
           <div class="fix-12-12 margin-top-3">
             <ul class="flex fixedSpaces later left">
+            <c:forEach var="i" items="${list}" begin="8" end="15">
               <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot1.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">송도 스포츠 파크 캠핑장</h3>
+                <a href="/info/detail?contentId=${i.contentId }" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
+                    src="${i.firstImageUrl}" alt="Image Thumbnail" /></a>
+                <h3 class="ae-5">${i.facltNm}</h3>
                 <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 연수구 > 송도동</p>
+                  <p class="tiny opacity-6">${i.addr1} </p>
                 </div>
               </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot2.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">잼핑 홀리데이 대부도점</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">경기 > 시흥 > 대부도</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-5"><img class="wide"
-                    src="assets/img/background/camp_spot3.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-6">대부도 푸른섬 캠핑장</h3>
-                <div class="ae-7">
-                  <p class="tiny opacity-6">경기 > 안산시 > 대부북동</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-6"><img class="wide"
-                    src="assets/img/background/camp_spot4.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-7">대부도 해솔길 캠핑장</h3>
-                <div class="ae-8">
-                  <p class="tiny opacity-6">경기 > 안산시 > 대부동동</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="fix-12-12 margin-top-3">
-            <ul class="flex fixedSpaces later left">
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot4.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">퀸즈비치 글램핑</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot3.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">선재 오토캠핑장</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-5"><img class="wide"
-                    src="assets/img/background/camp_spot2.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-6">씨스테이 야영장&글램핑</h3>
-                <div class="ae-7">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-6"><img class="wide"
-                    src="assets/img/background/camp_spot1.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-7">어섬 화성비행장</h3>
-                <div class="ae-8">
-                  <p class="tiny opacity-6">경기 > 화성시 > 송산면</p>
-                </div>
-              </li>
+             </c:forEach>
             </ul>
           </div>
 
