@@ -150,28 +150,15 @@
          
             <div id=btnbox>
                <!-- 찜하기 -->
-               <c:forEach var="i" items="${wish}">
+
                <div id=wishbox>               
-			       <c:choose>
-			          <c:when test="${i.contents eq 'dislike' or i.contents == null}">
-			            <div id=wishbox_text>
 			               <h4>찜하기</h4> 
-			            </div>
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/dislike.png" id="dislike" class="likeicon">             
 			            </div>
-			         </c:when>
-			         <c:otherwise>
-			            <div id=wishbox_text>
-			               <h4>찜하기</h4> 
-			            </div>
-			            <div id=wishbox_icon>
-			                <img src="/img/detailimage/like/like.png" id="${i.contents}" class="likeicon">
-			            </div>
-			         </c:otherwise>
-			      </c:choose>
+
                </div>
-               </c:forEach>
+
                <!-- 예약 버튼 -->   
                <div id=reservebox> 
                   <a href="#" class="myButton" id="reservebtn"><h4>예약하러 가기</h4></a>
