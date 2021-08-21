@@ -247,7 +247,22 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>       
+		
+		<!-- File Upload Related -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+         	<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- 대용량 파일 처리 -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+		 
 	</dependencies>
     <build>
         <plugins>

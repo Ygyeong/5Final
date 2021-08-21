@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CampTip">
+	<insert id="insert" parameterType="kh.spring.dto.CampTipDTO">
+	insert into campTip values(campTip_seq.nextval,${category},#{writer},#{title},#{contents},sysdate,0)
+	</insert>
+	
+	<select id="select" resultType="kh.spring.dto.CampTipDTO">
+		select * from campTip
+	</select>
+	
+	<select id="detail" resultType="kh.spring.dto.CampTipDTO">
+		select * from campTip where campTip_num = #{campTip_num}
+	</select>
+	
+	<update id="viewCount">
+		update campTip set view_count = view_count + 1 where campTip_num = #{campTip_num}
+	</update>
+	
+	<delete id="delete">
+		delete from campTip where campTip_num = ${campTip_num}
+	</delete>
+	
+</mapper>
