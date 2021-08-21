@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>갤러리 후기</title>
+        <title>캠핑 후기</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -116,7 +116,7 @@
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
                         <a href="service.html" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">갤러리 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="portfolio.html" class="nav-item nav-link">회원가입</a>
@@ -134,7 +134,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 style="color: white;">갤러리 후기</h2>
+                        <h2 style="color: white;">캠핑 후기</h2>
                     </div>
                     <div class="col-12">
                         <a href="">Home</a>
