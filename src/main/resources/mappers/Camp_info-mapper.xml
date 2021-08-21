@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Camp_info">
+
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="selectAll">
+		select * from camp_info 
+	</select>
+	
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="detail">
+		select * from camp_info where contentId=${value} 
+	</select>
+	
+	<select resultType="kh.spring.dto.Camp_photoDTO" id="detailimage">
+		select * from camp_photo where contentId=${value} 
+	</select>
+	
+	<select resultType="int" id="loginProc" parameterType="kh.spring.dto.Camp_memberDTO">
+		select * from camp_mem where cm_id=#{cm_id} and cm_pw=#{cm_pw} 
+	</select>
+	
+	<select resultType="kh.spring.dto.Camp_wishlistDTO" id="selectwish">
+		select * from camp_wishlist where contentId=${contentId} and cm_id=#{cm_id} 
+	</select>
+	
+	<insert id="wishinsert">
+		insert into camp_wishlist values (wish_seq.nextval,#{contentId},#{cm_id},#{value}) 
+	</insert>
+	
+	<insert id="campinsert">
+		insert into camp_info values (#{contentId},#{firstImageUrl, jdbcType = VARCHAR }, #{facltNm, jdbcType = VARCHAR },#{lineIntro, jdbcType = VARCHAR },#{resveUrl, jdbcType = VARCHAR },#{homepage, jdbcType = VARCHAR },#{addr1, jdbcType = VARCHAR },#{addr2, jdbcType = VARCHAR },
+											#{tel, jdbcType = VARCHAR },#{resveCl, jdbcType = VARCHAR },#{lctCl, jdbcType = VARCHAR },#{induty, jdbcType = VARCHAR },#{operPdCl, jdbcType = VARCHAR },#{operDeCl, jdbcType = VARCHAR },#{posblFcltyCl, jdbcType = VARCHAR },
+											#{intro, jdbcType = VARCHAR },#{gnrlSiteCo},#{autoSiteCo},#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{sbrsEtc, jdbcType = VARCHAR },
+											#{sbrsCl, jdbcType = VARCHAR },#{animalCmgCl, jdbcType = VARCHAR },#{brazierCl, jdbcType = VARCHAR },#{mapX},#{mapY}) 
+	</insert>
+
+	<delete id="wishdelete">
+	delete from camp_wishlist where ci_seq=${ci_seq} and cm_id=#{cm_id} 
+	</delete>
+
+</mapper>
