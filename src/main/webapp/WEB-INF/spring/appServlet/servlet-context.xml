@@ -16,6 +16,24 @@
 	<resources mapping="/img/**" location="/resources/imgs/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/js/**" location="/resources/js/" />
+	
+	
+	
+	<!--main  -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/assets/**" location="/resources/assets/" />
+
+	<resources mapping="/manual/**" location="/resources/manual/" />
+	<resources mapping="/scss/**" location="/resources/scss/" />
+	
+	
+	<!--Gallery -->
+	<resources mapping="/gal/aboutGallery/css/**" location="/resources/aboutGallery/css/" />
+	<resources mapping="/gal/aboutGallery/images/**" location="/resources/aboutGallery/images/" />
+	<resources mapping="/gal/aboutGallery/img/**" location="/resources/aboutGallery/img/" />
+	<resources mapping="/gal/aboutGallery/js/**" location="/resources/aboutGallery/js/" />
+	<resources mapping="/gal/aboutGallery/lib/**" location="/resources/gal/aboutGallery/lib/" />
+	<resources mapping="/gal/aboutGallery/mail/**" location="/resources/aboutGallery/mail/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
