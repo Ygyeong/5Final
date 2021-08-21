@@ -77,12 +77,7 @@
  
  
  
- 	<select id="SelectBoard" resultType="kh.spring.vo.PagingVO">
-		
-		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery) where rnum between #{start} and #{end}
-
-																																	
-	</select> 
+ 	
 	 
 	 
 	 <select id="getPageList" resultType="kh.spring.dto.GalleryDTO">

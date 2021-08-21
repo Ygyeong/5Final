@@ -32,52 +32,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
-		<!-- Database Related -->
-		<dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<version>21.1.0.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.8.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.5.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>2.0.6</version>
-		</dependency>
 				
-		<!-- Gson -->
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.7</version>
-		</dependency>
-		
-		<!-- File Upload Related -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.4</version>
-		</dependency>		
-		
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -127,14 +82,146 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
+		
+		<!-- Gson -->
+		<dependency>	
+			<groupId>com.google.code.gson</groupId>	
+			<artifactId>gson</artifactId>	
+			<version>2.8.7</version>	
+		</dependency>
 
+		<!-- JSon -->
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!-- cxf -->
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->						
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-core</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-soap -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-bindings-soap</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-wsdl -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-wsdl</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-databinding-jaxb -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-databinding-jaxb</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-xml -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-bindings-xml</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-simple -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-frontend-simple</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-addr -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-ws-addr</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-ws-policy -->
+		<dependency>		
+			<groupId>org.apache.cxf</groupId>		
+			<artifactId>cxf-rt-ws-policy</artifactId>		
+			<version>3.4.4</version>		
+		</dependency>
+		
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+		
+		<!-- BCrypt -->
+		  <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+        
+        <!-- File Upload Related -->
+      <dependency>
+         <groupId>commons-fileupload</groupId>
+         <artifactId>commons-fileupload</artifactId>
+         <version>1.4</version>
+      </dependency>
+
+      <!-- 대용량 파일 처리 -->
+      <dependency>
+         <groupId>commons-io</groupId>
+         <artifactId>commons-io</artifactId>
+         <version>2.6</version>
+      </dependency>
+		
+		<!-- Database Related -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>21.1.0.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.8.0</version>
+		</dependency>
 				
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.7</version>
+		</dependency>
+				
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+			
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
