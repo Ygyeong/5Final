@@ -46,7 +46,7 @@ public class MemberController {
 		ms.memberSign(dto);
 		System.out.println("성공!");
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("loginProc")
@@ -60,11 +60,9 @@ public class MemberController {
 			dto.setCm_id(cm_id);
 			MemberDTO login = ms.login(dto);
 			if(login != null) {
-				session.setAttribute("member", login);
+				session.setAttribute("loginID", login.getCm_id());
 				System.out.println("성공");
 			}
-			session.setAttribute("member", login);
-			System.out.println("성공");
 		} else {
 			session.setAttribute("member", null);
 			System.out.println("실패ㅠ;");

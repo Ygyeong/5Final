@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -12,15 +11,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartRequest;
 
 import kh.spring.dao.GalleryDAO;
 import kh.spring.dao.Gallery_ImgDAO;
 import kh.spring.dto.GalleryDTO;
 import kh.spring.dto.Gallery_ImgDTO;
+import kh.spring.dto.MemberDTO;
 
 
 
@@ -139,8 +136,7 @@ public class GalleryService {
 
 		
 		
-		
-		String writer = (String) session.getAttribute("loginID");
+		String writer = (String)session.getAttribute("loginID");
 		System.out.println(writer);
 		Map<String,String> param = new HashMap<>();
 		param.put("rating", String.valueOf(rating));
