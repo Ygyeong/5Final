@@ -25,7 +25,7 @@ $(function(){
 	});
 	
 	$("#signup").on('click', function(){
-		$("formaction").attr("action", "/member/signProc")
+		$("#formaction").attr("action", "/member/signProc")
 	});
 	
 	
@@ -108,7 +108,7 @@ $(function(){
                     <h3>SIGN UP</h3>
                 </div>
                 <div class="card-body">
-                    <form method="post" name="formaction">
+                    <form method="post" name="formaction" id="formaction">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
