@@ -51,48 +51,7 @@ public class InfoController {
 	    
 	    return "redirect:/";
 	}
-	
-	@RequestMapping("practice")
-	public String dataupdate(HttpServletRequest request) {
-			
-	    HttpSession session = request.getSession();
-	    
-	    return "detail2";
-	}
-	
-	
-	//로그인
-//	@RequestMapping(value = "/loginProc", method = RequestMethod.POST)
-//	public String Login(
-//			@RequestParam(value = "cm_id") String cm_id
-//		, @RequestParam(value = "cm_pw") String cm_pw) throws Exception {
-//		
-//		Camp_memberDTO dto = new Camp_memberDTO();
-//		
-//		dto.setCm_id(cm_id);
-//		dto.setCm_pw(cm_pw);
-//		System.out.println(dto);
-//		
-//		int result = service.loginProc(dto);		
-//		
-//		if(result>0) {
-//			session.setAttribute("cm_id", cm_id);
-//		}
-//		
-//		return "redirect:/";
-//	}
-	
-	
-	//로그아웃
-	@RequestMapping("logout")
-	public String memLogout(HttpServletRequest request) {
-			
-	    HttpSession session = request.getSession();
-	    session.invalidate(); // ���� ����
-	    
-	    return "redirect:/";
-	}
-	
+
 	
 	//정보 리스트
 	@RequestMapping("list")
@@ -103,7 +62,7 @@ public class InfoController {
 		String cm_id = (String)session.getAttribute("cm_id");
 	
 		model.addAttribute("list",list);
-		return "campinglist";
+		return "camp_info/campinglist";
 	}
 	
 	//캠핑 디테일
@@ -117,12 +76,12 @@ public class InfoController {
 		
 		//contentId1
 		String contentId1 = Integer.toString(contentId);
-		List<Camp_wishlistDTO> wish = service.selectwish(contentId1, cm_id);
+//		List<Camp_wishlistDTO> wish = service.selectwish(contentId1, cm_id);
 		
-		model.addAttribute("wish",wish);
+//		model.addAttribute("wish",wish);
 		model.addAttribute("list",list);
 		//model.addAttribute("image",image);
-		return "campingdetail";
+		return "camp_info/campingdetail";
 	}
 	
 	//찜하기 인서트
@@ -144,7 +103,7 @@ public class InfoController {
 
 		//int result = service.wishinsert(dto);
 		 
-		return "redirect:detail";
+		return "redirect:camp_info/campingdetail";
 	}
 	
 	
