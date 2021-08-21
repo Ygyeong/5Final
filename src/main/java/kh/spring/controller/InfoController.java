@@ -3,6 +3,8 @@ package kh.spring.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
@@ -66,9 +68,15 @@ public class InfoController {
 	public String detail(HttpServletRequest request, Model model, int contentId) throws Exception {
 		//List<Camp_photoDTO> image = service.detailimagecontentId);
 		List<Camp_infoDTO> list = service.detail(contentId);
-		
+
 		HttpSession session = request.getSession();
 		String loginID = (String)session.getAttribute("loginID");
+
+		if(loginID == null) {
+			model.addAttribute("likecheck","dislike");
+		}else {
+			model.addAttribute("likecheck","dislike");
+		}
 		
 		//contentId1
 		String contentId1 = Integer.toString(contentId);
@@ -83,7 +91,7 @@ public class InfoController {
 	//찜하기 인서트
 	@RequestMapping(value = "wishinsert", method = RequestMethod.POST, produces = "application/json; charset=utf8")
  	@ResponseBody
-	public String wishinsert(String contents, int ci_seq, HttpServletRequest request) throws Exception {
+	public String wishinsert(String contents, int contentId, HttpServletRequest request) throws Exception {
 		System.out.println("확인");
 		HttpSession session = request.getSession();
 		String loginID = (String)session.getAttribute("loginID");
@@ -92,10 +100,10 @@ public class InfoController {
 
 		JsonObject obj = new JsonObject(); 
 		obj.addProperty("contents", contents); 
-		obj.addProperty("ci_seq", ci_seq); 
+		obj.addProperty("contentId", contentId); 
 		
 		dto.setContents(contents);
-		System.out.println(contents + ":" + ci_seq);			
+		System.out.println(contents + ":" + contentId);			
 
 		//int result = service.wishinsert(dto);
 		 

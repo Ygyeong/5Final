@@ -185,14 +185,16 @@
          </c:forEach>
          
             <div id=btnbox>
-               <!-- 찜하기 -->
-
-               <div id=wishbox>               
-			               <h4>찜하기</h4> 
+               <!-- 찜하기 -->	
+               <div id=wishbox>   
+                 <c:choose>
+                 	<c:when test="${likecheck eq '0' or empty likecheck}">         
+			        <h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/dislike.png" id="dislike" class="likeicon">             
 			            </div>
-
+			         </c:when>
+			   	</c:choose>
                </div>
 
                <!-- 예약 버튼 -->   
