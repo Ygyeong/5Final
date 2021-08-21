@@ -263,8 +263,8 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
         </svg></a>
       <ul class="mainMenu margin-top-3">
-        <li><a href="#">캠핑장</a></li>
-        <li><a href="#">캠핑정보</a></li>
+        <li><a href="/info/list">캠핑장</a></li>
+        <li><a href="">캠핑정보</a></li>
         <li><a href="#">SHOP</a></li>
         <li><a href="/rep/list?index=1">중고장터</a></li>
         <li><a href="/gal/list?cpage=1">갤러리 후기</a></li>

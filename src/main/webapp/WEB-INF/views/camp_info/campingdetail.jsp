@@ -37,7 +37,7 @@
             $(".likeicon").attr('id','like');
             
             $.ajax({
-                     url: "wishinsert",
+                     url: "wishinsert.info",
                      data: {contents:"dislike", ci_seq:"contentId"},
                      method:"post",
                      dataType:"application/json"
