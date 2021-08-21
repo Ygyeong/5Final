@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Gallery">
+	
+	
+	<insert id="insert">
+
+		insert into camp_gallery values(seq.nextval,#{title},#{contents},#{writer},sysdate,0,#{rating})
+
+	</insert>
+
+	<select id="selectAll" resultType="kh.spring.dto.GalleryDTO">
+		
+		select * from camp_gallery order by seq desc
+
+	</select>
+
+	<delete id="delete">			<!--값하나만 덩그러니 넘어왔는 때는 #{value} / ${value} $는 '' 안붙인다. -->
+		delete from camp_gallery where seq= ${value}
+	</delete>
+
+	<update id="modify">
+
+		update camp_gallery set title=#{title}, contents=#{contents}, rating=#{rating} where seq=#{seq}
+
+	</update>
+
+	<select id="detail" resultType="kh.spring.dto.GalleryDTO">
+		
+		select * from camp_gallery where seq=#{seq}
+
+	</select>
+	
+	<select id="view_count" resultType="int">
+		
+		update camp_gallery set view_count = view_count+1 where seq=${value}
+
+	</select>
+	
+	<select id="CountBoard" resultType="int">
+		
+		select count(*) from camp_gallery
+
+	</select>
+	
+	 <select id="getRecordCount" resultType="int">
+		
+		select count(*)from camp_gallery
+
+	</select> 
+	
+	<select id="getRecordCount2" resultType="int">
+		
+		select count(*) from gallery where #{category} like '%${keyword}%'
+
+	</select> 
+	
+	<select id="getSeq" resultType="int">
+		
+		select seq.currval from dual
+		
+
+	</select>
+ 
+ 
+ 	<select id="search" resultType="kh.spring.dto.GalleryDTO">
+		
+		select * from camp_gallery where seq=#{seq}
+		
+
+	</select>
+ 
+ 
+ 
+ 
+ 	<select id="SelectBoard" resultType="kh.spring.vo.PagingVO">
+		
+		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery) where rnum between #{start} and #{end}
+
+																																	
+	</select> 
+	 
+	 
+	 <select id="getPageList" resultType="kh.spring.dto.GalleryDTO">
+		
+		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery) where rnum between #{startNum} and #{endNum}
+
+																																	
+	</select> 
+	
+	<select id="getPageList2" resultType="kh.spring.dto.GalleryDTO">
+		
+		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery where #{category} like '%${keyword}%') where rnum between #{startNum} and #{endNum}
+
+																																	
+	</select>
+	
+	
+	 
+
+</mapper>

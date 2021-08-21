@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Gallery_Img">
+
+
+	<insert id="filesInsert">
+
+		
+		insert into camp_gallery_img values(camp_gallery_img_seq.nextval,#{oriName},#{sysName},#{gallery_seq})
+		
+
+	</insert>
+	<select id="filesBySeq" resultType="kh.spring.dto.Gallery_ImgDTO">
+	
+		select * from camp_gallery_img where gallery_seq = #{value}
+	</select>
+	
+	<select id="selectThumbBySeq" resultType="kh.spring.dto.Gallery_ImgDTO">
+	
+		select * from camp_gallery_img where gallery_seq = #{seq} and seq =(select min(seq) from camp_gallery_img where gallery_seq=#{seq})
+		
+	</select>
+	
+	<select id="getSysName" resultType="kh.spring.dto.Gallery_ImgDTO">
+	
+		select sysname from camp_gallery_img where seq = #{seq}
+		
+	</select>
+	
+	
+	<delete id="fileDelete">
+	
+		delete from camp_gallery_img where seq = #{value}
+		
+	</delete>
+	
+
+
+
+</mapper>

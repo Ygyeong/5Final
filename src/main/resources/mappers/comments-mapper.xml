@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Comments">
+
+
+	<insert id="insert">
+		insert into camp_gallery_comments values(camp_gallery_comments_seq.nextval,#{writer},#{comments},sysdate,#{seq})
+	</insert>
+
+	<select id="list" resultType="kh.spring.dto.CommentsDTO">
+		
+		select * from camp_gallery_comments where gallery_seq =#{seq} order by seq desc
+
+	</select>
+
+	<delete id="delete">			
+		delete from camp_gallery_comments where seq= ${value}
+	</delete>
+
+	<update id="modify">
+
+
+		update camp_gallery_comments set comments = #{comments} where seq = #{seq}
+		
+
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
