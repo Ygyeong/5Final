@@ -15,11 +15,7 @@
 	
 	<select resultType="kh.spring.dto.Camp_photoDTO" id="detailimage">
 		select * from camp_photo where contentId=${value} 
-	</select>
-	
-	<select resultType="int" id="loginProc" parameterType="kh.spring.dto.Camp_memberDTO">
-		select * from camp_mem where cm_id=#{cm_id} and cm_pw=#{cm_pw} 
-	</select>
+	</select>	
 	
 	<select resultType="kh.spring.dto.Camp_wishlistDTO" id="selectwish">
 		select * from camp_wishlist where contentId=${contentId} and cm_id=#{cm_id} 

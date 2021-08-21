@@ -89,7 +89,7 @@
                     <div class="col-lg-3 col-sm-6 mb-4" id=items>
                         <!-- Portfolio item 1-->
                         <div class="portfolio-item">
-                        		<a href='/detail?contentId=${i.contentId }'><img class="img-fluid" src="${i.firstImageUrl}">
+                        		<a href='/detail.info?contentId=${i.contentId }'><img class="img-fluid" src="${i.firstImageUrl}">
                             	</a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">${i.facltNm}</div>

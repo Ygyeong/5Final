@@ -29,7 +29,7 @@ import kh.spring.service.Camp_infoService;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/info")
 public class InfoController {
 	
 	@Autowired
@@ -37,12 +37,6 @@ public class InfoController {
 	
 	@Autowired
 	private HttpSession session;
-	
-	@RequestMapping("/")
-	public String home() {
-		return "login";
-	}
-	
 	
 	//파싱된 데이터를 DB에 저장
 	@RequestMapping("dataupdate")
