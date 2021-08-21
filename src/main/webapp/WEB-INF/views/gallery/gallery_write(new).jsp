@@ -309,7 +309,7 @@ $(function(){
 		<label>평점: </label>
 			<div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
 				<label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="1" required> <span class="startRadio__img"><span
+					name="rating" id="" value="1" checked> <span class="startRadio__img"><span
 						class="blind">별 1개</span></span>
 				</label> <label class="startRadio__box"> <input type="radio"
 					name="rating" id="" value="2"> <span class="startRadio__img"><span
