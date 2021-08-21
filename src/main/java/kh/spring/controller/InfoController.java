@@ -57,10 +57,6 @@ public class InfoController {
 	@RequestMapping("list")
 	public String home(HttpServletRequest request, Model model) throws Exception {	
 		List<Camp_infoDTO> list = service.selectAll();
-		
-		HttpSession session = request.getSession();
-		String cm_id = (String)session.getAttribute("cm_id");
-	
 		model.addAttribute("list",list);
 		return "camp_info/campinglist";
 	}
@@ -72,7 +68,7 @@ public class InfoController {
 		List<Camp_infoDTO> list = service.detail(contentId);
 		
 		HttpSession session = request.getSession();
-		String cm_id = (String)session.getAttribute("cm_id");
+		String loginID = (String)session.getAttribute("loginID");
 		
 		//contentId1
 		String contentId1 = Integer.toString(contentId);
@@ -90,7 +86,7 @@ public class InfoController {
 	public String wishinsert(String contents, int ci_seq, HttpServletRequest request) throws Exception {
 		System.out.println("확인");
 		HttpSession session = request.getSession();
-		String cm_id = (String)session.getAttribute("cm_id");
+		String loginID = (String)session.getAttribute("loginID");
 		
 		Camp_wishlistDTO dto = new Camp_wishlistDTO();
 
