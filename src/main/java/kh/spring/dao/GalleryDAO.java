@@ -110,7 +110,6 @@ public class GalleryDAO {
 		return mybatis.selectList("Gallery.selectAll");
 
 
-
 	}
 
 	//------------------ Paging --------------------------------------
@@ -121,16 +120,15 @@ public class GalleryDAO {
 		return mybatis.selectOne("Gallery.CountBoard");
 	}
 
+	
+	
+	public int Rating() throws Exception{
+		
+		return mybatis.selectOne("Gallery.selectRating");
 
-//	//페이징 처리 후 게시글 조회
-	/*
-	 * public List<GalleryDTO> SelectBoard(PagingVO vo){
-	 * 
-	 * return mybatis.selectList("Gallery.SelectBoard",vo);
-	 * 
-	 * 
-	 * }
-	 */
+
+	}
+
 	
 	
 	public List<GalleryDTO> getPageList(Map<String,Object> param1)throws Exception{
