@@ -67,7 +67,7 @@ public class MemberController {
 		ms.memberSign(dto);
 		System.out.println("성공!");
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("loginProc")
