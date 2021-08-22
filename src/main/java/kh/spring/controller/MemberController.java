@@ -96,7 +96,7 @@ public class MemberController {
 	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("memberOutProc")
