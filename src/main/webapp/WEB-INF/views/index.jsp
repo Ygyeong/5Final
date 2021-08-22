@@ -240,7 +240,7 @@
 
   <!-- Panel Top #08 -->
   <c:choose>
-  	<c:when test="${loginID==null }">
+  	<c:when test="${member.cm_id==null }">
   	
   <nav class="panel top">
     <div class="sections">
