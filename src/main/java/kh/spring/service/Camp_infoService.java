@@ -35,10 +35,6 @@ public class Camp_infoService {
 //		return dao.detailimage(ci_seq);
 //	}
 	
-	//로그인
-//	public int loginProc(Camp_memberDTO dto) throws Exception {
-//		return dao.loginProc(dto);
-//	}
 	
 	//찜하기
 	public int wishinsert(Camp_wishlistDTO dto) {

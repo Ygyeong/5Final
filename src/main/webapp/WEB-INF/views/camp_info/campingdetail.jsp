@@ -25,7 +25,7 @@
       $(".likeicon").on("click", function(){
 
          var like = $(".likeicon").attr('id');
-         var contentId = "${i.contentId}";
+         var contentId = $("#contentId").html();
          console.log(like);
          console.log(contentId);
          
@@ -36,8 +36,8 @@
             $(".likeicon").attr('id','like');
             
             $.ajax({
-                     url: "wishinsert.info",
-                     data: {contents:"dislike", contentId:"contentId"},
+                     url: "/info/wishinsert",
+                     data: {contents:"dislike", contentId:contentId},
                      method:"post",
                      dataType:"application/json"
                   });
@@ -177,6 +177,10 @@
                   <tr>
                      <th> 주변 이용 가능 시설</th>
                      <td>${i.posblFcltyCl}</td>
+                  </tr>
+                  <tr>
+                     <th> Id</th>
+                     <td id="contentId">${i.contentId}</td>
                   </tr>
                </table>
             </div>

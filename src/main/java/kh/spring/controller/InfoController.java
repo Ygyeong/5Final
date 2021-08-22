@@ -71,18 +71,21 @@ public class InfoController {
 
 		HttpSession session = request.getSession();
 		String loginID = (String)session.getAttribute("loginID");
-
-		if(loginID == null) {
-			model.addAttribute("likecheck","dislike");
-		}else {
-			model.addAttribute("likecheck","dislike");
-		}
-		
-		//contentId1
 		String contentId1 = Integer.toString(contentId);
-//		List<Camp_wishlistDTO> wish = service.selectwish(contentId1, cm_id);
 		
-//		model.addAttribute("wish",wish);
+		List<Camp_wishlistDTO> wish  = service.selectwish(contentId1, loginID); 
+		
+		if(loginID == null) {
+			model.addAttribute("contents","dislike");
+		}else {
+			if(wish.size() > 0) {
+				model.addAttribute("contents","like");
+			}else {
+				model.addAttribute("contents","dislike");
+			}
+
+		}
+				
 		model.addAttribute("list",list);
 		//model.addAttribute("image",image);
 		return "camp_info/campingdetail";
@@ -91,21 +94,32 @@ public class InfoController {
 	//찜하기 인서트
 	@RequestMapping(value = "wishinsert", method = RequestMethod.POST, produces = "application/json; charset=utf8")
  	@ResponseBody
-	public String wishinsert(String contents, int contentId, HttpServletRequest request) throws Exception {
-		System.out.println("확인");
+	public String wishinsert(String contents, int contentId, HttpServletRequest request,Model model ) throws Exception {
+		System.out.println("성공");
 		HttpSession session = request.getSession();
 		String loginID = (String)session.getAttribute("loginID");
+		String contentId1 = Integer.toString(contentId);
+		System.out.println("controller id: " + contentId1 + loginID);
+		List<Camp_wishlistDTO> wish = service.selectwish(contentId1, loginID); 
 		
-		Camp_wishlistDTO dto = new Camp_wishlistDTO();
+		if(loginID == null) {
+			System.out.println("로그인X" );
+			model.addAttribute("contents",0);
+		}else {
+			if(wish.size() < 1) {
+				System.out.println("인서트");
+				Camp_wishlistDTO dto = new Camp_wishlistDTO();
+				
+				dto.setContentId(contentId);
+				dto.setCm_id(loginID);
+				dto.setContents(contents);
+				service.wishinsert(dto);
+			}else {
+				System.out.println("안와야되는데여" );
+			}
 
-		JsonObject obj = new JsonObject(); 
-		obj.addProperty("contents", contents); 
-		obj.addProperty("contentId", contentId); 
+		}
 		
-		dto.setContents(contents);
-		System.out.println(contents + ":" + contentId);			
-
-		//int result = service.wishinsert(dto);
 		 
 		return "redirect:camp_info/campingdetail";
 	}
