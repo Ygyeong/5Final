@@ -264,7 +264,7 @@
         </svg></a>
       <ul class="mainMenu margin-top-3">
         <li><a href="/info/list">캠핑장</a></li>
-        <li><a href="">캠핑정보</a></li>
+        <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
         <li><a href="/products/selectAll">SHOP</a></li>
         <li><a href="/rep/list?index=1">중고장터</a></li>
         <li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
@@ -433,8 +433,6 @@
                       <h3 class="" style="font-weight: bold;">차박매트 - 현대 트라제용</h3>
                       <h3 class="" style="font-weight: bold;color: red;">₩10,000</h3>
                       <p class="tiny opacity-6 cropBottom">2번 사용하고 차량교체로 판매합니다</p>
-
-
                     </div>
                   </div>
                 </a>
