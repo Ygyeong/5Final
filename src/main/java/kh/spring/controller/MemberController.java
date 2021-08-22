@@ -1,6 +1,7 @@
 package kh.spring.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -44,7 +45,7 @@ public class MemberController {
 		String bcPass = BCrypt.hashpw(dto.getCm_pw(), BCrypt.gensalt());
 		dto.setCm_pw(bcPass);
 		ms.memberSign(dto);
-		System.out.println("성공!");
+		System.out.println("�꽦怨�!");
 		
 		return "redirect:/";
 	}
@@ -61,14 +62,21 @@ public class MemberController {
 			MemberDTO login = ms.login(dto);
 			if(login != null) {
 				session.setAttribute("loginID", login.getCm_id());
-				System.out.println("성공");
+				System.out.println("�꽦怨�");
 			}
 		} else {
 			session.setAttribute("member", null);
-			System.out.println("실패ㅠ;");
+			System.out.println("�떎�뙣�뀪;");
 		}
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping("logOutProc")
+	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
+		session.invalidate();
+		
+		return "index";
 	}
 
 	@ResponseBody
