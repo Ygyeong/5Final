@@ -10,14 +10,14 @@ public class MemberDTO {
 	private String cm_pw;
 	private String cm_name;
 	private String cm_email;
-	private int cm_phone;
+	private String cm_phone;
 	private String cm_zipcode;
 	private String cm_address1;
 	private String cm_address2;
 	
 	public MemberDTO() {}
 
-	public MemberDTO(int cm_no, String cm_id, String cm_pw, String cm_name, String cm_email, int cm_phone,
+	public MemberDTO(int cm_no, String cm_id, String cm_pw, String cm_name, String cm_email, String cm_phone,
 			String cm_zipcode, String cm_address1, String cm_address2) {
 		super();
 		this.cm_no = cm_no;
@@ -71,11 +71,11 @@ public class MemberDTO {
 		this.cm_email = cm_email;
 	}
 
-	public int getCm_phone() {
+	public String getCm_phone() {
 		return cm_phone;
 	}
 
-	public void setCm_phone(int cm_phone) {
+	public void setCm_phone(String cm_phone) {
 		this.cm_phone = cm_phone;
 	}
 
