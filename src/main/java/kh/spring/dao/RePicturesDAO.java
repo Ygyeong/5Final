@@ -16,9 +16,6 @@ public class RePicturesDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis; 
 	
-	@Autowired
-	private HttpSession session;
-	
 	public int insert(RePicturesDTO dto) {
 		return mybatis.insert("RePictures.insert",dto);
 	}
@@ -27,9 +24,12 @@ public class RePicturesDAO {
 		return mybatis.selectList("RePictures.getAll");
 	}
 	
-	//오류
-	public RePicturesDTO getDetail(int rep_seq){
-		return mybatis.selectOne("RePictures.getDetail",rep_seq);
+	
+	public List<RePicturesDTO> filesBySeq(int rep_seq){
+		return mybatis.selectList("RePictures.filesBySeq",rep_seq);
+	}
+	public RePicturesDTO selectThumbBySeq(int rep_seq) {
+		return mybatis.selectOne("RePictures.selectThumbBySeq",rep_seq);
 	}
 	
 }

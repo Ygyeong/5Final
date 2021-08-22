@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/cartList.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type="text/javascript" src="/js/cartList.js"></script>  
 </head>
 <body>
 	<form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
@@ -45,6 +44,7 @@
 					<div class="pname">
 						<span>${list.p_name}</span>
 						<input type="hidden" value="${list.c_seq}" id="c_seq">
+						<input type="hidden" value="${list.p_seq}" id="p_seq">
 					</div>
 				</div>
 				<div class="subdiv">
@@ -69,6 +69,7 @@
 					<div class="basketcmd">
 						<a href="javascript:void(0)" class="abutton"
 							onclick="javascript:basket.delItem();">삭제</a>
+							
 					</div>
 				</div>
 			</div>
@@ -85,7 +86,7 @@
 		<div class="bigtext right-align sumcount" id="sum_p_num">상품갯수:
 			4개</div>
 		<div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액:
-			74,200원</div>
+			${dto.c_price}</div>
 
 		<div id="goorder" class="">
 			<div class="clear"></div>
@@ -96,7 +97,5 @@
 	</form>
 
 </body>
-</html>
-
-</body>
+<script type="text/javascript" src="/js/cartList.js"></script>  
 </html>

@@ -11,8 +11,16 @@
 	<select id="getAll" resultType="kh.spring.dto.RePicturesDTO">
 		select * from camp_repictures
 	</select>
-	<select id="getDetail" resultType="kh.spring.dto.RePicturesDTO">
+	<select id="filesBySeq" resultType="kh.spring.dto.RePicturesDTO">
 		select * from camp_repictures where rep_seq2=${value}
 	</select>
 	
+	<select id="selectThumbBySeq" resultType="kh.spring.dto.RePicturesDTO">
+	
+		select * from camp_repictures where rep_seq2 = #{value} and repicture_seq =(select min(repicture_seq) from camp_repictures where rep_seq2=#{value})
+		
+	</select>
+	<delete id="delete">
+		delete from camp_repictures where rep_seq2 = #{value}
+	</delete>
 </mapper>

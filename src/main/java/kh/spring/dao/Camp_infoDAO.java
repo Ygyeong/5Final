@@ -18,27 +18,22 @@ public class Camp_infoDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	//��Ͽ��� ���
+	//목록 출력
 	public List<Camp_infoDTO> selectAll(){
 		return mybatis.selectList("Camp_info.selectAll");
 	}
 	
-	//�󼼿��� ���� ���
+	//디테일 출력
 	public List<Camp_infoDTO> detail(int contentId){
 		return mybatis.selectList("Camp_info.detail",contentId);
 	}
 	
-	//�󼼿��� �̹��� ���
+	//사진 출력
 	public List<Camp_photoDTO> detailimage(int ci_seq){
 		return mybatis.selectList("Camp_info.detailimage",ci_seq);
 	}
-	
-	//�α���
-//	public int loginProc(Camp_memberDTO dto) {
-//		return mybatis.selectOne("Camp_info.loginProc",dto);
-//	}
-//	
-	//���ϱ�
+		
+	//찜하기 
 	public int wishinsert(Camp_wishlistDTO dto) {
 		return mybatis.insert("Camp_info.wishinsert", dto);
 	}
@@ -48,14 +43,15 @@ public class Camp_infoDAO {
 		return mybatis.insert("Camp_info.campinsert", dto);
 	}
 	
-	//���ϱ� ���� ���
+	//찜하기 확인
 	public List<Camp_wishlistDTO> selectwish(Map<String,String> param){
 		return mybatis.selectList("Camp_info.selectwish",param);
 	}
 	
-	//���ϱ� ����
-	public List<Camp_wishlistDTO> wishdelete(Camp_wishlistDTO dto){
-		return mybatis.selectList("Camp_info.wishdelete",dto);
+	//찜하기 취소
+	public int wishdelete(int wish_seq){
+		return mybatis.delete("Camp_info.wishdelete", wish_seq);
+				
 	}
 	
 }

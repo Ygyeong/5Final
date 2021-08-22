@@ -15,9 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 
 import kh.spring.config.ReProductConfig;
+import kh.spring.dto.ReCommentsDTO;
 import kh.spring.dto.RePicturesDTO;
 import kh.spring.dto.ReProductDTO;
 import kh.spring.dto.ReWishListDTO;
+import kh.spring.service.ReCommentService;
 import kh.spring.service.ReProductService;
 
 @Controller
@@ -29,13 +31,16 @@ public class ReProductController {
 	private ReProductService service;
 	
 	@Autowired
+	private ReCommentService cservice;
+	
+	@Autowired
 	private HttpSession session;
 	
 	@RequestMapping("loginProc")
-	public String loginProc(String id, String pw) {
-		
+	public String loginProc(String id, int pw) {
+		System.out.println("AAAAAAAAAAA");
 		int result= service.login(id,pw);
-		
+		System.out.println(result);
 		if(result>0) {
 			session.setAttribute("id",id);
 		}
@@ -58,11 +63,15 @@ public class ReProductController {
 	
 	@RequestMapping("detail")
 	public String detail(int rep_seq,Model m) {
+		System.out.println(rep_seq);
 		ReProductDTO dto = service.getDetail(rep_seq);
-		RePicturesDTO pdto = service.getDetailP(rep_seq);
+		List<RePicturesDTO> pdto = service.filesBySeq(rep_seq);
 		int repCount = service.repCount(dto.getRep_writer());
+		List<ReCommentsDTO> cdto = cservice.getWriter(rep_seq);
+		System.out.println(cdto+"댓글임");
 		m.addAttribute("pdto",pdto);
 		m.addAttribute("dto",dto);
+		m.addAttribute("cdto",cdto);
 		m.addAttribute("repCount",repCount);
 		return "rep/detail";
 	}
@@ -150,7 +159,6 @@ public class ReProductController {
 	@ResponseBody
 	@RequestMapping("wishExist")
 	public String wishExist(ReWishListDTO wdto) {
-//		session.setAttribute("id", "kt478");
 		wdto.setRem_id((String)session.getAttribute("id"));
 		int result = service.wishExist(wdto);
 		System.out.println(result);
@@ -158,6 +166,26 @@ public class ReProductController {
 		
 	}
 	
+	
+//	게시글 수정,삭제
+	@RequestMapping("delete")
+	public String delete(int rep_seq) {
+		service.delete(rep_seq);
+		return "redirect:list?index=1";
+	} 
+	@RequestMapping("update")
+	public String update(int rep_seq,Model m) {
+		System.out.println("수정페이지");
+		ReProductDTO dto = service.getDetail(rep_seq);
+		List<RePicturesDTO> pdto = service.filesBySeq(rep_seq);
+		m.addAttribute("pdto",pdto);
+		m.addAttribute("dto",dto);
+		return "rep/update";
+	} 
+	@RequestMapping("updateProc")
+	public void updateProc(int rep_seq) {
+	
+	} 
 	
 	@ExceptionHandler // 예외가 발생했을 때만,
 	public String execeptionHandler(Exception e) {

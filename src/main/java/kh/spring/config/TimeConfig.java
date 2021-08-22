@@ -23,6 +23,7 @@ public class TimeConfig {
 
 	    if(diffTime < TIME_MAXIMUM.SEC) {
 	        // sec
+	    	
 	    	if(diffTime==0) {msg="방금전";}
 	    	else {msg = diffTime + "초 전";}
 	        

@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+    div{ 
+       overflow: auto;
+    }
+
+    #myBox{
+        border: 1px solid white;
+        background-color: rgba(255, 255, 255, 0.144);
+        width: 900px;
+        height: 700px;
+        margin: auto;
+        margin-top: 10px;
+        
+    }
+
+    #me{
+        background-color: white;
+        width: 300px;
+        margin-left: auto;
+        margin-top: 10px;
+        height: 498px;
+        float: left;
+        text-align: center;
+    }
+
+    .card_body{
+        background-color: white;
+        width: 200px;
+        margin: auto;
+        height: 300px;
+    }
+
+    .myPageBtn{ margin-top: 10px;}

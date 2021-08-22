@@ -18,7 +18,7 @@ public class ReProductDAO {
 	private SqlSessionTemplate mybatis;
 
 //	로그인
-	public int login(Map<String,String> param) {
+	public int login(Map<String,Object> param) {
 		return mybatis.selectOne("ReProduct.login",param);
 	}
 	

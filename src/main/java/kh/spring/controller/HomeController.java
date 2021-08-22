@@ -14,7 +14,6 @@ import kh.spring.dto.GalleryDTO;
 import kh.spring.service.Camp_infoService;
 import kh.spring.service.GalleryService;
 
-
 @Controller
 public class HomeController {
 	

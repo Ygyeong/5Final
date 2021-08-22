@@ -33,11 +33,13 @@ public class ReProductService {
 	@Autowired
 	private ReWishListDAO wdao;
 	
+	
 //	로그인
-	public int login(String id, String pw) {
-		Map<String,String> param = new HashMap<>();
-		param.put("id",id );
-		param.put("pw",pw );
+	public int login(String id, int pw) {
+		Map<String,Object> param = new HashMap<>();
+		System.out.println(id+":"+pw);
+		param.put("id",id);
+		param.put("pw",pw);
 		return dao.login(param);
 		
 	}
@@ -65,6 +67,7 @@ public class ReProductService {
 			}
 		}
 	}
+
 	
 	public List<RePicturesDTO> getPList(){
 		return pdao.getPList();
@@ -87,9 +90,9 @@ public class ReProductService {
 		return dto;
 	}
 	
-	public RePicturesDTO getDetailP(int rep_seq) {
+	public List<RePicturesDTO> filesBySeq(int rep_seq) {
 		
-		return pdao.getDetail(rep_seq);
+		return pdao.filesBySeq(rep_seq);
 	}
 	public int getSeq() {
 		return dao.getSeq();
@@ -98,7 +101,7 @@ public class ReProductService {
 	public List<ReProductDTO> Thumbnail(int startNum,int endNum) {
 		List<ReProductDTO> list = this.getAll(startNum,endNum);
 		for(ReProductDTO dto : list) {
-			RePicturesDTO pdto = pdao.getDetail(dto.getRep_seq());
+			RePicturesDTO pdto = pdao.selectThumbBySeq(dto.getRep_seq());
 			dto.setThumsysName(pdto.getReSysName());
 			
 			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
@@ -127,7 +130,7 @@ public class ReProductService {
 			list.add(rdto);
 		}
 		for(ReProductDTO dto : list) {
-			RePicturesDTO pdto = pdao.getDetail(dto.getRep_seq());
+			RePicturesDTO pdto = pdao.selectThumbBySeq(dto.getRep_seq());
 			dto.setThumsysName(pdto.getReSysName());
 			
 			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
@@ -146,7 +149,7 @@ public class ReProductService {
 	public List<ReProductDTO> repList(String rep_writer){
 		List<ReProductDTO> list = dao.repList(rep_writer);
 		for(ReProductDTO dto : list) {
-			RePicturesDTO pdto = pdao.getDetail(dto.getRep_seq());
+			RePicturesDTO pdto = pdao.selectThumbBySeq(dto.getRep_seq());
 			dto.setThumsysName(pdto.getReSysName());
 			
 			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
@@ -174,6 +177,8 @@ public class ReProductService {
 	public int wishExist(ReWishListDTO dto) {
 		return wdao.wishExist(dto);
 	}
+	
+	
 }
 
 
