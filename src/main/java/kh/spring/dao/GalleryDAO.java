@@ -166,6 +166,7 @@ public class GalleryDAO {
 	public List<String> getPageNavi(int currentPage,Map<String,Object> param4)throws Exception{
 		   
 		
+		  System.out.println("페이지 네비 : " + param4);
 		
 		  int recordTotalCount = 0; 
 		  recordTotalCount =this.getRecordCount(); // record 총 개수 알아야함(몇개인지) / record는 한줄(한개)
@@ -173,7 +174,6 @@ public class GalleryDAO {
 		  if(param4.get("keyword") == null) {
 				 recordTotalCount =this.getRecordCount(); // record 총 개수 알아야함(몇개인지) / record는 한줄(한개)
 			 }else {
-				 
 				 recordTotalCount =this.getRecordCount2(param4);
 			 }
 	     

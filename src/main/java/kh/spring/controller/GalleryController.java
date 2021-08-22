@@ -196,7 +196,7 @@ public class GalleryController {
 			param4.put("keyword", keyword);
 			
 			System.out.println(param1);
-//			List<GalleryDTO> list = service.getPageList(param1);
+
 			List<GalleryDTO> list;
 
 			if(keyword == null || keyword.contentEquals("")) {
@@ -211,7 +211,7 @@ public class GalleryController {
 			System.out.println(list);
 			
 			for(GalleryDTO gdto : list) {
-				System.out.println(gdto.getSeq());
+				System.out.println("gdto seq:"+gdto.getSeq());
 				Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
 				gdto.setThumbPath(idto.getSysName());
 			}

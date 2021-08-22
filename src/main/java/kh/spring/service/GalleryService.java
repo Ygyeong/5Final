@@ -49,12 +49,7 @@ public class GalleryService {
 
 	public void modify(String title,String contents,String realPath, MultipartFile[] file,int rating,int seq,String [] delTargets)throws Exception {
 		
-//		MultipartRequest multi = new MultipartRequest(request, filesPath, Gallery_ImgConfig.uploadMaxSize,"utf8", new DefaultFileRenamePolicy());
 
-
-//		int seq = Integer.parseInt(multi.getParameter("seq"));
-//		String title = multi.getParameter("title");
-//		String contents = multi.getParameter("contents");
 		System.out.println("여기까지 넘어오나?");
 		Map<String,String> param = new HashMap<>();
 		param.put("rating", String.valueOf(rating));
@@ -63,14 +58,12 @@ public class GalleryService {
 		param.put("contents", contents);
 		
 		System.out.println("modify"+seq);
-		int result = dao.modify(param);
+		dao.modify(param);
 
-//		String [] delTargets = delete;
+
 		File filesPath = new File(realPath);
 
-//		String[] delTargets = multi.getParameterValues("delete");
 
-		/* System.out.println(delTargets.length); */
 
 		if(delTargets != null) {
 
@@ -80,10 +73,10 @@ public class GalleryService {
 				System.out.println("타켓 번호"+target);
 				String sysName = fdao.getSysName(Integer.parseInt(target));
 				File targetFile = new File(filesPath+"/"+sysName);
-				boolean result1 = targetFile.delete();
+				boolean result = targetFile.delete();
 				
-				System.out.println("시스네임 : "+sysName);
-				if(result1) {fdao.fileDelete(Integer.parseInt(target));}
+
+     			if(result) {fdao.fileDelete(Integer.parseInt(target));}
 
 
 			}
@@ -230,7 +223,7 @@ public class GalleryService {
 	public List<GalleryDTO> getPageList2(Map<String,Object> param2) throws Exception{
 		
 		System.out.println(param2);
-		return dao.getPageList(param2);
+		return dao.getPageList2(param2);
 		
 	}
 	
