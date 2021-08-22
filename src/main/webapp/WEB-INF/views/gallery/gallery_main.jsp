@@ -117,8 +117,13 @@
                     <div class="navbar-nav ml-auto">
                         <a href="index.html" class="nav-item nav-link">캠핑장</a>
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+
+                        <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
+
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
@@ -129,7 +134,7 @@
             </div>
         </div>
         </c:when>
-        <c:otherwise>
+         <c:when test="${loginID=='admin'}">
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
@@ -144,6 +149,39 @@
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
                         <a href="service.html" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="portfolio.html" class="nav-item nav-link">관리자 페이지</a>
+                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </c:when>
+        
+        
+        <c:otherwise>
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+
+                        <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
+                        <a href="price.html" class="nav-item nav-link">중고장터</a>
+
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
