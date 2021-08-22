@@ -81,7 +81,7 @@ public class MemberController {
 			dto.setCm_id(cm_id);
 			MemberDTO login = ms.login(dto);
 			if(login != null) {
-				session.setAttribute("member", login);
+				session.setAttribute("loginID", login.getCm_id());
 				System.out.println("성공");
 			}
 		} else {

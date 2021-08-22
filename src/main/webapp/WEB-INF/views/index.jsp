@@ -462,8 +462,8 @@
 
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="#">마이페이지</a></li>
-						<li><a href="#">로그아웃</a></li>
+						<li><a href="/member/myPage">마이페이지</a></li>
+						<li><a href="/member/logOutProc">로그아웃</a></li>
 					</ul>
 
 				</div>

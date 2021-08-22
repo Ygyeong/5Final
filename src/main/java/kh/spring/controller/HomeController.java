@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kh.spring.dto.Camp_infoDTO;
-import kh.spring.dto.GalleryDTO;
 import kh.spring.service.Camp_infoService;
 import kh.spring.service.GalleryService;
 
