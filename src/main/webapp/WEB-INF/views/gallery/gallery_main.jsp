@@ -117,8 +117,13 @@
                     <div class="navbar-nav ml-auto">
                         <a href="index.html" class="nav-item nav-link">캠핑장</a>
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+
                         <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
+
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
@@ -142,8 +147,13 @@
                     <div class="navbar-nav ml-auto">
                         <a href="index.html" class="nav-item nav-link">캠핑장</a>
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+
                         <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
+
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
