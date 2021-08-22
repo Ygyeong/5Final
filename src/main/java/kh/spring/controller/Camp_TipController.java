@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import kh.spring.dto.CampTipDTO;
+import kh.spring.dto.CampTipPagingDTO;
 import kh.spring.service.CampTipService;
 
 @Controller
@@ -26,6 +29,18 @@ public class Camp_TipController {
     @Autowired
     private CampTipService service;
 
+    @RequestMapping("selectAll")
+    public ModelAndView selectAll() throws Exception {
+
+//    	게시글 불러오기 시작
+    	List<CampTipDTO> list = service.selectAll();
+    	ModelAndView model = new ModelAndView();
+    	model.setViewName("CampTip/CampTip");
+    	model.addObject("list",list);
+    	
+    	return model;
+    }
+    
     @RequestMapping("write")
     public String write() {
         return "/CampTip/CampTipWrite";
@@ -34,17 +49,17 @@ public class Camp_TipController {
     @RequestMapping("insert") // 게시글 등록
     public String insert(CampTipDTO dto) throws Exception {
         int result = service.insert(dto);
-        System.out.println(dto.getCampTip_num());
-        return "redirect:/";
+        System.out.println(dto.getCamp_tip_num());
+        return "redirect:/CampTipBoard/selectAll";
     }
 
     @RequestMapping("detail")
-    public ModelAndView detail(@RequestParam int campTip_num) throws Exception {
+    public ModelAndView detail(@RequestParam int camp_tip_num) throws Exception {
     	//조회수 증가
-    	service.viewCount(campTip_num);
+    	service.viewCount(camp_tip_num);
     	ModelAndView model = new ModelAndView();
     	model.setViewName("CampTip/CampTipDetail");
-    	model.addObject("dto",service.read(campTip_num));
+    	model.addObject("dto",service.read(camp_tip_num));
     	return model;
     }
     
@@ -60,16 +75,16 @@ public class Camp_TipController {
     }
     
     @RequestMapping("delete")
-    public String delete(CampTipDTO dto) throws Exception {
-    	service.delete(dto);
-    	return "redirect:/selectAll";
+    public String delete(CampTipDTO dto,HttpServletRequest request, HttpServletResponse response) throws Exception {
+    	int delNum = Integer.parseInt(request.getParameter("num"));
+    	System.out.println("글 번호 : " + delNum);
+    	service.delete(delNum);
+    	return "redirect:/CampTipBoard/selectAll";
     }
     
-//    @RequestMapping("detail/{p_seq}") // 상품상세
-//    public ModelAndView detail(@PathVariable("p_seq") int p_seq, ModelAndView model) {
-//        model.setViewName("/shop/productsDetail");
-//        model.addObject("dto",service.detail(p_seq));
-//        return model;
-//    }
+	@RequestMapping("modify")
+	public String modify() throws Exception {
+		return "/CampTip/CampTipModify";
+	}
 
 }

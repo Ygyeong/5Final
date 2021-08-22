@@ -22,16 +22,21 @@ public class CampTipService {
 		return dao.selectAll();
 	}
 	
-	public CampTipDTO read(int campTip_num) throws Exception {
-		return dao.read(campTip_num);
+	public CampTipDTO read(int camp_tip_num) throws Exception {
+		return dao.read(camp_tip_num);
 	}
 	
-	public int viewCount(int campTip_num) throws Exception {
-		return dao.viewCount(campTip_num);
+	public int viewCount(int camp_tip_num) throws Exception {
+		return dao.viewCount(camp_tip_num);
 	}
 	
-	public void delete(CampTipDTO dto) throws Exception {
-		dao.delete(dto);
+	public int delete(int delNum) throws Exception {
+		return dao.delete(delNum);
 	}
+	
+//	public int modify(CampTipDTO dto)throws Exception {
+//		System.out.println("수정화면 요청완료");
+//		return dao.modify(dto);
+//	}
 	
 }

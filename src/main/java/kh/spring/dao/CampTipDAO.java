@@ -22,16 +22,20 @@ public class CampTipDAO {
 		return mybatis.selectList("CampTip.select");
 	}
 	
-	public CampTipDTO read(int campTip_num) throws Exception {
-		return mybatis.selectOne("CampTip.detail",campTip_num);
+	public CampTipDTO read(int camp_tip_num) throws Exception {
+		return mybatis.selectOne("CampTip.detail",camp_tip_num);
 	}
 	
-	public int viewCount(int campTip_num) throws Exception {
-		return mybatis.update("CampTip.viewCount",campTip_num);
+	public int viewCount(int camp_tip_num) throws Exception {
+		return mybatis.update("CampTip.viewCount",camp_tip_num);
 	}
 	
-	public void delete(CampTipDTO dto) throws Exception {
-		mybatis.delete("CampTip.delete",dto);
+	public int delete(int delNum) {
+		return mybatis.delete("CampTip.delete",delNum);
 	}
+	
+//	public int modify(CampTipDTO dto) throws Exception {
+//		return mybatis.modify("CampTip.modify",dto);
+//	}
 	
 }
