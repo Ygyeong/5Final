@@ -105,6 +105,12 @@
 
 <body class="slides chain simplifiedMobile animated">
 
+<script>
+  (function (c, l, o, s, e, r) {
+    c[e] = c[e] || {}; r = l.createElement('script'); s && (o += '?botId=' + s); e && (r.setAttribute('data-bind', e)); r.src = o; r.async = 1; l.head.appendChild(r);
+  })(window, document, 'https://app.closer.ai/webchat.js', 'Bd8n9r');
+</script>
+
 	<!-- SVG Library -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
 
