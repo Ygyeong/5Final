@@ -333,7 +333,7 @@
 								<option value="writer">작성자</option>
 							</select>
                             <input type="text" name="keyword" class="page-item active" style="width:200px;height:40px;border:none;" placeholder="검색어를 입력하세요" >
-                            <a class=btn href="#" onclick="jQuery('#searchForm').submit();" style="padding-left:5px;"><img src="/resources/aboutGallery/images/search.png" style="width:20px;height:20px;margin-bottom:3px;margin-right:-4px"></a>
+                            <a class=btn onclick="jQuery('#searchForm').submit();" style="padding-left:5px;"><img src="/resources/aboutGallery/images/search.png" style="width:20px;height:20px;margin-bottom:3px;margin-right:-4px"></a>
                         	</form>
                         </li>
                         
@@ -441,22 +441,22 @@
           	  		<c:choose>
           	  			<c:when test="${i == '>' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
           	  			 
           	  			</c:when>
           	  			<c:when test="${i == '<' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
           	  			
           	  			</c:when>
           	  		
           	  			<c:otherwise>
           	  				<c:choose>
           	  					<c:when test="${i==cpage}">
-          	  						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber" style="color:white;background-color:rgb(14, 194, 14)"> ${cpage} </a></li>
+          	  						<li class="page-item active" ><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${cpage} </a></li>
           	  					</c:when>
           	  					<c:otherwise>
-          	  						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
+          	  						<li class="page-item"><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
           	  					</c:otherwise>
           	  				</c:choose>
           	  			</c:otherwise>

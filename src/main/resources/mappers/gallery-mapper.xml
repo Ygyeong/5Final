@@ -55,7 +55,7 @@
 	
 	<select id="getRecordCount2" resultType="int">
 		
-		select count(*) from gallery where #{category} like '%${keyword}%'
+		select count(*) from camp_gallery where ${category} like '%${keyword}%'
 
 	</select> 
 	
@@ -89,7 +89,7 @@
 	
 	<select id="getPageList2" resultType="kh.spring.dto.GalleryDTO">
 		
-		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery where #{category} like '%${keyword}%') where rnum between #{startNum} and #{endNum}
+		select * from (select row_number() over(order by seq desc) rnum, seq, title, contents, writer, write_date, view_count, rating from camp_gallery where ${category} like '%${keyword}%') where rnum between #{startNum} and #{endNum}
 
 																																	
 	</select>
