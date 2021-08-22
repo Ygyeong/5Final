@@ -45,9 +45,6 @@ public class GalleryService {
 	public int selectRating()throws Exception{
 		return dao.Rating(); 
 	}
-	
-	
-	
 
 	public void modify(String title,String contents,String realPath, MultipartFile[] file,int rating,int seq,String [] delTargets)throws Exception {
 		
