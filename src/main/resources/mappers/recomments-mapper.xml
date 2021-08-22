@@ -24,6 +24,6 @@
 		update camp_recomments set recmt_comments = #{recmt_comments} where recmt_seq=#{recmt_seq}
 	</update>
 	<select id="getWriter" resultType="kh.spring.dto.ReCommentsDTO">
-		select * from camp_recomments where recmt_rep_seq = ${value}
+		select * from camp_recomments where recmt_rep_seq = ${value} order by recmt_seq desc
 	</select>
 </mapper>

@@ -54,8 +54,9 @@ public class ReCommentController {
 	
 	@ResponseBody
 	@RequestMapping("update")
-	public void update(String recmt_comments,int recmt_seq) {
+	public String update(String recmt_comments,int recmt_seq) {
 		System.out.println(recmt_comments+recmt_seq);
 		service.update(recmt_comments, recmt_seq);
+		return new Gson().toJson(recmt_comments);
 	}
 }
