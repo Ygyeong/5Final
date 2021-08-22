@@ -34,8 +34,8 @@ public class CampTipDAO {
 		return mybatis.delete("CampTip.delete",delNum);
 	}
 	
-//	public int modify(CampTipDTO dto) throws Exception {
-//		return mybatis.modify("CampTip.modify",dto);
-//	}
+	public int modify(CampTipDTO dto) throws Exception {
+		return mybatis.update("CampTip.modify",dto);
+	}
 	
 }

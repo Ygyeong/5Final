@@ -34,9 +34,8 @@ public class CampTipService {
 		return dao.delete(delNum);
 	}
 	
-//	public int modify(CampTipDTO dto)throws Exception {
-//		System.out.println("수정화면 요청완료");
-//		return dao.modify(dto);
-//	}
+	public int modify(CampTipDTO dto)throws Exception {
+		return dao.modify(dto);
+	}
 	
 }

@@ -24,4 +24,8 @@
 		delete from camp_tip where camp_tip_num = ${camp_tip_num}
 	</delete>
 	
+	<update id="modify">
+		update camp_tip set category=${category},title=#{title},contents=#{contents} where camp_tip_num = ${camp_tip_num}
+	</update>
+	
 </mapper>

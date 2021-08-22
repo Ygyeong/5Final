@@ -83,8 +83,18 @@ public class Camp_TipController {
     }
     
 	@RequestMapping("modify")
-	public String modify() throws Exception {
-		return "/CampTip/CampTipModify";
+	public ModelAndView modify(@RequestParam int camp_tip_num) throws Exception {
+		ModelAndView model = new ModelAndView();
+    	model.setViewName("CampTip/CampTipModify");
+    	model.addObject("dto",service.read(camp_tip_num));
+    	return model;
+	}
+	
+	@RequestMapping("modifyProc")
+	public String modifyProc(CampTipDTO dto) throws Exception {
+		System.out.println(dto.getCamp_tip_num());
+        int result = service.modify(dto);
+        return "redirect:/CampTipBoard/selectAll";
 	}
 
 }
