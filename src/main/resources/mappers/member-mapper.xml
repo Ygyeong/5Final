@@ -14,4 +14,10 @@
 	<select id="login" parameterType="kh.spring.dto.MemberDTO" resultType="kh.spring.dto.MemberDTO">
 		select * from camp_mem where cm_id = #{cm_id} 
 	</select>
+	<delete id="memberOut">
+		delete from camp_mem where cm_id=#{cm_id}
+	</delete>
+	<update id="memberUpdate">
+		update camp_mem set cm_email = #{cm_email}, cm_phone = #{cm_phone}, cm_zipcode = #{cm_zipcode}, cm_address1 = #{cm_address1}, cm_address2 = #{cm_address2} where cm_id = #{cm_id}			
+	</update>
 </mapper>
