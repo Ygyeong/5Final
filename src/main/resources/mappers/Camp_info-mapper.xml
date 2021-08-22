@@ -33,7 +33,7 @@
 	</insert>
 
 	<delete id="wishdelete">
-	delete from camp_wishlist where ci_seq=${ci_seq} and cm_id=#{cm_id} 
+		delete from camp_wishlist where wish_seq=#{wish_seq}
 	</delete>
 
 </mapper>

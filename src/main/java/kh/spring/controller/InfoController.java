@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
@@ -79,13 +78,16 @@ public class InfoController {
 			model.addAttribute("contents","dislike");
 		}else {
 			if(wish.size() > 0) {
-				model.addAttribute("contents","like");
-			}else {
+				System.out.println("찜하기 됐당" + wish.get(0).getContents());
+				model.addAttribute("contents",wish.get(0).getContents());
+			} else if(wish.size() == 0){
+				System.out.println("안됨");
 				model.addAttribute("contents","dislike");
 			}
 
 		}
-				
+		
+
 		model.addAttribute("list",list);
 		//model.addAttribute("image",image);
 		return "camp_info/campingdetail";
@@ -114,35 +116,43 @@ public class InfoController {
 				dto.setCm_id(loginID);
 				dto.setContents(contents);
 				service.wishinsert(dto);
-			}else {
+			} else if(wish.size() == 0) {
 				System.out.println("안와야되는데여" );
 			}
 
-		}
-		
+		}	
 		 
 		return "redirect:camp_info/campingdetail";
 	}
 	
 	
-//	//ķ�� ���ϱ� ����(���� ���)
-//	@RequestMapping(value ="wishdelete", method = RequestMethod.POST)
-//	public String wishdelete(HttpServletRequest request, String ci_seq) throws Exception {
-//		
-//		HttpSession session = request.getSession();
-//		String cm_id = (String)session.getAttribute("cm_id");
-//		
-//		Camp_wishlistDTO dto = new Camp_wishlistDTO();
-//		
-//		dto.setCm_id(cm_id);
-//		dto.setCi_seq(ci_seq);
-//		 
-//		int result = service.wishdelete(dto);
-//		 
-//		return "redirect:detail";
-//	}
+	//찜하기 취소
+	@RequestMapping(value ="wishdelete", method = RequestMethod.POST)
+	public String wishdelete(HttpServletRequest request, int contentId, String contents, Model model ) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String loginID = (String)session.getAttribute("loginID");
+		String contentId1 = Integer.toString(contentId);
+		System.out.println(contentId);
+		List<Camp_wishlistDTO> wish = service.selectwish(contentId1, loginID); 
+		
+		Camp_wishlistDTO dto = new Camp_wishlistDTO();
+		
+		if( wish.size() > 0) {
+			
+			System.out.println("딜리트");			
+			int wish_seq = wish.get(0).getWish_seq();
+			
+			service.wishdelete(wish_seq);
+		}else {
+			System.out.println("안와야되는데여" );
+		}
+		
+		 
+		return "redirect:detail";
+	}
 	
-//
+
 
 	
 }

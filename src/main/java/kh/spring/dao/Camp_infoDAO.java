@@ -49,8 +49,9 @@ public class Camp_infoDAO {
 	}
 	
 	//찜하기 취소
-	public List<Camp_wishlistDTO> wishdelete(Camp_wishlistDTO dto){
-		return mybatis.selectList("Camp_info.wishdelete",dto);
+	public int wishdelete(int wish_seq){
+		return mybatis.delete("Camp_info.wishdelete", wish_seq);
+				
 	}
 	
 }

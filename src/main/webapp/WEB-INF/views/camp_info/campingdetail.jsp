@@ -37,7 +37,7 @@
             
             $.ajax({
                      url: "/info/wishinsert",
-                     data: {contents:"dislike", contentId:contentId},
+                     data: {contents:"like", contentId:contentId},
                      method:"post",
                      dataType:"application/json"
                   });
@@ -46,6 +46,13 @@
             alert("찜하기를 취소합니다.");
             $(".likeicon").attr("src", "/img/detailimage/like/dislike.png");
             $(".likeicon").attr('id','dislike');
+            
+            $.ajax({
+                url: "/info/wishdelete",
+                data: {contents:"dislike", contentId:contentId},
+                method:"post",
+                dataType:"application/json"
+             });
          }
 
       });
@@ -192,12 +199,18 @@
                <!-- 찜하기 -->	
                <div id=wishbox>   
                  <c:choose>
-                 	<c:when test="${likecheck eq '0' or empty likecheck}">         
+                 	<c:when test="${contents eq 'like'}">         
 			        <h4>찜하기</h4> 
+			            <div id=wishbox_icon>
+			               <img src="/img/detailimage/like/like.png" id="like" class="likeicon">             
+			            </div>
+			         </c:when>
+			         <c:otherwise>
+			         	<h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/dislike.png" id="dislike" class="likeicon">             
 			            </div>
-			         </c:when>
+			         </c:otherwise>
 			   	</c:choose>
                </div>
 

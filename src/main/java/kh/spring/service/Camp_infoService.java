@@ -57,9 +57,10 @@ public class Camp_infoService {
 	}
 	
 	//찜빼기
-	public int wishdelete(Camp_wishlistDTO dto) {
-		return dao.wishinsert(dto);
+	public int wishdelete(int wish_seq) {
+		return dao.wishdelete(wish_seq);
 	}
+
 	
 	
 }
