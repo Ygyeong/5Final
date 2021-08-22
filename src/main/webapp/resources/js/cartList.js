@@ -1,3 +1,5 @@
+var js = document.createElement("script");
+js.src = "jquery.js";
 let basket = {
     totalCount: 0, 
     totalPrice: 0,
@@ -5,6 +7,20 @@ let basket = {
     delCheckedItem: function(){
         document.querySelectorAll("input[name=buy]:checked").forEach(function (item) {
             item.parentElement.parentElement.parentElement.remove();
+
+
+//		let it = item.parentsElement;
+//		let c_seq = it.$("#c_seq").val();
+//		console.log(c_seq);
+		$.ajax({
+			type:"post",
+			url:"/cart/delete",
+			data:{"c_seq":$('#c_seq').val()},
+			success: function(){
+				alert("상품이 삭제되었습니다!");
+			}
+			
+			});
         });
         //AJAX 서버 업데이트 전송
     
