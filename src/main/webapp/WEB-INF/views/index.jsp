@@ -98,16 +98,18 @@
 	    	 $("#galTitle").text(resp[0].title); 
 	    	 $("#galContents").html(resp[0].contents); 
 	    	   
-	    	/*  $("#writeDate").text(resp[0].write_date);
-	    	 
-	    	   
-	    	 $("#writer").text(resp[0].writer);
-	    	    */
-	    	   
+	    
 	    	 
 	    	 
 	    	   
 	     })
+	     
+	     
+	     
+	 
+	     
+	     
+	     
   
   })
   
@@ -301,7 +303,9 @@
     </symbol>
 
   </svg>
-
+	
+	
+	
 	<!-- Navigation -->
 	<nav class="side pole">
 		<div class="navigation">
@@ -823,7 +827,7 @@
 											</c:choose>
 										</div>
 									</div>
-									<a href="#"
+									<a href="/gal/list?cpage=1"
 										class="button blue gradient wide cropSides cropBottom ae-8">구경하러
 										가기</a>
 								</div>
