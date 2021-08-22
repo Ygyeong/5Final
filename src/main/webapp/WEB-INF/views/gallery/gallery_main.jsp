@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>갤러리 후기</title>
+        <title>캠핑 후기</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -102,10 +102,13 @@
         
 
         <!-- Nav Bar Start -->
+        
+        <c:choose>
+  			<c:when test="${loginID==null }">
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/tent_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -116,7 +119,7 @@
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
                         <a href="service.html" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">갤러리 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="portfolio.html" class="nav-item nav-link">회원가입</a>
@@ -125,6 +128,37 @@
                 </div>
             </div>
         </div>
+        </c:when>
+        <c:otherwise>
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="price.html" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="portfolio.html" class="nav-item nav-link">마이페이지</a>
+                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        </c:otherwise>
+        
+        </c:choose>
         <!-- Nav Bar End -->
 
 
@@ -134,7 +168,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 style="color: white;">갤러리 후기</h2>
+                        <h2 style="color: white;">캠핑 후기</h2>
                     </div>
                     <div class="col-12">
                         <a href="">Home</a>
@@ -299,7 +333,7 @@
 								<option value="writer">작성자</option>
 							</select>
                             <input type="text" name="keyword" class="page-item active" style="width:200px;height:40px;border:none;" placeholder="검색어를 입력하세요" >
-                            <a class=btn href="#" onclick="jQuery('#searchForm').submit();" style="padding-left:5px;"><img src="/resources/aboutGallery/images/search.png" style="width:20px;height:20px;margin-bottom:3px;margin-right:-4px"></a>
+                            <a class=btn onclick="jQuery('#searchForm').submit();" style="padding-left:5px;"><img src="/resources/aboutGallery/images/search.png" style="width:20px;height:20px;margin-bottom:3px;margin-right:-4px"></a>
                         	</form>
                         </li>
                         
@@ -407,22 +441,22 @@
           	  		<c:choose>
           	  			<c:when test="${i == '>' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
           	  			 
           	  			</c:when>
           	  			<c:when test="${i == '<' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
           	  			
           	  			</c:when>
           	  		
           	  			<c:otherwise>
           	  				<c:choose>
           	  					<c:when test="${i==cpage}">
-          	  						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber" style="color:white;background-color:rgb(14, 194, 14)"> ${cpage} </a></li>
+          	  						<li class="page-item active" ><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${cpage} </a></li>
           	  					</c:when>
           	  					<c:otherwise>
-          	  						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/galList.gal?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
+          	  						<li class="page-item"><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
           	  					</c:otherwise>
           	  				</c:choose>
           	  			</c:otherwise>

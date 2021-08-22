@@ -39,7 +39,8 @@ public class Gallery_ImgDAO {
 	 
 	public int fileDelete(int seq)throws Exception {
 		
-		return mybatis.selectOne("Gallery_Img.fileDelete",seq);
+		System.out.println("삭제할 파일 " + seq);
+		return mybatis.delete("Gallery_Img.fileDelete",seq);
 		
 	}
 	

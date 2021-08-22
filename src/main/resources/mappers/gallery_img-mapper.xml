@@ -25,7 +25,7 @@
 		
 	</select>
 	
-	<select id="getSysName" resultType="kh.spring.dto.Gallery_ImgDTO">
+	<select id="getSysName" resultType="string">
 	
 		select sysname from camp_gallery_img where seq = #{seq}
 		
