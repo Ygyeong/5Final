@@ -301,7 +301,7 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
         </svg></a>
       <ul class="mainMenu margin-top-3">
-        <li><a href="#">캠핑장</a></li>
+        <li><a href="/info/list">캠핑장</a></li>
         <li><a href="#">캠핑정보</a></li>
         <li><a href="/products/selectAll">SHOP</a></li>
         <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -418,8 +418,6 @@
                       <h3 class="" style="font-weight: bold;color: red;">₩50,000</h3>
                       <p class="tiny opacity-6 cropBottom">사용횟수가 많지 않아 상태 좋습니다.부피때문에 택배로 보내기 애매한 사이즈인것 같아요.직거래 우선으로
                         하겠습니다. </p>
-
-
 
                     </div>
                   </div>

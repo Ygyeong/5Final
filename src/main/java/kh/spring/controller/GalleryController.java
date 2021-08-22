@@ -100,10 +100,6 @@ public class GalleryController {
 		
 		
 		
-		
-		
-		
-		
 		@RequestMapping("delete")
 		public String delete(int seq) throws Exception {
 			System.out.println("삭제 요청 확인");
