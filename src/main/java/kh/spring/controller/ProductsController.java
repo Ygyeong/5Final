@@ -29,11 +29,6 @@ public class ProductsController {
 	@Autowired
 	private ProductsService service;
 
-	@RequestMapping("productsList")
-	public String goodsList() {
-		return "shop/productsList";
-	}
-
 	@RequestMapping("boardWritePage")
 	public String boardWritePage() {
 		return "admin/productsInsert";

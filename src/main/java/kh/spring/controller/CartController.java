@@ -26,8 +26,7 @@ public class CartController {
 	
 	@RequestMapping("insertCart") // 장바구니 넣기
 	public String insertCart(@ModelAttribute CartDTO dto,HttpSession session) {
-		String camp_id = "admin";
-		session.setAttribute("camp_id",camp_id);
+		String camp_id = (String)session.getAttribute("loginID");
 		dto.setCamp_id(camp_id);
 		// 장바구니에 기존 상품이 있는지 검사
 		
@@ -42,8 +41,7 @@ public class CartController {
 	
 	@RequestMapping("cartList") // 장바구니 목록
 	public ModelAndView list(HttpSession session,ModelAndView model) {
-		System.out.println("장바구니 목록 출력!");
-		String camp_id = (String)session.getAttribute("camp_id");
+		String camp_id = (String)session.getAttribute("loginID");
 		Map<String,Object>map = new HashMap<String,Object>();
 		List<CartDTO> list = cservice.list(camp_id); // 장바구니 목록
 		int sumMoney = cservice.sumMoney(camp_id); // 장바구니 전체 금액
