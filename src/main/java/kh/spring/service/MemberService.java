@@ -23,4 +23,13 @@ public class MemberService {
 	public MemberDTO login(MemberDTO dto) {
 		return dao.login(dto);
 	}
+	
+	public String memberOut(String cm_id) {
+		return dao.memberOut(cm_id);
+	}
+	
+	public String memberUpdate(MemberDTO dto) {
+		return dao.memberUpdate(dto);
+	}
+
 }

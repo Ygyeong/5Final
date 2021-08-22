@@ -152,10 +152,13 @@ $("body").on("click","#modi",function(){
 
 
 	<!-- Nav Bar Start -->
+        
+        <c:choose>
+  			<c:when test="${loginID==null }">
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/tent_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -166,7 +169,7 @@ $("body").on("click","#modi",function(){
                         <a href="about.html" class="nav-item nav-link">캠핑정보</a>
                         <a href="service.html" class="nav-item nav-link">SHOP</a>
                         <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">갤러리 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="portfolio.html" class="nav-item nav-link">회원가입</a>
@@ -175,6 +178,38 @@ $("body").on("click","#modi",function(){
                 </div>
             </div>
         </div>
+        </c:when>
+        <c:otherwise>
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+                        <a href="service.html" class="nav-item nav-link">SHOP</a>
+                        <a href="price.html" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="portfolio.html" class="nav-item nav-link">마이페이지</a>
+                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        </c:otherwise>
+        
+        </c:choose>
+        
 	<!-- Nav Bar End -->
 
 
@@ -184,7 +219,7 @@ $("body").on("click","#modi",function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2 style="color:white;">갤러리 후기</h2>
+					<h2 style="color:white;">캠핑 후기</h2>
 				</div>
 				<div class="col-12">
 					<a href="">Home</a> 
@@ -284,7 +319,7 @@ $("body").on("click","#modi",function(){
 								data-toggle="modal">삭제</a>
 						</c:when>
 					</c:choose>
-					<a href="/gal/list" id="backBtn" class="btn btn-default pull-left"
+					<a href="/gal/list?cpage=1" id="backBtn" class="btn btn-default pull-left"
 						style="background-color: #00285b; color: white">목록</a>
 				</div>
 
@@ -440,59 +475,7 @@ $("body").on("click","#modi",function(){
 
 
 
-	<%-- <c:choose>
-		<c:when test="${loginID==null }">
-			<div class="container"
-				style="overflow: hidden; width: 800px; margin: auto;" id=comment>
-
-				<div class="header" style="background-color: white;">
-					<a href="temp_login.jsp">댓글을 작성하려면 로그인 해주세요.<!--로그인proc 두개 만들어 줘야/로그인해서 바로 게시물로 이어지는 프록  --></a>
-				</div>
-
-				<hr>
-
-			</div>
-
-		</c:when>
-
-
-
-
-		<c:otherwise>
-			<form method="post" id="comForm">
-
-
-				<div class="container col-12 col-lg-12 col-xl-12 p-0"
-					style="overflow: hidden; width: 800px; margin: auto; border: 1px solid #ddd; border-radius: 10px;"
-					id=comment>
-
-					<div class="header col-12 col-lg-12 col-xl-12 p-0" style="background-color: white;">ID :
-						${login.id}</div>
-					<div class="content col-12 col-lg-12 col-xl-12 p-0" style="width: 770px; height: 110px; margin-left: 12px;">
-						<textarea
-							style="height: 100%; width: 100%; border: 1px solid black; border-radius: 10px;"
-							name="comments" id=comments placeholder="댓글을 입력해주세요." class="content col-12 col-lg-12 col-xl-12 p-0" required></textarea>
-						<input type=hidden value=${content.seq } name=gallery_seq> 
-
-					</div>
-
-					<hr>
-					<div class="reply">
-						<button id=btn class="btn btn-primary"
-							style="float: right; margin-bottom: 10px; margin-right:10px;">등록</button>
-					</div>
-
-
-
-
-				</div>
-
-
-			</form>
-
-		</c:otherwise>
-	</c:choose>
- --%>
+	
 
 
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
