@@ -44,6 +44,7 @@
 					<div class="pname">
 						<span>${list.p_name}</span>
 						<input type="hidden" value="${list.c_seq}" id="c_seq">
+						<input type="hidden" value="${list.p_seq}" id="p_seq">
 					</div>
 				</div>
 				<div class="subdiv">
@@ -68,6 +69,7 @@
 					<div class="basketcmd">
 						<a href="javascript:void(0)" class="abutton"
 							onclick="javascript:basket.delItem();">삭제</a>
+							
 					</div>
 				</div>
 			</div>
@@ -84,7 +86,7 @@
 		<div class="bigtext right-align sumcount" id="sum_p_num">상품갯수:
 			4개</div>
 		<div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액:
-			74,200원</div>
+			${dto.c_price}</div>
 
 		<div id="goorder" class="">
 			<div class="clear"></div>
