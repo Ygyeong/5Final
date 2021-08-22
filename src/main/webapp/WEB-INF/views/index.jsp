@@ -295,32 +295,6 @@
     </div>
   </nav>
 
-  <!-- Panel Top #08 -->
-  <c:choose>
-  	<c:when test="${member.cm_id==null }">
-  	
-  <nav class="panel top">
-    <div class="sections">
-     <!--  <div class="left"><a href="/" title="Slides Framework"><img src="assets/img/background/reallogo.png"style="width:180px;height:90px;"> -->
-       <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">
-          별보러갈래? </a></div>
-      <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg>
-            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use>
-          </svg></span></div>
-    </div>
-  </nav>
-
-  <!-- Sidebar -->
-  <nav class="sidebar" data-sidebar-id="1">
-    <div class="close"><svg>
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-      </svg></div>
-    <div class="content">
-      <a href="#" class="logo"><svg width="37" height="30">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
-=======
-
-
 	<!-- Navigation -->
 	<nav class="side pole">
 		<div class="navigation">
