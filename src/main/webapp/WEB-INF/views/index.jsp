@@ -245,7 +245,7 @@
   <nav class="panel top">
     <div class="sections">
      <!--  <div class="left"><a href="/" title="Slides Framework"><img src="assets/img/background/reallogo.png"style="width:180px;height:90px;"> -->
-       <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/tent_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">
+       <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">
           별보러갈래? </a></div>
       <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1"><svg>
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu"></use>
@@ -265,13 +265,13 @@
       <ul class="mainMenu margin-top-3">
         <li><a href="/info/list">캠핑장</a></li>
         <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-        <li><a href="#">SHOP</a></li>
+        <li><a href="/products/selectAll">SHOP</a></li>
         <li><a href="/rep/list?index=1">중고장터</a></li>
         <li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
         <!-- <li><a href="#"><img style="width: 30px;height: 30px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyLjAwMSA1MTIuMDAxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIuMDAxIDUxMi4wMDE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMV8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzA3LjQ5MTIiIHkxPSIyMTYuNzA1NCIgeDI9IjU1NC42NTEyIiB5Mj0iLTMwLjQ1NDYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS4wMDM5IDAgMCAtMS4wMDM5IDAuMTkyMiA1MTYuNTYwOSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiNBN0YzQ0UiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojNjFEQjk5Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggc3R5bGU9ImZpbGw6dXJsKCNTVkdJRF8xXyk7IiBkPSJNMzQwLjM2NiwxNjQuMTMzYzkzLjQ4OC0xLjQyOCwxNjkuNzkyLDcyLjE1MywxNzEuNjAyLDE2NS42MzQNCgljMC4yNjYsMTMuNzI1LTEuMTA2LDI3LjA4NC0zLjkzMiwzOS44OThjLTQuNzg2LDIxLjY5Ny03LjYzMSw0My43NzYtNy42MzEsNjUuOTk1djQyLjk0OGMwLDYuNTgtNS4zMzQsMTEuOTE0LTExLjkxNCwxMS45MTQNCgloLTQyLjk0OGMtMjIuMjE5LDAtNDQuMjk4LDIuODQ1LTY1Ljk5NSw3LjYzMWMtMTIuODEzLDIuODI2LTI2LjE3Miw0LjE5OC0zOS44OTcsMy45MzINCgljLTkzLjQ4LTEuODA5LTE2Ny4wNjEtNzguMTExLTE2NS42MzUtMTcxLjU5N0MxNzUuNDA3LDIzOS4yMzgsMjQ5LjExNywxNjUuNTI3LDM0MC4zNjYsMTY0LjEzM3oiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfMl8iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMzg4LjM5ODUiIHkxPSIxMzUuODAyNiIgeDI9IjI4My40MTg1IiB5Mj0iMjQwLjc3MjYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS4wMDM5IDAgMCAtMS4wMDM5IDAuMTkyMiA1MTYuNTYwOSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiM2MURCOTk7c3RvcC1vcGFjaXR5OjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA5RTc0Ii8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggc3R5bGU9ImZpbGw6dXJsKCNTVkdJRF8yXyk7IiBkPSJNMzQwLjM2NiwxNjQuMTMzYzkzLjQ4OC0xLjQyOCwxNjkuNzkyLDcyLjE1MywxNzEuNjAyLDE2NS42MzQNCgljMC4yNjYsMTMuNzI1LTEuMTA2LDI3LjA4NC0zLjkzMiwzOS44OThjLTQuNzg2LDIxLjY5Ny03LjYzMSw0My43NzYtNy42MzEsNjUuOTk1djQyLjk0OGMwLDYuNTgtNS4zMzQsMTEuOTE0LTExLjkxNCwxMS45MTQNCgloLTQyLjk0OGMtMjIuMjE5LDAtNDQuMjk4LDIuODQ1LTY1Ljk5NSw3LjYzMWMtMTIuODEzLDIuODI2LTI2LjE3Miw0LjE5OC0zOS44OTcsMy45MzINCgljLTkzLjQ4LTEuODA5LTE2Ny4wNjEtNzguMTExLTE2NS42MzUtMTcxLjU5N0MxNzUuNDA3LDIzOS4yMzgsMjQ5LjExNywxNjUuNTI3LDM0MC4zNjYsMTY0LjEzM3oiLz4NCjxsaW5lYXJHcmFkaWVudCBpZD0iU1ZHSURfM18iIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMTI5Ljk3IiB5MT0iMzMyLjc3NDIiIHgyPSIzOTAuOTIiIHkyPSI3MS44MjQyIiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuMDAzOSAwIDAgLTEuMDAzOSAwLjE5MjIgNTE2LjU2MDkpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojNjJFMUZCIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwQTJGMyIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIHN0eWxlPSJmaWxsOnVybCgjU1ZHSURfM18pOyIgZD0iTTIwOS4wOTgsOS45MDlDOTUuMjA0LDguMTY5LDIuMjQ1LDk3LjgxLDAuMDM5LDIxMS42OTYNCgljLTAuMzIzLDE2LjcxOSwxLjM0OCwzMi45OTYsNC43OTIsNDguNjA2YzUuODMsMjYuNDMyLDkuMjk2LDUzLjMzMSw5LjI5Niw4MC40djUyLjMyMmMwLDguMDE2LDYuNDk4LDE0LjUxNSwxNC41MTUsMTQuNTE1aDUyLjMyMg0KCWMyNy4wNjgsMCw1My45NjcsMy40NjYsODAuNCw5LjI5NmMxNS42MSwzLjQ0MywzMS44ODYsNS4xMTUsNDguNjA1LDQuNzkxYzExMy44ODQtMi4yMDUsMjAzLjUyNS05NS4xNjEsMjAxLjc4OS0yMDkuMDUzDQoJQzQxMC4wNjIsMTAxLjQwNiwzMjAuMjY0LDExLjYwNiwyMDkuMDk4LDkuOTA5eiIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF80XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxNzkuMDM4NCIgeTE9IjIxOC4xOTI2IiB4Mj0iNDEuNjQ0NCIgeTI9IjM1NS41ODI2IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuMDAzOSAwIDAgLTEuMDAzOSAwLjE5MjIgNTE2LjU2MDkpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBBMkYzO3N0b3Atb3BhY2l0eTowIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwNzVDRCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIHN0eWxlPSJmaWxsOnVybCgjU1ZHSURfNF8pOyIgZD0iTTEzMi4xOTMsMjA0LjczOWMtNS44MTYtNi4xOC0xNC4wNDgtMTAuMDYxLTIzLjIwNi0xMC4wNjENCgljLTE3LjYxMywwLTMxLjg5MSwxNC4yNzgtMzEuODkxLDMxLjg5MWMwLDkuMTU3LDMuODgsMTcuMzg5LDEwLjA2MSwyMy4yMDZsNjguNzk0LDY4Ljc5NGM1LjgxNyw2LjE4LDE0LjA0OSwxMC4wNjEsMjMuMjA2LDEwLjA2MQ0KCWMxNy42MTMsMCwzMS44OTEtMTQuMjc4LDMxLjg5MS0zMS44OTFjMC05LjE1Ny0zLjg4MS0xNy4zODktMTAuMDYxLTIzLjIwNkwxMzIuMTkzLDIwNC43Mzl6Ii8+DQo8Y2lyY2xlIHN0eWxlPSJmaWxsOiNGRkZGRkY7IiBjeD0iMTA4Ljk4NiIgY3k9IjIyNi41NjUiIHI9IjMxLjg5MSIvPg0KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF81XyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNjguODcxOSIgeTE9IjIxOC4xOTYiIHgyPSIxMzEuNDgxOSIgeTI9IjM1NS41ODYiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMS4wMDM5IDAgMCAtMS4wMDM5IDAuMTkyMiA1MTYuNTYwOSkiPg0KCTxzdG9wICBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMEEyRjM7c3RvcC1vcGFjaXR5OjAiLz4NCgk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDA3NUNEIi8+DQo8L2xpbmVhckdyYWRpZW50Pg0KPHBhdGggc3R5bGU9ImZpbGw6dXJsKCNTVkdJRF81Xyk7IiBkPSJNMjIyLjM4MywyMDQuNzM5Yy01LjgxNi02LjE4LTE0LjA0OC0xMC4wNjEtMjMuMjA2LTEwLjA2MQ0KCWMtMTcuNjEzLDAtMzEuODkxLDE0LjI3OC0zMS44OTEsMzEuODkxYzAsOS4xNTcsMy44OCwxNy4zODksMTAuMDYxLDIzLjIwNmw2OC43OTQsNjguNzk0YzUuODE3LDYuMTgsMTQuMDQ5LDEwLjA2MSwyMy4yMDYsMTAuMDYxDQoJYzE3LjYxMywwLDMxLjg5MS0xNC4yNzgsMzEuODkxLTMxLjg5MWMwLTkuMTU3LTMuODgxLTE3LjM4OS0xMC4wNjEtMjMuMjA2TDIyMi4zODMsMjA0LjczOXoiLz4NCjxjaXJjbGUgc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGN4PSIxOTkuMTc4IiBjeT0iMjI2LjU2NSIgcj0iMzEuODkxIi8+DQo8bGluZWFyR3JhZGllbnQgaWQ9IlNWR0lEXzZfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjM1OC43MTA0IiB5MT0iMjE4LjE5NDUiIHgyPSIyMjEuMzIwNCIgeTI9IjM1NS41ODQ1IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEuMDAzOSAwIDAgLTEuMDAzOSAwLjE5MjIgNTE2LjU2MDkpIj4NCgk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBBMkYzO3N0b3Atb3BhY2l0eTowIi8+DQoJPHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwNzVDRCIvPg0KPC9saW5lYXJHcmFkaWVudD4NCjxwYXRoIHN0eWxlPSJmaWxsOnVybCgjU1ZHSURfNl8pOyIgZD0iTTMxMi41NzIsMjA0LjczOWMtNS44MTYtNi4xOC0xNC4wNDgtMTAuMDYxLTIzLjIwNi0xMC4wNjENCgljLTE3LjYxMywwLTMxLjg5MSwxNC4yNzgtMzEuODkxLDMxLjg5MWMwLDkuMTU3LDMuODgxLDE3LjM4OSwxMC4wNjEsMjMuMjA2bDY4Ljc5NCw2OC43OTRjNS44MTcsNi4xOCwxNC4wNDksMTAuMDYxLDIzLjIwNiwxMC4wNjENCgljMTcuNjEzLDAsMzEuODkxLTE0LjI3OCwzMS44OTEtMzEuODkxYzAtOS4xNTctMy44ODEtMTcuMzg5LTEwLjA2MS0yMy4yMDZMMzEyLjU3MiwyMDQuNzM5eiIvPg0KPGNpcmNsZSBzdHlsZT0iZmlsbDojRkZGRkZGOyIgY3g9IjI4OS4zNzEiIGN5PSIyMjYuNTY1IiByPSIzMS44OTEiLz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" /></a></li> -->
       </ul>
       <ul class="subMenu small opacity-8">
-        <li><a href="/member/signUp">회원가입</a></li>
+        <li><a href="/member/signPage">회원가입</a></li>
         <li><a href="/member/loginPage">로그인</a></li>
       </ul>
  
@@ -282,7 +282,7 @@
   	<nav class="panel top">  
     <div class="sections">
       <!-- <div class="left"><a href="/" title="Slides Framework"><img src="assets/img/background/reallogo.png"style="width:180px;height:90px;"> -->
-      	 <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/tent_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">
+      	 <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">
         <!-- <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">  --> 
           별보러갈래?</a></div>
       <div class="right"><span class="button actionButton sidebarTrigger" data-sidebar-id="1">
@@ -301,9 +301,9 @@
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#logo-icon"></use>
         </svg></a>
       <ul class="mainMenu margin-top-3">
-        <li><a href="#">캠핑장</a></li>
+        <li><a href="/info/list">캠핑장</a></li>
         <li><a href="#">캠핑정보</a></li>
-        <li><a href="#">SHOP</a></li>
+        <li><a href="/products/selectAll">SHOP</a></li>
         <li><a href="/rep/list?index=1">중고장터</a></li>
         <li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
         
@@ -352,82 +352,22 @@
     <div class="content">
       <div class="container">
         <div class="wrap">
-
           <div class="fix-10-12 toCenter">
-
             <h1 class="ae-1">캠핑장</h1>
             <p class="ae-2"><span class="opacity-8">인기있는,</span></p>
           </div>
           <div class="fix-12-12 margin-top-3">
             <ul class="flex fixedSpaces later left">
+            <c:forEach var="i" items="${list}" begin="8" end="15">
               <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot1.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">송도 스포츠 파크 캠핑장</h3>
+                <a href="/info/detail?contentId=${i.contentId }" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
+                    src="${i.firstImageUrl}" alt="Image Thumbnail" /></a>
+                <h3 class="ae-5">${i.facltNm}</h3>
                 <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 연수구 > 송도동</p>
+                  <p class="tiny opacity-6">${i.addr1} </p>
                 </div>
               </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot2.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">잼핑 홀리데이 대부도점</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">경기 > 시흥 > 대부도</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-5"><img class="wide"
-                    src="assets/img/background/camp_spot3.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-6">대부도 푸른섬 캠핑장</h3>
-                <div class="ae-7">
-                  <p class="tiny opacity-6">경기 > 안산시 > 대부북동</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-6"><img class="wide"
-                    src="assets/img/background/camp_spot4.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-7">대부도 해솔길 캠핑장</h3>
-                <div class="ae-8">
-                  <p class="tiny opacity-6">경기 > 안산시 > 대부동동</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="fix-12-12 margin-top-3">
-            <ul class="flex fixedSpaces later left">
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot4.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">퀸즈비치 글램핑</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-4"><img class="wide"
-                    src="assets/img/background/camp_spot3.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-5">선재 오토캠핑장</h3>
-                <div class="ae-6">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-5"><img class="wide"
-                    src="assets/img/background/camp_spot2.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-6">씨스테이 야영장&글램핑</h3>
-                <div class="ae-7">
-                  <p class="tiny opacity-6">인천 > 옹진군 > 영흥면</p>
-                </div>
-              </li>
-              <li class="col-3-12 col-tablet-1-2 col-phone-1-1">
-                <a href="#" class="button rounded empty margin-bottom-2 ae-6"><img class="wide"
-                    src="assets/img/background/camp_spot1.jpg" alt="Image Thumbnail" /></a>
-                <h3 class="ae-7">어섬 화성비행장</h3>
-                <div class="ae-8">
-                  <p class="tiny opacity-6">경기 > 화성시 > 송산면</p>
-                </div>
-              </li>
+             </c:forEach>
             </ul>
           </div>
 
@@ -444,7 +384,7 @@
 
           <div class="fix-12-12">
             <div class="fix-7-12 left toRight">
-              <h1 class="ae-1">캠핑용품,</h1>
+              <h1 class="ae-1">캠핑용품</h1>
               <p class="ae-2"><span class="opacity-8">새로운 캠핑장비가 필요하신가요?<br> 여기를 한번 둘러보세요.<br> 텐트부터 렌턴까지 모든것이 준비되어 있습니다.</span></p>
               <a class="button blue gradient crop ae-3">둘러보러가기</a>
             </div>
@@ -479,8 +419,6 @@
                       <p class="tiny opacity-6 cropBottom">사용횟수가 많지 않아 상태 좋습니다.부피때문에 택배로 보내기 애매한 사이즈인것 같아요.직거래 우선으로
                         하겠습니다. </p>
 
-
-
                     </div>
                   </div>
                 </a>
@@ -495,8 +433,6 @@
                       <h3 class="" style="font-weight: bold;">차박매트 - 현대 트라제용</h3>
                       <h3 class="" style="font-weight: bold;color: red;">₩10,000</h3>
                       <p class="tiny opacity-6 cropBottom">2번 사용하고 차량교체로 판매합니다</p>
-
-
                     </div>
                   </div>
                 </a>

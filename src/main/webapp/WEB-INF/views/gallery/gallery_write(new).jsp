@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>갤러리 후기</title>
+<title>캠핑 후기</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
@@ -309,7 +309,7 @@ $(function(){
 		<label>평점: </label>
 			<div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
 				<label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="1" required> <span class="startRadio__img"><span
+					name="rating" id="" value="1" checked> <span class="startRadio__img"><span
 						class="blind">별 1개</span></span>
 				</label> <label class="startRadio__box"> <input type="radio"
 					name="rating" id="" value="2"> <span class="startRadio__img"><span

@@ -1,3 +1,5 @@
+var js = document.createElement("script");
+js.src = "jquery.js";
 let basket = {
     totalCount: 0, 
     totalPrice: 0,
@@ -5,6 +7,17 @@ let basket = {
     delCheckedItem: function(){
         document.querySelectorAll("input[name=buy]:checked").forEach(function (item) {
             item.parentElement.parentElement.parentElement.remove();
+
+//$(this).parent(".data").find("#c_seq").val()
+		$.ajax({
+			type:"post",
+			url:"/cart/delete",
+			data:{"c_seq": $("#c_seq").val()},
+			success: function(){
+				alert("상품이 삭제되었습니다!");
+			}
+			
+			});
         });
         //AJAX 서버 업데이트 전송
     
@@ -58,6 +71,13 @@ let basket = {
         item.parentElement.parentElement.nextElementSibling.textContent = (newval * price).formatNumber()+"원";
         //AJAX 업데이트 전송
 
+		$.ajax({
+			type:"post",
+			url:"/cart/update",
+			data:{"p_seq": $("#p_seq").val(), "c_seq":$("c_seq")}
+			
+			});
+
         //전송 처리 결과가 성공이면    
         this.reCalc();
         this.updateUI();
@@ -68,6 +88,17 @@ let basket = {
     },
     delItem: function () {
         event.target.parentElement.parentElement.parentElement.remove();
+
+		$.ajax({
+			type:"post",
+			url:"/cart/delete",
+			data:{"c_seq": $("#c_seq").val()},
+			success: function(){
+				alert("상품이 삭제되었습니다!");
+			}
+			
+			});
+		
         this.reCalc();
         this.updateUI();
     }

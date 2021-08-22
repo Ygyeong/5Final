@@ -28,10 +28,12 @@
      #name{font-size: 1.2em; padding-left:8px;}
      #price{font-size: 1.8em;padding-left:8px; font-weight: bold; }
    	 .cmtBox{border-bottom: 1px solid #ddd; padding-bottom: 45px; margin: 20px 80px 0px 12px;}
-     #cmt{resize: none; width: 97%; height: 95%; margin: 0px; padding: 8px; border:1px solid #ddd; border-radius:5px;}
+     #content{resize: none; width: 97%; height: 95%; margin: 0px; padding: 8px; border:1px solid #ddd; border-radius:5px;}
      #cmtBtn{ width:75px; height:40px; margin:11px 0px 10px 0px; padding:8px 0px 0px 8px; border-radius:5px;
      		background-color:black; color:white; font-size:0.9em;}
-     #cmtBtn:hover{cursor: pointer;}
+     #userBtn{width:75px; height:40px; margin:11px 0px 10px 0px; padding:8px 0px 0px 8px; border-radius:5px;
+     		background-color:black; color:white; font-size:0.9em;}
+     #userBtn,#cmtBtn:hover{cursor: pointer;}
      textarea{border:none; font-size:0.9em;}
      .col-3,.col-9{font-size: 0.9em;}
      .txt{background-color:#f6f6f6;font-size: 0.8em; text-align:center; width:70px; height:22px; margin-right:265px; padding: 2px 0px 0px 0px;}
@@ -52,20 +54,24 @@
      
      #crudBox{border: 1px solid #ddd;margin: 0px; padding-left:10px;}
      .ckT{font-size:20px; font-weight:600;}
-     .ck{font-size:15px; font-weight:600; margin-top:10px;}
+     .ck{font-size:15px; font-weight:600; margin-top:20px;}
      .sold span{font-size:13px; margin-left:5px;}
-     #update{border:1px solid #ddd; border-radius:10px; height:30px; margin:50px 10px 0px 20px; text-align:center; font-size:13px;}
-     #delete{border:1px solid #ddd; border-radius:10px; height:30px; margin:4px 10px 0px 20px; text-align:center; font-size:13px;}
+     #update{border:1px solid #ddd; border-radius:10px; height:30px; margin:25px 10px 0px 20px; text-align:center; font-size:13px;}
+     #delete{border:1px solid #ddd; border-radius:10px; height:30px; margin:4px 10px 20px 20px; text-align:center; font-size:13px;}
+     #submit{border:1px solid #ddd; border-radius:10px; height:30px; margin:4px 10px 20px 20px; text-align:center; font-size:13px;}
+     #update,#delete,#submit:hover {cursor: pointer;}
+     
+     .recmtBox{ border-bottom: 1px solid #ddd; padding-bottom: 15px; margin: 0px 80px 0px 12px; padding-top:10px;}
+     .ID{font-weight:600; font-size:18px;}
+     .ID span{margin-left:5px; font-weight:400; font-size:14px;}
+     .cmt{width:930px; margin-bottom:15px;}
+     .btnBox{text-align:right;}
+     .del{margin-left:5px;}
  </style>
  <script>
  	$(function(){
- 		$.ajax({
-				url:"/rep/wishCount",
-				data:{"rep_seq":$("#seq").val()}
-			}).done(function(resp){
-				console.log(resp);
-				$("#count").text(resp);
-			})
+ 		
+ 		wishCount();
  		
  		$("#likeBtn").on("click",function(){
  			$.ajax({
@@ -79,13 +85,7 @@
  	 	  		   		data:{"rep_seq":$("#seq").val()}
  	 	  		   	}).done(function(){
  	 	  		   		alert("찜하기취소");
- 	 	  		   		
-	 	 	  		   	$.ajax({
-	 	 					url:"/rep/wishCount",
-	 	 					data:{"rep_seq":$("#seq").val()}
-	 	 				}).done(function(resp){
-	 	 					$("#count").text(resp);
-	 	 				})
+ 	 	  		   		wishCount();
  	 	  		   	})
  	  		   }else{
  	  				$.ajax({
@@ -93,14 +93,8 @@
 	 	  		   		data:{"rep_id":$("#seq").val()}
 	 	  		   	}).done(function(){
 	 	  		   		alert("찜하기완료");
-	 	  		   		
-		 	  		   	$.ajax({
-		 					url:"/rep/wishCount",
-		 					data:{"rep_seq":$("#seq").val()}
-		 				}).done(function(resp){
-		 					$("#count").text(resp);
-		 				})
-		 	  		   	})
+	 	  		   		wishCount();
+		 	  		})
  	  		   } 
  			
  			})
@@ -111,8 +105,137 @@
  		$("#userID").on("click",function(){
  			location.href="/rep/myJG?id="+$(this).text();
  		})
-
  		
+
+ 		$("#cmtBtn").on("click",function(){
+ 				$.ajax({
+					url:"/recmt/insertProc",
+					data:{"recmt_rep_seq":$("#seq").val(),"recmt_comments":$("#content").val()},
+					dataType:"json"
+				}).done(function(resp){
+					$("#content").val("");
+					console.log(resp);
+					let recmtBox = $("<div class='row recmtBox'>");
+					recmtBox.attr("id","id"+resp.recmt_seq); 
+					
+					let row1 = $("<div class='row m-0'>");
+					let cmtID = $("<div class='col-5 p-0 ID'>");
+					cmtID.text(resp.recmt_writer);
+					let span = $("<span>");
+					span.text(resp.recmt_write_date);
+					
+					let row2 = $("<div class='row m-0'>");
+					let cmt = $("<div class='col-12 p-0 cmt'>");
+					cmt.text(resp.recmt_comments);
+					
+					let row3 = $("<div class='row m-0'>");
+					let col = $("<div class='col-12 p-0 btnBox'>");
+					let modi = $("<input type='button' class='modi'>");
+					modi.val("수정");
+					let del = $("<input type='button' class='del'>");
+					del.val("삭제");
+					let hidden = $("<input type='hidden' class='recmt_seq'>");
+					hidden.val(resp.recmt_seq);
+					
+					cmtID.append(span);
+					row1.append(cmtID);
+					row2.append(cmt);
+					col.append(modi);
+					col.append(del);
+					col.append(hidden);
+					row3.append(col);
+					
+					recmtBox.append(row1);
+					recmtBox.append(row2);
+					recmtBox.append(row3);
+					
+					$(".box").prepend(recmtBox);
+				}) 
+ 		})
+ 		
+ 		$(document).on("click",".modi",function(){
+ 			let cmt = $(this).parents(".recmtBox").find(".cmt").text();
+ 			
+ 			if($(this).val()=="수정"){
+ 				$(".cmt").attr("contenteditable","false");
+ 	 			$(".modi").val("수정");
+ 	 			$(".del").val("삭제");
+ 				
+ 				$(this).parents(".recmtBox").find(".cmt").attr("contenteditable","true");
+ 	 			$(this).parents(".recmtBox").find(".cmt").focus();
+ 	 			
+ 	 			$(this).val("완료");
+ 	 			$(this).siblings(".del").val("취소");
+ 	 			$(this).siblings(".del").attr("content",cmt);
+ 	 			
+ 	 			
+ 			}else{
+ 				console.log("AAA");
+ 				$.ajax({
+		 			url:"/recmt/update",
+					data:{"recmt_comments":$(this).parents(".recmtBox").find(".cmt").text(),"recmt_seq":$(this).siblings(".recmt_seq").val()}
+					}).done(function(resp){
+						console.log("삭제완료");
+						$(this).parents(".recmtBox").find(".cmt").text(resp);
+						$(".cmt").attr("contenteditable","false");
+		 	 			$(".modi").val("수정");
+		 	 			$(".del").val("삭제");
+					})
+ 			}
+ 			
+ 			
+		})
+		$(document).on("click",".del",function(){
+			
+			if($(this).val()=="삭제"){
+				let result = confirm("댓글을 삭제하시겠습니까?");
+				if(result){
+					$.ajax({
+			 			url:"/recmt/delete",
+						data:{"recmt_seq":$(this).siblings(".recmt_seq").val()}
+						}).done(function(resp){
+							
+							console.log(resp);
+							$("#id"+resp).remove();
+							
+						})
+				}	
+			}else{
+				let cmt = $(this).attr("content")
+				$(this).parents(".recmtBox").find(".cmt").text(cmt);
+				$(".cmt").attr("contenteditable","false");
+ 	 			$(".modi").val("수정");
+ 	 			$(".del").val("삭제");
+			}
+			
+		})
+ 		
+		$("#delete").on("click",function(){
+			let result = confirm("댓글을 삭제하시겠습니까?");
+			if(result){
+				location.href="/rep/delete?rep_seq="+$("#seq").val();	
+			}
+		})
+		
+		$("#update").on("click",function(){
+			location.href="/rep/update?rep_seq="+$("#seq").val();	
+		})
+		
+		$("#userBtn").on("click",function(){
+			
+		})
+		function wishCount(){
+ 			$.ajax({
+				url:"/rep/wishCount",
+				data:{"rep_seq":$("#seq").val()}
+			}).done(function(resp){
+				console.log(resp);
+				$("#count").text(resp);
+			})
+ 		}
+ 		
+		
+		
  	})
  </script>
 </head>
@@ -121,9 +244,14 @@
 		<c:when test="${id==dto.rep_writer }">
 			 <div class="container-fluid">
         <div class="row m-0" id=menu>
-            <div class="col-6 p-0" id=img>
-            	<img src="/img/${pdto.reSysName }">
+        	<c:forEach var="i" items="${pdto }">
+        		<div class="col-2 p-0" id=img>
+            	<img src="/img/${i.reSysName }">
             </div>
+        	</c:forEach>
+            <<%-- div class="col-6 p-0" id=img>
+            	<img src="/img/${pdto.reSysName }">
+            </div> --%>
             <div class="col-5 " id=infoBox>
             	<div class="row m-0 mb-4">
             		<div class="col-2 txt">개인중고</div>
@@ -166,6 +294,7 @@
                     	<div class="row m-0">
 						 	<div class="col-8 pt-1" id=update>수정</div>
 						 	<div class="col-8 pt-1" id=delete>삭제</div>
+						 	<div class="col-8 pt-1" id=submit>적용</div>
 						 </div>
                     </div>
                 </div>
@@ -185,10 +314,44 @@
             </div>
             <div class="row cmtBox">
                 <div class="col-11 p-0">
-                    <textarea name="" id=cmt placeholder="댓글을 입력해주세요."></textarea>
+                    <textarea name="" id=content placeholder="댓글을 입력해주세요."></textarea>
                 </div>
                 <div class="col-1" id=cmtBtn>댓글등록
                 </div>
+            </div>
+            <div class="box">
+            	<c:forEach var="i" items="${cdto }">
+            	<c:choose>
+            	<c:when test="${id==i.recmt_writer }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-12 p-0 btnBox">
+            					<input type="button" class="modi" value="수정">
+            					<input type="button" class="del" value="삭제">
+            					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
+            				</div>
+            			</div>
+            		</div>
+            	</c:when>
+            	<c:otherwise>
+            		<div class="row recmtBox">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:otherwise>
+            	</c:choose>
+            	</c:forEach>
+            	
             </div>
 
     </div>
@@ -228,7 +391,7 @@
                     <div class="col-5 p-0" id=like>
 						 <button class="btn btn-outline-dark" id=likeBtn>찜하기</button>
 					</div>
-                    <div class="col-5 p-0" id=chat>채팅하기</div>
+                   
                 </div>
                 <input type=hidden id=seq value="${dto.rep_seq}">
             </div>
@@ -249,12 +412,23 @@
             </div>
             <div class="row cmtBox">
                 <div class="col-11 p-0">
-                    <textarea name="" id=cmt placeholder="댓글을 입력해주세요."></textarea>
+                    <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
                 </div>
-                <div class="col-1" id=cmtBtn>댓글등록
+                <div class="col-1" id=userBtn>댓글등록
                 </div>
             </div>
-
+			<div class="box">
+				<c:forEach var="i" items="${cdto }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:forEach>
+			</div>
     </div>
 		</c:otherwise>
 	</c:choose>

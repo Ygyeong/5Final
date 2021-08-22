@@ -18,11 +18,11 @@
 	</select>	
 	
 	<select resultType="kh.spring.dto.Camp_wishlistDTO" id="selectwish">
-		select * from camp_wishlist where contentId=${contentId} and cm_id=#{cm_id} 
+		select * from camp_wishlist where contentId=#{contentId} and cm_id=#{cm_id} 
 	</select>
-	
+		
 	<insert id="wishinsert">
-		insert into camp_wishlist values (wish_seq.nextval,#{contentId},#{cm_id},#{value}) 
+		insert into camp_wishlist values (wish_seq.nextval,#{contentId},#{cm_id},#{contents}) 
 	</insert>
 	
 	<insert id="campinsert">
@@ -33,7 +33,7 @@
 	</insert>
 
 	<delete id="wishdelete">
-	delete from camp_wishlist where ci_seq=${ci_seq} and cm_id=#{cm_id} 
+		delete from camp_wishlist where wish_seq=#{wish_seq}
 	</delete>
 
 </mapper>

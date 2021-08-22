@@ -23,4 +23,12 @@ public class MemberDAO {
 	public MemberDTO login(MemberDTO dto) {
 		return mybatis.selectOne("Member.login", dto);
 	}
+	
+	public String memberOut(String cm_id) {
+		return mybatis.selectOne("Member.memberOut", cm_id);
+	}
+	
+	public String memberUpdate(MemberDTO dto) {
+		return mybatis.selectOne("Member.memberUpdate", dto);
+	}
 }

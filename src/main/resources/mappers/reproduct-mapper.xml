@@ -5,7 +5,7 @@
 <mapper namespace="ReProduct">
 	<!-- 로그인  -->
 	<select id="login" resultType="int">
-		select count(*) from camp_mem where cm_id=#{id} and cm_pw = #{pw}
+		select count(*) from camp_mem where cm_id=#{id} and cm_pw=#{pw}
 	</select>
 
 
@@ -38,4 +38,14 @@ where rnum between #{startNum} and #{endNum}
 	<select id="repCount" resultType="int">
 		select count(*) from camp_reproduct where rep_writer = #{value} 
 	</select>
+	
+	<!-- 판매관련 -->
+	<select id="sold" resultType="int">
+		select rep_stock from camp_reproduct where rep_seq = ${value}
+	</select>
+	<!-- 판매중 -->
+	<select id="soldOut" resultType="int">
+		select rep_stock from camp_reproduct where rep_seq = ${value}
+	</select>
+	
 </mapper>
