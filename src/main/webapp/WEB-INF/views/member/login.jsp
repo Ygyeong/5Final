@@ -51,8 +51,8 @@
                 <div class="card-header">
                     <h3>LogIn</h3>
                     <div class="d-flex justify-content-end social_icon">
-                        <span><i><img id="kakaoLogin" src="${pageContext.request.contextPath}/resources/img/img1.png" style="width: 70px;"></i></span>
-                        <span><i><img src="${pageContext.request.contextPath}/resources/img/img2.png" style="width: 65px;"></i></span>
+                        <span><i><img id="kakaoLogin" src="${pageContext.request.contextPath}/img/img1.png" style="width: 70px;"></i></span>
+                        <span><i><img src="${pageContext.request.contextPath}/img/img2.png" style="width: 65px;"></i></span>
                     </div>
                 </div>
                 <div class="card-body">
