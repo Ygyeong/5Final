@@ -116,16 +116,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
 
-                        <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
 
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="portfolio.html" class="nav-item nav-link">회원가입</a>
-                        <a href="contact.html" class="nav-item nav-link">로그인</a>
+                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
+                        <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
                     </div>
                 </div>
             </div>
@@ -143,14 +143,14 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="service.html" class="nav-item nav-link">SHOP</a>
-                        <a href="price.html" class="nav-item nav-link">중고장터</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="portfolio.html" class="nav-item nav-link">관리자 페이지</a>
-                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                        <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
             </div>
@@ -171,16 +171,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
 
-                        <a href="/shop/productsList" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
 
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="portfolio.html" class="nav-item nav-link">마이페이지</a>
-                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                        <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
+                        <a href="/memeber/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
             </div>

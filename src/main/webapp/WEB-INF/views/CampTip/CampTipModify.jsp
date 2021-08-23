@@ -131,7 +131,7 @@ $(function(){
 	                 $.ajax({
 	                    data:form,
 	                    type:"post",
-	                    url:"/CampTipBoard/modify",
+	                    url:"/CampTipBoard/modifyProc",
 	                    contentType:false,
 	                    enctype : 'multipart/form-data',
 	                    processData:false,  
@@ -175,7 +175,7 @@ $(function(){
 			</div>
 		</div>
 
-		<form id="frm" action="/CampTipBoard/modify" method="post"
+		<form id="frm" action="/CampTipBoard/modifyProc" method="post"
 			enctype="multipart/form-data">
 			<div class="row">
 
@@ -188,7 +188,15 @@ $(function(){
 							<option value="2">여름</option>
 							<option value="3">가을</option>
 							<option value="4">겨울</option>
-						</select>
+						</select>	
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">글번호</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="form-control" id="num">${dto.camp_tip_num }</div>
+						<input type="hidden" name="camp_tip_num" value="${dto.camp_tip_num }">
 					</div>
 				</div>
 
