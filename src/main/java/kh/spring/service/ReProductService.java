@@ -108,7 +108,20 @@ public class ReProductService {
 		param.put("startNum",startNum);
 		param.put("endNum",endNum);
 		
-		return dao.search(param);
+		List<ReProductDTO> list = dao.search(param);
+		for(ReProductDTO dto : list) {
+			RePicturesDTO pdto = pdao.selectThumbBySeq(dto.getRep_seq());
+			dto.setThumsysName(pdto.getReSysName());
+			
+			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
+			dto.setRep_diff_date(diffDate);
+			
+			if(dto.getRep_name().length()>14) {
+				String subName = dto.getRep_name().substring(0, 14)+"...";
+				dto.setRep_name(subName);
+			}
+		}
+		return list;
 	}
 	public List<ReProductDTO> Thumbnail(int startNum,int endNum) {
 		List<ReProductDTO> list = this.getAll(startNum,endNum);

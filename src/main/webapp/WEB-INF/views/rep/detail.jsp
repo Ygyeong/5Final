@@ -339,6 +339,10 @@ a{
 		
 		
 		$("#userBtn").on("click",function(){
+			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+			if(result){
+				location.href="/member/loginPage";
+			}
 			
 		})
 		
