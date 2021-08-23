@@ -78,7 +78,6 @@ public class InfoController {
 			model.addAttribute("contents","dislike");
 		}else {
 			if(wish.size() > 0) {
-				System.out.println("찜하기 됐당" + wish.get(0).getContents());
 				model.addAttribute("contents",wish.get(0).getContents());
 			} else if(wish.size() == 0){
 				System.out.println("안됨");
