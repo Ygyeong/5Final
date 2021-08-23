@@ -5,11 +5,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>캠핑 후기</title>
+        <title>캠핑후기</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
-
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <!-- Favicon -->
         <link href="aboutGallery/img/favicon.ico" rel="icon">
 
@@ -30,11 +30,11 @@
         <!--Font  -->
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 	
 	<script>
 	
@@ -108,7 +108,7 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -116,15 +116,12 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-
-
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
-                        
+                   
                         <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
                         <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
                     </div>
@@ -136,7 +133,7 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -147,7 +144,7 @@
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="" class="nav-item nav-link">관리자 페이지</a>
@@ -164,7 +161,7 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -173,11 +170,9 @@
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
-
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
                         <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
@@ -201,12 +196,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 style="color: white;">캠핑 후기</h2>
+                        <h2 style="color: white; left:500px;">캠핑 후기</h2>
                     </div>
-                    <div class="col-12">
-                        <a href="">Home</a>
-                        
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -343,8 +335,11 @@
                 <div class="row">
                     <div class="col-12">
                         <ul class="pagination justify-content-center">
+                        	<c:choose>
+                        		<c:when test="${loginID != null }">
                              <li class="page-item"><a class="page-link" href="/gal/galleryWrite">글쓰기</a></li>
-                           <!-- <button type="button" id="writeBtn" class="page-item">글쓰기</button> -->
+                          		</c:when>
+                          	</c:choose>
                             
                         </ul> 
                     </div>
@@ -384,54 +379,7 @@
 
 
 			<!-- 페이징 -->
-			<%-- <div class="row">
-				<div class="col-12">
-					 <ul class="pagination justify-content-center">
-					
-					
-					<c:if test="${paging.startPage != 1 }">
-						<li class="page-item"><a class="page-link" href="list?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a></li>
-					</c:if>
-					<c:forEach begin="${paging.startPage }" end="${paging.endPage }"
-						var="p">
-						<c:choose>
-							<c:when test="${p == paging.nowPage }">
-								<li class="page-item active"><b class="page-link" >${p }</b></li>
-							</c:when>
-							<c:when test="${p != paging.nowPage }">
-								<li class="page-item"><a class="page-link"  href="list?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a></li>
-							</c:when>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${paging.endPage != paging.lastPage}">
-						<li class="page-item"><a class="page-link" href="list?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a></li>
-					</c:if>
-					
-					
-					</ul>
-				</div>
-			</div> --%>
-
-
-
-
-			<!-- <div class="row">
-                    <div class="col-12">
-                        <ul class="pagination justify-content-center">
-                        
-                        
-                            <li class="page-item"><a class="page-link" href="#"><</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">></a></li>
-                            
-                            
-                            
-                            
-                        </ul> 
-                    </div>
-                </div> -->
+			
 
 	<div class="row">
 		<div class="col-12">
@@ -537,10 +485,10 @@
 
         
 
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
 
         <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="aboutGallery/lib/easing/easing.min.js"></script>
         <script src="aboutGallery/lib/owlcarousel/owl.carousel.min.js"></script>
