@@ -44,9 +44,6 @@ public class ReProductDAO {
 	public int saleInfo(Map<String,Object> param) {
 		return mybatis.update("ReProduct.saleInfo",param);
 	}
-	public int saleCount(int rep_seq) {
-		return mybatis.selectOne("ReProduct.saleCount",rep_seq);
-	}
 	public int getSeq() {
 		return mybatis.selectOne("ReProduct.getSeq");
 	}

@@ -12,9 +12,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+
+<!--네비바 링크  -->
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
+
  <style>
      .container-fluid{width:1100px; margin-top: 60px; margin-bottom: 60px;}
-     #menu{height: 430px;}
+     #menu{height: 430px; margin:140px 0px 0px 0px;}
      #detailB{height: 50px;line-height: 50px;}
      #detailB>div{height: 100%;}
      #img{height:100%;}
@@ -68,6 +73,106 @@
      .cmt{width:930px; margin-bottom:15px;}
      .btnBox{text-align:right;}
      .del{margin-left:5px;}
+     
+/*네비바 스타일  */     
+:root{
+    --text-color:#f0f4f5;
+    --background-color:#263343;
+    --accent-color:steelblue;
+}
+body{
+    margin: 0;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+    
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+}
+.navbar_logo{
+    font-size: 32px;
+    color: white;
+    font-family: 'Nanum Brush Script';
+}
+.navbar_logo i {
+    color: white;
+}
+.navbar_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom:-3px;
+}
+.navbar_menu li {
+    padding: 8px 12px;
+}
+.navbar_menu li:hover {
+    background-color: steelblue;
+    border-radius: 4px;
+}
+.navbar_member {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0;
+	margin-bottom:-3px;
+}
+.navbar_member li{
+    padding: 8px 12px;
+}
+.navbar_toogleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    
+}
+@media screen and (max-width: 768px) {
+    
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    .navbar_menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_member{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar_toogleBtn{
+        display: block;
+    }
+    .navbar_menu.active,
+    .navbar_member.active{
+        display: flex;
+    
+    }
+}
+/*네비바 스타일 끝  */ 
  </style>
  <script>
  	$(function(){
@@ -109,6 +214,7 @@
  		
 
  		$("#cmtBtn").on("click",function(){
+ 			console.log("AAAA");
  				$.ajax({
 					url:"/recmt/insertProc",
 					data:{"recmt_rep_seq":$("#seq").val(),"recmt_comments":$("#content").val()},
@@ -253,125 +359,34 @@
  </script>
 </head>
 <body>
-	<c:choose>
-		<c:when test="${loginID==dto.rep_writer }">
-			 <div class="container-fluid">
-        <div class="row m-0" id=menu>
-        	<c:forEach var="i" items="${plist }">
-        		<div class="col-6 p-0" id=img>
-            	<img src="/img/${i.reSysName }">
-            </div>
-        	</c:forEach>
-            <%-- div class="col-6 p-0" id=img>
-            	<img src="/img/${pdto.reSysName }">
-            </div> --%>
-            <div class="col-5 " id=infoBox>
-            	<div class="row m-0 mb-4">
-            		<div class="col-2 txt">개인중고</div>
-            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
-            	</div>
-            	
-                <div class="row m-0">
-                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
-                </div>
-                <div class="row m-0" id=priceBox>
-                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
-                  </div>
-                <div class="row m-0 pb-2 pt-4">
-                    <div class="col-3 p-0">거래방법</div>
-                    <div class="col-9 p-0">${dto.rep_delivery}</div>
-                </div>
-                <div class="row m-0 pb-2">
-                    <div class="col-3 p-0">배송비</div>
-                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
-                </div>
-                
-                <div class="row m-0 pb-4">
-                    <div class="col-3 p-0">거래지역</div>
-                    <div class="col-9 p-0">${dto.rep_area}</div>
-                </div>
-                <div class="row" id=crudBox>
-                    <div class="col-8 p-0" id=>
-						 <div class="row m-0 mt-3 mb-3">
-						 	<div class="col-12 mb-4 ckT">상품판매관리</div>
-						 	<div class="col-12 mb-1 ck">상태변경</div>
-						 	<div class="col-4 sold">
-						 		<input type=radio name="sale" value="판매중" ><span>판매중</span>
-						 	</div>
-						 	<div class="col-5 sold">
-						 		<input type=radio name="sale" value="판매완료" ><span>판매완료</span>
-						 	</div>
-						 </div>
-					</div>
-                    <div class="col-4 p-0">
-                    	<div class="row m-0">
-						 	<div class="col-8 pt-1" id=update>수정</div>
-						 	<div class="col-8 pt-1" id=delete>삭제</div>
-						 	<div class="col-8 pt-1" id=submit>적용</div>
-						 </div>
-                    </div>
-                </div>
-                <input type=hidden id=seq value="${dto.rep_seq}">
-            </div>
-        </div>
-        <div class="row p-0 content">
-            <div class="col-8">
-                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
-            </div>
-            
-        </div>
-     
-            <div class="row m-0">
-                <div class="col-12" id=cmtT>댓글</div>
-            </div>
-            <div class="row cmtBox">
-                <div class="col-11 p-0">
-                    <textarea name="" id=content placeholder="댓글을 입력해주세요."></textarea>
-                </div>
-                <div class="col-1" id=cmtBtn>댓글등록
-                </div>
-            </div>
-            <div class="box">
-            	<c:forEach var="i" items="${cdto }">
-            	<c:choose>
-            	<c:when test="${id==i.recmt_writer }">
-            		<div class="row recmtBox" id="id${i.recmt_seq }">
-            			<div class="row m-0">
-            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
-            			</div>
-            			<div class="row m-0">
-            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
-            			</div>
-            			<div class="row m-0">
-            				<div class="col-12 p-0 btnBox">
-            					<input type="button" class="modi" value="수정">
-            					<input type="button" class="del" value="삭제">
-            					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
-            				</div>
-            			</div>
-            		</div>
-            	</c:when>
-            	<c:otherwise>
-            		<div class="row recmtBox">
-            			<div class="row m-0">
-            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
-            			</div>
-            			<div class="row m-0">
-            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
-            			</div>
-            		</div>
-            	</c:otherwise>
-            	</c:choose>
-            	</c:forEach>
-            	
-            </div>
+<!--nav bar  -->
+<c:choose>
+<c:when test="${loginID==null }">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
-    </div>
-		</c:when>
-		<c:otherwise>
-			 <div class="container-fluid">
-        <div class="row m-0" id=menu>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/loginPage">로그인</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+	 <div class="container-fluid">
+        <div class="row" id=menu>
             <c:forEach var="i" items="${plist }">
         		<div class="col-6 p-0" id=img>
             	<img src="/img/${i.reSysName }">
@@ -445,7 +460,183 @@
             	</c:forEach>
 			</div>
     </div>
-		</c:otherwise>
-	</c:choose>
+</c:when>
+<c:when test="${loginID='admin'}">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="">관리자페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:when>
+<c:otherwise>
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/myPage">마이페이지</a></li>
+            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+	<div class="container-fluid">
+       		 <div class="row" id=menu>
+        	<c:forEach var="i" items="${plist }">
+        		<div class="col-6 p-0" id=img>
+            	<img src="/img/${i.reSysName }">
+            </div>
+        	</c:forEach>
+            <%-- div class="col-6 p-0" id=img>
+            	<img src="/img/${pdto.reSysName }">
+            </div> --%>
+            <div class="col-5 " id=infoBox>
+            	<div class="row m-0 mb-4">
+            		<div class="col-2 txt">개인중고</div>
+            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
+            	</div>
+            	
+                <div class="row m-0">
+                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
+                </div>
+                <div class="row m-0" id=priceBox>
+                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
+                  </div>
+                <div class="row m-0 pb-2 pt-4">
+                    <div class="col-3 p-0">거래방법</div>
+                    <div class="col-9 p-0">${dto.rep_delivery}</div>
+                </div>
+                <div class="row m-0 pb-2">
+                    <div class="col-3 p-0">배송비</div>
+                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
+                </div>
+                
+                <div class="row m-0 pb-4">
+                    <div class="col-3 p-0">거래지역</div>
+                    <div class="col-9 p-0">${dto.rep_area}</div>
+                </div>
+                <div class="row" id=crudBox>
+                    <div class="col-8 p-0" id=>
+						 <div class="row m-0 mt-3 mb-3">
+						 	<div class="col-12 mb-4 ckT">상품판매관리</div>
+						 	<div class="col-12 mb-1 ck">상태변경</div>
+						 	<c:choose>
+						 		<c:when test="${dto.rep_stock==1}">
+						 			<div class="col-4 sold">
+						 			<input type=radio name="sale" value="판매중" checked><span>판매중</span>
+						 		</div>
+						 		<div class="col-5 sold">
+						 			<input type=radio name="sale" value="판매완료" ><span>판매완료</span>
+						 		</div>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<div class="col-4 sold">
+						 				<input type=radio name="sale" value="판매중" ><span>판매중</span>
+						 			</div>
+						 			<div class="col-5 sold">
+						 				<input type=radio name="sale" value="판매완료" checked><span>판매완료</span>
+						 			</div>
+						 		</c:otherwise>
+							</c:choose>
+						 </div>
+					</div>
+                    <div class="col-4 p-0">
+                    	<div class="row m-0">
+						 	<div class="col-8 pt-1" id=update>수정</div>
+						 	<div class="col-8 pt-1" id=delete>삭제</div>
+						 	<div class="col-8 pt-1" id=submit>적용</div>
+						 </div>
+                    </div>
+                </div>
+                <input type=hidden id=seq value="${dto.rep_seq}">
+            </div>
+        </div>
+        <div class="row p-0 content">
+            <div class="col-8">
+                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
+            </div>
+            
+        </div>
+     
+            <div class="row m-0">
+                <div class="col-12" id=cmtT>댓글</div>
+            </div>
+            <div class="row cmtBox">
+                <div class="col-11 p-0">
+                    <textarea name="" id=content placeholder="댓글을 입력해주세요."></textarea>
+                </div>
+                <div class="col-1" id=cmtBtn>댓글등록
+                </div>
+            </div>
+            <div class="box">
+            	<c:forEach var="i" items="${cdto }">
+            	<c:choose>
+            	<c:when test="${id==i.recmt_writer }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-12 p-0 btnBox">
+            					<input type="button" class="modi" value="수정">
+            					<input type="button" class="del" value="삭제">
+            					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
+            				</div>
+            			</div>
+            		</div>
+            	</c:when>
+            	<c:otherwise>
+            		<div class="row recmtBox">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:otherwise>
+            	</c:choose>
+            	</c:forEach>
+            	
+            </div>
+
+    </div>
+</c:otherwise>
+</c:choose>
 </body>
 </html>

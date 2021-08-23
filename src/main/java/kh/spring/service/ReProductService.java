@@ -173,9 +173,6 @@ public class ReProductService {
 		
 		return dao.saleInfo(param);
 	}
-	public int saleCount(int rep_seq) {
-		return dao.saleCount(rep_seq);
-	}
 	
 	public int repCount(String rep_writer) {
 		return dao.repCount(rep_writer);

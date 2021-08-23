@@ -44,8 +44,5 @@ where rnum between #{startNum} and #{endNum}
 	<update id="saleInfo">
 		update camp_reproduct set rep_stock = #{rep_stock} where rep_seq = #{rep_seq}
 	</update>
-	<select id="saleCount" resultType="int">
-		select * from camp_reproduct where rep_seq = #{value}
-	</select>
 	
 </mapper>
