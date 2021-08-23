@@ -6,15 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 $(function(){
 
 	$("#dataupdate").on("click",function(){
 		alert("ok");
-		location.href="/dataupdate";
-	})
-	
-	
+		location.href="/admin/dataupdate";
+	});
+
+
 })
 </script>
 <body>
