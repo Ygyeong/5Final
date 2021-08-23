@@ -144,16 +144,12 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-<<<<<<< HEAD
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
-                        <a href="price.html" class="nav-item nav-link">중고장터</a>
 
-=======
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
+
+
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
->>>>>>> 151a0258cbd863b43985ba9ad263f76f58d24102
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
