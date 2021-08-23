@@ -37,12 +37,7 @@ public class Camp_infoDAO {
 	public int wishinsert(Camp_wishlistDTO dto) {
 		return mybatis.insert("Camp_info.wishinsert", dto);
 	}
-	
-	//캠핑 정보 넣기
-	public int campinsert(Camp_infoDTO dto) {
-		return mybatis.insert("Camp_info.campinsert", dto);
-	}
-	
+		
 	//찜하기 확인
 	public List<Camp_wishlistDTO> selectwish(Map<String,String> param){
 		return mybatis.selectList("Camp_info.selectwish",param);

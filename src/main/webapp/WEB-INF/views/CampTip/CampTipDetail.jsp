@@ -151,8 +151,8 @@ $(function(){
 					<div class="pull-right">
 						<a id="delBtn" class="btn btn-info boardAddBtn"><span
 							class="glyphicon glyphicon-pencil"></span> 삭제</a>
-						<a id="upBtn" class="btn btn-info boardAddBtn"><span
-							class="glyphicon glyphicon-pencil"></span> 수정</a>
+						<a href="/CampTipBoard/modify?camp_tip_num=${dto.camp_tip_num}&category=${dto.category}" id="upBtn" class="btn btn-info boardAddBtn">
+						<span class="glyphicon glyphicon-pencil"></span> 수정</a>
 					</div>
 				</div>
 			</div>

@@ -53,6 +53,8 @@
                 method:"post",
                 dataType:"application/json"
              });
+         }else if(like = "xlike"){
+        	 alert("로그인 후에 이용 가능합니다.");
          }
 
       });
@@ -135,7 +137,7 @@
       <c:forEach var="i" items="${list}">
         <div id=onebox>
          <div id=namebox>
-            ${i.facltNm}
+            ${i.facltNm} 
          </div>
 
 
@@ -203,6 +205,12 @@
 			        <h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/like.png" id="like" class="likeicon">             
+			            </div>
+			         </c:when>
+			         <c:when test="${loginID ==null }">
+			         	<h4>찜하기</h4> 
+			            <div id=wishbox_icon>
+			               <img src="/img/detailimage/like/dislike.png" id="xlike" class="likeicon">             
 			            </div>
 			         </c:when>
 			         <c:otherwise>
@@ -275,6 +283,7 @@
             </div>
          </div>
          <div id=camp_map_box class="camp_info_box">
+         	<h1>위치</h1>
          	<div id="map" style="width:500px;height:400px;"></div>
          </div>
          <div id=camp_review_box class="camp_info_box"></div>            

@@ -120,7 +120,7 @@ body{
       text-align: center;
       background: white;
       font-size: 20px;
-      border:solid 1px blcak;
+
     }
     
     .slider-nav li{
@@ -132,13 +132,14 @@ body{
     }
     
 #btnbox{
-	height:250px;
-	width:90%;
-	margin:auto;
+    height: 50px;
+    width: 90%;
+    margin: auto;
+    padding-left: 50%;
 }
 
 #wishbox{
-	width:40%;
+	width:20%;
 	float:left;
 	
 }
@@ -161,9 +162,12 @@ body{
 }
 
 #reservebox {
-	width:50%;
-	height:200px;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    float: left;
 }
+
 
 #reservebtn {
 	width: 100%;
@@ -171,8 +175,9 @@ body{
 	cursor:pointer;
 	font-size:17px;
 	border-radius:28px;
-	background-color: #FFE8FF;
+	background-color:white;
 	border-radius:7px;
+    border:1px solid blcak;	
 	display:inline-block;
 
 }
@@ -211,7 +216,7 @@ body{
 }
 
 #threetop{
-	height:1000px;
+	height:1300px;
 }
 
 #camp_guide_box{
