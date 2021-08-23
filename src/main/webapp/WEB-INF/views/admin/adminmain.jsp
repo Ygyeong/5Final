@@ -19,6 +19,6 @@ $(function(){
 })
 </script>
 <body>
-		<button id="dataupdate">DB에 저장</button>
+		<!-- <button id="dataupdate">DB에 저장</button> -->
 </body>
 </html>

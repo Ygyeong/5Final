@@ -49,4 +49,8 @@ public class Camp_infoDAO {
 				
 	}
 	
+	public List<Camp_infoDTO> search(Map<String,String> param){
+		return mybatis.selectList("Camp_info.listAll", param);
+	}
+	
 }

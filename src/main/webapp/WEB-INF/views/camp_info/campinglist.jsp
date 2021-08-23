@@ -362,9 +362,33 @@ a{
              <!--  검색 박스 -->
              <div id="searchbox">
              	<div id="search">
-             		검색 <input type=text id="searchinput"><button>검색</button>
+             		<form name="form1" method="post" action="/info/search">
+             		<select name="searchOption">
+             			<option value="all" >전체</option>
+             			<option value="facltNm"  > 캠핑장 이름 </option>
+             			<option value="lctCl"> 주변 환경 </option>
+             			<option value="addr1"  > 지역 </option>
+             		</select>
+             		검색 <input type=text name="keyword">
+             			<input type=submit value="searchbtn">
+             		</form>
              	</div>
 			</div>
+			<!-- 검색 목록 출력 -->
+			    <div class="row" id="cmapinglist">
+                <c:forEach var="i" items="${slist}">
+                    <div class="col-lg-3 col-sm-6 mb-4" id=items>
+                        <div class="portfolio-item">
+                        		<a href='/info/detail?contentId=${i.contentId }'><img class="img-fluid" src="${i.firstImageUrl}">
+                            	</a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">${i.facltNm}</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                 </c:forEach>   
+                </div>
 			<!--  목록 출력 -->
                 <div class="row" id="cmapinglist">
                 <c:forEach var="i" items="${list}">

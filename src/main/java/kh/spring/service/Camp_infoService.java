@@ -52,13 +52,23 @@ public class Camp_infoService {
 		return dao.wishdelete(wish_seq);
 	}
 	
+	//리스트
 	public List<Camp_infoDTO> selectAll(int startNum,int endNum) {
 		Map<String,Object> param = new HashMap<>();
 		param.put("startNum",startNum);
 		param.put("endNum",endNum);
+		
 		return dao.selectAll(param);
 	}
-
+	
+	//검색
+	public List<Camp_infoDTO> search(String searchOption, String keyword){
+		Map<String, String> param = new HashMap<>();
+		param.put("searchOption",searchOption);
+		param.put("keyword", keyword);
+		
+		return dao.search(param);
+	}
 	
 	
 }

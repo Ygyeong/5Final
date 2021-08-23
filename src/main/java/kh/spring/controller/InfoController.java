@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
@@ -144,6 +145,8 @@ public class InfoController {
 		return "redirect:detail";
 	}
 	
+	
+	//무한스크롤
 	@ResponseBody
 	@RequestMapping(value="scroll",produces="text/html;charset=utf8")
 	public String scrollList(int index) {
@@ -153,6 +156,21 @@ public class InfoController {
 		System.out.println(index);
 		return new Gson().toJson(list);
 	}
+	
+	
+	//검색
+	@RequestMapping(value="search",produces="text/html;charset=utf8")
+	public String search( Model model, @RequestParam(defaultValue="title")String searchOption,
+					@RequestParam(defaultValue="")String keyword) throws Exception {
+		
+		System.out.println("태그"+searchOption+"키워드"+keyword);
+		List<Camp_infoDTO> slist = service.search(searchOption, keyword);
+		model.addAttribute("slist", slist);
+		
+		return "camp_info/campinglist";
+	}
+	
+	
 
 
 	
