@@ -135,7 +135,7 @@
       <c:forEach var="i" items="${list}">
         <div id=onebox>
          <div id=namebox>
-            ${i.facltNm}
+            ${i.facltNm} 
          </div>
 
 
@@ -275,6 +275,7 @@
             </div>
          </div>
          <div id=camp_map_box class="camp_info_box">
+         	<h1>위치</h1>
          	<div id="map" style="width:500px;height:400px;"></div>
          </div>
          <div id=camp_review_box class="camp_info_box"></div>            

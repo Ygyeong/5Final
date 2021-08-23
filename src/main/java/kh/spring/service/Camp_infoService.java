@@ -41,11 +41,6 @@ public class Camp_infoService {
 		return dao.wishinsert(dto);
 	}
 	
-	//DB입력
-	public int campinsert(Camp_infoDTO dto) {
-		return dao.campinsert(dto);
-	}
-	
 	//찜하기 목록
 	public List<Camp_wishlistDTO> selectwish(String contentId1, String cm_id){
 		Map<String,String> param = new HashMap<>();
