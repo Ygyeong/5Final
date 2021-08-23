@@ -18,7 +18,7 @@
 	</select>	
 	
 	<select resultType="kh.spring.dto.Camp_wishlistDTO" id="selectwish">
-		select * from camp_wishlist where contentId=#{contentId} and cm_id=#{cm_id} 
+		select * from camp_wishlist where contentId=#{contentId} and cm_id=#{cm_id, jdbcType = VARCHAR } 
 	</select>
 		
 	<insert id="wishinsert">
