@@ -17,7 +17,7 @@ import kh.spring.dao.GalleryDAO;
 import kh.spring.dao.Gallery_ImgDAO;
 import kh.spring.dto.GalleryDTO;
 import kh.spring.dto.Gallery_ImgDTO;
-import kh.spring.dto.MemberDTO;
+
 
 
 
@@ -35,16 +35,15 @@ public class GalleryService {
 	private Gallery_ImgDAO fdao;
 	
 	
-
-//	public int modify(GalleryDTO dto) {
-//		return dao.modify(dto);
-//	}
-
 	public int delete(int seq) {
 		return dao.delete(seq);
 	}
 	public List<GalleryDTO> selectAll()throws Exception{
 		return dao.List(); 
+	}
+	
+	public int selectRating()throws Exception{
+		return dao.Rating(); 
 	}
 
 	public void modify(String title,String contents,String realPath, MultipartFile[] file,int rating,int seq,String [] delTargets)throws Exception {
@@ -82,11 +81,6 @@ public class GalleryService {
 			}
 		}
 
-//		int result = dao.update(seq,title,contents);
-
-		
-		
-
 		for(MultipartFile tmp : file) {
 
 			
@@ -110,15 +104,6 @@ public class GalleryService {
 		}
 
 
-//		if(result>0) {
-//			GalleryDTO mdto = dao.search(seq);
-//			List<Gallery_ImgDTO> ilist = fdao.filesBySeq(seq);
-//			model.addAttribute("mdto",mdto);
-//			model.addAttribute("ilist",ilist);
-//			request.getRequestDispatcher("galDetail.gal").forward(request, response);
-//
-//		}
-		
 	}
 	
 	
@@ -127,7 +112,6 @@ public class GalleryService {
 	@Transactional
 	public void insert(String title,String contents,String realPath, MultipartFile[] file,int rating) throws Exception {
 
-		
 		
 		String writer = (String)session.getAttribute("loginID");
 		System.out.println(writer);
@@ -228,26 +212,8 @@ public class GalleryService {
 	}
 	
 
-	
-
-//	public void Paging(PagingVO vo, Model model, String nowPage, String cntPerPage) {
-//
-//		int total = dao.CountBoard();
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "6";
-//			nowPage = "1";
-//		} else if (cntPerPage == null) { 
-//			cntPerPage = "6";
-//		}
-//		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-//		model.addAttribute("paging", vo);
-//		model.addAttribute("viewAll", dao.SelectBoard(vo));
-//	}
-//	
-
 // 서비스에는 web티어 인자는 적지않는다.
 	
-	//start, end, category keyword 넣고 if문 돌린다.
+	
 
 }

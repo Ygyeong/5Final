@@ -17,13 +17,13 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
-			location.href="/member/memberModify?cm_id=${member.cm_id}"
+			location.href="/member/memberModify?cm_id=${loginID}";
 		})
 		$("#myPagePwChange").on("click", function(){
 			location.href="/member/pwChange"
 		})
 		$("#myPageMemberDelete").on("click", function(){
-			location.href="/member/memberOutProc?cm_id=${member.cm_id}"
+			location.href="/member/memberOutProc?cm_id=${loginID}"
 		})
 		$("#goHome").on("click",function(){
 			location.href="/"
@@ -37,7 +37,7 @@
 	        <div id="me" class="card">
 				<img src="card-img-top" src="" alt="card image">
                 <div class="card_body">
-                    <h5 class="card-title"> ${member.cm_id}님의 마이페이지 </h5>
+                    <h5 class="card-title"> ${loginID}님의 마이페이지 </h5>
                     <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button>
                     <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button>
                     <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>

@@ -67,7 +67,7 @@ public class MemberController {
 		ms.memberSign(dto);
 		System.out.println("성공!");
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("loginProc")
@@ -81,7 +81,7 @@ public class MemberController {
 			dto.setCm_id(cm_id);
 			MemberDTO login = ms.login(dto);
 			if(login != null) {
-				session.setAttribute("member", login);
+				session.setAttribute("loginID", login.getCm_id());
 				System.out.println("성공");
 			}
 		} else {
@@ -96,7 +96,7 @@ public class MemberController {
 	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("memberOutProc")
@@ -107,7 +107,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberModifyProc")
-	public String memberModifyProc(@RequestParam("cm_id") String cm_id,@RequestParam("cm_email") String cm_email,
+	public String memberModifyProc(@RequestParam("") String cm_id,@RequestParam("cm_email") String cm_email,
 			@RequestParam("cm_phone") String cm_phone, @RequestParam("cm_zipcode") String cm_zipcode,@RequestParam("cm_address1") String cm_address1, @RequestParam("cm_address2") String cm_address2)throws Exception{
 		MemberDTO dto = new MemberDTO();
 	

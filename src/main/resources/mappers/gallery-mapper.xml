@@ -18,6 +18,13 @@
 		select * from camp_gallery order by seq desc
 
 	</select>
+	
+	
+	<select id="selectRating" resultType="int">
+		
+		select min(rating) from camp_gallery
+
+	</select>
 
 	<delete id="delete">			<!--값하나만 덩그러니 넘어왔는 때는 #{value} / ${value} $는 '' 안붙인다. -->
 		delete from camp_gallery where seq= ${value}
