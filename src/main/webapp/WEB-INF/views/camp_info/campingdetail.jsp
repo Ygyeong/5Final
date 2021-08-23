@@ -442,7 +442,7 @@ a{
 			               <img src="/img/detailimage/like/like.png" id="like" class="likeicon">             
 			            </div>
 			         </c:when>
-			         <c:when test="${loginID ==null }">
+			         <c:when test="${contents == null}">
 			         	<h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/dislike.png" id="xlike" class="likeicon">             

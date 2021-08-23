@@ -59,9 +59,8 @@ public class InfoController {
 		String contentId1 = Integer.toString(contentId);
 		
 		List<Camp_wishlistDTO> wish  = service.selectwish(contentId1, loginID); 
-		
 		if(loginID == null) {
-			model.addAttribute("contents","dislike");
+			model.addAttribute("contents",null);
 		}else {
 			if(wish.size() > 0) {
 				model.addAttribute("contents",wish.get(0).getContents());
@@ -72,7 +71,7 @@ public class InfoController {
 
 		}
 		
-
+		
 		model.addAttribute("list",list);
 		//model.addAttribute("image",image);
 		return "camp_info/campingdetail";
