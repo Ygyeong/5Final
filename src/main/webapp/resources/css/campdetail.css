@@ -118,9 +118,11 @@ body{
       margin: 0 auto;
       padding: 0;
       text-align: center;
-      background: pink;
+      background: white;
       font-size: 20px;
+      border:solid 1px blcak;
     }
+    
     .slider-nav li{
       margin: 0 2px;
       background: beige;
@@ -130,7 +132,7 @@ body{
     }
     
 #btnbox{
-	height:15%;
+	height:250px;
 	width:90%;
 	margin:auto;
 }
@@ -160,8 +162,7 @@ body{
 
 #reservebox {
 	width:50%;
-	height:60px;
-	float:left;
+	height:200px;
 }
 
 #reservebtn {
@@ -173,7 +174,7 @@ body{
 	background-color: #FFE8FF;
 	border-radius:7px;
 	display:inline-block;
-	padding:15% 25%;
+
 }
 
 #twotop ul #camptab li a {
