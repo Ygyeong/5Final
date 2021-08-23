@@ -63,7 +63,7 @@
 								class="fas fa-arrow-alt-circle-down down"></i></span>
 						</div>
 					</div>
-					<div class="sum">${list.p_price}</div>
+					<div class="sum"></div>
 				</div>
 				<div class="subdiv">
 					<div class="basketcmd">

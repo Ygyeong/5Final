@@ -79,7 +79,7 @@
 </style>
 
 <script>
-	$(function() {
+$(function() {
 
 		$.ajax({
 			url : "/gal/mainList?cpage=1",
@@ -97,13 +97,21 @@
 					$("#galContents").html(resp[0].contents);
 
 				})
+				
+				
+				
+				
+				
 
-	})
+	}) 
 </script>
 
 </head>
 
 <body class="slides chain simplifiedMobile animated">
+
+
+
 
 	<!-- SVG Library -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
@@ -337,7 +345,7 @@
 					<ul class="mainMenu margin-top-3">
 						<li><a href="/info/list">캠핑장</a></li>
 						<li><a href="">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
 	
@@ -386,7 +394,7 @@
 					<ul class="mainMenu margin-top-3">
 						<li><a href="/info/list">캠핑장</a></li>
 						<li><a href="#">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
 
@@ -439,7 +447,7 @@
 					<ul class="mainMenu margin-top-3">
 						<li><a href="#">캠핑장</a></li>
 						<li><a href="#">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
 
@@ -949,6 +957,9 @@
 
 	<!-- Loading Progress Bar -->
 	<div class="progress-bar blue"></div>
+
+<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
+
 
 </body>
 

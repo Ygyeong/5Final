@@ -169,8 +169,10 @@ public class GalleryController {
 			System.out.println(pageNavi);
 			System.out.println(list);
 			
+			
 			for(GalleryDTO gdto : list) {
 				System.out.println("gdto seq:"+gdto.getSeq());
+				
 				Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
 				gdto.setThumbPath(idto.getSysName());
 			}
@@ -205,6 +207,7 @@ public class GalleryController {
 			
 
 			List<GalleryDTO> list = service.getPageList(param);
+			
 			
 			
 			for(GalleryDTO gdto : list) {
