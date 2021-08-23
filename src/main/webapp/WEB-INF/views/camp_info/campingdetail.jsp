@@ -215,6 +215,7 @@ a{
                         } 
                   } 
                   ] 
+      
       }); 
       
 		var container = document.getElementById('map');
