@@ -548,6 +548,8 @@ a{color:inherit;text-decoration: none;}
 			</div>
 		</div>
 	</div>
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+	
 </body>
 
 </html>

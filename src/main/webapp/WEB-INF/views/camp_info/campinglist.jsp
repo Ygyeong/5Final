@@ -108,7 +108,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    
+    	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
 
 </body>
 </html>
