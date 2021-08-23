@@ -24,13 +24,6 @@
 	<insert id="wishinsert">
 		insert into camp_wishlist values (wish_seq.nextval,#{contentId},#{cm_id},#{contents}) 
 	</insert>
-	
-	<insert id="campinsert">
-		insert into camp_info values (#{contentId},#{firstImageUrl, jdbcType = VARCHAR }, #{facltNm, jdbcType = VARCHAR },#{lineIntro, jdbcType = VARCHAR },#{resveUrl, jdbcType = VARCHAR },#{homepage, jdbcType = VARCHAR },#{addr1, jdbcType = VARCHAR },#{addr2, jdbcType = VARCHAR },
-											#{tel, jdbcType = VARCHAR },#{resveCl, jdbcType = VARCHAR },#{lctCl, jdbcType = VARCHAR },#{induty, jdbcType = VARCHAR },#{operPdCl, jdbcType = VARCHAR },#{operDeCl, jdbcType = VARCHAR },#{posblFcltyCl, jdbcType = VARCHAR },
-											#{intro, jdbcType = VARCHAR },#{gnrlSiteCo},#{autoSiteCo},#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{sbrsEtc, jdbcType = VARCHAR },
-											#{sbrsCl, jdbcType = VARCHAR },#{animalCmgCl, jdbcType = VARCHAR },#{brazierCl, jdbcType = VARCHAR },#{mapX},#{mapY}) 
-	</insert>
 
 	<delete id="wishdelete">
 		delete from camp_wishlist where wish_seq=#{wish_seq}
