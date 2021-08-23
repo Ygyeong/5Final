@@ -20,6 +20,7 @@ public class RePicturesDAO {
 		return mybatis.insert("RePictures.insert",dto);
 	}
 	public int delete(int rep_seq) {
+		System.out.println("파일지우는 사진 번호 :"+rep_seq);
 		return mybatis.delete("RePictures.delete",rep_seq);
 	}
 	public List<RePicturesDTO> getPList() {

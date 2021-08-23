@@ -46,7 +46,8 @@
      #like,#chat:hover {cursor: pointer;}
      #like button{width:100%; height:100%;}
      
-     #userBox{background-color:#F6F6F6;margin:48px 20px 0px 50px; width: 230px; height: 200px;}
+     #user{font-size: 1.3em; font-weight: bold; text-align:center; margin:10px 0px 30px 0px;}
+     #userBox{background-color:#F6F6F6;margin:38px 20px 0px 50px; width: 230px; height: 200px;}
      #userID{text-align:center; font-weight:600;}
      #repCount{margin-left:20px;width:50px;}
      #repCount span{font-weight:600; padding-left:5px;}
@@ -221,9 +222,21 @@
 			location.href="/rep/update?rep_seq="+$("#seq").val();	
 		})
 		
+		$("#submit").on("click",function(){
+			let sale = $('input:radio[name=sale]:checked').val()
+			if(sale == '판매중'){
+				location.href="/rep/saleInfo?rep_stock=1&rep_seq="+$("#seq").val();
+			}else{
+				location.href="/rep/saleInfo?rep_stock=0&rep_seq="+$("#seq").val();
+			}
+		})
+		
+		
 		$("#userBtn").on("click",function(){
 			
 		})
+		
+		
 		function wishCount(){
  			$.ajax({
 				url:"/rep/wishCount",
@@ -241,7 +254,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${id==dto.rep_writer }">
+		<c:when test="${loginID==dto.rep_writer }">
 			 <div class="container-fluid">
         <div class="row m-0" id=menu>
         	<c:forEach var="i" items="${plist }">
@@ -280,13 +293,13 @@
                 <div class="row" id=crudBox>
                     <div class="col-8 p-0" id=>
 						 <div class="row m-0 mt-3 mb-3">
-						 	<div class="col-12 mb-1 ckT">상품판매관리</div>
+						 	<div class="col-12 mb-4 ckT">상품판매관리</div>
 						 	<div class="col-12 mb-1 ck">상태변경</div>
 						 	<div class="col-4 sold">
-						 		<input type=radio name="sold" value="판매중" ><span>판매중</span>
+						 		<input type=radio name="sale" value="판매중" ><span>판매중</span>
 						 	</div>
 						 	<div class="col-5 sold">
-						 		<input type=radio name="sold" value="판매완료" ><span>판매완료</span>
+						 		<input type=radio name="sale" value="판매완료" ><span>판매완료</span>
 						 	</div>
 						 </div>
 					</div>
@@ -403,7 +416,7 @@
                 <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
                 <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
             </div>
-            <div class="col-3 p-0 pt-5" id=userBox>
+            <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}</div>
                  <div class="col-4 " id=repCount>상품 <span>${repCount}</span></div>
             </div>

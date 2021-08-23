@@ -6,24 +6,24 @@
 <mapper namespace="ReWishList">
 
 	<insert id="insert">
-		insert into camp_wishlist values(1,#{rem_id},${rep_id})
+		insert into camp_rewishlist values(1,#{rem_id},${rep_id})
 	</insert>
 	<select id="Count" resultType="int">
-		select count(*) from camp_wishlist where rep_id = ${value}
+		select count(*) from camp_rewishlist where rep_id = ${value}
 	</select>
 	<select id="exist" resultType="int">
-		select count(*) from camp_wishlist where rep_id = ${rep_id} and rem_id = #{rem_id} 
+		select count(*) from camp_rewishlist where rep_id = ${rep_id} and rem_id = #{rem_id} 
 	</select>
 	<delete id="Cancel">
-		delete from camp_wishlist where rep_id = ${value}
+		delete from camp_rewishlist where rep_id = ${value}
 	</delete>
 	
 	<!-- 사용자,myJG 페이지 -->
 	<select id="myWishList" resultType="kh.spring.dto.ReWishListDTO">
-		select * from camp_wishlist where rem_id = #{value}
+		select * from camp_rewishlist where rem_id = #{value}
 	</select>
 	<select id="myWishCount" resultType="int">
-		select count(*) from camp_wishlist where rem_id = #{value}
+		select count(*) from camp_rewishlist where rem_id = #{value}
 	</select>
 	
 	

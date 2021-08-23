@@ -166,7 +166,16 @@ public class ReProductService {
 		}
 
 	}
-	
+	public int saleInfo(int rep_stock,int rep_seq) {
+		Map<String,Object> param = new HashMap<>();
+		param.put("rep_stock", rep_stock);
+		param.put("rep_seq",rep_seq);
+		
+		return dao.saleInfo(param);
+	}
+	public int saleCount(int rep_seq) {
+		return dao.saleCount(rep_seq);
+	}
 	
 	public int repCount(String rep_writer) {
 		return dao.repCount(rep_writer);

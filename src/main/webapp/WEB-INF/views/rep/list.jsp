@@ -11,47 +11,28 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
- <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
-
-        <!-- Favicon -->
-        <link href="aboutGallery/img/favicon.ico" rel="icon">
-
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="aboutGallery/lib/animate/animate.min.css" rel="stylesheet">
-        <link href="aboutGallery/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="aboutGallery/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-        
-        <!--Font  -->
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 
 <style>
 	 *{box-sizing: border-box;}
-       .container{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
+	 .container-fluid{width:1100px; height: 1550px; margin: auto; margin-top:100px; margin-bottom:40px;}
        h2{text-align: center;}
 /* 	div{border:1px solid black;} */
+	   .jgBar{margin:60px 0px 40px 0px;}
+	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
-       #searchBox{border:1px solid black;
-       padding-top:5px; padding-bottom:5px;}
+       #searchBox{border:1px solid black; width:400px; height:100%; padding-top:5px; padding-bottom:5px; }
        #searchBox img{height:18px; width:18px;}
-       #keyword{width:90%;}
-       #writeBox{text-align:right;}
+       #keyword{width:90%; border:none;padding-left:10px;}
+       #writeBox{text-align:right; padding:8px 10px 0px 0px;}
        #write{ text-decoration:none; color:black; height:100%;}
        #word{border:0px solid black; width:90%;}
        /*  input:focus {outline:none;}*/
       .listbar{height:330px; margin: 0px; margin-top: 60px; }
-      .list{height:100%; width:246px;  margin:0px 10px 50px 10px; border:1px solid #ddd; }
+      .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
       .list:hover{cursor:pointer;}
       .list .img{height:217px; margin-bottom: 10px; }
       .link{padding:0px 10px 0px 10px;}
@@ -63,6 +44,108 @@
       .diffD{padding:6px 12px 0px 0px; color:#a9a9a9; font-size:0.8em; text-align:right;}
       .area{font-size:0.8em; color:#606060; font-weight:500;}
       .ar{border-top:1px solid #ddd;}
+      .camp{width:100%;margin:auto; height:500px;}
+      .camp img{width:100%; height:100%; padding:0px;}
+      
+/*네비바 스타일  */     
+:root{
+    --text-color:#f0f4f5;
+    --background-color:#263343;
+    --accent-color:steelblue;
+}
+body{
+    margin: 0;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+    
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+}
+.navbar_logo{
+    font-size: 32px;
+    color: white;
+    font-family: 'Nanum Brush Script';
+}
+.navbar_logo i {
+    color: white;
+}
+.navbar_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom:-3px;
+}
+.navbar_menu li {
+    padding: 8px 12px;
+}
+.navbar_menu li:hover {
+    background-color: steelblue;
+    border-radius: 4px;
+}
+.navbar_member {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0;
+	margin-bottom:-3px;
+}
+.navbar_member li{
+    padding: 8px 12px;
+}
+.navbar_toogleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    
+}
+@media screen and (max-width: 768px) {
+    
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    .navbar_menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_member{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar_toogleBtn{
+        display: block;
+    }
+    .navbar_menu.active,
+    .navbar_member.active{
+        display: flex;
+    
+    }
+}
+/*네비바 스타일 끝  */ 
 </style>
 <script>
 	$(function(){
@@ -133,121 +216,108 @@
 </script>
 </head>
 <body>
-	<!-- Nav Bar Start -->
-        
-        <c:choose>
-  			<c:when test="${loginID==null }">
-        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container-fluid">
-               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<!--nav bar  -->
+<c:choose>
+<c:when test="${loginID==null }">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
-                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/loginPage">로그인</a></li>
+        </ul>
 
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
-                        <div style="border: 1px solid none; width: 100px;"></div>
-                        
-                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
-                        <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
-                    </div>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:when>
+<c:when test="${loginID='admin'}">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="">관리자페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:when>
+<c:otherwise>
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="">캠핑정보</a></li>
+            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/myPage">마이페이지</a></li>
+            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:otherwise>
+
+
+</c:choose>
+
+    
+	<div class="container-fluid">
+        <div class="row jgBar">
+            <div class="col-6 " id="jg">
+                중고장터
+            </div>
+            <div class="col-5 p-0 search">
+                <div id=searchBox>
+                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                	<img src="/img/search.png" id=search>
                 </div>
             </div>
-        </div>
-        </c:when>
-         <c:when test="${loginID=='admin'}">
-        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container-fluid">
-               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
-                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
-                        <div style="border: 1px solid none; width: 100px;"></div>
-                        
-                        <a href="portfolio.html" class="nav-item nav-link">관리자 페이지</a>
-                        <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        </c:when>
-        
-        
-        <c:otherwise>
-        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container-fluid">
-               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
-                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
-
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
-                        <div style="border: 1px solid none; width: 100px;"></div>
-                        
-                        <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
-                        <a href="/memeber/logOutProc" class="nav-item nav-link">로그아웃</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        </c:otherwise>
-        
-        </c:choose>
-        <!-- Nav Bar End -->
-	<div class="container">
-	
-        <h2>중고 장터</h2>
-        <div class="row m-0 mt-5 h-120">
-            <div class="col-2 p-0" id="category">
-                <select name="rep_category" >
-  					<option selected>전체종류</option>
-                    <option value="텐트/타프">텐트/타프</option>
-                    <option value="침낭/매트">침낭/매트</option>
-                    <option value="테이블/의자">테이블/의자</option>
-                    <option value="조명기구">조명기구</option>
-                    <option value="주방용품">주방용품</option>
-                    <option value="화로/버너/bbq">화로/버너/bbq</option>
-                    <option value="겨울용품">겨울용품</option>
-                    <option value="기타캠핑용품">기타캠핑용품</option>
-                </select>
-            </div>
-            <div class="col-4" id=searchBox>
-                <input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
-                <img src="/img/search.png" id=search>
-            </div>
-            <div class="col-5 p-0 pt-1" id=writeBox>
+            <div class="col-1 " id=writeBox>
             	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
+        </div>
+        <div class="row camp m-0">
+        	<img src="/img/camp.jpg" >
         </div>
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
@@ -266,5 +336,17 @@
 		</c:forEach>
 		</div> 
     </div>
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 </body>
 </html>

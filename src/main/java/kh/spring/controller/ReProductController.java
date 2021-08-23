@@ -37,18 +37,6 @@ public class ReProductController {
 	@Autowired
 	private HttpSession session;
 	
-	@RequestMapping("loginProc")
-	public String loginProc(String id, int pw) {
-		System.out.println("AAAAAAAAAAA");
-		int result= service.login(id,pw);
-		System.out.println(result);
-		if(result>0) {
-			session.setAttribute("id",id);
-		}
-		return "redirect:/";
-	}
-	
-	
 	
 	
 	
@@ -108,8 +96,7 @@ public class ReProductController {
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
 		
-//		session.setAttribute("id", "kt478");
-		dto.setRep_writer((String)session.getAttribute("id"));
+		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");
 		System.out.println(realPath);
@@ -133,7 +120,7 @@ public class ReProductController {
 	
 	@RequestMapping("myWishList")
 	public String myWishList(Model m) {
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("loginID");
 		List<ReProductDTO> list = service.myWishList(id);
 		int wishCount = service.myWishCount(id);
 		m.addAttribute("list",list);
@@ -146,7 +133,7 @@ public class ReProductController {
 	@RequestMapping("wishInsert")
 	public void wishInsert(ReWishListDTO wdto) {
 //		session.setAttribute("id", "kt478");
-		wdto.setRem_id((String)session.getAttribute("id"));
+		wdto.setRem_id((String)session.getAttribute("loginID"));
 		System.out.println("찜하기 기능");
 		System.out.println(wdto.getRem_id()+" : "+wdto.getRep_id()+" : "+wdto.getRew_id());
 		service.wishInsert(wdto);
@@ -169,7 +156,7 @@ public class ReProductController {
 	@ResponseBody
 	@RequestMapping("wishExist")
 	public String wishExist(ReWishListDTO wdto) {
-		wdto.setRem_id((String)session.getAttribute("id"));
+		wdto.setRem_id((String)session.getAttribute("loginID"));
 		int result = service.wishExist(wdto);
 		System.out.println(result);
 		return new Gson().toJson(result);
@@ -200,6 +187,12 @@ public class ReProductController {
 		service.modify(realPath,file,delTargets,dto);
 		return "redirect:list?index=1";
 	} 
+	
+	@RequestMapping("saleInfo")
+	public String saleInfo(int rep_stock,int rep_seq) {
+		service.saleInfo(rep_stock, rep_seq);
+		return "redirect:list?index=1";
+	}
 	
 	@ExceptionHandler // 예외가 발생했을 때만,
 	public String execeptionHandler(Exception e) {

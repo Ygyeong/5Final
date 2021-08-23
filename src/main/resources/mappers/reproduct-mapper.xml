@@ -3,13 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ReProduct">
-	<!-- 로그인  -->
-	<select id="login" resultType="int">
-		select count(*) from camp_mem where cm_id=#{id} and cm_pw=#{pw}
-	</select>
-
-
-
 
 	<insert id="insert">
 		insert into camp_reproduct values(${rep_seq},#{rep_name},#{rep_price},#{rep_delivery},#{rep_delivery_price},#{rep_area},#{rep_category},#{rep_writer},sysdate,null,1,#{rep_detail},0)
@@ -27,7 +20,7 @@ rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_re
 where rnum between #{startNum} and #{endNum}
 <!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
 	</select>
-	<select id="search" resultType="kh.spring.dto.ReProductDTO">
+	<select id="search" parameterType="java.util.HashMap" resultType="kh.spring.dto.ReProductDTO">
 	select * from 
 (select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
 rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_name like '%#{keyword}%' or rep_area like '%#{keyword}%') 
@@ -48,12 +41,11 @@ where rnum between #{startNum} and #{endNum}
 	</select>
 	
 	<!-- 판매관련 -->
-	<select id="sold" resultType="int">
-		select rep_stock from camp_reproduct where rep_seq = ${value}
-	</select>
-	<!-- 판매중 -->
-	<select id="soldOut" resultType="int">
-		select rep_stock from camp_reproduct where rep_seq = ${value}
+	<update id="saleInfo">
+		update camp_reproduct set rep_stock = #{rep_stock} where rep_seq = #{rep_seq}
+	</update>
+	<select id="saleCount" resultType="int">
+		select * from camp_reproduct where rep_seq = #{value}
 	</select>
 	
 </mapper>

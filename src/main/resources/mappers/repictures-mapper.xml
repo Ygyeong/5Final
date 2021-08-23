@@ -21,7 +21,7 @@
 		
 	</select>
 	<delete id="delete">
-		delete from camp_repictures where repicture_seq= #{value}
+		delete from camp_repictures where  repicture_seq = #{value}
 	</delete>
 	
 	<select id="getSysName" resultType="string">
