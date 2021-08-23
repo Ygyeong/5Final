@@ -99,8 +99,9 @@ public class ReProductController {
 		int rep_seq = service.getSeq();
 		
 //		session.setAttribute("id", "kt478");
-		dto.setRep_writer((String)session.getAttribute("id"));
+		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
+		System.out.println(dto.getRep_seq());
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");
 		System.out.println(realPath);
 		service.insert(dto,rep_seq,file,realPath);

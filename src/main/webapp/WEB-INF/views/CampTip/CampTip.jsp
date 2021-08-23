@@ -92,7 +92,16 @@ a{color:inherit;text-decoration: none;}
 	width: 150px;
 	height: 75px;
 }
-
+#springImg>img{
+	padding-left: 10px;
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+#springText>*{
+	text-align: center;
+	line-height: 80px;
+}
 </style>
 </head>
 
@@ -112,7 +121,25 @@ a{color:inherit;text-decoration: none;}
 
 		<div class="ms-left">
 			<div class="ms-section" id="left1">
-				<h1>봄 캠핑 장단점</h1>
+				<div id="springImg">
+					<img src="/resources/assets/img/background/spring.jpg">
+				</div>
+				<div id="springText">
+					<h2>
+						밤은 아직 춥다!<br>
+						<h4>핫팩을 챙기자</h4>
+					</h2>
+					<br>
+					<h2>
+						캠핑의 적 벌레!<br>
+						<h4>벌레 퇴치제를 챙기자</h4>
+					</h2>
+					<br>
+					<h2>
+						뱀 조심!<br>
+						<h4>물리면 즉시 119</h4>
+					</h2>
+				</div>
 			</div>
 			<div class="ms-section" id="left2">
 				<h1>여름 캠핑 장단점</h1>
