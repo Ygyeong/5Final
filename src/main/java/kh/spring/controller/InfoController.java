@@ -38,20 +38,6 @@ public class InfoController {
 	
 	@Autowired
 	private HttpSession session;
-	
-	//파싱된 데이터를 DB에 저장
-	@RequestMapping("dataupdate")
-	public String practice(HttpServletRequest request) throws Exception {
-		System.out.println("출력");
-		PublicData data = new PublicData();
-		List <Camp_infoDTO> list = data.ParsingData();
-		
-		for(Camp_infoDTO dto : list) {
-			service.campinsert(dto);
-		}
-	    
-	    return "redirect:/";
-	}
 
 	
 	//정보 리스트
