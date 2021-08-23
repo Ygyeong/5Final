@@ -332,6 +332,9 @@ a{
 
 </c:choose>
 
+
+
+
 	<div class="container-fluid">
         <h2>중고 장터</h2>
         <div class="row m-0 mt-5 h-120">
@@ -373,6 +376,9 @@ a{
 		</c:forEach>
 		</div> 
     </div>
+    <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+    
+    <!--네비바 스크립트  -->
     
     <script>
     
