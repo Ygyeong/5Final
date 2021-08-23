@@ -17,7 +17,7 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
-			location.href="/member/memberModify?cm_id=${member.cm_id}"
+			location.href="/member/memberModify?cm_id="${member.cm_id}
 		})
 		$("#myPagePwChange").on("click", function(){
 			location.href="/member/pwChange"
