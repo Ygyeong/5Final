@@ -28,5 +28,12 @@
 	<delete id="wishdelete">
 		delete from camp_wishlist where wish_seq=#{wish_seq}
 	</delete>
+	
+	<select id="selectnum" resultType="kh.spring.dto.Camp_infoDTO">
+		select * from
+				(select row_number() over(order by contentId desc) rnum, contentId, facltNm, firstImageUrl   from camp_info)
+		 where rnum between #{startNum} and #{endNum}
+<!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
+	</select>
 
 </mapper>

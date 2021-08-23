@@ -20,11 +20,7 @@ public class Camp_infoService {
 	@Autowired
 	private Camp_infoDAO dao;
 	
-	//캠프 리스트
-	public List<Camp_infoDTO> selectAll(){
-		return dao.selectAll();
-	}
-	
+
 	//캠프 정보
 	public List<Camp_infoDTO> detail(int contentId){
 		return dao.detail(contentId);
@@ -54,6 +50,13 @@ public class Camp_infoService {
 	//찜빼기
 	public int wishdelete(int wish_seq) {
 		return dao.wishdelete(wish_seq);
+	}
+	
+	public List<Camp_infoDTO> selectAll(int startNum,int endNum) {
+		Map<String,Object> param = new HashMap<>();
+		param.put("startNum",startNum);
+		param.put("endNum",endNum);
+		return dao.selectAll(param);
 	}
 
 	

@@ -19,12 +19,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import kh.spring.config.InfoConfig;
+import kh.spring.config.ReProductConfig;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.Camp_photoDTO;
 import kh.spring.dto.Camp_wishlistDTO;
+import kh.spring.dto.ReProductDTO;
 import kh.spring.service.Camp_infoService;
 
 
@@ -42,9 +46,13 @@ public class InfoController {
 	
 	//정보 리스트
 	@RequestMapping("list")
-	public String home(HttpServletRequest request, Model model) throws Exception {	
-		List<Camp_infoDTO> list = service.selectAll();
+	public String home(int index, Model model) throws Exception {
+
+		int endNum = index*InfoConfig.RECORD_COUNT_PER_LIST;
+		int startNum = endNum -(InfoConfig.RECORD_COUNT_PER_LIST-1);
+		List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
 		model.addAttribute("list",list);
+		System.out.println("인덱스" + index +"끝" + endNum + "첫" + startNum);
 		return "camp_info/campinglist";
 	}
 	
@@ -136,6 +144,15 @@ public class InfoController {
 		return "redirect:detail";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="scroll",produces="text/html;charset=utf8")
+	public String scrollList(int index) {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
+		System.out.println(index);
+		return new Gson().toJson(list);
+	}
 
 
 	

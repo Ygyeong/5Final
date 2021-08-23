@@ -343,7 +343,7 @@ $(function() {
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
@@ -392,7 +392,7 @@ $(function() {
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="//info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
@@ -445,7 +445,7 @@ $(function() {
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>

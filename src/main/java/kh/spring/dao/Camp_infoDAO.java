@@ -19,8 +19,8 @@ public class Camp_infoDAO {
 	private SqlSessionTemplate mybatis;
 	
 	//목록 출력
-	public List<Camp_infoDTO> selectAll(){
-		return mybatis.selectList("Camp_info.selectAll");
+	public List<Camp_infoDTO> selectAll(Map<String,Object> param){
+		return mybatis.selectList("Camp_info.selectnum", param);
 	}
 	
 	//디테일 출력

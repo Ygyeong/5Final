@@ -194,6 +194,52 @@ a{
 <script>
 	$(function(){
 
+		let index=1;
+		$(window).scroll(function(){
+			let $window = $(this);
+			let scrollTop = $(this).scrollTop();
+			let windowHeight = $window.height();
+			let documentHeight = $(document).height();
+			console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+					"| documentHeight"+documentHeight)
+			if(scrollTop+windowHeight>=documentHeight){
+				index++;
+				console.log(index);
+				setTimeout(getList(),2000);
+				
+			}
+					
+		})
+		
+		function getList(){
+			$.ajax({
+				url:"/info/scroll",
+				dataType:"json",
+				data:{"index":index}
+			}).done(function(resp){
+				for(let i=0;i<resp.length;i++){
+					let list = $("<div class='col-lg-3 col-sm-6 mb-4' id='items'>");
+					
+					let box = $("<div class='portfolio-item'>");
+					let detaillink = $("<a href='" + resp[i].contentId +"'>");
+					let image =$("<img class='img-fluid' src='" + resp[i].firstImageUrl + "''>");
+					let box2 = $("<div class='portfolio-caption'>");
+					let name = $("<div class='portfolio-caption-heading'>");
+					name.text(resp[i].facltNm);
+
+					list.append(box);
+					box.append(detaillink);
+					detaillink.append(image);
+					list.append(box2);
+					box2.append(name);
+					
+
+					$("#cmapinglist").append(list);
+					
+					
+				}
+			})
+		}
 		
 	})
 </script>
@@ -201,13 +247,14 @@ a{
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
+
         <div class="navbar_logo">
            
             <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -233,7 +280,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -259,7 +306,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
