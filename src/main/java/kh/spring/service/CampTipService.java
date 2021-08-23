@@ -18,8 +18,8 @@ public class CampTipService {
 		return dao.insert(dto);
 	}
 	
-	public List<CampTipDTO> selectAll() throws Exception {
-		return dao.selectAll();
+	public List<CampTipDTO> listAll(int start, int end, String searchOption, String keyword) throws Exception {
+		return dao.listAll(start, end, searchOption, keyword);
 	}
 	
 	public CampTipDTO read(int camp_tip_num) throws Exception {
@@ -34,9 +34,13 @@ public class CampTipService {
 		return dao.delete(delNum);
 	}
 	
-//	public int modify(CampTipDTO dto)throws Exception {
-//		System.out.println("수정화면 요청완료");
-//		return dao.modify(dto);
-//	}
+	public int modify(CampTipDTO dto)throws Exception {
+		return dao.modify(dto);
+	}
+	
+	public int countArticle(String searchOption, String keyword) throws Exception {
+	    return dao.countArticle(searchOption, keyword);
+	}
+
 	
 }
