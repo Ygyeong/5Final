@@ -53,6 +53,8 @@
                 method:"post",
                 dataType:"application/json"
              });
+         }else if(like = "xlike"){
+        	 alert("로그인 후에 이용 가능합니다.");
          }
 
       });
@@ -203,6 +205,12 @@
 			        <h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/like.png" id="like" class="likeicon">             
+			            </div>
+			         </c:when>
+			         <c:when test="${loginID ==null }">
+			         	<h4>찜하기</h4> 
+			            <div id=wishbox_icon>
+			               <img src="/img/detailimage/like/dislike.png" id="xlike" class="likeicon">             
 			            </div>
 			         </c:when>
 			         <c:otherwise>
