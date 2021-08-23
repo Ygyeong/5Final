@@ -79,7 +79,7 @@
 </style>
 
 <script>
-$(function() {
+	$(function() {
 
 		$.ajax({
 			url : "/gal/mainList?cpage=1",
@@ -97,13 +97,8 @@ $(function() {
 					$("#galContents").html(resp[0].contents);
 
 				})
-				
-				
-				
-				
-				
 
-	}) 
+	})
 </script>
 
 </head>
@@ -348,7 +343,7 @@ $(function() {
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
-	
+
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/signPage">회원가입</a></li>
@@ -764,7 +759,7 @@ $(function() {
 													style="text-overflow: ellipsis; height: 300px;"></div></li>
 
 										</ul>
-										<div class="thumbnail-74" style="width: 100px; height: 100px;">
+										<div class="thumbnail-74" style="width: 100px; height: 100px;margin:auto;">
 											<c:choose>
 
 												<c:when test="${rating==1 }">
@@ -957,7 +952,9 @@ $(function() {
 	<!-- Loading Progress Bar -->
 	<div class="progress-bar blue"></div>
 
-<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
+		
+	</script>
 
 
 </body>
