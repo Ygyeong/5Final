@@ -4,12 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="CampTip">
+
 	<insert id="insert" parameterType="kh.spring.dto.CampTipDTO">
 		insert into camp_tip values(camp_tip_seq.nextval,${category},#{writer},#{title},#{contents},sysdate,0)
 	</insert>
 	
 	<select id="select" resultType="kh.spring.dto.CampTipDTO">
-		select * from camp_tip
+		<include refid="pagingHeader"></include>
+	        SELECT rownum, aa.*
+	        FROM camp_tip aa where category = ${category} 
+	            and ${searchOption} like '%'||#{keyword}||'%'
+	        ORDER BY camp_tip_num, write_date DESC 
+    	<include refid="pagingFooter"></include> 
 	</select>
 	
 	<select id="detail" resultType="kh.spring.dto.CampTipDTO">
@@ -27,5 +33,40 @@
 	<update id="modify">
 		update camp_tip set category=${category},title=#{title},contents=#{contents} where camp_tip_num = ${camp_tip_num}
 	</update>
+	
+	<!-- 01_02. 게시글 레코드 갯수 -->
+	<select id="countArticle" resultType="int">
+	    SELECT COUNT(*) FROM camp_tip where category = ${category} and ${searchOption} like '%'||#{keyword}||'%'
+	    <!-- WHERE절을 include 태그로 삽입 -->
+	    <!-- <include refid="search"></include> -->
+	</select>
+	
+	<!-- sql code 조각 -->
+	<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
+<!-- 	<sql id="search">
+	    <choose>
+	        검색옵션이 전체 검색일 경우
+	        <when test="searchOption == 'all'">
+	            WHERE writer like '%'||#{keyword}||'%'
+	            OR contents like '%'||#{keyword}||'%'
+	            OR title like '%'||#{keyword}||'%'
+	        </when>
+	        전체 검색이 아닐 경우
+	        <otherwise>
+	            WHERE ${searchOption} like '%'||#{keyword}||'%'
+	        </otherwise>
+	    </choose>
+	</sql> -->
+	
+	<!-- 페이징 sql -->
+	<sql id="pagingHeader">
+	    SELECT * FROM (
+	        SELECT ROWNUM AS rn, A.* FROM (
+	</sql>
+	<sql id="pagingFooter">
+	        ) A
+	    ) WHERE rn BETWEEN #{start} AND #{end}
+	</sql>
+
 	
 </mapper>

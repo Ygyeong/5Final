@@ -1,6 +1,8 @@
 package kh.spring.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,15 +33,36 @@ public class Camp_TipController {
     private CampTipService service;
 
     @RequestMapping("selectAll")
-    public ModelAndView selectAll() throws Exception {
+    public ModelAndView selectAll(
+    		@RequestParam(defaultValue = "title") String searchOption,
+    		@RequestParam(defaultValue = "") String keyword,
+    		@RequestParam(value="category",defaultValue ="1") int category,
+    		@RequestParam(defaultValue="1") int curPage
+    		) throws Exception {
 
-//    	게시글 불러오기 시작
-    	List<CampTipDTO> list = service.selectAll();
-    	ModelAndView model = new ModelAndView();
-    	model.setViewName("CampTip/CampTip");
-    	model.addObject("list",list);
-    	
-    	return model;
+    	// 레코드의 갯수 계산
+        int count = service.countArticle(searchOption, keyword, category);
+        
+        // 페이지 나누기 관련 처리
+        CampTipPagingDTO boardPager = new CampTipPagingDTO(count, curPage);
+        int start = boardPager.getPageBegin();
+        int end = boardPager.getPageEnd();
+        
+        List<CampTipDTO> list = service.listAll(start, end, searchOption, keyword, category);
+        // 데이터를 맵에 저장
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("list", list); // list
+        map.put("category", category);
+        map.put("count", count); // 레코드의 갯수
+        map.put("searchOption", searchOption); // 검색옵션
+        map.put("keyword", keyword); // 검색키워드
+        map.put("boardPager", boardPager);
+        
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
+        mav.setViewName("CampTip/CampTip"); // 뷰를 list.jsp로 설정
+        
+        return mav; // list.jsp로 List가 전달된다.
     }
     
     @RequestMapping("write")
