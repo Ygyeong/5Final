@@ -32,6 +32,9 @@ public class ReProductDAO {
 	public int delete(int seq) {
 		return mybatis.delete("ReProduct.delete",seq);
 	}
+	public int update(ReProductDTO dto) {
+		return mybatis.update("ReProduct.update",dto);
+	}
 	public List<ReProductDTO> getList(Map<String,Object> param){
 		return mybatis.selectList("ReProduct.setAll",param);
 	}
@@ -48,5 +51,7 @@ public class ReProductDAO {
 	public int repCount(String rep_writer) {
 		return mybatis.selectOne("ReProduct.repCount",rep_writer);
 	}
-	
+	public List<ReProductDTO> search(Map<String,Object> param){
+		return mybatis.selectList("ReProduct.search",param);
+	}
 }

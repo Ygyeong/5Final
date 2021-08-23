@@ -21,6 +21,12 @@
 		
 	</select>
 	<delete id="delete">
-		delete from camp_repictures where rep_seq2 = #{value}
+		delete from camp_repictures where repicture_seq= #{value}
 	</delete>
+	
+	<select id="getSysName" resultType="string">
+	
+		select reSysname from camp_repictures where repicture_seq = ${value}
+		
+	</select>
 </mapper>

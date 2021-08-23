@@ -97,7 +97,19 @@ public class ReProductService {
 	public int getSeq() {
 		return dao.getSeq();
 	}
+	public RePicturesDTO selectThumbBySeq(int rep_seq) {
+		return pdao.selectThumbBySeq(rep_seq);
+	}
 	
+	public List<ReProductDTO> search (String keyword,int startNum,int endNum) {
+		
+		Map<String,Object> param = new HashMap<>();
+		param.put("keyword", keyword);
+		param.put("startNum",startNum);
+		param.put("endNum",endNum);
+		
+		return dao.search(param);
+	}
 	public List<ReProductDTO> Thumbnail(int startNum,int endNum) {
 		List<ReProductDTO> list = this.getAll(startNum,endNum);
 		for(ReProductDTO dto : list) {
@@ -114,6 +126,45 @@ public class ReProductService {
 		}
 		return list;
 		
+	}
+	
+	public void modify(String realPath,MultipartFile[] file,String [] delTargets,ReProductDTO dto) throws Exception {
+		int seq = dto.getRep_seq();
+		dao.update(dto);
+		File filesPath = new File(realPath);
+
+		if(delTargets != null) {
+			for(String target : delTargets) {
+				
+				System.out.println("타켓 번호"+target);
+				String sysName = pdao.getSysName(Integer.parseInt(target));
+				File targetFile = new File(filesPath+"/"+sysName);
+				boolean result = targetFile.delete();
+
+     			if(result) {pdao.delete(Integer.parseInt(target));}
+
+
+			}
+		}
+
+		for(MultipartFile tmp : file) {
+
+			if(tmp.getSize() > 0) {
+				String oriName = tmp.getOriginalFilename();
+				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
+
+				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
+
+				if(oriName!=null) {
+					System.out.println("파일 이름" + oriName +"DB에 저장됨.");
+					pdao.insert(new RePicturesDTO(0,oriName, sysName,seq));
+				}
+
+
+			}
+
+		}
+
 	}
 	
 	
@@ -177,11 +228,6 @@ public class ReProductService {
 	public int wishExist(ReWishListDTO dto) {
 		return wdao.wishExist(dto);
 	}
-
-
-
-
-	
 	
 	
 }

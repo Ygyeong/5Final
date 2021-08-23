@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -53,11 +54,19 @@ public class ReProductController {
 	
 	
 	@RequestMapping("list")
-	public String list(int index,Model m) {
+	public String list(int index,String keyword,Model m) {
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
-		List<ReProductDTO> list = service.Thumbnail(startNum,endNum);
-		m.addAttribute("list",list);
+		System.out.println(startNum);
+		System.out.println(keyword);
+		if(keyword==null) {
+			List<ReProductDTO> list = service.Thumbnail(startNum,endNum);
+			m.addAttribute("list",list);
+		}else {
+			List<ReProductDTO> list = service.search(keyword,startNum,endNum);
+			m.addAttribute("list",list);
+		}
+		
 		return "rep/list";
 	}
 	
@@ -65,11 +74,11 @@ public class ReProductController {
 	public String detail(int rep_seq,Model m) {
 		System.out.println(rep_seq);
 		ReProductDTO dto = service.getDetail(rep_seq);
-		List<RePicturesDTO> pdto = service.filesBySeq(rep_seq);
+		List<RePicturesDTO> plist = service.filesBySeq(rep_seq);
+		RePicturesDTO pdto = service.selectThumbBySeq(dto.getRep_seq());
 		int repCount = service.repCount(dto.getRep_writer());
 		List<ReCommentsDTO> cdto = cservice.getWriter(rep_seq);
-		System.out.println(cdto+"댓글임");
-		m.addAttribute("pdto",pdto);
+		m.addAttribute("plist",plist);
 		m.addAttribute("dto",dto);
 		m.addAttribute("cdto",cdto);
 		m.addAttribute("repCount",repCount);
@@ -93,6 +102,7 @@ public class ReProductController {
 	public String detail() {
 		return "rep/write";
 	}
+	
 	
 	@RequestMapping("insertProc")
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
@@ -183,8 +193,12 @@ public class ReProductController {
 		return "rep/update";
 	} 
 	@RequestMapping("updateProc")
-	public void updateProc(int rep_seq) {
-		
+	public String updateProc(@RequestParam(value="delete") String[] delete , MultipartFile[] file,ReProductDTO dto,Model m)throws Exception {
+		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		String [] delTargets = delete;
+		System.out.println("modify delete :" +  delTargets);
+		service.modify(realPath,file,delTargets,dto);
+		return "redirect:list?index=1";
 	} 
 	
 	@ExceptionHandler // 예외가 발생했을 때만,

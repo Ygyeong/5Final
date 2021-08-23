@@ -17,6 +17,9 @@
 	<delete id="delete">
 		delete from camp_reproduct where rep_seq = ${value}
 	</delete>
+	<update id="update">
+		update camp_reproduct set rep_name=#{rep_name},rep_price=#{rep_price},rep_delivery=#{rep_delivery},rep_delivery_price=#{rep_delivery_price},rep_area=#{rep_area},rep_category=#{rep_category},rep_detail = #{rep_detail}  where rep_seq = ${rep_seq}
+	</update>
 	<select id="setAll" resultType="kh.spring.dto.ReProductDTO">
 	select * from 
 (select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
@@ -24,13 +27,18 @@ rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_re
 where rnum between #{startNum} and #{endNum}
 <!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
 	</select>
+	<select id="search" resultType="kh.spring.dto.ReProductDTO">
+	select * from 
+(select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
+rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_name like '%#{keyword}%' or rep_area like '%#{keyword}%') 
+where rnum between #{startNum} and #{endNum}
+	</select>
 	<select id="detail" resultType="kh.spring.dto.ReProductDTO">
 		select * from camp_reproduct where rep_seq= ${value}
 	</select>
 	<select id="getSeq" resultType="int">
 		select rep_seq.nextval from dual
 	</select>
-	
 	<select id="repList" resultType="kh.spring.dto.ReProductDTO">
 		select * from camp_reproduct where rep_writer = #{value} 
 	</select>

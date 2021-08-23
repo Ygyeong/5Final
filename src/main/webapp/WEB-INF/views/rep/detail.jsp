@@ -211,7 +211,7 @@
 		})
  		
 		$("#delete").on("click",function(){
-			let result = confirm("댓글을 삭제하시겠습니까?");
+			let result = confirm("게시글을 삭제하시겠습니까?");
 			if(result){
 				location.href="/rep/delete?rep_seq="+$("#seq").val();	
 			}
@@ -244,12 +244,12 @@
 		<c:when test="${id==dto.rep_writer }">
 			 <div class="container-fluid">
         <div class="row m-0" id=menu>
-        	<c:forEach var="i" items="${pdto }">
-        		<div class="col-2 p-0" id=img>
+        	<c:forEach var="i" items="${plist }">
+        		<div class="col-6 p-0" id=img>
             	<img src="/img/${i.reSysName }">
             </div>
         	</c:forEach>
-            <<%-- div class="col-6 p-0" id=img>
+            <%-- div class="col-6 p-0" id=img>
             	<img src="/img/${pdto.reSysName }">
             </div> --%>
             <div class="col-5 " id=infoBox>
@@ -359,9 +359,11 @@
 		<c:otherwise>
 			 <div class="container-fluid">
         <div class="row m-0" id=menu>
-            <div class="col-6 p-0" id=img>
-            	<img src="/img/${pdto.reSysName }">
+            <c:forEach var="i" items="${plist }">
+        		<div class="col-6 p-0" id=img>
+            	<img src="/img/${i.reSysName }">
             </div>
+        	</c:forEach>
             <div class="col-5 " id=infoBox>
             	<div class="row m-0 mb-4">
             		<div class="col-2 txt">개인중고</div>

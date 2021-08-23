@@ -11,9 +11,33 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+ <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="aboutGallery/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="aboutGallery/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="aboutGallery/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="aboutGallery/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        
+        <!--Font  -->
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
 <style>
 	 *{box-sizing: border-box;}
-       .container-fluid{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
+       .container{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
        h2{text-align: center;}
 /* 	div{border:1px solid black;} */
        #category{text-align:right; margin-right:10px;}
@@ -21,6 +45,7 @@
        #searchBox{border:1px solid black;
        padding-top:5px; padding-bottom:5px;}
        #searchBox img{height:18px; width:18px;}
+       #keyword{width:90%;}
        #writeBox{text-align:right;}
        #write{ text-decoration:none; color:black; height:100%;}
        #word{border:0px solid black; width:90%;}
@@ -65,6 +90,10 @@
 					
 		})
 		
+		$("#search").on("click",function(){
+			location.href="/rep/list?index=1&keyword="+$("#keyword").val();
+		})
+		
 		function getList(){
 			$.ajax({
 				url:"/rep/scrollList",
@@ -104,7 +133,99 @@
 </script>
 </head>
 <body>
-	<div class="container-fluid">
+	<!-- Nav Bar Start -->
+        
+        <c:choose>
+  			<c:when test="${loginID==null }">
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
+                        <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </c:when>
+         <c:when test="${loginID=='admin'}">
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="portfolio.html" class="nav-item nav-link">관리자 페이지</a>
+                        <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </c:when>
+        
+        
+        <c:otherwise>
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+               <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
+
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <div style="border: 1px solid none; width: 100px;"></div>
+                        
+                        <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
+                        <a href="/memeber/logOutProc" class="nav-item nav-link">로그아웃</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        </c:otherwise>
+        
+        </c:choose>
+        <!-- Nav Bar End -->
+	<div class="container">
+	
         <h2>중고 장터</h2>
         <div class="row m-0 mt-5 h-120">
             <div class="col-2 p-0" id="category">
@@ -121,8 +242,8 @@
                 </select>
             </div>
             <div class="col-4" id=searchBox>
-                <input type="text" id=word  placeholder="상품명, 지역명 입력하세요">
-                <img src="/img/search.png">
+                <input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                <img src="/img/search.png" id=search>
             </div>
             <div class="col-5 p-0 pt-1" id=writeBox>
             	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
