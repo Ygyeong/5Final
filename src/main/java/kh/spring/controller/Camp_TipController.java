@@ -36,23 +36,21 @@ public class Camp_TipController {
     public ModelAndView selectAll(
     		@RequestParam(defaultValue = "title") String searchOption,
     		@RequestParam(defaultValue = "") String keyword,
-    		@RequestParam(value="category",defaultValue ="1") int category,
     		@RequestParam(defaultValue="1") int curPage
     		) throws Exception {
 
     	// 레코드의 갯수 계산
-        int count = service.countArticle(searchOption, keyword, category);
+        int count = service.countArticle(searchOption, keyword);
         
         // 페이지 나누기 관련 처리
         CampTipPagingDTO boardPager = new CampTipPagingDTO(count, curPage);
         int start = boardPager.getPageBegin();
         int end = boardPager.getPageEnd();
         
-        List<CampTipDTO> list = service.listAll(start, end, searchOption, keyword, category);
+        List<CampTipDTO> list = service.listAll(start, end, searchOption, keyword);
         // 데이터를 맵에 저장
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("list", list); // list
-        map.put("category", category);
         map.put("count", count); // 레코드의 갯수
         map.put("searchOption", searchOption); // 검색옵션
         map.put("keyword", keyword); // 검색키워드

@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="CampTip">
-
 	<insert id="insert" parameterType="kh.spring.dto.CampTipDTO">
 		insert into camp_tip values(camp_tip_seq.nextval,${category},#{writer},#{title},#{contents},sysdate,0)
 	</insert>
@@ -12,8 +11,7 @@
 	<select id="select" resultType="kh.spring.dto.CampTipDTO">
 		<include refid="pagingHeader"></include>
 	        SELECT rownum, aa.*
-	        FROM camp_tip aa where category = ${category} 
-	            and ${searchOption} like '%'||#{keyword}||'%'
+	        FROM camp_tip aa where ${searchOption} like '%'||#{keyword}||'%'
 	        ORDER BY camp_tip_num, write_date DESC 
     	<include refid="pagingFooter"></include> 
 	</select>
@@ -36,7 +34,7 @@
 	
 	<!-- 01_02. 게시글 레코드 갯수 -->
 	<select id="countArticle" resultType="int">
-	    SELECT COUNT(*) FROM camp_tip where category = ${category} and ${searchOption} like '%'||#{keyword}||'%'
+	    SELECT COUNT(*) FROM camp_tip where ${searchOption} like '%'||#{keyword}||'%'
 	    <!-- WHERE절을 include 태그로 삽입 -->
 	    <!-- <include refid="search"></include> -->
 	</select>
