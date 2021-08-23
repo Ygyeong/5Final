@@ -400,7 +400,7 @@ $(function() {
 
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="#">관리자 페이지</a></li>
+						<li><a href="/admin/home">관리자 페이지</a></li>
 						<li><a href="#">로그아웃</a></li>
 					</ul>
 
