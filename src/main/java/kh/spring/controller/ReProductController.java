@@ -184,7 +184,7 @@ public class ReProductController {
 	} 
 	@RequestMapping("updateProc")
 	public void updateProc(int rep_seq) {
-	
+		
 	} 
 	
 	@ExceptionHandler // 예외가 발생했을 때만,

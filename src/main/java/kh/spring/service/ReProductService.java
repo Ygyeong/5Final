@@ -177,6 +177,11 @@ public class ReProductService {
 	public int wishExist(ReWishListDTO dto) {
 		return wdao.wishExist(dto);
 	}
+
+
+
+
+	
 	
 	
 }
