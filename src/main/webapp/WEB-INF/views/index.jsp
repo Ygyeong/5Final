@@ -348,19 +348,11 @@ $(function() {
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
-<<<<<<< HEAD
+
 						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-						<li><a href="/products/selectAll">SHOP</a></li>
-=======
-
-						<li><a href="/info/list">캠핑장</a></li>
-						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
-
->>>>>>> 812f767c8c7899ea6623e1282bcd26ed9195b496
 						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
@@ -490,10 +482,16 @@ $(function() {
 							style="font-family: 'Nanum Pen Script', cursive; font-size: 50px;"
 							style="margin-bottom: 100px;">오늘은 어디로 떠나볼까?</span>
 					</p>
-					<form class="slides-form" action="#" autocomplete="off"
+					<form class="slides-form" action="/info/search" autocomplete="off"
 						style="margin-bottom: 120px;">
+						<select name="searchOption">
+             			<option value="all" >전체</option>
+             			<option value="facltNm"  > 캠핑장 이름 </option>
+             			<option value="lctCl"> 주변 환경 </option>
+             			<option value="addr1"  > 지역 </option>
+             		</select>
 						<input type="text" class="input-9 ae-4 fromCenter"
-							name="user-email" placeholder="원하시는 캠핑장소를 입력해보세요" />
+							name="keyword" placeholder="원하시는 캠핑장소를 입력해보세요" />
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>
