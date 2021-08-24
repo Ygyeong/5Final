@@ -88,9 +88,9 @@ $(function(){
 		let contentsResult = contentsLengthRegex.test(contents);
 		
 		if(!bresult1){
-			alert("상품명을 반드시 입력해주세요!");
+			alert("제목을 반드시 입력해주세요!");
 		}else if(!bresult2){
-			alert("상품가격을 입력해주세요!");
+			alert("을 입력해주세요!");
 		}else if(!bresult4){
 			alert("내용을 입력해주세요!");
 		}else if(!titleResult){
@@ -163,7 +163,7 @@ $(function(){
 			<div class="row">
 				<div class="table-title col-12">
 					<h2>
-						<b>상품등록</b>
+						<b>캠핑팁 등록</b>
 					</h2>
 				</div>
 			</div>
@@ -194,14 +194,25 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="form-group">
+<!-- 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
 					<div class="col-sm-10 writeDiv">
 						<input type="text" class="form-control" id="bbs_price"
 							name="writer" placeholder="Writer">
 					</div>
-				</div>
-
+				</div> -->
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="input-group" >
+							<input type="file" class="form-control" id="file1"  name="file" style="display:inline; width:430px" accept="image/jpeg,.png" multiple required>
+							<div class="input-group-btn" style="display: inline;">
+								<button class="btn btn-danger" type="button" id="btn1">삭제</button>
+							</div>
+      					</div>       
+        			</div>
+  				</div>
+				
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">내용</label>
 					<div class="col-sm-10 writeDiv">

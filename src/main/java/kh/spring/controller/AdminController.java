@@ -28,7 +28,7 @@ public class AdminController {
 	@RequestMapping("home")
 	public String home(HttpServletRequest request) throws Exception {
 		
-	    return "admin/adminmain";
+	    return "admin/admin";
 	}
 	
 	//파싱된 데이터를 DB에 저장

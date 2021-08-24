@@ -23,7 +23,6 @@
 	<!--main  -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/assets/**" location="/resources/assets/" />
-
 	<resources mapping="/manual/**" location="/resources/manual/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	
@@ -36,7 +35,11 @@
 	<resources mapping="/gal/aboutGallery/lib/**" location="/resources/gal/aboutGallery/lib/" />
 	<resources mapping="/gal/aboutGallery/mail/**" location="/resources/aboutGallery/mail/" />
 
-		
+
+	
+
+
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
