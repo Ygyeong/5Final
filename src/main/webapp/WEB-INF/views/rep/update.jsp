@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,68 +26,30 @@
     .txt{font-weight:580;}
     input[type=checkbox]:checked:after{color:black;}
     .note-btn-group.note-insert,.note-resizebar{display:none;}
-    .del_price{display: none;}
+    
 </style>
-
 <script>
 $(function(){
-    $("#ok").on("click",function(){
-      
-      let name = $("#name").val();
-      let price = $("#price").val();
-      let area = $("#area").val();
-      let content = $("#content").val();
-      let file = $("#input-file").val();
-	  let delivery = $('input:checkbox[name=rep_delivery]').is(':checked');
-	  
-      let nameRegex= /^.{4,20}$/;
-      let priceRegex = /^[1-9][0-9]{2,8}$/;
-      let areaRegex = /^.{1,10}$/;
-      let contentRegex = /^.{0,1000}$/;
-      let fileRegex = /^.{1,}$/;
-
-      let nameResult = nameRegex.test(name);
-      let priceResult = priceRegex.test(price);
-      let areaResult = areaRegex.test(area);
-      let contentResult = contentRegex.test(content);
-      let fileResult = fileRegex.test(file);
-      
-      if(!nameResult){
-         alert("상품이름은 4글자 이상 입력해주세요!");
-
-      }else if(!priceResult){
-         alert("가격을 입력해주세요!");
-      }else if(!delivery){
-    	  alert("거래방법을 선택해주세요!");
-      }else if(!areaResult){
-         alert("거래 지역을 입력해주세요!");
-      }else if(!contentResult){
-         alert("내용을 4000자 이내로 입력해주세요!");
-      }else if(!fileResult){
-        alert("첨부파일을 넣어주세요!");
-      }else{
-    	  document.getElementById("repFrm").submit();  
-      }
-     
-      
-   }) 
-
-   $("#parcel").on("click",function(){
-    let result = $("#parcel").prop("checked");
-   if(!result){
-    $(".del_price").css("display","none");
-   }else{
-    $(".del_price").css("display","flex");
-   }
-   })
-
 	$('#summernote').summernote({
         tabsize: 2,
         height: 300,
         width:1100
       });
 	
-	
+	 $(".delBtn").on("click",function(){
+		 let seq = $(this).attr("seq");
+		 $(this).parents(".delBox").remove();
+		 
+		 let delTarget = $("<input>");
+		 delTarget.attr("type","hidden");
+		 delTarget.attr("name","delete");
+		 delTarget.attr("value",seq);
+		 
+		 $("#input-file").append(delTarget);
+		 
+		 
+		
+	})
 	
 	
 })
@@ -95,8 +57,8 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-        <form action="/rep/insertProc" method="post" enctype="multipart/form-data" id="repFrm">
-        <div id=title> 중고장터 등록하기</div>
+        <form action="/rep/updateProc" method="post" enctype="multipart/form-data">
+        <div id=title>중고장터 수정하기</div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">종류</div>
             <div class="col-5 p-0">
@@ -111,52 +73,76 @@ $(function(){
                     <option value="기타캠핑용품">기타캠핑용품</option>
                 </select>
             </div>
-           
+           <input type=hidden value="${dto.rep_category}" id=category>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">이름</div>
-            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control" id=name></div>
+            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control" value="${dto.rep_name}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">금액</div>
-            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control" id=price></div>
+            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control" value="${dto.rep_price}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">거래방법</div>
             <div class="col-6 p-0">
-                <input type="checkbox" name=rep_delivery value="택배배송" id="parcel" class="check"> 택배배송
-                <input type="checkbox" name=rep_delivery value="직거래" class="check"> 직거래
+            	<c:choose>
+            		<c:when test="${dto.rep_delivery == '택배배송'}">
+            			<input type="checkbox" name=rep_delivery value="택배배송" id="parcel" checked> 택배배송
+               			<input type="checkbox" name=rep_delivery value="직거래"> 직거래
+            		</c:when>
+            		<c:otherwise>
+            			 <input type="checkbox" name=rep_delivery value="택배배송" id="parcel"> 택배배송
+                		 <input type="checkbox" name=rep_delivery value="직거래" checked> 직거래
+            		</c:otherwise>
+            	</c:choose>
             </div>
         </div>
-        <div class="row m-0 mt-3 mb-3 box del_price">
+        <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">배송비</div>
             <div class="col-6 p-0">
-                <input type="radio" name="rep_delivery_price" value="배송비 포함" checked> 판매자 부담
-                <input type="radio" name="rep_delivery_price" value="배송비 별도"> 구매자 부담
+            <c:choose>
+            	<c:when test="${dto.rep_delivery_price == '배송비 포함'}">
+            		 <input type="radio" name="rep_delivery_price" value="배송비 포함" checked> 판매자 부담
+                	 <input type="radio" name="rep_delivery_price" value="배송비 별도"> 구매자 부담
+            	</c:when>
+            	<c:otherwise>
+            		  <input type="radio" name="rep_delivery_price" value="배송비 포함"> 판매자 부담
+                	  <input type="radio" name="rep_delivery_price" value="배송비 별도" checked> 구매자 부담
+            	</c:otherwise>
+             </c:choose>
             </div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">거래지역</div>
-            <div class="col-5 p-0"><input type="text" name=rep_area class="form-control" id=area></div>
+            <div class="col-5 p-0">
+            	<input type="text" name=rep_area class="form-control" value="${dto.rep_area}">
+            </div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
-            <div class="col-5 p-0">
-                <input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+            <div class="col-6 p-0">
+           		<div class="row m-0">
+            		<div class="col-12">
+            			<input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+            		</div>
+            		<c:forEach var="i" items="${pdto}">
+            			<div class="col-12 delBox">${i.reOriName} <span><input type=button class=delBtn seq="${i.repicture_seq}" value="삭제"></span></div>
+            		</c:forEach>
+            	</div>
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
-		        <textarea class="col-12" id="summernote" name=rep_detail id=content></textarea>
+		        <textarea class="col-12" id="summernote" name=rep_detail>${dto.rep_detail}</textarea>
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>
-                <input type="button" class="btn btn-outline-dark" id=ok value=등록>
+                <button type="submit" class="btn btn-outline-dark" id=submit>등록</button>
                 <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
             </div>
         </div>
+        <input type=hidden name="rep_seq" value="${dto.rep_seq }">
         </form>
 	</div>
-    
-    
 </body>
 </html>
