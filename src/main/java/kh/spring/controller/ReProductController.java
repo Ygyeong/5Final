@@ -45,7 +45,6 @@ public class ReProductController {
 	@RequestMapping("list")
 
 	public String list(int index,String keyword,Model m) {
-		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		System.out.println(startNum);
@@ -68,7 +67,6 @@ public class ReProductController {
 	
 	@RequestMapping("detail")
 	public String detail(int rep_seq,Model m) {
-		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		System.out.println(rep_seq);
 		ReProductDTO dto = service.getDetail(rep_seq);
 		List<RePicturesDTO> plist = service.filesBySeq(rep_seq);
@@ -116,11 +114,11 @@ public class ReProductController {
 	@RequestMapping("insertProc")
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
-		System.out.println("세션 :"+session.getAttribute("loginID"));
+		System.out.println("세션 :"+session.getAttribute("loginID.cm_id"));
 
-		dto.setRep_writer((String)session.getAttribute("loginID"));
+		dto.setRep_writer((String)session.getAttribute("loginID.cm_id"));
 		dto.setRep_seq(rep_seq);
-		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		String realPath = session.getServletContext().getRealPath("resources/imgs");
 		System.out.println(realPath);
 		service.insert(dto,rep_seq,file,realPath);
 		return "redirect:/rep/list?index=1";
@@ -169,7 +167,7 @@ public class ReProductController {
 	@RequestMapping("wishInsert")
 	public void wishInsert(ReWishListDTO wdto) {
 //		session.setAttribute("id", "kt478");
-		wdto.setRem_id((String)session.getAttribute("loginID"));
+		wdto.setRem_id((String)session.getAttribute("loginID.cm_id"));
 		System.out.println("찜하기 기능");
 		System.out.println(wdto.getRem_id()+" : "+wdto.getRep_id()+" : "+wdto.getRew_id());
 		service.wishInsert(wdto);
@@ -192,7 +190,7 @@ public class ReProductController {
 	@ResponseBody
 	@RequestMapping("wishExist")
 	public String wishExist(ReWishListDTO wdto) {
-		wdto.setRem_id((String)session.getAttribute("loginID"));
+		wdto.setRem_id((String)session.getAttribute("loginID.cm_id"));
 		int result = service.wishExist(wdto);
 		System.out.println(result);
 		return new Gson().toJson(result);
