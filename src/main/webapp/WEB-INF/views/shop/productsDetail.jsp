@@ -279,7 +279,11 @@ a{text-decoration: none;color: white;}
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
 					<div class="col-6 p-0" id=img>
-						<img src="/img/${i.sysName}">
+						<c:forEach var="i" items="${sdto}">
+						<div class="col-2 p-0" id=img>
+							<img src="/img/${i.sysName}">
+						</div>
+					</c:forEach>
 					</div>
 					<div class="col-5 " id=infoBox>
 						<div class="row m-0 mb-4">
