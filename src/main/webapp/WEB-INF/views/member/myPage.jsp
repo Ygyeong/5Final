@@ -26,7 +26,6 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
-
 			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
 
 		})
@@ -307,9 +306,9 @@ a{
 	        <div id="me" class="card">
                 <div class="class=ard_body">
                     <h5 class="card-title"> ${loginID.cm_id}님의 마이페이지 </h5>
-                    <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button></br>
-                    <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button></br>
-                    <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button></br>
+                    <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button><br>
+                    <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button><br>
+                    <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button><br>
 
                     <button class="myPageBtn btn-dark" id="goHome">메인으로</button>
                 </div>

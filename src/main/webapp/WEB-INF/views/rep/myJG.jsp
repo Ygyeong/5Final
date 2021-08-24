@@ -269,7 +269,7 @@ a{
     		<div class="row m-0">
             <div class="col-3 p-0 mt-5">
                 <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0">시작 날짜</div>
+                <div class="col-12 p-0 pt-3">ui 구현중</div>
                 <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div>
             </div>
             <div class="col-9 p-0">

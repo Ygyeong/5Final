@@ -784,8 +784,11 @@ a {text-decoration: none;color: white;}
 									<br>
 									<button type="button" class="btn btn-outline-secondary"
 										id="back">뒤로가기</button>
-									<button type="button" class="btn btn-outline-secondary write"
-										id="write">글 쓰기</button>
+									<c:choose>
+										<c:when test="${loginID != null }">
+											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
+										</c:when>
+									</c:choose>
 								</div>
 							</div>
 
