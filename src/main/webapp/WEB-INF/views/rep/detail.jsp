@@ -53,8 +53,8 @@
      
      #user{font-size: 1.3em; font-weight: bold; text-align:center; margin:10px 0px 30px 0px;}
      #userBox{background-color:#F6F6F6;margin:38px 20px 0px 50px; width: 230px; height: 200px;}
-     #userID{text-align:center; font-weight:600;}
-     #repCount{margin-left:20px;width:50px;}
+     #userID{text-align:center; font-weight:600; font-size:20px; margin-top:20px;}
+     #repCount{margin-left:20px;width:100px;}
      #repCount span{font-weight:600; padding-left:5px;}
      #userID,#repCount,#repCount span:hover{cursor:pointer;}
      
@@ -208,6 +208,12 @@ a{
  			
  		})
  		
+ 		$("#likenBtn").on("click",function(){
+ 			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+			if(result){
+				location.href="/member/loginPage";
+			}
+ 		})
  		$("#userID").on("click",function(){
  			location.href="/rep/myJG?index=1&id="+$(this).text();
  		})
@@ -375,8 +381,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -392,7 +398,7 @@ a{
         </a>
     </nav>
 </c:when>
-<c:when test="${loginID='admin'}">
+<c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
            
@@ -400,8 +406,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -426,8 +432,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -539,7 +545,7 @@ a{
                 <div class="col-1" id=cmtBtn>댓글등록
                 </div>
             </div>
-            <div class="box">
+             <div class="box">
             	<c:forEach var="i" items="${cdto }">
             	<c:choose>
             	<c:when test="${loginID==i.recmt_writer }">
@@ -572,8 +578,85 @@ a{
             	</c:choose>
             	</c:forEach>
             	
-            </div>
+            </div> 
 
+    </div>
+	</c:when>
+	<c:when test="${loginID==null }">
+		<div class="container-fluid">
+        <div class="row" id=menu>
+            <c:forEach var="i" items="${plist }">
+        		<div class="col-6 p-0" id=img>
+            	<img src="/img/${i.reSysName }">
+            </div>
+        	</c:forEach>
+            <div class="col-5 " id=infoBox>
+            	<div class="row m-0 mb-4">
+            		<div class="col-2 txt">개인중고</div>
+            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
+            	</div>
+            	
+                <div class="row m-0">
+                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
+                </div>
+                <div class="row m-0" id=priceBox>
+                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
+                  </div>
+                <div class="row m-0 pb-2 pt-4">
+                    <div class="col-3 p-0">거래방법</div>
+                    <div class="col-9 p-0">${dto.rep_delivery}</div>
+                </div>
+                <div class="row m-0 pb-2">
+                    <div class="col-3 p-0">배송비</div>
+                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
+                </div>
+                
+                <div class="row m-0 pb-4">
+                    <div class="col-3 p-0">거래지역</div>
+                    <div class="col-9 p-0">${dto.rep_area}</div>
+                </div>
+                <div class="row pt-3" id=funcBox>
+                    <div class="col-5 p-0" id=like>
+						 <button class="btn btn-outline-dark" id=likenBtn>찜하기</button>
+					</div>
+                   
+                </div>
+                <input type=hidden id=seq value="${dto.rep_seq}">
+            </div>
+        </div>
+        <div class="row p-0 content">
+            <div class="col-8">
+                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
+            </div>
+            <div class="col-3 p-0" id=userBox>
+                <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
+                 <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+            </div>
+        </div>
+     
+            <div class="row m-0">
+                <div class="col-12" id=cmtT>댓글</div>
+            </div>
+            <div class="row cmtBox">
+                <div class="col-11 p-0">
+                    <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
+                </div>
+                <div class="col-1" id=userBtn>댓글등록
+                </div>
+            </div>
+			<div class="box">
+				<c:forEach var="i" items="${cdto }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:forEach>
+			</div>
     </div>
 	</c:when>
 	<c:otherwise>
@@ -624,8 +707,8 @@ a{
                 <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
             </div>
             <div class="col-3 p-0" id=userBox>
-                <div class="col-12 " id=userID>${dto.rep_writer}</div>
-                 <div class="col-4 " id=repCount>상품 <span>${repCount}</span></div>
+                <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
+                 <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
             </div>
         </div>
      

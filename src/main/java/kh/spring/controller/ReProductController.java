@@ -43,6 +43,7 @@ public class ReProductController {
 	
 	@RequestMapping("list")
 	public String list(int index,String keyword,Model m) {
+		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		System.out.println(startNum);
@@ -52,14 +53,19 @@ public class ReProductController {
 			m.addAttribute("list",list);
 		}else {
 			List<ReProductDTO> list = service.search(keyword,startNum,endNum);
+			int listsize = list.size();
+			int total = (int)Math.ceil(listsize/(double)ReProductConfig.RECORD_COUNT_PER_LIST);
 			m.addAttribute("list",list);
+			m.addAttribute("keyword",keyword);
+			m.addAttribute("total",total);
+			
 		}
-		
 		return "rep/list";
 	}
 	
 	@RequestMapping("detail")
 	public String detail(int rep_seq,Model m) {
+		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		System.out.println(rep_seq);
 		ReProductDTO dto = service.getDetail(rep_seq);
 		List<RePicturesDTO> plist = service.filesBySeq(rep_seq);
@@ -78,10 +84,22 @@ public class ReProductController {
 	@ResponseBody
 	@RequestMapping(value="scrollList",produces="text/html;charset=utf8")
 	public String scrollList(int index) {
+		System.out.println("검색어 없을 때 인덱스 :"+index);
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
-		List<ReProductDTO> list = service.getAll(startNum,endNum);
-		System.out.println(index);
+		List<ReProductDTO> list = service.Thumbnail(startNum,endNum);
+		System.out.println("스크롤 인덱스 : "+index);
+		return new Gson().toJson(list);
+	}
+	@ResponseBody
+	@RequestMapping(value="scrollSearchList",produces="text/html;charset=utf8")
+	public String scrollSearchList(int index,String keyword) {
+		System.out.println("검색어 있을 때 인덱스 :"+index);
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<ReProductDTO> list = service.search(keyword, startNum, endNum);
+		System.out.println("검색 스크롤 결과 :"+list);
+		System.out.println("사이즈 : "+list.size());
 		return new Gson().toJson(list);
 	}
 	
@@ -95,7 +113,7 @@ public class ReProductController {
 	@RequestMapping("insertProc")
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
-		
+		System.out.println("세션 :"+session.getAttribute("loginID"));
 
 		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);

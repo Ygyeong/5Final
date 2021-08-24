@@ -6,7 +6,7 @@
 <mapper namespace="ReWishList">
 
 	<insert id="insert">
-		insert into camp_rewishlist values(1,#{rem_id},${rep_id})
+		insert into camp_rewishlist values(rew_id_seq.nextval,#{rem_id},${rep_id})
 	</insert>
 	<select id="Count" resultType="int">
 		select count(*) from camp_rewishlist where rep_id = ${value}

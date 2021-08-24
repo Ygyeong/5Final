@@ -31,7 +31,7 @@
 
 <script>
 $(function(){
-    $("#submit").on("click",function(){
+    $("#ok").on("click",function(){
       
       let name = $("#name").val();
       let price = $("#price").val();
@@ -54,24 +54,20 @@ $(function(){
       
       if(!nameResult){
          alert("상품이름은 4글자 이상 입력해주세요!");
-         return;
+
       }else if(!priceResult){
          alert("가격을 입력해주세요!");
-         return;
       }else if(!delivery){
     	  alert("거래방법을 선택해주세요!");
-    	  return;
       }else if(!areaResult){
          alert("거래 지역을 입력해주세요!");
-         return;
       }else if(!contentResult){
          alert("내용을 4000자 이내로 입력해주세요!");
-         return;
       }else if(!fileResult){
         alert("첨부파일을 넣어주세요!");
-         return;
+      }else{
+    	  document.getElementById("repFrm").submit();  
       }
-      $("#frm").submit();
      
       
    }) 
@@ -99,7 +95,7 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-        <form action="/rep/insertProc" method="post" enctype="multipart/form-data" id="frm">
+        <form action="/rep/insertProc" method="post" enctype="multipart/form-data" id="repFrm">
         <div id=title> 중고장터 등록하기</div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">종류</div>
@@ -154,7 +150,7 @@ $(function(){
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>
-                <input type="submit" class="btn btn-outline-dark" id=submit value=등록>
+                <input type="button" class="btn btn-outline-dark" id=ok value=등록>
                 <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
             </div>
         </div>

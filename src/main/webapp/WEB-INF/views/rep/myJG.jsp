@@ -189,8 +189,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -207,7 +207,7 @@ a{
     </nav>
 
 </c:when>
-<c:when test="${loginID='admin'}">
+<c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
            
@@ -215,8 +215,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -241,8 +241,8 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>

@@ -33,18 +33,7 @@ public class ReProductService {
 	@Autowired
 	private ReWishListDAO wdao;
 	
-	
-//	로그인
-	public int login(String id, int pw) {
-		Map<String,Object> param = new HashMap<>();
-		System.out.println(id+":"+pw);
-		param.put("id",id);
-		param.put("pw",pw);
-		return dao.login(param);
-		
-	}
-	
-	
+
 	
 	
 	@Transactional
