@@ -85,6 +85,7 @@ $(function(){
 		let p_seq=$(this).find(".p_seq").val();
 		location.href="/products/detail?p_seq="+p_seq;
 	})
+	
 	let index=1;
 	$(window).scroll(function(){
 		let $window = $(this);
@@ -147,7 +148,7 @@ $(function(){
 				<ul class="navbar_menu">
 					<li><a href="/info/list">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -158,7 +159,7 @@ $(function(){
 				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
 			</nav>
 		</c:when>
-		<c:when test="${loginID='admin'}">
+		<c:when test="${loginID=='admin'}">
 			<nav class="navbar">
 				<div class="navbar_logo">
 					<a href=""><img src="/assets/img/background/camp_logo.png"
@@ -167,7 +168,7 @@ $(function(){
 				<ul class="navbar_menu">
 					<li><a href="/info/list">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -187,7 +188,7 @@ $(function(){
 				<ul class="navbar_menu">
 					<li><a href="/info/list">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -228,7 +229,7 @@ $(function(){
         <div class="row listbar" >
         <c:forEach var="list" items="${list}">
 			<div class="col-3 p-0 list"  seq="${list.p_seq}">
-				<div class="col-12 img"><img src="/img/"></div>
+				<div class="col-12 img"><img src="/img/${list.p_thumsysName}"></div>
 				<div class="col-12 mb-1 link">${list.p_name}</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${list.p_price}<span>원</span></div>

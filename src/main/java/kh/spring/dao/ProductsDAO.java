@@ -38,8 +38,8 @@ public class ProductsDAO {
 		return mybatis.delete("Products.delete",p_seq);
 	}
 	
-	public int getPseq() {
-		return mybatis.selectOne("Products.getPseq");
+	public int getP_seq() {
+		return mybatis.selectOne("Products.getP_seq");
 	}
 	public List<ProductsDTO> pList(String camp_id){
 		return mybatis.selectList("Products.pList",camp_id);

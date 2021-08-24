@@ -29,7 +29,7 @@ public class ProductsService {
 	@Transactional
 	public void insert(ProductsDTO dto,int p_seq,MultipartFile[] file,String realPath)throws Exception {
 		DecimalFormat df = new DecimalFormat("#,###");
-		dto.setP_price(Integer.parseInt(df.format(dto.getP_price())));
+		dto.setP_price(df.format(Integer.parseInt(dto.getP_price())));
 		dao.insert(dto);
 		
 		File filesPath = new File(realPath);
@@ -46,6 +46,14 @@ public class ProductsService {
 			}
 		}
 	}
+	
+	public List<SummerDTO> getSList(){
+		return sdao.getSList();
+	}
+	
+	public int delete(int p_seq) {
+		return dao.delete(p_seq);
+	}
 
 	public List<ProductsDTO> selectAll(int startNum,int endNum) {
 		Map<String,Object> param = new HashMap<>();
@@ -54,27 +62,19 @@ public class ProductsService {
 		return dao.selectAll(param);
 	}
 
-	public ProductsDTO detail(int p_seq) {
-		return dao.detail(p_seq);
-	}
-
-	public int delete(int p_seq) {
-		return dao.delete(p_seq);
-	}
-	
 	public List<SummerDTO> filesBySeq(int s_seq) {
 		return sdao.filesBySeq(s_seq);
 	}
 	
 	public int getP_seq() {
-		return dao.getPseq();
+		return dao.getP_seq();
 	}
 
 	public List<ProductsDTO> Thumbnail(int startNum,int endNum) {
 		List<ProductsDTO> list = this.selectAll(startNum,endNum);
 		for(ProductsDTO dto : list) {
 			SummerDTO sdto = sdao.selectThumbBySeq(dto.getP_seq());
-			dto.setThumsysName(sdto.getSysName());
+			dto.setP_thumsysName(sdto.getSysName());
 
 			if(dto.getP_name().length()>14) {
 				String subName = dto.getP_name().substring(0, 14)+"...";
@@ -85,19 +85,9 @@ public class ProductsService {
 
 	}
 	
-//	public List<ProductsDTO> pList(String camp_id){
-//		List<ProductsDTO> list = dao.pList(camp_id);
-//		for(ProductsDTO dto : list) {
-//			SummerDTO sdto = sdao.selectThumbBySeq(dto.getP_seq());
-//			dto.setThumsysName(sdto.getSysName());
-//			
-//			
-//			if(dto.getP_name().length()>14) {
-//				String subName = dto.getP_name().substring(0, 12)+"...";
-//				dto.setP_name((subName));
-//			}
-//		}
-//		return list;
-//	}
+	public ProductsDTO detail(int p_seq) {
+	return dao.detail(p_seq);
+}
+	
 
 }

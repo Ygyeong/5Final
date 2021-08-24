@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ProductsDTO {
 	private int p_seq;
 	private String p_name;
-	private int p_price;
+	private String p_price;
 	private String p_delivery;
 	private String p_category;
 	private Date p_rdate;
@@ -13,14 +13,13 @@ public class ProductsDTO {
 	private String p_contents;
 	private int p_view_count;
 	private String camp_id;
-	private String thumsysName;
-	private String p_detail;
+	private String p_thumsysName;
 	
 	public ProductsDTO() {}
 	
 
-	public ProductsDTO(int p_seq, String p_name, int p_price, String p_delivery, String p_category, Date p_rdate,
-			int p_stock, String p_contents, int p_view_count, String camp_id, String thumsysName, String p_detail) {
+	public ProductsDTO(int p_seq, String p_name, String p_price, String p_delivery, String p_category, Date p_rdate,
+			int p_stock, String p_contents, int p_view_count, String camp_id, String p_thumsysName) {
 		super();
 		this.p_seq = p_seq;
 		this.p_name = p_name;
@@ -32,8 +31,7 @@ public class ProductsDTO {
 		this.p_contents = p_contents;
 		this.p_view_count = p_view_count;
 		this.camp_id = camp_id;
-		this.thumsysName = thumsysName;
-		this.p_detail = p_detail;
+		this.p_thumsysName = p_thumsysName;
 	}
 
 
@@ -53,11 +51,11 @@ public class ProductsDTO {
 		this.p_name = p_name;
 	}
 
-	public int getP_price() {
+	public String getP_price() {
 		return p_price;
 	}
 
-	public void setP_price(int p_price) {
+	public void setP_price(String p_price) {
 		this.p_price = p_price;
 	}
 
@@ -117,20 +115,15 @@ public class ProductsDTO {
 		this.camp_id = camp_id;
 	}
 
-	public String getThumsysName() {
-		return thumsysName;
+	public String getP_thumsysName() {
+		return p_thumsysName;
 	}
 
-	public void setThumsysName(String thumsysName) {
-		this.thumsysName = thumsysName;
+	public void setP_thumsysName(String p_thumsysName) {
+		this.p_thumsysName = p_thumsysName;
 	}
 
-	public String getP_detail() {
-		return p_detail;
-	}
-
-	public void setP_detail(String p_detail) {
-		this.p_detail = p_detail;
-	}
+	
+	
 	
 }

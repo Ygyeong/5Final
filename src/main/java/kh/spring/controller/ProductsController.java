@@ -41,7 +41,7 @@ public class ProductsController {
 		dto.setP_seq(p_seq);
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");
 		service.insert(dto,p_seq,file,realPath);
-		return "redirect:/shop/productsList?index=1";
+		return "redirect:/shop/selectAll?index=1";
 	}
 
 	@RequestMapping("selectAll") // 상품목록

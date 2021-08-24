@@ -120,9 +120,9 @@ $(function(){
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -133,16 +133,16 @@ $(function(){
 				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
 			</nav>
 		</c:when>
-		<c:when test="${loginID='admin'}">
+		<c:when test="${loginID=='admin'}">
 			<nav class="navbar">
 				<div class="navbar_logo">
 					<a href=""><img src="/assets/img/background/camp_logo.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -160,9 +160,9 @@ $(function(){
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -182,7 +182,7 @@ $(function(){
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">카테고리</div>
             <div class="col-6 p-0">
-                <select name="rep_category" id="">
+                <select name="p_category" id="">
                     <option value="텐트/타프" selected>텐트/타프</option>
                     <option value="침낭/매트">침낭/매트</option>
                     <option value="테이블/의자">테이블/의자</option>
@@ -197,11 +197,11 @@ $(function(){
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">이름</div>
-            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=p_name class="form-control"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">금액</div>
-            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=p_price class="form-control"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
@@ -210,7 +210,7 @@ $(function(){
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
-		        <textarea class="col-12" id="summernote" name=rep_detail></textarea>
+		        <textarea class="col-12" id="summernote" name=p_contents></textarea>
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>

@@ -5,14 +5,14 @@
 
 <mapper namespace="Products">
 	<insert id="insert"> <!-- 상품등록 -->
-		insert into camp_products values(p_seq.nextval,#{p_name},#{p_price},null,#{p_category},#{cm_id},sysdate,null,1,#{p_contents},0)
+		insert into camp_products values(${p_seq},#{p_name},#{p_price},null,#{p_category},sysdate,1,#{p_contents},1,#{camp_id},null)
 <!-- 		insert into camp_products values(p_seq.nextval,#{p_name},#{p_price},#{p_delivery,jdbcType=VARCHAR},#{p_category,jdbcType=VARCHAR},sysdate,#{p_stock},#{p_contents},#{p_view_count,jdbcType=NUMERIC}) -->
 	</insert>
 	
-	<select id="selectAll" resultType="kh.spring.dto.ReProductDTO">
+	<select id="selectAll" resultType="kh.spring.dto.ProductsDTO">
 	select * from 
 	(select row_number() over(order by p_seq desc) rnum,p_seq,p_name,p_price,
-	p_category,camp_id from camp_reproduct) 
+	p_category,camp_id from camp_products) 
 	where rnum between #{startNum} and #{endNum}
     </select>
 	
@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getP_seq" resultType="int">
-		select rep_seq.nextval from dual
+		select p_seq.nextval from dual
 	</select>
 	
 	<select id="pList" resultType="kh.spring.dto.ProductsDTO">
@@ -33,11 +33,4 @@
 	</select>
 	
 	
-	
-	
-	
-
-
-
-
 </mapper>
