@@ -350,7 +350,9 @@ $(function() {
 					<ul class="mainMenu margin-top-3">
 
 						<li><a href="/info/list?index=1">캠핑장</a></li>
-						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
+
+						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -482,12 +484,14 @@ $(function() {
 					<form class="slides-form" action="/info/search" autocomplete="off"
 						style="margin-bottom: 120px;">
 						<select name="searchOption">
+
 							<option value="all">전체</option>
 							<option value="facltNm">캠핑장 이름</option>
 							<option value="lctCl">주변 환경</option>
 							<option value="addr1">지역</option>
 						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
 							placeholder="원하시는 캠핑장소를 입력해보세요" />
+
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>
