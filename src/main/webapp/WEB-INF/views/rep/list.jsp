@@ -190,6 +190,9 @@ a{
 			if(scrollTop+windowHeight+30>=documentHeight){
 				index++;
 				if($("#searchKey").val()!=null){
+					if($("#total").val()>index){
+						return;
+					}
 					 setTimeout(getSearchList(),2000);
 				}else{
 					setTimeout(getList(),2000);	
@@ -389,6 +392,7 @@ a{
                 	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
                 	<img src="/img/search.png" id=search>
                 	<input type=hidden value=${keyword } id=searchKey>
+                	<input type=hidden value=${total } id=total>
                 </div>
 
             </div>
