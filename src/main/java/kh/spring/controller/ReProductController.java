@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
+import kh.spring.config.InfoConfig;
 import kh.spring.config.ReProductConfig;
 import kh.spring.dto.ReCommentsDTO;
 import kh.spring.dto.RePicturesDTO;
@@ -54,8 +55,8 @@ public class ReProductController {
 	
 	@RequestMapping("list")
 	public String list(int index,Model m) {
-		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
-		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		int endNum=index*InfoConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(InfoConfig.RECORD_COUNT_PER_LIST-1);
 		List<ReProductDTO> list = service.Thumbnail(startNum,endNum);
 		m.addAttribute("list",list);
 		return "rep/list";
@@ -99,7 +100,7 @@ public class ReProductController {
 		int rep_seq = service.getSeq();
 		
 //		session.setAttribute("id", "kt478");
-		dto.setRep_writer((String)session.getAttribute("id"));
+		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");
 		System.out.println(realPath);

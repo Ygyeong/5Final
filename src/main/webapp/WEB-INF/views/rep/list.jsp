@@ -258,7 +258,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -284,7 +284,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -310,7 +310,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -362,16 +362,16 @@ a{
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 img"><img src="/img/"></div>
 				<div class="col-12 mb-1 link">${i.rep_name }</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${i.rep_price }<span>원</span></div>
-					<div class="col-6 diffD">${i.rep_diff_date }</div>
-				</div>
+					<div class="col-6 diffD">${i.rep_diff_date}</div>
+				</div>s
 				<div class="row m-0 mt-2 pt-2 pb-2 ar">
 					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
 				</div>
-				<input type=hidden value=${i.rep_seq } class=seq>
+				<input type=hidden value="${list.p_seq}" class=p_seq>
 			</div>       
 		</c:forEach>
 		</div> 

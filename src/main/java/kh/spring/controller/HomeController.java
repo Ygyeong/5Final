@@ -25,7 +25,7 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String home(HttpServletRequest request, Model model) throws Exception  {
-		List<Camp_infoDTO> list = service.selectAll();
+		List<Camp_infoDTO> list = service.selectAll(0,6);
 		int rating = gservice.selectRating();  
 		
 		model.addAttribute("list",list);

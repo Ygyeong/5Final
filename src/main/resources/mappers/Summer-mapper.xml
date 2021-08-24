@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Summer">
+
+	<insert id="insert">
+		insert into camp_summernote values(s_seq.nextval,#{oriName},#{sysName},${p_seq})
+	</insert>
+	<select id="getAll" resultType="kh.spring.dto.SummerDTO">
+		select * from camp_summernote
+	</select>
+	<select id="filesBySeq" resultType="kh.spring.dto.SummerDTO">
+		select * from camp_summernote where p_seq=${value}
+	</select>
+	
+	<select id="selectThumbBySeq" resultType="kh.spring.dto.SummerDTO">
+		select * from camp_summernote where p_seq = #{value} and s_seq =(select min(s_seq) from camp_summernote where p_seq=#{value})
+	</select>
+	<delete id="delete">
+		delete from camp_summernote where p_seq = #{value}
+	</delete>
+</mapper>
