@@ -400,9 +400,9 @@ a{
             	<a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
         </div>
-        <div class="row camp m-0">
+        <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
-        </div>
+        </div> -->
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
@@ -438,9 +438,9 @@ a{
             	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
         </div>
-        <div class="row camp m-0">
+        <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
-        </div>
+        </div> -->
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
