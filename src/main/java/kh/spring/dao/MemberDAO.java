@@ -18,7 +18,7 @@ public class MemberDAO {
 	
 	public int idDuplCheck(String cm_id) {
 		return mybatis.selectOne("Member.idDuplCheck", cm_id);
-	}
+	}	
 	
 	public MemberDTO login(MemberDTO dto) {
 		return mybatis.selectOne("Member.login", dto);

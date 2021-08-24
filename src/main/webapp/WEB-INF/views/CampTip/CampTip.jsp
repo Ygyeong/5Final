@@ -825,6 +825,7 @@ a {text-decoration: none;color: white;}
 			</div>
 		</div>
 	</div>
+
 	<script>
     
     
@@ -842,6 +843,9 @@ a {text-decoration: none;color: white;}
     });
     
     </script>
+
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+	
 </body>
 
 </html>

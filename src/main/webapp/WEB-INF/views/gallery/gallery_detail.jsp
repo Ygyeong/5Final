@@ -9,6 +9,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="Free Website Template" name="keywords">
 <meta content="Free Website Template" name="description">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <!-- Favicon -->
 <link href="aboutGallery/img/favicon.ico" rel="icon">
@@ -40,7 +41,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 
 <style>
 .star_rating {
@@ -158,22 +159,22 @@ $("body").on("click","#modi",function(){
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;font-weight:normal;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"> 
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="service.html" class="nav-item nav-link">SHOP</a>
-                        <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
-                        
-                        <a href="portfolio.html" class="nav-item nav-link">회원가입</a>
-                        <a href="contact.html" class="nav-item nav-link">로그인</a>
+                   
+                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
+                        <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
                     </div>
                 </div>
             </div>
@@ -183,22 +184,22 @@ $("body").on("click","#modi",function(){
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="service.html" class="nav-item nav-link">SHOP</a>
-                        <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="portfolio.html" class="nav-item nav-link">관리자 페이지</a>
-                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                        <a href="" class="nav-item nav-link">관리자 페이지</a>
+                        <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
             </div>
@@ -209,22 +210,22 @@ $("body").on("click","#modi",function(){
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:60px;height:100px;margin-bottom:-6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="index.html" class="nav-item nav-link">캠핑장</a>
-                        <a href="about.html" class="nav-item nav-link">캠핑정보</a>
-                        <a href="service.html" class="nav-item nav-link">SHOP</a>
-                        <a href="price.html" class="nav-item nav-link">중고장터</a>
-                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑 후기</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
+                        <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
+                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
+                        <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="portfolio.html" class="nav-item nav-link">마이페이지</a>
-                        <a href="contact.html" class="nav-item nav-link">로그아웃</a>
+                        <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
+                        <a href="/memeber/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
             </div>
@@ -245,12 +246,9 @@ $("body").on("click","#modi",function(){
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2 style="color:white;">캠핑 후기</h2>
+					<h2 style="color:white; left:500px;">캠핑 후기</h2>
 				</div>
-				<div class="col-12">
-					<a href="">Home</a> 
-
-				</div>
+				
 			</div> 
 		</div>
 	</div>
@@ -388,7 +386,7 @@ $("body").on("click","#modi",function(){
 					id=comment>
 
 					<div class="header col-12 col-lg-12 col-xl-12 p-0"
-						style="background-color: white;">ID : ${loginID}</div>
+						style="background-color: white;margin-left:15px;">글쓴이 : ${loginID}</div>
 					<div class="content col-12 col-lg-12 col-xl-12 p-0"
 						style="width: 770px; height: 110px;">
 						<textarea
@@ -502,12 +500,11 @@ $("body").on("click","#modi",function(){
 	
 
 
-	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+	<!-- <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
 
 	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 	<script src="aboutGallery/lib/easing/easing.min.js"></script>
 	<script src="aboutGallery/lib/owlcarousel/owl.carousel.min.js"></script>
 	<script src="aboutGallery/lib/isotope/isotope.pkgd.min.js"></script>

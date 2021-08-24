@@ -9,223 +9,225 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>상품등록</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
 <!-- include libraries(jQuery, bootstrap) -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 <!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
 
 <style>
-.table-title {        
-	background: #00285b;
-	color: #fff;
-	padding: 16px 30px;
-	border-radius: 3px 3px 0 0;
+	body{background-color:#F9F9F9;}
+    *{box-sizing: border-box;}
+    /* div{border: 1px solid black;} */
+    .container{margin-top: 95px; margin-bottom: 80px; width:950px; height: 1000px;padding:20px 30px 0px 30px; 
+    border-radius:30px; background-color:white;}
+    #title{font-weight:700; font-size: 1.7em; text-align: center; border-bottom:1px solid #ddd; 
+    line-height: 70px; height: 70px; margin-bottom: 60px;}
+    .box{height:40px;line-height: 35px; }
+    .box input[type=text]{height: 70%; margin-top:5px;}
+    #input-file{height: 100%;}
+    #btnBox{text-align: center; margin-top: 50px;}
+    .txt{font-weight:580;}
+    input[type=checkbox]:checked:after{color:black;}
+    .row {--bs-gutter-x: none;}
+    .note-modal-footer {height: 55px;}
+    .note-btn-group.note-insert,.note-resizebar{display:none;}
+    .note-toolbar {text-align: center;}
+/*네비바 스타일 시작
+--------------------------------------------------------------------------------------------------------------- */   
+:root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
+body{margin: 0;}
+a{text-decoration: none;color: white;}
+.navbar{display: inline-flex;justify-content: space-between;align-items: center;background-color: #263343;padding: 8px 12px;z-index:1000 !important;}
+.navbar{position: fixed;top: 0;left: 0;right: 0;}
+.navbar_logo{font-size: 32px;color: white;font-family: 'Nanum Brush Script';}
+.navbar_logo i {color: white;}
+.navbar_menu{display: flex;list-style: none;padding-left: 0;margin-bottom:-3px;}
+.navbar_menu li {padding: 8px 12px;}
+.navbar_menu li:hover {background-color: steelblue; border-radius: 4px;}
+.navbar_member {list-style: none; color: white; display: flex; padding-left: 0; margin-bottom:-3px;}
+.navbar_member li{padding: 8px 12px;}
+.navbar_toogleBtn{display: none; position: absolute; right: 32px; font-size: 24px;}
+@media screen and (max-width: 768px) {
+.navbar{flex-direction: column;align-items: flex-start;padding: 8px 24px;}
+.navbar_menu{display: none;flex-direction: column;align-items: center;width: 100%;}
+.navbar_menu li {width: 100%;text-align: center;}
+.navbar_member{display: none;justify-content: center;width: 100%;}
+.navbar_toogleBtn{display: block;}
+.navbar_menu.active,.navbar_member.active{display: flex;}
+:root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
 }
-
-.table-title h2 {
-	margin: 5px 0 0;
-	font-size: 24px;
-} 
-label{
-  padding:4px;
-  margin-top:3px;
-  vertical-align: center;
-}
-form>div:first-child{
-	margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0;
-    border-bottom: 1px solid #eee;
-}
-.writeDiv:nth-child(n+2){
-  padding:0px;
-  margin-top: 3px;
-}
-select{
-	margin-top : 3px;
-}
-
+/*네비바 스타일 끝
+--------------------------------------------------------------------------------------------------------------- */  
 </style>
-
-
 <script>
 $(function(){
-	let i=0;
-	$("#backBtn").on("click",function(){
-		location.href = "${pageContext.request.contextPath}/list.bor?cpage=1";
-	})
-	
-	$("#saveBtn").on("click",function(){
-		
-		let title = $("#bbs_title").val();
-		let price = $("#bbs_price").val();
-		let stock = $("#bbs_stock").val();
-		let contents = $("#summernote").val();
-		
-		let blankRegex = /.*\S+/;
-		let titleLengthRegex = /^.{0,66}$/;
-		let priceLengthRegex = /^.{0,7}$/;
-		let stockLengthRegex = /^.{0,}$/;
-		let contentsLengthRegex = /^.{0,1333}$/;
-		
-		let bresult1 = blankRegex.test(title);
-		let bresult2 = blankRegex.test(price);
-		let bresult3 = blankRegex.test(stock);
-		let bresult4 = blankRegex.test(contents);
-		
-		let titleResult = titleLengthRegex.test(title);
-		let priceResult = priceLengthRegex.test(price);
-		let stockResult = stockLengthRegex.test(stock);
-		let contentsResult = contentsLengthRegex.test(contents);
-		
-		if(!bresult1){
-			alert("상품명을 반드시 입력해주세요!");
-		}else if(!bresult2){
-			alert("상품가격을 입력해주세요!");
-		}else if(!bresult3){
-			alert("상품수량을 입력해주세요!");
-		}else if(!bresult4){
-			alert("내용을 입력해주세요!");
-		}else if(!titleResult){
-			alert("제목은 66글자 이내로 작성해주세요.")
-		}else if(!priceResult){
-			alert("")
-		}else if(!stockResult){
-			alert("")
-		}else if(!contentsResult){
-			alert("내용은 1,333글자 이내로 작성해주세요.")
-		}
-		else{
-			$("input[name=files]").remove();
-			$("#frm").submit();
-		}
-	})
-	
-	
-	 $('#summernote').summernote({
+	// 툴바생략
+	$('#summernote').summernote({
 	        placeholder: '상품 상세 정보를 입력하세요.',
 	        height: 500,
-	        lang : 'ko-KR',
 	        minHeight: 400,             // set minimum height of editor
 	        maxHeight: 400,             // set maximum height of editor
-	        codeviewFilter: true,
+            focus : true,
+            lang : 'ko-KR',
+            codeviewFilter: true,
 	        codeviewIframeFilter: true,
-	        callbacks:{
-	            onImageUpload:function(files) {
-	                  
-	                 let editor = this;  
-	                 let file = files[0];      
-	               
-	                 let form = new FormData()    
-	                 form.append("file",file);    
-	                 
-	                 $.ajax({
-	                    data:form,
-	                    type:"post",
-	                    url:"/summer/upload",
-	                    contentType:false,
-	                    enctype : 'multipart/form-data',
-	                    processData:false,  
-	                	dataType:"json",
-	           
-	                 }).done(function(resp){
-	                	 let url = resp.url;
-	                	 console.log(resp.url);
-	                	
-	                   $(editor).summernote('insertImage', resp.url); //editor 인스턴스의 insertImage 기능으로 이미지를 화면에 출력
-	   
-	                   // input type=hidden 노드
-	                   let input = $("<input type='hidden'>");
-	                   input.attr("name","summerImg");
-	                   input.attr("value",[resp.oriName,resp.sysName]);
-	                   
-	                   $("#frm").append(input);
-	                 }); 
-	               }
-	           }
-	      });
-
-	$(window).on("unload",function(){
-		navigator.sendBeacon("${pageContext.request.contextPath}/unload.file");
-	})
-	
-})
+            //콜백 함수
+	        callbacks: {	//여기 부분이 이미지를 첨부하는 부분
+				onImageUpload : function(files) {
+					uploadSummernoteImageFile(files[0],this);
+				},
+				onPaste: function (e) {
+					var clipboardData = e.originalEvent.clipboardData;
+					if (clipboardData && clipboardData.items && clipboardData.items.length) {
+						var item = clipboardData.items[0];
+						if (item.kind === 'file' && item.type.indexOf('image/') !== -1) {
+							e.preventDefault();
+						}
+					}
+				}
+			}
+});
+        
+	function uploadSummernoteImageFile(file, editor) {
+		data = new FormData();
+		data.append("file", file);
+		$.ajax({
+			data : data,
+			type : "POST",
+			url : "/summer/uploadSummernoteImageFile",
+			contentType : false,
+			processData : false,
+			success : function(data) {
+            	//항상 업로드된 파일의 url이 있어야 한다.
+				$(editor).summernote('insertImage', data.url);
+			}
+		});
+	}
+});
 </script>
+
 </head>
 <body>
-
- <div class ="container">
-		
-    <div class="table-wrapper">
-		<div class="row">
-			<div class="table-title col-12">
-				<h2><b>상품등록</b></h2>
-			</div>			
-		</div>
-    </div>
-
-		<form id="frm" action="/products/insert" method="post" enctype="multipart/form-data">
-			<div class="row">
-				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">상품명</label>
-					<div class="col-sm-10 writeDiv">
-						<input type="text" class="form-control" id="bbs_title"
-							name="p_name" placeholder="Title">
-					</div>
+<!-- 네비바 시작
+----------------------------------------------------------------------------------------------------------------->
+	<c:choose>
+		<c:when test="${loginID==null }">
+			<nav class="navbar">
+				<div class="navbar_logo">
+					<a href=""><img src="/assets/img/background/camp_logo.png"
+						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
-
-<!-- 				<div class="form-group"> -->
-<!-- 					<label for="inputEmail3" class="col-sm-2 control-label">카테고리</label> -->
-<!-- 					<select class="custom-select" name="category"> -->
-<!-- 						<option selected>Open this select menu</option> -->
-<!-- 						<option value="One">One</option> -->
-<!-- 						<option value="Two">Two</option> -->
-<!-- 						<option value="Three">Three</option> -->
-<!-- 					</select> -->
-<!-- 				</div> -->
-
-				<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">상품가격</label>
-						<div class="col-sm-10 writeDiv">
-							<input type="text" class="form-control" id="bbs_price"
-								name="p_price" placeholder="Price">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">상품수량</label>
-						<div class="col-sm-10 writeDiv">
-							<input type="text" class="form-control" id="bbs_stock"
-								name="p_stock" placeholder="Stock">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">상품소개</label>
-						<div class="col-sm-10 writeDiv">
-							<textarea cols="3" name="p_contents" id="summernote"></textarea>
-						</div>
-					</div>
+				<ul class="navbar_menu">
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
+					<li><a href="/rep/list?index=1">중고장터</a></li>
+					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+				</ul>
+				<ul class="navbar_member">
+					<li><a href="/member/signUp">회원가입</a></li>
+					<li><a href="/member/loginPage">로그인</a></li>
+				</ul>
+				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
+			</nav>
+		</c:when>
+		<c:when test="${loginID=='admin'}">
+			<nav class="navbar">
+				<div class="navbar_logo">
+					<a href=""><img src="/assets/img/background/camp_logo.png"
+						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
-				<div id="imgtest"></div>
-			<div class="row">
-
-				<div class="col-12">
-					<button type="button" id="backBtn"
-						class="btn btn-default pull-left"
-						style="background-color: #00285b; color: white">목록</button>
-
-					<div class="pull-right">
-						<a id="saveBtn" class="btn btn-info boardAddBtn"><span
-							class="glyphicon glyphicon-pencil"></span> 등록</a>
-					</div>
+				<ul class="navbar_menu">
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
+					<li><a href="/rep/list?index=1">중고장터</a></li>
+					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+				</ul>
+				<ul class="navbar_member">
+					<li><a href="">관리자페이지</a></li>
+					<li><a href="/member/logOutProc">로그아웃</a></li>
+				</ul>
+				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
+			</nav>
+		</c:when>
+		<c:otherwise>
+			<nav class="navbar">
+				<div class="navbar_logo">
+					<a href=""><img src="/assets/img/background/camp_logo.png"
+						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
-			</div>
-		</form>
+				<ul class="navbar_menu">
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
+					<li><a href="/rep/list?index=1">중고장터</a></li>
+					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+				</ul>
+				<ul class="navbar_member">
+					<li><a href="/member/myPage">마이페이지</a></li>
+					<li><a href="/memeber/logOutProc">로그아웃</a></li>
+				</ul>
+				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
+			</nav>
+		</c:otherwise>
+	</c:choose>
+<!-- 네비바 끝
+----------------------------------------------------------------------------------------------------------------->
+<div class="container">
+        <form action="/products/insert" method="post" enctype="multipart/form-data">
+        <div id=title>상품 등록</div>
+        <div class="row m-0 mt-3 mb-3 box">
+            <div class="col-2 p-0 txt">카테고리</div>
+            <div class="col-6 p-0">
+                <select name="p_category" id="">
+                    <option value="텐트/타프" selected>텐트/타프</option>
+                    <option value="침낭/매트">침낭/매트</option>
+                    <option value="테이블/의자">테이블/의자</option>
+                    <option value="조명기구">조명기구</option>
+                    <option value="주방용품">주방용품</option>
+                    <option value="화로/버너/bbq">화로/버너/bbq</option>
+                    <option value="겨울용품">겨울용품</option>
+                    <option value="기타캠핑용품">기타캠핑용품</option>
+                </select>
+            </div>
+           
+        </div>
+        <div class="row m-0 mt-3 mb-3 box">
+            <div class="col-2 p-0 txt">이름</div>
+            <div class="col-5 p-0"><input type="text" name=p_name class="form-control"></div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 box">
+            <div class="col-2 p-0 txt">금액</div>
+            <div class="col-5 p-0"><input type="text" name=p_price class="form-control"></div>
+        </div>
+        <div class="row m-0 mt-3 mb-3 box">
+            <div class="col-2 p-0 txt">사진</div>
+            <div class="col-5 p-0">
+                <input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+            </div>
+        </div>
+        <div class="row m-0 mt-3 pt-4">
+		        <textarea class="col-12" id="summernote" name=p_contents></textarea>
+        </div>
+        <div class="row m-0">
+            <div class="col-12"  id=btnBox>
+                <button type="submit" class="btn btn-outline-dark" id=submit>등록</button>
+                <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
+            </div>
+        </div>
+        </form>
 	</div>
+	<script>
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    </script>
 </body>
 </html>

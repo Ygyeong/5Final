@@ -1,5 +1,6 @@
 var js = document.createElement("script");
 js.src = "jquery.js";
+
 let basket = {
     totalCount: 0, 
     totalPrice: 0,
@@ -8,7 +9,12 @@ let basket = {
         document.querySelectorAll("input[name=buy]:checked").forEach(function (item) {
             item.parentElement.parentElement.parentElement.remove();
 
-//$(this).parent(".data").find("#c_seq").val()
+//	let c_seq = document.getElementsByClassName(".c_seq");
+	
+
+		
+
+		console.log($(c_seq).val());
 		$.ajax({
 			type:"post",
 			url:"/cart/delete",

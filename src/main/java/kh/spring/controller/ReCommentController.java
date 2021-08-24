@@ -30,7 +30,7 @@ public class ReCommentController {
 		int seq = service.getSeq();
 		System.out.println(dto.getRecmt_rep_seq()+":"+dto.getRecmt_comments());
 		dto.setRecmt_seq(seq);
-		dto.setRecmt_writer((String)session.getAttribute("id"));
+		dto.setRecmt_writer((String)session.getAttribute("loginID"));
 		service.cmtInsert(dto);
 		ReCommentsDTO cmt = service.getCmt(seq);
 		
