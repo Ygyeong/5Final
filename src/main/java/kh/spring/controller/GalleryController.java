@@ -238,6 +238,7 @@ public class GalleryController {
 			
 			System.out.println(dto);
 			System.out.println(flist);
+			System.out.println("댓글 주소"+clist);
 
 			
 			model.addAttribute("list",dto);

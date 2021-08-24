@@ -96,6 +96,7 @@ public class ReProductController {
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
 		
+
 		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");

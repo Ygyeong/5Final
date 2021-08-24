@@ -337,6 +337,7 @@ a{
 
 </c:choose>
 
+
 <c:choose>
 	<c:when test="${loginID==null }">
 		<div class="container-fluid">
@@ -349,6 +350,7 @@ a{
                 	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
                 	<img src="/img/search.png" id=search>
                 </div>
+
             </div>
             <div class="col-1 " id=writeBox>
             	<a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
@@ -401,12 +403,12 @@ a{
 				<div class="col-12 mb-1 link">${i.rep_name }</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${i.rep_price }<span>원</span></div>
-					<div class="col-6 diffD">${i.rep_diff_date }</div>
-				</div>
+					<div class="col-6 diffD">${i.rep_diff_date}</div>
+				</div>s
 				<div class="row m-0 mt-2 pt-2 pb-2 ar">
 					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
 				</div>
-				<input type=hidden value=${i.rep_seq } class=seq>
+				<input type=hidden value="${list.p_seq}" class=p_seq>
 			</div>       
 		</c:forEach>
 		</div> 
@@ -415,6 +417,11 @@ a{
 </c:choose>
 
 
+
+
+    <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+    
+    <!--네비바 스크립트  -->
 
     <script>
     
