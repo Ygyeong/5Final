@@ -348,17 +348,9 @@ $(function() {
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
-<<<<<<< HEAD
 						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
-=======
-
-						<li><a href="/info/list">캠핑장</a></li>
-						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
-						<li><a href="/products/selectAll?index=1">SHOP</a></li>
-
->>>>>>> 812f767c8c7899ea6623e1282bcd26ed9195b496
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
