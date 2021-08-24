@@ -23,7 +23,6 @@
 	<!--main  -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/assets/**" location="/resources/assets/" />
-
 	<resources mapping="/manual/**" location="/resources/manual/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	
@@ -36,6 +35,14 @@
 	<resources mapping="/gal/aboutGallery/lib/**" location="/resources/gal/aboutGallery/lib/" />
 	<resources mapping="/gal/aboutGallery/mail/**" location="/resources/aboutGallery/mail/" />
 
+
+
+	<!--admin -->
+	
+	<resources mapping="/semantic/semantic.css" location="/resources/aboutAdmin/semantic/" />
+	<resources mapping="/semantic/semantic.js" location="/resources/aboutAdmin/semantic/" />
+	
+	
 		
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
