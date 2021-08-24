@@ -31,6 +31,30 @@ public class AdminController {
 	    return "admin/admin";
 	}
 	
+	
+	@RequestMapping("mem")
+	public String member(HttpServletRequest request) throws Exception {
+		
+	    return "admin/adminMember";
+	}
+	
+	@RequestMapping("newProduct")
+	public String np(HttpServletRequest request) throws Exception {
+		
+	    return "admin/adminNewP";
+	}
+	
+	@RequestMapping("pay")
+	public String pay(HttpServletRequest request) throws Exception {
+		
+	    return "admin/adminPay";
+	}
+	
+	@RequestMapping("re")
+	public String re(HttpServletRequest request) throws Exception {
+		
+	    return "admin/adminRe";
+	}
 	//파싱된 데이터를 DB에 저장
 	@RequestMapping("dataupdate")
 	public String practice(HttpServletRequest request) throws Exception {
@@ -44,5 +68,8 @@ public class AdminController {
 	    
 	    return "redirect:/";
 	}
+	
+	
+	
 
 }
