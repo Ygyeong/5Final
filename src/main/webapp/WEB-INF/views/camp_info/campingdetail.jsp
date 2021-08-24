@@ -215,6 +215,7 @@ a{
                         } 
                   } 
                   ] 
+      
       }); 
       
 		var container = document.getElementById('map');
@@ -269,7 +270,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -295,7 +296,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -321,7 +322,7 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="">캠핑정보</a></li>
             <li><a href="/products/selectAll">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
@@ -441,7 +442,7 @@ a{
 			               <img src="/img/detailimage/like/like.png" id="like" class="likeicon">             
 			            </div>
 			         </c:when>
-			         <c:when test="${loginID ==null }">
+			         <c:when test="${contents == null}">
 			         	<h4>찜하기</h4> 
 			            <div id=wishbox_icon>
 			               <img src="/img/detailimage/like/dislike.png" id="xlike" class="likeicon">             
