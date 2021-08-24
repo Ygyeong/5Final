@@ -83,12 +83,9 @@ public class MemberController {
 				System.out.println(login.getCm_pw());
 				String hash_password = login.getCm_pw();
 				if(BCrypt.checkpw(cm_pw, hash_password)) {
-<<<<<<< HEAD
-				
+
 				session.setAttribute("loginID", login);
-=======
-				session.setAttribute("loginID", login.getCm_id());
->>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
+
 				} else {
 				session.setAttribute("loginID", null);
 				}
