@@ -234,12 +234,11 @@ a{
      <div class="side_nav">
     
     	<ul class="side_menu">
-            <li><a href="/info/list?index=1">캠핑장</a></li>
-			<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-			<li><a href="/products/selectAll?index=1">SHOP</a></li>
-			<li><a href="/rep/list?index=1">중고장터</a></li>
-			<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-           	<li style="height:180px;"></li>
+            <li><a href="/admin/mem">회원관리</a></li>
+            <li><a href="/admin/newProduct">새상품 관리</a></li>
+            <li><a href="/admin/pay">중고상품 관리</a></li>
+            <li><a href="/admin/re">결제내역 관리</a></li>
+           	<li style="height:200px;"></li>
 
         </ul>
         
