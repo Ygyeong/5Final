@@ -72,6 +72,7 @@ $(function(){
 		
 		let title = $("#title").val();
 		let writer = $("#writer").val();
+		console.log(writer);
 		let contents = $("#summernote").val();
 		
 		let blankRegex = /.*\S+/;
@@ -178,10 +179,10 @@ $(function(){
 					<div class="col-sm-10 writeDiv">
 						<select class="form-control" id="category" name="category">
 							<option selected>선택하세요.</option>
-							<option value="1">봄</option>
-							<option value="2">여름</option>
-							<option value="3">가을</option>
-							<option value="4">겨울</option>
+							<option value="봄">봄</option>
+							<option value="여름">여름</option>
+							<option value="가을">가을</option>
+							<option value="겨울">겨울</option>
 						</select>
 					</div>
 				</div>
@@ -194,13 +195,7 @@ $(function(){
 					</div>
 				</div>
 
-<!-- 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
-					<div class="col-sm-10 writeDiv">
-						<input type="text" class="form-control" id="bbs_price"
-							name="writer" placeholder="Writer">
-					</div>
-				</div> -->
+ 				<input type="text" name="writer" value="${loginID }">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 					<div class="col-sm-10 writeDiv">

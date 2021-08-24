@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kh.spring.dto.MemberDTO;
 import kh.spring.service.MemberService;
 
-
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -84,7 +83,7 @@ public class MemberController {
 				String hash_password = login.getCm_pw();
 				if(BCrypt.checkpw(cm_pw, hash_password)) {
 
-				session.setAttribute("loginID", login);
+				session.setAttribute("loginID", login.getCm_id());
 
 				} else {
 				session.setAttribute("loginID", null);

@@ -213,6 +213,7 @@ a {text-decoration: none;color: white;}
 #boardlist>*{color: black;}
 #menu>li{background-color: #0f4c8199;}
 #menu>li:hover{background-color: #0f4c8170;}
+
 </style>
 </head>
 

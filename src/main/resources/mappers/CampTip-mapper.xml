@@ -5,7 +5,7 @@
   
 <mapper namespace="CampTip">
 	<insert id="insert" parameterType="kh.spring.dto.CampTipDTO">
-		insert into camp_tip values(camp_tip_seq.nextval,${category},#{writer},#{title},#{contents},sysdate,0)
+		insert into camp_tip values(camp_tip_seq.nextval,#{category},#{writer},#{title},#{contents},sysdate,0)
 	</insert>
 	
 	<select id="select" resultType="kh.spring.dto.CampTipDTO">
@@ -15,7 +15,7 @@
 	        ORDER BY camp_tip_num DESC 
     	<include refid="pagingFooter"></include> 
 	</select>
-	
+	<!-- SELECT rownum, camp_tip_num, category, writer, title, contents, write_date, view_count, case WHEN category = '1' THEN '봄' WHEN category = '2' THEN '여름' WHEN category = '3' THEN '가을' WHEN category = '4' THEN '겨울' end as category FROM camp_tip aa ORDER BY camp_tip_num; -->
 	<select id="detail" resultType="kh.spring.dto.CampTipDTO">
 		select * from camp_tip where camp_tip_num = #{camp_tip_num}
 	</select>
@@ -29,7 +29,7 @@
 	</delete>
 	
 	<update id="modify">
-		update camp_tip set category=${category},title=#{title},contents=#{contents} where camp_tip_num = ${camp_tip_num}
+		update camp_tip set category=#{category},title=#{title},contents=#{contents} where camp_tip_num = ${camp_tip_num}
 	</update>
 	
 	<!-- 01_02. 게시글 레코드 갯수 -->

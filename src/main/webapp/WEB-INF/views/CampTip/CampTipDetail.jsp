@@ -145,9 +145,14 @@ $(function(){
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 					<div class="col-sm-10 writeDiv">
-						<c:forEach var="file" items="${flist }">
-							<div>${file.oriName }</div>   
-    			 		</c:forEach> 
+						<%-- <c:forEach var="file" items="${flist }">
+							<a href="">${file.oriName }</a> 
+    			 		</c:forEach>  --%>
+    			 		<c:forEach var="file" items="${flist }">
+    			 			<div>
+    			 				<a href="/CampTipFile/download?seq=${file.seq}&sysname=${file.sysName}&oriname=${file.oriName}">${file.oriName }</a>
+    			 			</div>
+    			 		</c:forEach>
 					</div>
 				</div>
 				

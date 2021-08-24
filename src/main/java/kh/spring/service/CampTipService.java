@@ -26,11 +26,14 @@ public class CampTipService {
 	@Autowired
 	private HttpSession session;
 	
-	public void insert(int category, String title,String contents,String realPath, MultipartFile[] file) throws Exception {
+	public void insert(String category, String title,String contents,String realPath, MultipartFile[] file) throws Exception {
+		CampTipDTO dto = new CampTipDTO();
+		
+		System.out.println(dto.getWriter());
 		String writer = (String)session.getAttribute("loginID");
 		System.out.println("캠핑팁 작성자 : " + writer);
 		Map<String,String> param = new HashMap<>();
-		param.put("category", category+"");
+		param.put("category", category);
 		param.put("writer", writer);
 		param.put("title", title);
 		param.put("contents", contents);
@@ -80,18 +83,14 @@ public class CampTipService {
 		return dao.delete(delNum);
 	}
 
-	public void modify(String [] delTargets,int category, String title,String contents,String realPath, MultipartFile[] file,int camp_tip_num)throws Exception {
+	public void modify(String [] delTargets,String category, String title,String contents,String realPath, MultipartFile[] file,int camp_tip_num)throws Exception {
 		System.out.println("여기까지 넘어오나?");
 		Map<String,String> param = new HashMap<>();
-		param.put("category", String.valueOf(category));
+		param.put("category", category);
 		param.put("camp_tip_num", String.valueOf(camp_tip_num));
 		param.put("title", title);
 		param.put("contents", contents);
-		
-		System.out.println("modify : " + category);
-		System.out.println("modify : " + camp_tip_num);
-		System.out.println("modify : " + title);
-		System.out.println("modify : " + contents);
+
 		dao.modify(param);
 
 		File filesPath = new File(realPath);
