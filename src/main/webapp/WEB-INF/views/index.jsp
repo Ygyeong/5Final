@@ -350,7 +350,9 @@ $(function() {
 					<ul class="mainMenu margin-top-3">
 
 						<li><a href="/info/list?index=1">캠핑장</a></li>
+
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -474,9 +476,6 @@ $(function() {
 		<div class="content">
 			<div class="container">
 				<div class="wrap">
-
-
-
 					<p class="ae-3">
 						<span class="opacity-8"
 							style="font-family: 'Nanum Pen Script', cursive; font-size: 50px;"
@@ -485,20 +484,20 @@ $(function() {
 					<form class="slides-form" action="/info/search" autocomplete="off"
 						style="margin-bottom: 120px;">
 						<select name="searchOption">
-             			<option value="all" >전체</option>
-             			<option value="facltNm"  > 캠핑장 이름 </option>
-             			<option value="lctCl"> 주변 환경 </option>
-             			<option value="addr1"  > 지역 </option>
-             		</select>
-						<input type="text" class="input-9 ae-4 fromCenter"
-							name="keyword" placeholder="원하시는 캠핑장소를 입력해보세요" />
+
+							<option value="all">전체</option>
+							<option value="facltNm">캠핑장 이름</option>
+							<option value="lctCl">주변 환경</option>
+							<option value="addr1">지역</option>
+						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
+							placeholder="원하시는 캠핑장소를 입력해보세요" />
+
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>
 				</div>
 
 			</div>
-		</div>
 		</div>
 		<div class="background"
 			style="background-image: url(assets/img/background/bg_car.jpg)"></div>
@@ -554,7 +553,7 @@ $(function() {
 									둘러보세요.<br> 텐트부터 렌턴까지 모든것이 준비되어 있습니다.
 								</span>
 							</p>
-							<a class="button blue gradient crop ae-3">둘러보러가기</a>
+							<a href="/products/selectAll?index=1" class="button blue gradient crop ae-3">둘러보러가기</a>
 						</div>
 					</div>
 
@@ -691,7 +690,7 @@ $(function() {
 
 									</li>
 
-									<li class="col-6-12 ae-5"><a
+									<li class="col-6-12 ae-5"><a href="/CampTipBoard/selectAll"
 										class="button blue gradient crop ae-3">둘러보러가기</a></li>
 
 								</ul>
