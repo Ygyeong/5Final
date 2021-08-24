@@ -13,10 +13,14 @@ public class ProductsDTO {
 	private String p_contents;
 	private int p_view_count;
 	private String camp_id;
+	private String thumsysName;
+	private String p_detail;
 	
 	public ProductsDTO() {}
+	
+
 	public ProductsDTO(int p_seq, String p_name, int p_price, String p_delivery, String p_category, Date p_rdate,
-			int p_stock, String p_contents, int p_view_count, String camp_id) {
+			int p_stock, String p_contents, int p_view_count, String camp_id, String thumsysName, String p_detail) {
 		super();
 		this.p_seq = p_seq;
 		this.p_name = p_name;
@@ -28,6 +32,8 @@ public class ProductsDTO {
 		this.p_contents = p_contents;
 		this.p_view_count = p_view_count;
 		this.camp_id = camp_id;
+		this.thumsysName = thumsysName;
+		this.p_detail = p_detail;
 	}
 
 
@@ -110,9 +116,21 @@ public class ProductsDTO {
 	public void setCamp_id(String camp_id) {
 		this.camp_id = camp_id;
 	}
-	
-	
-	
-	
+
+	public String getThumsysName() {
+		return thumsysName;
+	}
+
+	public void setThumsysName(String thumsysName) {
+		this.thumsysName = thumsysName;
+	}
+
+	public String getP_detail() {
+		return p_detail;
+	}
+
+	public void setP_detail(String p_detail) {
+		this.p_detail = p_detail;
+	}
 	
 }

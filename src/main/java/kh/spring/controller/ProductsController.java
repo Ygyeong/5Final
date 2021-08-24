@@ -1,22 +1,21 @@
 package kh.spring.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import com.google.gson.Gson;
 
-import kh.spring.dto.CartDTO;
+import kh.spring.config.ReProductConfig;
 import kh.spring.dto.ProductsDTO;
-import kh.spring.service.CartService;
+
+import kh.spring.dto.SummerDTO;
 import kh.spring.service.ProductsService;
 
 @Controller
@@ -29,33 +28,66 @@ public class ProductsController {
 	@Autowired
 	private ProductsService service;
 
-	@RequestMapping("boardWritePage")
+	@RequestMapping("write")
 	public String boardWritePage() {
 		return "admin/productsInsert";
 	}
 
 	@RequestMapping("insert") // 상품등록
-	public String insert(ProductsDTO dto) {
-		int result = service.insert(dto);
-		return "redirect:/";
+	public String insert(ProductsDTO dto,MultipartFile[] file) throws Exception {
+		
+		int p_seq = service.getP_seq();
+		dto.setCamp_id((String)session.getAttribute("loginID"));
+		dto.setP_seq(p_seq);
+		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		service.insert(dto,p_seq,file,realPath);
+		return "redirect:/shop/productsList?index=1";
 	}
 
 	@RequestMapping("selectAll") // 상품목록
-	public ModelAndView selectAll(ModelAndView model) {
+	public String selectAll(int index, Model model) {
 		// view의 이름과 service에서 가져온 list 반환
-		model.setViewName("/shop/productsList");
-		model.addObject("list",service.selectAll());
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<ProductsDTO> list = service.Thumbnail(startNum,endNum);
+		model.addAttribute("list",list);
 
-		return model;
+		return "shop/productsList";
 	}
 
-	@RequestMapping("detail/{p_seq}") // 상품상세
-	public ModelAndView detail(@PathVariable("p_seq") int p_seq, ModelAndView model) {
-		model.setViewName("/shop/productsDetail");
-		model.addObject("dto",service.detail(p_seq));
-
-		return model;
-
+	@RequestMapping("detail") // 상품상세
+	public String detail(int p_seq, Model model) {
+		ProductsDTO dto = service.detail(p_seq);
+		List<SummerDTO> sdto = service.filesBySeq(p_seq);
+		model.addAttribute("sdto",sdto);
+		model.addAttribute("dto",dto);
+		return "shop/productsDetail";
+	}
+	
+	@RequestMapping("delete")
+	public String delete(int p_seq) {
+		service.delete(p_seq);
+		return "redirect:products?index=1";
+	} 
+//	@RequestMapping("modify")
+//	public String update(int p_seq,Model model) {
+//		System.out.println("수정페이지");
+//		ProductsDTO dto = service.detail(p_seq);
+//		List<SummerDTO> sdto = service.filesBySeq(p_seq);
+//		model.addAttribute("sdto",sdto);
+//		model.addAttribute("dto",dto);
+//		return "shop/productsModify";
+//	} 
+	
+	
+	@ResponseBody
+	@RequestMapping(value="scrollList",produces="text/html;charset=utf8")
+	public String scrollList(int index) {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<ProductsDTO> list = service.selectAll(startNum, endNum);
+		System.out.println(index);
+		return new Gson().toJson(list);
 	}
 
 }

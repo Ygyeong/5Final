@@ -19,6 +19,7 @@
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style>
 *{box-sizing: border-box;}
 .container-fluid{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
@@ -74,21 +75,63 @@ a{text-decoration: none;color: white;}
 --------------------------------------------------------------------------------------------------------------- */   
 </style>
 <script type="text/javascript">
-$("#cart").on("click",function(){
- 	
- 	let result = confirm("상품이 저장되었습니다.\n장바구니로 이동하시겠습니까?");
- 	if(result){
- 		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";	
- 	};
+$(function(){
  	
  	$(".list").on("click",function(){
-		let seq=$(this).find(".seq").val();
-		location.href="/products/detail?p_seq=${list.p_seq}";
+ 		let p_seq=$(this).find(".p_seq").val();
+ 		location.href="/products/detail?p_seq="+p_seq;
 	})
 	$(document).on("click",".list",function(){
-		let seq=$(this).find(".seq").val();
-		location.href="/products/detail?p_seq=${list.p_seq}";
+		let p_seq=$(this).find(".p_seq").val();
+		location.href="/products/detail?p_seq="+p_seq;
 	})
+	let index=1;
+	$(window).scroll(function(){
+		let $window = $(this);
+		let scrollTop = $(this).scrollTop();
+		let windowHeight = $window.height();
+		let documentHeight = $(document).height();
+		console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+				"| documentHeight"+documentHeight)
+		if(scrollTop+windowHeight>=documentHeight){
+			index++;
+			setTimeout(getList(),2000);
+			
+		}
+				
+	})
+	
+	function getList(){
+		$.ajax({
+			url:"/products/scrollList",
+			dataType:"json",
+			data:{"index":index}
+		}).done(function(resp){
+			for(let i=0;i<resp.length;i++){
+				let list = $("<div class='col-4 list'>");
+				
+				let img = $("<div id=img>");
+				img.text("사진");
+				let name =$("<div id=link>");
+				name.text(resp[i].rep_name);
+				let price = $("<div>");
+				price.text(resp[i].rep_price);
+				let date = $("<div>");
+				date.text(resp[i].rep_write_date);
+				let seq = $("<input type=hidden class=seq>");
+				seq.val(resp[i].rep_seq);
+				
+				list.append(img);
+				list.append(name);
+				list.append(price);
+				list.append(p_seq);
+				$(".listbar").append(list);
+				
+				
+			}
+		})
+	}
+})
 </script>
 </head>
 <body>
@@ -159,7 +202,7 @@ $("#cart").on("click",function(){
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
 	<div class="container-fluid">
-        <h2>중고 장터</h2>
+        <h2>캠핑상품</h2>
         <div class="row m-0 mt-5 h-120">
             <div class="col-2 p-0" id="category">
                 <select name="rep_category" >
@@ -179,7 +222,7 @@ $("#cart").on("click",function(){
                 <img src="/img/search.png">
             </div>
             <div class="col-5 p-0 pt-1" id=writeBox>
-            	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
+            	<a href="/products/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
         </div>
         <div class="row listbar" >
@@ -194,7 +237,7 @@ $("#cart").on("click",function(){
 				<div class="row m-0 mt-2 pt-2 pb-2 ar">
 					<div class="col-12 area"><a href="" id="cart"><i class="fas fa-shopping-cart 7x" style="color:black"></i></a>장바구니</div>
 				</div>
-				<input type=hidden value="${list.p_seq}" class=seq>
+				<input type=hidden value="${list.p_seq}" class=p_seq>
 			</div>       
 		</c:forEach>
 		</div> 
