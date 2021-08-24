@@ -65,7 +65,7 @@
                         같이 별보러 갈래요?<a href="/member/signPage">회원 가입</a>
                     </div>
                     <div class="d-flex justify-content-center links2">
-                        <a href="/member/pwChange">저런! 비밀번호를 잊으셨군요?</a>
+                        <a href="/member/idCheck">저런! 비밀번호를 잊으셨군요?</a>
                     </div>
                 </div>
             </div>
