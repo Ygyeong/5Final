@@ -69,7 +69,7 @@
      
      .recmtBox{ border-bottom: 1px solid #ddd; padding-bottom: 15px; margin: 0px 80px 0px 12px; padding-top:10px;}
      .ID{font-weight:600; font-size:18px;}
-     .ID span{margin-left:5px; font-weight:400; font-size:14px;}
+     .ID span{margin-left:8px; font-weight:400; font-size:14px;}
      .cmt{width:930px; margin-bottom:15px;}
      .btnBox{text-align:right;}
      .del{margin-left:5px;}
@@ -215,6 +215,7 @@ a{
 			}
  		})
  		$("#userID").on("click",function(){
+ 			console.log($("#user").val());
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
  		/* $("#detailT").on("click",function(){
@@ -351,7 +352,7 @@ a{
 			if(result){
 				location.href="/member/loginPage";
 			}
-			
+			$("#content").val("");
 		})
 		
 		
@@ -377,7 +378,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -402,7 +403,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -428,7 +429,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -441,7 +442,7 @@ a{
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -710,6 +711,7 @@ a{
             <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
                  <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+                 <input type=hidden value="${dto.rep_writer}" id=user>
             </div>
         </div>
      
