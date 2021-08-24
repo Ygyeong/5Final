@@ -20,8 +20,8 @@ public class MemberService {
 		return dao.idDuplCheck(cm_id);
 	}
 	
-	public MemberDTO login(MemberDTO dto) {
-		return dao.login(dto);
+	public MemberDTO login(String cm_id) {
+		return dao.login(cm_id);
 	}
 	
 	public String memberOut(String cm_id) {
