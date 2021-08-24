@@ -238,7 +238,8 @@ a{
             <li><a href="/admin/newProduct">새상품 관리</a></li>
             <li><a href="/admin/pay">중고상품 관리</a></li>
             <li><a href="/admin/re">결제내역 관리</a></li>
-           	<li style="height:200px;hover:none;"></li>
+            <li><a href="/admin/re">캠핑장 관리</a></li>
+           	<li style="height:180px;"></li>
 
         </ul>
         
