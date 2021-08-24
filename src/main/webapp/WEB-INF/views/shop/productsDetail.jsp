@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 <style>
-.container-fluid{width:1100px; margin-top: 60px; margin-bottom: 60px; padding-top: 30px;}
+.container-fluid{width:1100px; margin-top: 75px; margin-bottom: 60px; padding-top: 30px;}
 #menu{height: 430px;}
 #detailB{height: 50px;line-height: 50px;}
 #detailB>div{height: 100%;}
@@ -157,7 +157,7 @@ a{text-decoration: none;color: white;}
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
 					<li><a href="/products/selectAll">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
@@ -170,14 +170,14 @@ a{text-decoration: none;color: white;}
 				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
 			</nav>
 		</c:when>
-		<c:when test="${loginID='admin'}">
+		<c:when test="${loginID=='admin'}">
 			<nav class="navbar">
 				<div class="navbar_logo">
 					<a href=""><img src="/assets/img/background/camp_logo.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
 					<li><a href="/products/selectAll">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
@@ -197,9 +197,9 @@ a{text-decoration: none;color: white;}
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
 					<li><a href="">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
@@ -217,9 +217,9 @@ a{text-decoration: none;color: white;}
 		<c:when test="${loginID==camp_id}">
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
-					<c:forEach var="i" items="${dto}">
+					<c:forEach var="i" items="${sdto}">
 						<div class="col-2 p-0" id=img>
-							<img src="/img/">
+							<img src="/img/${i.sysName}">
 						</div>
 					</c:forEach>
 					<<%-- div class="col-6 p-0" id=img> <img src="/img/${pdto.reSysName
@@ -234,18 +234,15 @@ a{text-decoration: none;color: white;}
 				<div class="row m-0" id=priceBox>
 					<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
 				</div>
-				<div class="row m-0 pb-2 pt-4">
-					<div class="col-3 p-0">거래방법</div>
-					<div class="col-9 p-0">${dto.p_delivery}</div>
-				</div>
 				<div class="row m-0 pb-2">
 					<div class="col-3 p-0">배송비</div>
 					<div class="col-9 p-0">50,000이상 무료배송</div>
+					<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
 				</div>
 
 				<div class="row m-0 pb-4">
 					<div class="col-3 p-0">거래지역</div>
-					<div class="col-9 p-0"></div>
+					<div class="col-9 p-0">전지역</div>
 				</div>
 				<div class="row" id=crudBox>
 					<div class="col-8 p-0" id=>
@@ -282,13 +279,12 @@ a{text-decoration: none;color: white;}
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
 					<div class="col-6 p-0" id=img>
-						<img src="/img/">
+						<img src="/img/${i.sysName}">
 					</div>
 					<div class="col-5 " id=infoBox>
 						<div class="row m-0 mb-4">
 							<div class="col-2 txt">${dto.p_category}</div>
 							<div class="col-2 ex">
-								·찜<span id=count></span>
 							</div>
 						</div>
 
@@ -298,18 +294,16 @@ a{text-decoration: none;color: white;}
 						<div class="row m-0" id=priceBox>
 							<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
 						</div>
-						<div class="row m-0 pb-2 pt-4">
-							<div class="col-3 p-0">거래방법</div>
-							<div class="col-9 p-0">${dto.p_delivery}</div>
-						</div>
 						<div class="row m-0 pb-2">
 							<div class="col-3 p-0">배송비</div>
-							<div class="col-9 p-0"></div>
+							<div class="col-9 p-0">50,000이상 무료배송</div>
+							<div class="col-3 p-0"></div>
+							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
 						</div>
 
 						<div class="row m-0 pb-4">
 							<div class="col-3 p-0">거래지역</div>
-							<div class="col-9 p-0"></div>
+							<div class="col-9 p-0">전지역</div>
 						</div>
 						<div class="row pt-3" id=funcBox>
 							<div class="col-5 p-0" id=like>
