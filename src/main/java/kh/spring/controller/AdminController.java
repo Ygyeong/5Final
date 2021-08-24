@@ -24,7 +24,7 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
-	//파싱된 데이터를 DB에 저장
+	
 	@RequestMapping("home")
 	public String home(HttpServletRequest request) throws Exception {
 		
@@ -55,6 +55,7 @@ public class AdminController {
 		
 	    return "admin/adminRe";
 	}
+	
 	//파싱된 데이터를 DB에 저장
 	@RequestMapping("dataupdate")
 	public String practice(HttpServletRequest request) throws Exception {
