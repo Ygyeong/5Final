@@ -215,11 +215,11 @@ a{
 			}
  		})
  		$("#userID").on("click",function(){
- 			location.href="/rep/myJG?index=1&id="+$(this).text();
+ 			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
- 		$("#detailT").on("click",function(){
+ 		/* $("#detailT").on("click",function(){
  			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
- 		})
+ 		}) */
 
  		$("#cmtBtn").on("click",function(){
  			console.log("AAAA");
@@ -632,6 +632,7 @@ a{
             <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
                  <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+                 <input type=hidden value="${dto.rep_writer}" id=user>
             </div>
         </div>
      

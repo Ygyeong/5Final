@@ -265,7 +265,7 @@ a{
 
     <div class="container-fluid p-0">
     <c:choose>
-    	<c:when test="${loginID!=userID}">
+    	<c:when test="${loginID==userID}">
     		<div class="row m-0">
             <div class="col-3 p-0 mt-5">
                 <div class="col-12 p-0 userID">${userID }<span>님</span></div>
@@ -340,7 +340,7 @@ a{
     	<c:otherwise>
     		<div class="row m-0">
             <div class="col-3 p-0">
-                <div class="col-12 p-0 userID">${userID }</div>
+                <div class="col-12 p-0 userID">${userID }<span>님</span></div>
                 <div class="col-12 p-0">시작 날짜</div>
             </div>
             <div class="col-9 p-0">
