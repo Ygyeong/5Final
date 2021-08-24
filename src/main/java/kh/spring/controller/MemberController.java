@@ -54,7 +54,7 @@ public class MemberController {
 		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
 		dto.setCm_id(cm_id);
-		//MemberDTO modify = ms.login(dto);
+		MemberDTO modify = ms.modifySelect(dto);
 		session.setAttribute("member", modify);
 		return "/member/memberModify";
 	}
