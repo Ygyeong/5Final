@@ -55,7 +55,7 @@ public class MemberController {
 		MemberDTO dto = new MemberDTO();
 		dto.setCm_id(cm_id);
 		//MemberDTO modify = ms.login(dto);
-		session.setAttribute("member", modify);
+//		session.setAttribute("member", modify);
 		return "/member/memberModify";
 	}
 	
@@ -81,7 +81,7 @@ public class MemberController {
 				System.out.println(login.getCm_pw());
 				String hash_password = login.getCm_pw();
 				if(BCrypt.checkpw(cm_pw, hash_password)) {
-				session.setAttribute("loginID", login);
+				session.setAttribute("loginID", login.getCm_id());
 				} else {
 				session.setAttribute("loginID", null);
 				}
