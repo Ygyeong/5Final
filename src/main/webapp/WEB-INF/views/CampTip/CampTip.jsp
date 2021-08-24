@@ -275,21 +275,21 @@ a {text-decoration: none;color: white;}
 			<nav class="navbar">
 				<div class="navbar_logo">
 
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href="/"><img src="/assets/img/background/camp_logo.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
 					<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll">SHOP</a></li>
+					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
 				</ul>
 				<ul class="navbar_member">
 					<li><a href="/member/myPage">마이페이지</a></li>
-					<li><a href="/memeber/logOutProc">로그아웃</a></li>
+					<li><a href="/member/logOutProc">로그아웃</a></li>
 				</ul>
 
 				<a href="#" class="navbar_toogleBtn"> <i class="fas fa-bars"></i>
@@ -434,15 +434,23 @@ a {text-decoration: none;color: white;}
 								</c:if>
 							</div>
 
-							<div class="row btns">
-								<div class="col-12 btns" align="right">
-									<br>
-									<button type="button" class="btn btn-outline-secondary"
-										id="back">뒤로가기</button>
-									<button type="button" class="btn btn-outline-secondary write"
-										id="write">글 쓰기</button>
-								</div>
-							</div>
+							<c:choose>
+								<c:when test="${loginID == null }">
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
+										</div>
+									</div>	
+								</c:otherwise>
+							</c:choose>
 
 							<div class="search_box">
 								<br>
@@ -549,15 +557,23 @@ a {text-decoration: none;color: white;}
 								</c:if>
 							</div>
 
-							<div class="row btns">
-								<div class="col-12 btns" align="right">
-									<br>
-									<button type="button" class="btn btn-outline-secondary"
-										id="back">뒤로가기</button>
-									<button type="button" class="btn btn-outline-secondary write"
-										id="write">글 쓰기</button>
-								</div>
-							</div>
+							<c:choose>
+								<c:when test="${loginID == null }">
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
+										</div>
+									</div>	
+								</c:otherwise>
+							</c:choose>
 
 							<div class="search_box">
 								<br>
@@ -664,15 +680,23 @@ a {text-decoration: none;color: white;}
 								</c:if>
 							</div>
 
-							<div class="row btns">
-								<div class="col-12 btns" align="right">
-									<br>
-									<button type="button" class="btn btn-outline-secondary"
-										id="back">뒤로가기</button>
-									<button type="button" class="btn btn-outline-secondary write"
-										id="write">글 쓰기</button>
-								</div>
-							</div>
+							<c:choose>
+								<c:when test="${loginID == null }">
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
+										</div>
+									</div>	
+								</c:otherwise>
+							</c:choose>
 
 							<div class="search_box">
 								<br>
@@ -779,18 +803,23 @@ a {text-decoration: none;color: white;}
 								</c:if>
 							</div>
 
-							<div class="row btns">
-								<div class="col-12 btns" align="right">
-									<br>
-									<button type="button" class="btn btn-outline-secondary"
-										id="back">뒤로가기</button>
-									<c:choose>
-										<c:when test="${loginID != null }">
+							<c:choose>
+								<c:when test="${loginID == null }">
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										</div>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="row btns">
+										<div class="col-12 btns" align="right"><br>
+											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
 											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
-										</c:when>
-									</c:choose>
-								</div>
-							</div>
+										</div>
+									</div>	
+								</c:otherwise>
+							</c:choose>
 
 							<div class="search_box">
 								<br>

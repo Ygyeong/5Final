@@ -39,9 +39,9 @@ public class MemberController {
 		return "/member/signUp";
 	}
 	
-	@RequestMapping("emailCheck")
+	@RequestMapping("idCheck")
 	public String emailCheckPage() {
-		return "/member/emailCheck";
+		return "/member/idCheck";
 	}
 	
 	@RequestMapping("pwChange")
@@ -54,7 +54,7 @@ public class MemberController {
 		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
 		dto.setCm_id(cm_id);
-		MemberDTO modify = ms.login(dto);
+		//MemberDTO modify = ms.login(dto);
 		session.setAttribute("member", modify);
 		return "/member/memberModify";
 	}
@@ -76,11 +76,12 @@ public class MemberController {
 		MemberDTO dto = new MemberDTO();	
 		
 			dto.setCm_id(cm_id);
-			MemberDTO login = ms.login(dto);
+			MemberDTO login = ms.login(cm_id);
 			if(login != null) {
 				System.out.println(login.getCm_pw());
 				String hash_password = login.getCm_pw();
 				if(BCrypt.checkpw(cm_pw, hash_password)) {
+				
 				session.setAttribute("loginID", login);
 				} else {
 				session.setAttribute("loginID", null);
@@ -116,6 +117,15 @@ public class MemberController {
 		dto.setCm_id(cm_id);
 		ms.memberUpdate(dto);
 		return "/member/myPage";
+	}
+	
+	@RequestMapping("pwIdDuplCheck")
+	public String pwIdDuplCheck(String cm_id) throws Exception {
+		int result = ms.idDuplCheck(cm_id);
+		if(result < 0) {
+			return "/";
+		}
+		return "/member/pwChange";
 	}
 
 	@ResponseBody

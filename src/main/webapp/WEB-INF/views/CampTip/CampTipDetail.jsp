@@ -96,7 +96,9 @@ $(function(){
 			</div>
 		</div>
 
-		<form id="frm" action="" method="post"
+<c:choose>
+	<c:when test="${loginID == list.writer}">
+			<form id="frm" action="" method="post"
 			enctype="multipart/form-data">
 			<div class="row">
 
@@ -168,6 +170,73 @@ $(function(){
 				</div>
 			</div>
 		</form>
+	</c:when>
+	<c:otherwise>
+				<div class="row">
+
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">카테고리</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="form-control" id="category"
+							name="category">${list.category }</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">글번호</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="form-control" id="num">${list.camp_tip_num }</div>
+						<input type="hidden" name="camp_tip_num" value="${list.camp_tip_num }">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">제목</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="form-control" id="title"
+							name="title">${list.title }</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="form-control" id="writer"
+							name="writer">${list.writer }</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputPassword3" class="col-sm-2 control-label">내용</label>
+					<div class="col-sm-10 writeDiv">
+						<div type="text" class="form-control" id="contents"
+							name="contents">${list.contents }</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
+					<div class="col-sm-10 writeDiv">
+						<c:forEach var="file" items="${flist }">
+							<div>${file.oriName }</div>   
+    			 		</c:forEach> 
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="imgtest"></div>
+			<div class="row">
+
+				<div class="col-12">
+					<button type="button" id="back"
+						class="btn btn-default pull-left"
+						style="background-color: #00285b; color: white">뒤로가기</button>
+				</div>
+			</div>
+	
+	</c:otherwise>
+</c:choose>
 	</div>
 </body>
 </html>
