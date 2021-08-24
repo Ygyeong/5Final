@@ -20,8 +20,8 @@ public class MemberDAO {
 		return mybatis.selectOne("Member.idDuplCheck", cm_id);
 	}	
 	
-	public MemberDTO login(MemberDTO dto) {
-		return mybatis.selectOne("Member.login", dto);
+	public MemberDTO login(String cm_id) {
+		return mybatis.selectOne("Member.login", cm_id);
 	}
 	
 	public String memberOut(String cm_id) {
@@ -30,5 +30,9 @@ public class MemberDAO {
 	
 	public String memberUpdate(MemberDTO dto) {
 		return mybatis.selectOne("Member.memberUpdate", dto);
+	}
+
+	public MemberDTO modifySelect(MemberDTO dto) {
+		return mybatis.selectOne("Member.modifySelect", dto);
 	}
 }

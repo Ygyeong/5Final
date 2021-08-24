@@ -358,6 +358,7 @@ $(function() {
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 
 
+
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 
 						<li><a href="/rep/list?index=1">중고장터</a></li>
@@ -494,7 +495,7 @@ $(function() {
 							<option value="all">전체</option>
 							<option value="facltNm">캠핑장 이름</option>
 							<option value="lctCl">주변 환경</option>
-							<option value="addr1">지역</option>
+							<option value="addr1">지역(ex.숲/바다/계곡)</option>
 						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
 							placeholder="원하시는 캠핑장소를 입력해보세요" style="width:400px;"/>
 
