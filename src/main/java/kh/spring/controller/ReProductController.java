@@ -114,11 +114,12 @@ public class ReProductController {
 	@RequestMapping("insertProc")
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
-		System.out.println("세션 :"+session.getAttribute("loginID.cm_id"));
+		System.out.println("세션 :"+session.getAttribute("loginID"));
 
-		dto.setRep_writer((String)session.getAttribute("loginID.cm_id"));
+		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
 		String realPath = session.getServletContext().getRealPath("resources/imgs");
+
 		System.out.println(realPath);
 		service.insert(dto,rep_seq,file,realPath);
 		return "redirect:/rep/list?index=1";
@@ -167,7 +168,7 @@ public class ReProductController {
 	@RequestMapping("wishInsert")
 	public void wishInsert(ReWishListDTO wdto) {
 //		session.setAttribute("id", "kt478");
-		wdto.setRem_id((String)session.getAttribute("loginID.cm_id"));
+		wdto.setRem_id((String)session.getAttribute("loginID"));
 		System.out.println("찜하기 기능");
 		System.out.println(wdto.getRem_id()+" : "+wdto.getRep_id()+" : "+wdto.getRew_id());
 		service.wishInsert(wdto);
@@ -190,7 +191,7 @@ public class ReProductController {
 	@ResponseBody
 	@RequestMapping("wishExist")
 	public String wishExist(ReWishListDTO wdto) {
-		wdto.setRem_id((String)session.getAttribute("loginID.cm_id"));
+		wdto.setRem_id((String)session.getAttribute("loginID"));
 		int result = service.wishExist(wdto);
 		System.out.println(result);
 		return new Gson().toJson(result);

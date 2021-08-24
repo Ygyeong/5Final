@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="CampTipImg">
+
+	<insert id="filesInsert">
+		insert into camp_tip_img values(camp_tip_img_seq.nextval,#{oriName},#{sysName},#{camp_tip_img_num2})
+	</insert>
+	
+	<select id="filesBySeq" resultType="kh.spring.dto.CampTipImgDTO">
+		select * from camp_tip_img where camp_tip_img_num2 = #{value}
+	</select>
+	
+	<select id="selectThumbBySeq" resultType="kh.spring.dto.CampTipImgDTO">
+		select * from camp_tip_img where camp_tip_img_num2 = #{camp_tip_img_num} and camp_tip_img_seq =(select min(camp_tip_img_seq) from camp_tip_img where camp_tip_img_num2=#{camp_tip_img_num})
+		select * from camp_gallery_img where gallery_seq = #{seq} and seq =(select min(seq) from camp_gallery_img where gallery_seq=#{seq})
+	</select>
+	
+	<select id="getSysName" resultType="string">
+		select sysname from camp_tip_img where camp_tip_img_num = #{camp_tip_img_num}
+	</select>
+	
+	<delete id="fileDelete">
+		delete from camp_tip_img where camp_tip_img_num = #{value}
+	</delete>
+
+</mapper>
