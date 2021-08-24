@@ -73,22 +73,19 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String loginProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		HttpSession session = req.getSession();
-		MemberDTO dto = new MemberDTO();
-		String passwordHashed = BCrypt.hashpw(dto.getCm_pw(), BCrypt.gensalt());
-		boolean bcPass = BCrypt.checkpw(dto.getCm_pw(), passwordHashed);
+		MemberDTO dto = new MemberDTO();	
 		
-		if(bcPass == true) {
 			dto.setCm_id(cm_id);
 			MemberDTO login = ms.login(dto);
 			if(login != null) {
-				session.setAttribute("loginID", login.getCm_id());
-				System.out.println("성공");
+				System.out.println(login.getCm_pw());
+				String hash_password = login.getCm_pw();
+				if(BCrypt.checkpw(cm_pw, hash_password)) {
+				session.setAttribute("loginID", login);
+				} else {
+				session.setAttribute("loginID", null);
+				}
 			}
-		} else {
-			session.setAttribute("member", null);
-			System.out.println("실패ㅠ;");
-		}
-		
 		return "redirect:/";
 	}
 	

@@ -286,8 +286,6 @@
     </symbol>
 
   </svg>
-
-<<<<<<< HEAD
   <!-- Navigation -->
   <nav class="side pole">
     <div class="navigation">
@@ -338,7 +336,6 @@
 					<a href="#" class="logo"><svg width="37" height="30">
           <use xmlns:xlink="http://www.w3.org/1999/xlink"
 								xlink:href="#logo-icon"></use>
->>>>>>> 27e85d40f50d655c4d86f2ce31f82d03b3e184b1
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
@@ -452,7 +449,7 @@
 
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="/member/myPage">마이페이지</a></li>
+						<li><a href="/member/myPage?cm_id=${loginID }">마이페이지</a></li>
 						<li><a href="/member/logOutProc">로그아웃</a></li>
 					</ul>
 

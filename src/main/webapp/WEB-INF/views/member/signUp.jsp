@@ -21,7 +21,7 @@
 $(function(){
 	// 뒤로가기 버튼 (Back Btn)
 	$("#back").on('click', function(){
-		location.href="/member/loginPage";	
+		location.href="/";	
 	});
 	
 	$("#signup").on('click', function(){
