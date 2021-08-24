@@ -1,8 +1,5 @@
 package kh.spring.dto;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class MemberDTO {
 	
 	private int cm_no;

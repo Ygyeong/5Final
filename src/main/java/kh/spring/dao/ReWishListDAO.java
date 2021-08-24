@@ -1,6 +1,7 @@
 package kh.spring.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,8 @@ public class ReWishListDAO {
 		return mybatis.selectOne("ReWishList.exist", dto);
 	}
 	
-	public List<ReWishListDTO> myWishList(String rem_id) {
-		return mybatis.selectList("ReWishList.myWishList",rem_id);
+	public List<ReWishListDTO> myWishList(Map<String,Object> param) {
+		return mybatis.selectList("ReWishList.myWishList",param);
 	}
 	public int myWishCount(String rem_id) {
 		return mybatis.selectOne("ReWishList.myWishCount",rem_id);

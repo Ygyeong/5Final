@@ -27,8 +27,8 @@ public class PublicData extends HttpServlet {
         
         JSONParser jsonparser = new JSONParser();
         JSONObject jsonobject = (JSONObject)jsonparser.parse(readUrl());
-        JSONObject parse_response = (JSONObject) jsonobject.get("response"); // response 로 부터 body 찾아옵니다. 
-        JSONObject parse_body = (JSONObject) parse_response.get("body"); // body 로 부터 items 받아옵니다. 
+        JSONObject parse_response = (JSONObject) jsonobject.get("response"); // response 濡� 遺��꽣 body 李얠븘�샃�땲�떎. 
+        JSONObject parse_body = (JSONObject) parse_response.get("body"); // body 濡� 遺��꽣 items 諛쏆븘�샃�땲�떎. 
         JSONObject parse_items = (JSONObject) parse_body.get("items");
         JSONArray parse_item = (JSONArray) parse_items.get("item");
         

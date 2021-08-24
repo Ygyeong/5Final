@@ -22,23 +22,11 @@
 
 	$(function(){
 		$("#kakaoLogin").on('click', function(){
-			Kakao.Auth.login({
-				success: function(response){
-					Kakao.API.request({
-						url:'/v2/user/me',
-						success: function(response){
-							console.log(response)
-						
-						},
-						fail: function(error){
-							console.log(error)
-						},
-					})
-				},
-				fail: function(error){
-					console.log(error)
-				},
-			})
+			alert("준비중입니다.");
+		})
+		
+		$("#googleLogin").on('click', function(){
+			alert("준비중입니다.");
 		})
 	})
 
@@ -50,10 +38,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>LogIn</h3>
-                    <div class="d-flex justify-content-end social_icon">
-                        <span><i><img id="kakaoLogin" src="${pageContext.request.contextPath}/resources/img/img1.png" style="width: 70px;"></i></span>
-                        <span><i><img src="${pageContext.request.contextPath}/resources/img/img2.png" style="width: 65px;"></i></span>
-                    </div>
+
                 </div>
                 <div class="card-body">
                     <form action="loginProc" method="POST">
@@ -70,9 +55,6 @@
                             </div>
                             <input type="password" name="cm_pw"class="form-control" placeholder="비밀번호를 입력하세요." required>
                         </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">비밀번호 저장
-                        </div>
                         <div class="form-group">
                             <input type="submit" value="로그인" class="btn float-right login_btn">
                         </div>
@@ -83,7 +65,7 @@
                         같이 별보러 갈래요?<a href="/member/signPage">회원 가입</a>
                     </div>
                     <div class="d-flex justify-content-center links2">
-                        <a href="/member/emailCheck">저런! 비밀번호를 잊으셨군요?</a>
+                        <a href="/member/pwChange">저런! 비밀번호를 잊으셨군요?</a>
                     </div>
                 </div>
             </div>

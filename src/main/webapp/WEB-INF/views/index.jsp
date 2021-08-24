@@ -80,7 +80,7 @@
 </style>
 
 <script>
-	$(function() {
+$(function() {
 
 		$.ajax({
 			url : "/gal/mainList?cpage=1",
@@ -98,8 +98,13 @@
 					$("#galContents").html(resp[0].contents);
 
 				})
+				
+				
+				
+				
+				
 
-	})
+	}) 
 </script>
 
 </head>
@@ -290,8 +295,12 @@
     </symbol>
 
   </svg>
-
-
+  <!-- Navigation -->
+  <nav class="side pole">
+    <div class="navigation">
+      <ul></ul>
+    </div>
+  </nav>
 
 	<!-- Navigation -->
 	<nav class="side pole">
@@ -339,12 +348,14 @@
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
-						<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
-						<li><a href="/products/selectAll">SHOP</a></li>
-						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
+						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
+
+						<li><a href="/rep/list?index=1">중고장터</a></li>
+						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/signPage">회원가입</a></li>
@@ -388,9 +399,9 @@
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="//info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-						<li><a href="/products/selectAll">SHOP</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -441,14 +452,14 @@
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
+						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-						<li><a href="/products/selectAll">SHOP</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="/member/myPage">마이페이지</a></li>
+						<li><a href="/member/myPage?cm_id=${loginID }">마이페이지</a></li>
 						<li><a href="/member/logOutProc">로그아웃</a></li>
 					</ul>
 
@@ -760,7 +771,11 @@
 											<div id="galContents" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; height: 150px;"></div></li>
 
 										</ul>
+<<<<<<< HEAD
+										<div class="thumbnail-74" style="width: 100px; height: 100px;">
+=======
 										<div class="thumbnail-74" >
+>>>>>>> 594f8fafdaf6a6e0bb5c5d7ff320a9e8d7f7ac89
 											<c:choose>
 
 												<c:when test="${rating==1 }">
@@ -953,9 +968,7 @@
 	<!-- Loading Progress Bar -->
 	<div class="progress-bar blue"></div>
 
-	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
-		
-	</script>
+<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
 
 
 </body>

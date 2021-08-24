@@ -5,9 +5,24 @@
 
 <mapper namespace="Camp_info">
 
-	<select resultType="kh.spring.dto.Camp_infoDTO" id="selectAll">
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="listAll">
 		select * from camp_info 
+		<include refid="search"></include>
 	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test="searchOption ==  'all'">
+				where facltNm like '%'||#{keyword}||'%'
+				or lctCl like '%'||#{keyword}||'%'
+				or addr1 like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				where ${searchOption} like '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	
 	
 	<select resultType="kh.spring.dto.Camp_infoDTO" id="detail">
 		select * from camp_info where contentId=${value} 
@@ -28,5 +43,13 @@
 	<delete id="wishdelete">
 		delete from camp_wishlist where wish_seq=#{wish_seq}
 	</delete>
+	
+	<select id="selectnum" resultType="kh.spring.dto.Camp_infoDTO">
+		select * from
+				(select row_number() over(order by contentId desc) rnum, contentId, facltNm, firstImageUrl   from camp_info)
+		 where rnum between #{startNum} and #{endNum}
+<!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
+	</select>
+	
 
 </mapper>
