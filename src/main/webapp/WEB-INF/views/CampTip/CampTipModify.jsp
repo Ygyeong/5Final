@@ -153,6 +153,31 @@ $(function(){
 	               }
 	           }
 	      });
+	
+	   $("#btn1").on("click",function(){
+		      $("#file1").val("");
+		   })
+		   $("#btn2").on("click",function(){
+		      $("#file2").val("");
+		   })
+		   $("#btn3").on("click",function(){
+		      $("#file3").val("");
+		   })   
+	
+	   $(".delAttach").on("click",function(){
+			 let seq = $(this).attr("seq");
+			 $(this).parent().remove();
+			 
+			 let delTarget = $("<input>");
+			 delTarget.attr("type","hidden");
+			 delTarget.attr("name","delete");
+			 delTarget.attr("value",seq);
+			 
+			 $("#btn1").append(delTarget);
+			 
+			 
+			
+		})
 
  	$(window).on("unload",function(){
 		navigator.sendBeacon("${pageContext.request.contextPath}/unload.file");
@@ -195,8 +220,8 @@ $(function(){
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">글번호</label>
 					<div class="col-sm-10 writeDiv">
-						<div class="form-control" id="num">${dto.camp_tip_num }</div>
-						<input type="hidden" name="camp_tip_num" value="${dto.camp_tip_num }">
+						<div class="form-control" id="num">${list.camp_tip_num }</div>
+						<input type="hidden" name="camp_tip_num" value="${list.camp_tip_num }">
 					</div>
 				</div>
 
@@ -208,10 +233,24 @@ $(function(){
 					</div>
 				</div>
 
-				<div class="form-group">
+<!-- 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">작성자</label>
 					<div class="col-sm-10 writeDiv">
 						<input type="text" class="form-control" name="writer" placeholder="Writer">
+					</div>
+				</div> -->
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
+					<div class="col-sm-10 writeDiv">
+						<div class="input-group">
+							<input type="file" class="form-control" id="file1" name="file" style="display: inline; width: 430px" accept="image/jpeg,.png" multiple required >
+							<div class="input-group-btn" style="display: inline;">
+								<button class="btn btn-danger" type="button" id="btn1">삭제</button>
+							</div>
+						</div>
+						<c:forEach var="file"  items="${flist }">
+							<div>${file.oriName }<button type="button" seq="${file.seq}" class="delAttach btn btn-outline-success btn-sm">삭제</button></div>   
+    			 		</c:forEach> 
 					</div>
 				</div>
 

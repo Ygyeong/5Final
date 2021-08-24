@@ -68,6 +68,5 @@ public class CampTipDTO {
 	public void setView_count(int view_count) {
 		this.view_count = view_count;
 	}
-	
 }
 

@@ -12,7 +12,7 @@
 		<include refid="pagingHeader"></include>
 	        SELECT rownum, aa.*
 	        FROM camp_tip aa where ${searchOption} like '%'||#{keyword}||'%'
-	        ORDER BY camp_tip_num, write_date DESC 
+	        ORDER BY camp_tip_num DESC 
     	<include refid="pagingFooter"></include> 
 	</select>
 	
@@ -35,26 +35,16 @@
 	<!-- 01_02. 게시글 레코드 갯수 -->
 	<select id="countArticle" resultType="int">
 	    SELECT COUNT(*) FROM camp_tip where ${searchOption} like '%'||#{keyword}||'%'
-	    <!-- WHERE절을 include 태그로 삽입 -->
-	    <!-- <include refid="search"></include> -->
 	</select>
 	
-	<!-- sql code 조각 -->
-	<!-- 반복되는 sql의 일부를 sql태그를 이용하여 따로 빼둘수 있다. -->
-<!-- 	<sql id="search">
-	    <choose>
-	        검색옵션이 전체 검색일 경우
-	        <when test="searchOption == 'all'">
-	            WHERE writer like '%'||#{keyword}||'%'
-	            OR contents like '%'||#{keyword}||'%'
-	            OR title like '%'||#{keyword}||'%'
-	        </when>
-	        전체 검색이 아닐 경우
-	        <otherwise>
-	            WHERE ${searchOption} like '%'||#{keyword}||'%'
-	        </otherwise>
-	    </choose>
-	</sql> -->
+	<select id="getSeq" resultType="int">	
+		select camp_tip_seq.currval from dual
+	</select>
+	
+	 <select id="search" resultType="kh.spring.dto.CampTipDTO">	
+		select * from camp_tip where camp_tip_num = #{camp_tip_num}
+	</select>
+	
 	
 	<!-- 페이징 sql -->
 	<sql id="pagingHeader">
@@ -65,6 +55,5 @@
 	        ) A
 	    ) WHERE rn BETWEEN #{start} AND #{end}
 	</sql>
-
 	
 </mapper>
