@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
+import kh.spring.config.InfoConfig;
 import kh.spring.config.ReProductConfig;
 import kh.spring.dto.ReCommentsDTO;
 import kh.spring.dto.RePicturesDTO;
@@ -42,6 +43,7 @@ public class ReProductController {
 	
 	
 	@RequestMapping("list")
+
 	public String list(int index,String keyword,Model m) {
 		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
@@ -60,6 +62,7 @@ public class ReProductController {
 			m.addAttribute("total",total);
 			
 		}
+
 		return "rep/list";
 	}
 	
