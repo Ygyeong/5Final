@@ -99,7 +99,11 @@ $(function() {
 
 				})
 				
-				
+			$(".list").on("click",function(){
+			let seq=$(this).find(".seq").val();
+			location.href="/rep/detail?rep_seq="+seq;
+
+			})	
 				
 				
 				
@@ -350,8 +354,12 @@ $(function() {
 					<ul class="mainMenu margin-top-3">
 
 						<li><a href="/info/list?index=1">캠핑장</a></li>
-						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
+
+						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+
+
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
+
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
@@ -482,12 +490,14 @@ $(function() {
 					<form class="slides-form" action="/info/search" autocomplete="off"
 						style="margin-bottom: 120px;">
 						<select name="searchOption">
+
 							<option value="all">전체</option>
 							<option value="facltNm">캠핑장 이름</option>
 							<option value="lctCl">주변 환경</option>
 							<option value="addr1">지역</option>
 						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
 							placeholder="원하시는 캠핑장소를 입력해보세요" />
+
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>
@@ -573,27 +583,30 @@ $(function() {
 					</div>
 					<div class="fix-12-12">
 						<ul class="grid grid-74 later equal margin-top-5">
+						<c:forEach var="i" items="${rlist }">
 							<li
-								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter">
+								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter list">
 								<a href="#" class="box-74">
 									<div class="thumbnail-74" style="width: 100%; height: 100%;">
-										<img src="assets/img/background/store2.jpg" class="wide"
+										<img src="/img/${i.thumsysName}" class="wide"
 											alt="Thumbnail" />
 									</div>
 									<div class="name-74 equalElement table wide">
 										<div class="cell left top">
-											<h3 class="" style="font-weight: bold;">코베아 샤워텐트</h3>
-											<h3 class="" style="font-weight: bold; color: red;">₩50,000</h3>
-											<p class="tiny opacity-6 cropBottom">사용횟수가 많지 않아 상태
-												좋습니다.부피때문에 택배로 보내기 애매한 사이즈인것 같아요.직거래 우선으로 하겠습니다.</p>
+											<h3 class="" style="font-weight: bold;">${i.rep_name }</h3>
+											<h3 class="" style="font-weight: bold; color: red;">{i.rep_price}</h3>
+											<p class="tiny opacity-6 cropBottom">${i.rep_detail }</p>
 
 
 
 										</div>
 									</div>
 							</a>
+							<input type=hidden class="seq" value="${i.rep_seq }">
 							</li>
-							<li
+						</c:forEach>
+							
+<!-- 							<li
 								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
 								<a href="#" class="box-74">
 									<div class="thumbnail-74">
@@ -643,7 +656,7 @@ $(function() {
 										</div>
 									</div>
 							</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 
