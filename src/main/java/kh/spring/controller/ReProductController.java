@@ -76,6 +76,7 @@ public class ReProductController {
 		m.addAttribute("plist",plist);
 		m.addAttribute("dto",dto);
 		m.addAttribute("cdto",cdto);
+		m.addAttribute("pdto",pdto);
 		m.addAttribute("repCount",repCount);
 		return "rep/detail";
 	}
