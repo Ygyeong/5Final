@@ -58,6 +58,7 @@
 	letter-spacing: -4px;
 	display: inline-block;
 	width: 200px;
+	
 }
 
 .star_rating a {
@@ -348,7 +349,7 @@ $(function() {
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
-	
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/signPage">회원가입</a></li>
@@ -396,7 +397,7 @@ $(function() {
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
 					</ul>
 					<ul class="subMenu small opacity-8">
@@ -449,7 +450,7 @@ $(function() {
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/myPage">마이페이지</a></li>
@@ -760,18 +761,22 @@ $(function() {
 										<ul class="p tiny">
 											<li><strong id="galTitle"></strong></li>
 
-											<li class="opacity-8"><div id="galContents"
-													style="text-overflow: ellipsis; height: 300px;"></div></li>
+											<li class="opacity-8" >
+											<div id="galContents" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; height: 150px;"></div></li>
 
 										</ul>
+<<<<<<< HEAD
 										<div class="thumbnail-74" style="width: 100px; height: 100px;">
+=======
+										<div class="thumbnail-74" >
+>>>>>>> 594f8fafdaf6a6e0bb5c5d7ff320a9e8d7f7ac89
 											<c:choose>
 
 												<c:when test="${rating==1 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-														<a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -779,8 +784,8 @@ $(function() {
 												<c:when test="${rating==2 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -788,8 +793,8 @@ $(function() {
 												<c:when test="${rating==3 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -797,9 +802,9 @@ $(function() {
 												<c:when test="${rating==4 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -807,9 +812,9 @@ $(function() {
 												<c:when test="${rating==5 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a>
 													</p>
 
 												</c:when>
