@@ -63,7 +63,7 @@ body {
 }
 </style>
 <body>
-		<!-- <button id="dataupdate">DB에 저장</button> -->
+		<button id="dataupdate">DB에 저장</button> 
 	<div class=container>
 		<div id=menu>
 			<ul id=menutab>
