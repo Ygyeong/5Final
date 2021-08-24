@@ -21,7 +21,7 @@
 $(function(){
 	// 뒤로가기 버튼 (Back Btn)
 	$("#back").on('click', function(){
-		location.href="/member/loginPage";	
+		location.href="/";	
 	});
 	
 	$("#signup").on('click', function(){
@@ -148,7 +148,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"></span>
                             </div>
-                            <input type="text" name="cm_phone" class="form-control" placeholder="01012345678">
+                            <input type="text" id="cm_phone" name="cm_phone" class="form-control" placeholder="01012345678">
                         </div>
 
                         <div class="input-group form-group">
