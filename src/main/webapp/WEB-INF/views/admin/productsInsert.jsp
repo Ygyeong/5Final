@@ -15,7 +15,9 @@
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.js"></script>
-
+<!--네비바 링크  -->
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 <style>
 	body{background-color:#F9F9F9;}
     *{box-sizing: border-box;}

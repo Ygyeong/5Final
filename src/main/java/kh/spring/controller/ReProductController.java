@@ -45,7 +45,6 @@ public class ReProductController {
 	@RequestMapping("list")
 
 	public String list(int index,String keyword,Model m) {
-		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		System.out.println(startNum);
@@ -68,7 +67,6 @@ public class ReProductController {
 	
 	@RequestMapping("detail")
 	public String detail(int rep_seq,Model m) {
-		System.out.println("세션 값 :"+session.getAttribute("loginID"));
 		System.out.println(rep_seq);
 		ReProductDTO dto = service.getDetail(rep_seq);
 		List<RePicturesDTO> plist = service.filesBySeq(rep_seq);
@@ -117,10 +115,11 @@ public class ReProductController {
 	public String insertProc(ReProductDTO dto,MultipartFile[] file) throws Exception {
 		int rep_seq = service.getSeq();
 		System.out.println("세션 :"+session.getAttribute("loginID"));
+
 		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
-		System.out.println(dto.getRep_seq());
-		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		String realPath = session.getServletContext().getRealPath("resources/imgs");
+
 		System.out.println(realPath);
 		service.insert(dto,rep_seq,file,realPath);
 		return "redirect:/rep/list?index=1";
