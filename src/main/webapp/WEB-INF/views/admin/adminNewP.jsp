@@ -238,8 +238,7 @@ a{
             <li><a href="/admin/newProduct">새상품 관리</a></li>
             <li><a href="/admin/pay">중고상품 관리</a></li>
             <li><a href="/admin/re">결제내역 관리</a></li>
-            <li><a href="/admin/re">캠핑장 관리</a></li>
-           	<li style="height:180px;"></li>
+           	<li style="height:200px;"></li>
 
         </ul>
         
@@ -249,8 +248,7 @@ a{
     
     
     <div class="body_txt" >
-    안녕하세요 관리자님!<br>
-    관리자 페이지에 오신걸 환영합니다!
+    여기는 새 상품관리
 	</div>
 
 

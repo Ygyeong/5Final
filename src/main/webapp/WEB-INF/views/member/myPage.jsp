@@ -305,10 +305,7 @@ a{
 	
 		<div id="myBox">
 	        <div id="me" class="card">
-<<<<<<< HEAD
 
-=======
->>>>>>> c370d8247b8d7c63dc505313eca785b7e9dcc2d9
                 <div class="class=ard_body">
                     <h5 class="card-title"> ${loginID.cm_id}님의 마이페이지 </h5>
                     <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button></br>
