@@ -55,7 +55,7 @@ public class MemberController {
 		MemberDTO dto = new MemberDTO();
 		dto.setCm_id(cm_id);
 		//MemberDTO modify = ms.login(dto);
-		session.setAttribute("member", modify);
+//		session.setAttribute("member", modify);
 		return "/member/memberModify";
 	}
 	

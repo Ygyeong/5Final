@@ -26,10 +26,7 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
-<<<<<<< HEAD
-=======
 
->>>>>>> c370d8247b8d7c63dc505313eca785b7e9dcc2d9
 			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
 
 		})
