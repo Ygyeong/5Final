@@ -50,10 +50,19 @@ public class ReProductDAO {
 	public int getSeq() {
 		return mybatis.selectOne("ReProduct.getSeq");
 	}
-	public List<ReProductDTO> repList(String rep_writer){
-		return mybatis.selectList("ReProduct.repList",rep_writer);
+	public List<ReProductDTO> repList1(Map<String,Object> param){
+		return mybatis.selectList("ReProduct.repList1",param);
+	}
+	public List<ReProductDTO> repList2(Map<String,Object> param){
+		return mybatis.selectList("ReProduct.repList2",param);
 	}
 	public int repCount(String rep_writer) {
 		return mybatis.selectOne("ReProduct.repCount",rep_writer);
+	}
+	public int repCount1(String rep_writer) {
+		return mybatis.selectOne("ReProduct.repCount1",rep_writer);
+	}
+	public int repCount2(String rep_writer) {
+		return mybatis.selectOne("ReProduct.repCount2",rep_writer);
 	}
 }

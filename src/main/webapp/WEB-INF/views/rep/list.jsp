@@ -28,12 +28,14 @@
 	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
+       input[type=text]:focus{outline:none;}
        #searchBox{border:1px solid black; width:400px; height:100%; padding-top:5px; padding-bottom:5px; }
        #searchBox img{height:18px; width:18px;}
-       #keyword{width:90%; border:none;padding-left:10px;}
+       #keyword{width:90%; border:none;padding-left:10px; margin-top:3px;}
        #writeBox{text-align:right; padding:8px 10px 0px 0px;}
        #write{ text-decoration:none; color:black; height:100%;}
        #word{border:0px solid black; width:90%;}
+       #write,#writeNo:hover{cursor:pointer;}
        /*  input:focus {outline:none;}*/
       .listbar{height:330px; margin: 0px; margin-top: 60px; }
       .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
@@ -203,6 +205,12 @@ a{
 		$("#search").on("click",function(){
 			location.href="/rep/list?index=1&keyword="+$("#keyword").val();
 		})
+		$("#writeNo").on("click",function(){
+			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+			if(result){
+				location.href="/member/loginPage";
+			}
+		})
 		
 		function getList(){
 			$.ajax({
@@ -329,10 +337,46 @@ a{
 
 </c:choose>
 
-
-    
-
-	<div class="container-fluid">
+<c:choose>
+	<c:when test="${loginID==null }">
+		<div class="container-fluid">
+        <div class="row jgBar">
+            <div class="col-6 " id="jg">
+                중고장터
+            </div>
+            <div class="col-5 p-0 search">
+                <div id=searchBox>
+                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                	<img src="/img/search.png" id=search>
+                </div>
+            </div>
+            <div class="col-1 " id=writeBox>
+            	<a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
+            </div>
+        </div>
+        <div class="row camp m-0">
+        	<img src="/img/camp.jpg" >
+        </div>
+        <div class="row listbar" >
+        <c:forEach var="i" items="${list }">
+			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
+				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 mb-1 link">${i.rep_name }</div>
+				<div class="row m-0 ">
+					<div class="col-6 price">${i.rep_price }<span>원</span></div>
+					<div class="col-6 diffD">${i.rep_diff_date }</div>
+				</div>
+				<div class="row m-0 mt-2 pt-2 pb-2 ar">
+					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+				</div>
+				<input type=hidden value=${i.rep_seq } class=seq>
+			</div>       
+		</c:forEach>
+		</div> 
+    </div>
+	</c:when>
+	<c:otherwise>
+		<div class="container-fluid">
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
@@ -367,6 +411,9 @@ a{
 		</c:forEach>
 		</div> 
     </div>
+	</c:otherwise>
+</c:choose>
+
 
 
     <script>

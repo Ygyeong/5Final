@@ -20,7 +20,9 @@
 	
 	<!-- 사용자,myJG 페이지 -->
 	<select id="myWishList" resultType="kh.spring.dto.ReWishListDTO">
-		select * from camp_rewishlist where rem_id = #{value}
+		select * from 
+(select row_number() over(order by rep_id desc) rnum,rew_id,rem_id,rep_id from camp_rewishlist where rem_id = #{rem_id}) 
+where rnum between #{startNum} and #{endNum}
 	</select>
 	<select id="myWishCount" resultType="int">
 		select count(*) from camp_rewishlist where rem_id = #{value}

@@ -209,9 +209,11 @@ a{
  		})
  		
  		$("#userID").on("click",function(){
- 			location.href="/rep/myJG?id="+$(this).text();
+ 			location.href="/rep/myJG?index=1&id="+$(this).text();
  		})
- 		
+ 		$("#detailT").on("click",function(){
+ 			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
+ 		})
 
  		$("#cmtBtn").on("click",function(){
  			console.log("AAAA");
@@ -389,81 +391,6 @@ a{
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-	 <div class="container-fluid">
-        <div class="row" id=menu>
-            <c:forEach var="i" items="${plist }">
-        		<div class="col-6 p-0" id=img>
-            	<img src="/img/${i.reSysName }">
-            </div>
-        	</c:forEach>
-            <div class="col-5 " id=infoBox>
-            	<div class="row m-0 mb-4">
-            		<div class="col-2 txt">개인중고</div>
-            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
-            	</div>
-            	
-                <div class="row m-0">
-                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
-                </div>
-                <div class="row m-0" id=priceBox>
-                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
-                  </div>
-                <div class="row m-0 pb-2 pt-4">
-                    <div class="col-3 p-0">거래방법</div>
-                    <div class="col-9 p-0">${dto.rep_delivery}</div>
-                </div>
-                <div class="row m-0 pb-2">
-                    <div class="col-3 p-0">배송비</div>
-                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
-                </div>
-                
-                <div class="row m-0 pb-4">
-                    <div class="col-3 p-0">거래지역</div>
-                    <div class="col-9 p-0">${dto.rep_area}</div>
-                </div>
-                <div class="row pt-3" id=funcBox>
-                    <div class="col-5 p-0" id=like>
-						 <button class="btn btn-outline-dark" id=likeBtn>찜하기</button>
-					</div>
-                   
-                </div>
-                <input type=hidden id=seq value="${dto.rep_seq}">
-            </div>
-        </div>
-        <div class="row p-0 content">
-            <div class="col-8">
-                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
-            </div>
-            <div class="col-3 p-0" id=userBox>
-                <div class="col-12 " id=userID>${dto.rep_writer}</div>
-                 <div class="col-4 " id=repCount>상품 <span>${repCount}</span></div>
-            </div>
-        </div>
-     
-            <div class="row m-0">
-                <div class="col-12" id=cmtT>댓글</div>
-            </div>
-            <div class="row cmtBox">
-                <div class="col-11 p-0">
-                    <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
-                </div>
-                <div class="col-1" id=userBtn>댓글등록
-                </div>
-            </div>
-			<div class="box">
-				<c:forEach var="i" items="${cdto }">
-            		<div class="row recmtBox" id="id${i.recmt_seq }">
-            			<div class="row m-0">
-            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
-            			</div>
-            			<div class="row m-0">
-            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
-            			</div>
-            		</div>
-            	</c:forEach>
-			</div>
-    </div>
 </c:when>
 <c:when test="${loginID='admin'}">
 <nav class="navbar">
@@ -515,7 +442,15 @@ a{
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-	<div class="container-fluid">
+	
+</c:otherwise>
+</c:choose>
+<!--nav bar 끝  -->
+
+<!-- 사용자가 게시글 작성자일때  / 아닐때  -->
+<c:choose>
+	<c:when test="${loginID == dto.rep_writer}">
+		<div class="container-fluid">
        		 <div class="row" id=menu>
         	<c:forEach var="i" items="${plist }">
         		<div class="col-6 p-0" id=img>
@@ -607,7 +542,7 @@ a{
             <div class="box">
             	<c:forEach var="i" items="${cdto }">
             	<c:choose>
-            	<c:when test="${id==i.recmt_writer }">
+            	<c:when test="${loginID==i.recmt_writer }">
             		<div class="row recmtBox" id="id${i.recmt_seq }">
             			<div class="row m-0">
             				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
@@ -640,7 +575,86 @@ a{
             </div>
 
     </div>
-</c:otherwise>
+	</c:when>
+	<c:otherwise>
+		<div class="container-fluid">
+        <div class="row" id=menu>
+            <c:forEach var="i" items="${plist }">
+        		<div class="col-6 p-0" id=img>
+            	<img src="/img/${i.reSysName }">
+            </div>
+        	</c:forEach>
+            <div class="col-5 " id=infoBox>
+            	<div class="row m-0 mb-4">
+            		<div class="col-2 txt">개인중고</div>
+            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
+            	</div>
+            	
+                <div class="row m-0">
+                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
+                </div>
+                <div class="row m-0" id=priceBox>
+                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
+                  </div>
+                <div class="row m-0 pb-2 pt-4">
+                    <div class="col-3 p-0">거래방법</div>
+                    <div class="col-9 p-0">${dto.rep_delivery}</div>
+                </div>
+                <div class="row m-0 pb-2">
+                    <div class="col-3 p-0">배송비</div>
+                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
+                </div>
+                
+                <div class="row m-0 pb-4">
+                    <div class="col-3 p-0">거래지역</div>
+                    <div class="col-9 p-0">${dto.rep_area}</div>
+                </div>
+                <div class="row pt-3" id=funcBox>
+                    <div class="col-5 p-0" id=like>
+						 <button class="btn btn-outline-dark" id=likeBtn>찜하기</button>
+					</div>
+                   
+                </div>
+                <input type=hidden id=seq value="${dto.rep_seq}">
+            </div>
+        </div>
+        <div class="row p-0 content">
+            <div class="col-8">
+                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
+            </div>
+            <div class="col-3 p-0" id=userBox>
+                <div class="col-12 " id=userID>${dto.rep_writer}</div>
+                 <div class="col-4 " id=repCount>상품 <span>${repCount}</span></div>
+            </div>
+        </div>
+     
+            <div class="row m-0">
+                <div class="col-12" id=cmtT>댓글</div>
+            </div>
+            <div class="row cmtBox">
+                <div class="col-11 p-0">
+                    <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
+                </div>
+                <div class="col-1" id=userBtn>댓글등록
+                </div>
+            </div>
+			<div class="box">
+				<c:forEach var="i" items="${cdto }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:forEach>
+			</div>
+    </div>
+	</c:otherwise>
 </c:choose>
+
+
 </body>
 </html>

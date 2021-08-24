@@ -47,7 +47,7 @@ public class ReProductController {
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		System.out.println(startNum);
 		System.out.println(keyword);
-		if(keyword==null) {
+		if(keyword == null || keyword.contentEquals("")) {
 			List<ReProductDTO> list = service.Thumbnail(startNum,endNum);
 			m.addAttribute("list",list);
 		}else {
@@ -105,28 +105,42 @@ public class ReProductController {
 	}
 	
 	@RequestMapping("myJG")
-	public String myJG(String id,Model m) {
-		System.out.println(id);
-			List<ReProductDTO> list = service.repList(id);
-			int repCount = service.repCount(id);
-			System.out.println(id +repCount+list);
+	public String myJG(String id,int seq,int index,Model m){
+		System.out.println(id+" : "+seq);
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		
+			List<ReProductDTO> list = service.repList(id,seq,startNum,endNum);
+			int repCount = service.JGCount(id,seq);
+			int totalCount = service.repCount(id);
+			List<String> pageNavi = service.getPageNavi(index,id,seq);
+			System.out.println(pageNavi);
 			m.addAttribute("userID",id);
 			m.addAttribute("list",list);
+			m.addAttribute("navi",pageNavi);
+			m.addAttribute("index",index);
 			m.addAttribute("Count",repCount);
+			m.addAttribute("totalCount",totalCount);
+			m.addAttribute("seq",seq);
 		
 		return "rep/myJG";
 		
 	}
 	
-	@RequestMapping("myWishList")
-	public String myWishList(Model m) {
-		String id = (String)session.getAttribute("loginID");
-		List<ReProductDTO> list = service.myWishList(id);
-		int wishCount = service.myWishCount(id);
-		m.addAttribute("list",list);
-		m.addAttribute("Count",wishCount);
-		return "rep/myJG";
-	}
+	
+	
+	
+	
+	
+//	@RequestMapping("myWishList")
+//	public String myWishList(Model m) {
+//		String id = (String)session.getAttribute("loginID");
+//		List<ReProductDTO> list = service.myWishList(id);
+//		int wishCount = service.myWishCount(id);
+//		m.addAttribute("list",list);
+//		m.addAttribute("Count",wishCount);
+//		return "rep/myJG";
+//	}
 	
 	
 	@ResponseBody

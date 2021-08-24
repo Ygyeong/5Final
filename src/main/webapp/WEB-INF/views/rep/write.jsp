@@ -26,17 +26,72 @@
     .txt{font-weight:580;}
     input[type=checkbox]:checked:after{color:black;}
     .note-btn-group.note-insert,.note-resizebar{display:none;}
-    
+    .del_price{display: none;}
 </style>
+
 <script>
 $(function(){
+    $("#submit").on("click",function(){
+      
+      let name = $("#name").val();
+      let price = $("#price").val();
+      let area = $("#area").val();
+      let content = $("#content").val();
+      let file = $("#input-file").val();
+	  let delivery = $('input:checkbox[name=rep_delivery]').is(':checked');
+	  
+      let nameRegex= /^.{4,20}$/;
+      let priceRegex = /^[1-9][0-9]{2,8}$/;
+      let areaRegex = /^.{1,10}$/;
+      let contentRegex = /^.{0,1000}$/;
+      let fileRegex = /^.{1,}$/;
+
+      let nameResult = nameRegex.test(name);
+      let priceResult = priceRegex.test(price);
+      let areaResult = areaRegex.test(area);
+      let contentResult = contentRegex.test(content);
+      let fileResult = fileRegex.test(file);
+      
+      if(!nameResult){
+         alert("상품이름은 4글자 이상 입력해주세요!");
+         return;
+      }else if(!priceResult){
+         alert("가격을 입력해주세요!");
+         return;
+      }else if(!delivery){
+    	  alert("거래방법을 선택해주세요!");
+    	  return;
+      }else if(!areaResult){
+         alert("거래 지역을 입력해주세요!");
+         return;
+      }else if(!contentResult){
+         alert("내용을 4000자 이내로 입력해주세요!");
+         return;
+      }else if(!fileResult){
+        alert("첨부파일을 넣어주세요!");
+         return;
+      }
+      $("#frm").submit();
+     
+      
+   }) 
+
+   $("#parcel").on("click",function(){
+    let result = $("#parcel").prop("checked");
+   if(!result){
+    $(".del_price").css("display","none");
+   }else{
+    $(".del_price").css("display","flex");
+   }
+   })
+
 	$('#summernote').summernote({
         tabsize: 2,
         height: 300,
         width:1100
       });
 	
-	//택배배송선택시 배송비 나옴 
+	
 	
 	
 })
@@ -44,7 +99,7 @@ $(function(){
 </head>
 <body>
 	<div class="container">
-        <form action="/rep/insertProc" method="post" enctype="multipart/form-data">
+        <form action="/rep/insertProc" method="post" enctype="multipart/form-data" id="frm">
         <div id=title> 중고장터 등록하기</div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">종류</div>
@@ -64,20 +119,20 @@ $(function(){
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">이름</div>
-            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control" id=name></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">금액</div>
-            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control" id=price></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">거래방법</div>
             <div class="col-6 p-0">
-                <input type="checkbox" name=rep_delivery value="택배배송" id="parcel" checked> 택배배송
-                <input type="checkbox" name=rep_delivery value="직거래"> 직거래
+                <input type="checkbox" name=rep_delivery value="택배배송" id="parcel" class="check"> 택배배송
+                <input type="checkbox" name=rep_delivery value="직거래" class="check"> 직거래
             </div>
         </div>
-        <div class="row m-0 mt-3 mb-3 box">
+        <div class="row m-0 mt-3 mb-3 box del_price">
             <div class="col-2 p-0 txt">배송비</div>
             <div class="col-6 p-0">
                 <input type="radio" name="rep_delivery_price" value="배송비 포함" checked> 판매자 부담
@@ -86,7 +141,7 @@ $(function(){
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">거래지역</div>
-            <div class="col-5 p-0"><input type="text" name=rep_area class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=rep_area class="form-control" id=area></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
@@ -95,15 +150,17 @@ $(function(){
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
-		        <textarea class="col-12" id="summernote" name=rep_detail></textarea>
+		        <textarea class="col-12" id="summernote" name=rep_detail id=content></textarea>
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>
-                <button type="submit" class="btn btn-outline-dark" id=submit>등록</button>
+                <input type="submit" class="btn btn-outline-dark" id=submit value=등록>
                 <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
             </div>
         </div>
         </form>
 	</div>
+    
+    
 </body>
 </html>

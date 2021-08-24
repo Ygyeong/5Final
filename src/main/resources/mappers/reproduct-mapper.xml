@@ -32,12 +32,27 @@ where rnum between #{startNum} and #{endNum}
 	<select id="getSeq" resultType="int">
 		select rep_seq.nextval from dual
 	</select>
-	<select id="repList" resultType="kh.spring.dto.ReProductDTO">
-		select * from camp_reproduct where rep_writer = #{value} 
+	<select id="repList1" resultType="kh.spring.dto.ReProductDTO">
+		select * from 
+(select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
+rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_writer = #{rep_writer} and rep_stock=1) 
+where rnum between #{startNum} and #{endNum}
+	</select>
+	<select id="repList2" resultType="kh.spring.dto.ReProductDTO">
+		select * from 
+(select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
+rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_writer = #{rep_writer} and rep_stock=0) 
+where rnum between #{startNum} and #{endNum}
 	</select>
 	<!-- 사용자 중고상품갯수  -->
 	<select id="repCount" resultType="int">
-		select count(*) from camp_reproduct where rep_writer = #{value} 
+		select count(*) from camp_reproduct where rep_writer = #{value}
+	</select>
+	<select id="repCount1" resultType="int">
+		select count(*) from camp_reproduct where rep_writer = #{value} and rep_stock=1
+	</select>
+	<select id="repCount2" resultType="int">
+		select count(*) from camp_reproduct where rep_writer = #{value} and rep_stock=0
 	</select>
 	
 	<!-- 판매관련 -->
