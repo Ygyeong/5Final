@@ -484,6 +484,7 @@ $(function() {
 					</p>
 					<form class="slides-form" action="/info/search" autocomplete="off"
 						style="margin-bottom: 120px;">
+<<<<<<< HEAD
 						<select name="searchOption" class="input-9 ae-4 fromCenter" style="width: 150px;">
 							<option value="all">전체</option>
 							<option value="facltNm">캠핑장 이름</option>
@@ -493,6 +494,17 @@ $(function() {
 						<input type="text" class="input-9 ae-4 fromCenter" name="keyword"
                      placeholder="원하시는 캠핑장소를 입력해보세요" style="width:400px;"/>
 						
+=======
+						<select name="searchOption" class="input-9 ae-4 fromCenter" style="width:150px;">
+
+							<option value="all">전체</option>
+							<option value="facltNm">캠핑장 이름</option>
+							<option value="lctCl">주변 환경</option>
+							<option value="addr1">지역(ex.숲/바다/계곡)</option>
+						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
+							placeholder="원하시는 캠핑장소를 입력해보세요" style="width:400px;"/>
+
+>>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>

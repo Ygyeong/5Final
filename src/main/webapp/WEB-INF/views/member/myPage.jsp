@@ -26,6 +26,10 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
 			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
 
 		})
@@ -304,6 +308,10 @@ a{
 	
 		<div id="myBox">
 	        <div id="me" class="card">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
                 <div class="class=ard_body">
                     <h5 class="card-title"> ${loginID.cm_id}님의 마이페이지 </h5>
                     <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button><br>
