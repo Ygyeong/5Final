@@ -108,14 +108,14 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
@@ -133,14 +133,14 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
@@ -161,14 +161,14 @@
         <div class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                <!--  <a href="/" class="navbar-brand"><img src="/assets/img/background/logo.png"style="width:200px;height:1000px;"></a> -->
-                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:5px;margin-bottom:6px;">별보러갈래?</a>
+                <a href="/" class="navbar-brand"  style="font-family: 'Nanum Brush Script';font-size: 30px;"><img src="/assets/img/background/newLogo_negative.png"style="margin-right:-5px;margin-bottom:10px;">별보러갈래?</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav ml-auto">
-                        <a href="/info/list" class="nav-item nav-link">캠핑장</a>
+                        <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
                         <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>

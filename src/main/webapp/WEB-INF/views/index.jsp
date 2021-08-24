@@ -306,12 +306,12 @@
 
 			<nav class="panel top">
 				<div class="sections">
-					<!--  <div class="left"><a href="/" title="Slides Framework"><img src="assets/img/background/reallogo.png"style="width:180px;height:90px;"> -->
+					
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							별보러갈래? </a>
 					</div>
 					<div class="right">
@@ -361,8 +361,8 @@
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							<!-- <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">  -->
 							별보러갈래?</a>
 					</div>
@@ -414,8 +414,8 @@
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							<!-- <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">  -->
 							별보러갈래?</a>
 					</div>
@@ -476,7 +476,7 @@
 					<form class="slides-form" action="#" autocomplete="off"
 						style="margin-bottom: 120px;">
 						<input type="text" class="input-9 ae-4 fromCenter"
-							name="user-email" placeholder="검색어를 입력해주세요" />
+							name="user-email" placeholder="원하시는 캠핑장소를 입력해보세요" />
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>

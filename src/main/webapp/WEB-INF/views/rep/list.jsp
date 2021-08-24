@@ -276,7 +276,7 @@ a{
     </nav>
 
 </c:when>
-<c:when test="${loginID='admin'}">
+<c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
            
