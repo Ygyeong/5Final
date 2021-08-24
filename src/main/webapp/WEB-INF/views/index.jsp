@@ -58,6 +58,7 @@
 	letter-spacing: -4px;
 	display: inline-block;
 	width: 200px;
+	
 }
 
 .star_rating a {
@@ -79,7 +80,7 @@
 </style>
 
 <script>
-	$(function() {
+$(function() {
 
 		$.ajax({
 			url : "/gal/mainList?cpage=1",
@@ -97,13 +98,21 @@
 					$("#galContents").html(resp[0].contents);
 
 				})
+				
+				
+				
+				
+				
 
-	})
+	}) 
 </script>
 
 </head>
 
 <body class="slides chain simplifiedMobile animated">
+
+
+
 
 	<!-- SVG Library -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
@@ -306,12 +315,12 @@
 
 			<nav class="panel top">
 				<div class="sections">
-					<!--  <div class="left"><a href="/" title="Slides Framework"><img src="assets/img/background/reallogo.png"style="width:180px;height:90px;"> -->
+					
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							별보러갈래? </a>
 					</div>
 					<div class="right">
@@ -339,12 +348,14 @@
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
+
 						<li><a href="/info/list">캠핑장</a></li>
-						<li><a href="">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="CampTipBoard/selectAll?">캠핑정보</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
+
 						<li><a href="/rep/list?index=1">중고장터</a></li>
 						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
-	
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/signPage">회원가입</a></li>
@@ -361,8 +372,8 @@
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							<!-- <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">  -->
 							별보러갈래?</a>
 					</div>
@@ -388,16 +399,16 @@
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="/info/list">캠핑장</a></li>
-						<li><a href="#">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="//info/list?index=1">캠핑장</a></li>
+						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="#">관리자 페이지</a></li>
-						<li><a href="#">로그아웃</a></li>
+						<li><a href="/admin/home">관리자 페이지</a></li>
+						<li><a href="/member/logOutProc">로그아웃</a></li>
 					</ul>
 
 				</div>
@@ -414,8 +425,8 @@
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
-							src="assets/img/background/camp_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">
+							src="assets/img/background/newLogo_negative.png"
+							style="width: 120px; height: auto; margin-bottom: -6px; margin-right: -10px;">
 							<!-- <div class="left"><a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;"><img src="assets/img/background/camp_logo.png"style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">  -->
 							별보러갈래?</a>
 					</div>
@@ -441,12 +452,11 @@
 								xlink:href="#logo-icon"></use>
         </svg></a>
 					<ul class="mainMenu margin-top-3">
-						<li><a href="#">캠핑장</a></li>
-						<li><a href="#">캠핑정보</a></li>
-						<li><a href="#">SHOP</a></li>
+						<li><a href="/info/list?index=1">캠핑장</a></li>
+						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+						<li><a href="/products/selectAll?index=1">SHOP</a></li>
 						<li><a href="/rep/list?index=1">중고장터</a></li>
-						<li><a href="/gal/list?cpage=1">갤러리 후기</a></li>
-
+						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
 						<li><a href="/member/myPage?cm_id=${loginID }">마이페이지</a></li>
@@ -477,7 +487,7 @@
 					<form class="slides-form" action="#" autocomplete="off"
 						style="margin-bottom: 120px;">
 						<input type="text" class="input-9 ae-4 fromCenter"
-							name="user-email" placeholder="검색어를 입력해주세요" />
+							name="user-email" placeholder="원하시는 캠핑장소를 입력해보세요" />
 						<button type="submit" class="button blue gradient ae-7 fromCenter"
 							name="button">검색하기</button>
 					</form>
@@ -757,18 +767,22 @@
 										<ul class="p tiny">
 											<li><strong id="galTitle"></strong></li>
 
-											<li class="opacity-8"><div id="galContents"
-													style="text-overflow: ellipsis; height: 300px;"></div></li>
+											<li class="opacity-8" >
+											<div id="galContents" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; height: 150px;"></div></li>
 
 										</ul>
+<<<<<<< HEAD
 										<div class="thumbnail-74" style="width: 100px; height: 100px;">
+=======
+										<div class="thumbnail-74" >
+>>>>>>> 594f8fafdaf6a6e0bb5c5d7ff320a9e8d7f7ac89
 											<c:choose>
 
 												<c:when test="${rating==1 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
-														<a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -776,8 +790,8 @@
 												<c:when test="${rating==2 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#">★</a> <a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -785,8 +799,8 @@
 												<c:when test="${rating==3 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -794,9 +808,9 @@
 												<c:when test="${rating==4 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -804,9 +818,9 @@
 												<c:when test="${rating==5 }">
 
 													<p class="star_rating">
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a> <a href="#" class="on">★</a>
-														<a href="#" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a>
 													</p>
 
 												</c:when>
@@ -953,6 +967,9 @@
 
 	<!-- Loading Progress Bar -->
 	<div class="progress-bar blue"></div>
+
+<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
+
 
 </body>
 

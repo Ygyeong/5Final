@@ -19,8 +19,8 @@ public class Camp_infoDAO {
 	private SqlSessionTemplate mybatis;
 	
 	//목록 출력
-	public List<Camp_infoDTO> selectAll(){
-		return mybatis.selectList("Camp_info.selectAll");
+	public List<Camp_infoDTO> selectAll(Map<String,Object> param){
+		return mybatis.selectList("Camp_info.selectnum", param);
 	}
 	
 	//디테일 출력
@@ -37,12 +37,7 @@ public class Camp_infoDAO {
 	public int wishinsert(Camp_wishlistDTO dto) {
 		return mybatis.insert("Camp_info.wishinsert", dto);
 	}
-	
-	//캠핑 정보 넣기
-	public int campinsert(Camp_infoDTO dto) {
-		return mybatis.insert("Camp_info.campinsert", dto);
-	}
-	
+		
 	//찜하기 확인
 	public List<Camp_wishlistDTO> selectwish(Map<String,String> param){
 		return mybatis.selectList("Camp_info.selectwish",param);
@@ -52,6 +47,10 @@ public class Camp_infoDAO {
 	public int wishdelete(int wish_seq){
 		return mybatis.delete("Camp_info.wishdelete", wish_seq);
 				
+	}
+	
+	public List<Camp_infoDTO> search(Map<String,String> param){
+		return mybatis.selectList("Camp_info.listAll", param);
 	}
 	
 }

@@ -43,8 +43,8 @@
 					</div>
 					<div class="pname">
 						<span>${list.p_name}</span>
-						<input type="hidden" value="${list.c_seq}" id="c_seq">
-						<input type="hidden" value="${list.p_seq}" id="p_seq">
+						<input type="hidden" value="${list.c_seq}" class="c_seq">
+						<input type="hidden" value="${list.p_seq}" class="p_seq">
 					</div>
 				</div>
 				<div class="subdiv">
@@ -63,7 +63,7 @@
 								class="fas fa-arrow-alt-circle-down down"></i></span>
 						</div>
 					</div>
-					<div class="sum">${list.p_price}</div>
+					<div class="sum"></div>
 				</div>
 				<div class="subdiv">
 					<div class="basketcmd">

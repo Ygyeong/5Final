@@ -45,8 +45,12 @@
 		$("#back").on("click", function() {
 			location.href = "javascript:history.back()";
 		})
+		// **원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
 	      
 	});
+    function list(page){
+        location.href="${path}/CampTipBoard/selectAll?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
+    }    
 </script>
 <style>
 a{color:inherit;text-decoration: none;}
@@ -88,13 +92,14 @@ a{color:inherit;text-decoration: none;}
 	width: 150px;
 	height: 75px;
 }
+
 </style>
 </head>
 
 <body>
 
-	<div id="header">Header</div>
-	<div id="footer">Footer</div>
+	<div id="header"></div>
+	<div id="footer"></div>
 
 	<ul id="menu">
 		<li data-menuanchor="first"><a href="#first">봄</a></li>
@@ -123,6 +128,7 @@ a{color:inherit;text-decoration: none;}
 		<div class="ms-right">
 			<div class="ms-section" id="right1">
 				<div class="container">
+					<input type="hidden" id="category" name="category" value="1">
 					<div class="logo">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">별보러갈래?
@@ -132,60 +138,58 @@ a{color:inherit;text-decoration: none;}
 					<div class="row body cnt">
 						<div class="col-12">
 							<div class="row boardlistMain">
-								<div class="col-2">글번호</div>
-								<div class="col-4">제목</div>
-								<div class="col-2">작성자</div>
+								<div class="col-1">분류</div>
+								<div class="col-1">번호</div>
+								<div class="col-3">제목</div>
+								<div class="col-3">작성자</div>
 								<div class="col-2">등록일</div>
 								<div class="col-2">조회수</div>
 							</div>
 							
-							<c:forEach var="i" items="${list}">
-								<c:if test="${i.category == 1 }">
+							<c:forEach var="i" items="${map.list}">
+								
 									<div class="row boardlist">
-										<div class="col-2">${i.camp_tip_num}</div>
-										<div class="col-4" id="titleMove">
+										<div class="col-1">${i.category}</div>
+										<div class="col-1">${i.camp_tip_num}</div>
+										<div class="col-3" id="titleMove">
 											<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}">${i.title}</a>
 										</div>
-										<div class="col-2">${i.writer}</div>
+										<div class="col-3">${i.writer}</div>
 										<div class="col-2">${i.write_date}</div>
 										<div class="col-2">${i.view_count}</div>
 									</div>
-								</c:if>
+								
 							</c:forEach>
 
 							<div id="boardlist">
-								                <!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
-								                <c:if test="${map.dto.curBlock > 1}">
-								                    <a href="javascript:list('1')">[처음]</a>
-								                </c:if>
-								                
-								                <!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
-								                <c:if test="${map.dto.curBlock > 1}">
-								                    <a href="javascript:list('${map.dto.prevPage}')">[이전]</a>
-								                </c:if>
-								                
-								                <!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
-								                <c:forEach var="p" items="${list }" begin="${map.dto.blockBegin}" end="${map.dto.blockEnd}">
-								                    <!-- **현재페이지이면 하이퍼링크 제거 -->
-								                    <c:choose>
-								                        <c:when test="${i == map.dto.curPage}">
-								                            <span style="color: red">${p.camp_tip_num}</span>&nbsp;
-								                        </c:when>
-								                        <c:otherwise>
-								                            <a href="javascript:list('${p.camp_tip_num}')">${p.camp_tip_num}</a>&nbsp;
-								                        </c:otherwise>
-								                    </c:choose>
-								                </c:forEach>
-								                
-								                <!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
-								                <c:if test="${map.dto.curBlock <= map.dto.totBlock}">
-								                    <a href="javascript:list('${map.dto.nextPage}')">[다음]</a>
-								                </c:if>
-								                
-								                <!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
-								                <c:if test="${map.dto.curPage <= map.dto.totPage}">
-								                    <a href="javascript:list('${map.dto.totPage}')">[끝]</a>
-								                </c:if>
+								<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('1')">[처음]</a>
+								</c:if>                
+								<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
+								</c:if>	                
+								<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+								<c:forEach var="p" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+								<!-- **현재페이지이면 하이퍼링크 제거 -->
+									<c:choose>
+										<c:when test="${p == map.boardPager.curPage}">
+											<span style="color: red">${p}</span>&nbsp;
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:list('${p}')">${p}</a>&nbsp;
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+									<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+								</c:if>
+								<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
+									<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+								</c:if>
 							</div>
 
 							<div class="row btns">
@@ -200,32 +204,20 @@ a{color:inherit;text-decoration: none;}
 
 							<div class="search_box">
 								<br>
-								<form action="${pageContext.request.contextPath}/select.board"
+								<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
 									method="get">
 									<div class="row">
 										<div class="col-3">
-											<select class="form-control" name="category1" id="srch_item">
+											<select class="form-control" name="searchOption" id="srch_item">
 												<option value="">선택해주세요</option>
-												<option value="category">카테고리</option>
-												<option value="nickname">작성자</option>
-												<option value="title">제목</option>
-												<option value="contents">내용</option>
+									            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >작성자</option>
+									            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+									            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 											</select>
 										</div>
 										<div class="col-7">
 											<input type="text" class="form-control mb-2" name="keyword"
 												id="" placeholder="검색할 내용을 입력해 주세요." value="">
-											<c:choose>
-												<c:when test="${param.category == 1 }">
-													<input type="hidden" name="category" value="1">
-												</c:when>
-												<c:when test="${param.category == 2 }">
-													<input type="hidden" name="category" value="2">
-												</c:when>
-												<c:otherwise>
-													<input type="hidden" name="category" value="3">
-												</c:otherwise>
-											</c:choose>
 											<input type="hidden" name="cpage" value="1">
 										</div>
 										<div class="col-2">
@@ -241,6 +233,7 @@ a{color:inherit;text-decoration: none;}
 			</div>
 			<div class="ms-section" id="right2">
 				<div class="container">
+					<input type="hidden" id="category" name="category" value="1">
 					<div class="logo">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">별보러갈래?
@@ -250,56 +243,58 @@ a{color:inherit;text-decoration: none;}
 					<div class="row body cnt">
 						<div class="col-12">
 							<div class="row boardlistMain">
+								<div class="col-2">카테고리</div>
 								<div class="col-2">글번호</div>
-								<div class="col-4">제목</div>
+								<div class="col-3">제목</div>
 								<div class="col-2">작성자</div>
 								<div class="col-2">등록일</div>
-								<div class="col-2">조회수</div>
+								<div class="col-1">조회수</div>
 							</div>
 							
-							<c:forEach var="i" items="${list}">
-								<c:if test="${i.category == 2 }">
+							<c:forEach var="i" items="${map.list}">
+								
 									<div class="row boardlist">
+										<div class="col-2">${i.category}</div>
 										<div class="col-2">${i.camp_tip_num}</div>
-										<div class="col-4" id="titleMove">
+										<div class="col-3" id="titleMove">
 											<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}">${i.title}</a>
 										</div>
 										<div class="col-2">${i.writer}</div>
 										<div class="col-2">${i.write_date}</div>
-										<div class="col-2">${i.view_count}</div>
+										<div class="col-1">${i.view_count}</div>
 									</div>
-								</c:if>
+								
 							</c:forEach>
 
 							<div id="boardlist">
-								<br>
-<%-- 								<nav aria-label="Page navigation example" class="page_nav">
-									<ul class="pagination justify-content-center">
-										<c:forEach var="w" items="${navi}" varStatus="s">
-
-											<!-- c:forEach var="i" begin="0" end="10" step="1" 같은 것. -->
-											<c:choose>
-												<c:when test="${w == '>'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index-1]+1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:when test="${w == '<'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index+1]-1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${w}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:otherwise>
-											</c:choose>
-
-											<!-- boolean으로 값이 마지막일 경우에만. true가 됩니다. -->
-										</c:forEach>
-									</ul>
-								</nav> --%>
+								<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('1')">[처음]</a>
+								</c:if>                
+								<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
+								</c:if>	                
+								<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+								<c:forEach var="p" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+								<!-- **현재페이지이면 하이퍼링크 제거 -->
+									<c:choose>
+										<c:when test="${p == map.boardPager.curPage}">
+											<span style="color: red">${p}</span>&nbsp;
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:list('${p}')">${p}</a>&nbsp;
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+									<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+								</c:if>
+								<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
+									<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+								</c:if>
 							</div>
 
 							<div class="row btns">
@@ -314,32 +309,20 @@ a{color:inherit;text-decoration: none;}
 
 							<div class="search_box">
 								<br>
-								<form action="${pageContext.request.contextPath}/select.board"
+								<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
 									method="get">
 									<div class="row">
 										<div class="col-3">
-											<select class="form-control" name="category1" id="srch_item">
+											<select class="form-control" name="searchOption" id="srch_item">
 												<option value="">선택해주세요</option>
-												<option value="category">카테고리</option>
-												<option value="nickname">작성자</option>
-												<option value="title">제목</option>
-												<option value="contents">내용</option>
+									            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >작성자</option>
+									            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+									            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 											</select>
 										</div>
 										<div class="col-7">
 											<input type="text" class="form-control mb-2" name="keyword"
 												id="" placeholder="검색할 내용을 입력해 주세요." value="">
-											<c:choose>
-												<c:when test="${param.category == 1 }">
-													<input type="hidden" name="category" value="1">
-												</c:when>
-												<c:when test="${param.category == 2 }">
-													<input type="hidden" name="category" value="2">
-												</c:when>
-												<c:otherwise>
-													<input type="hidden" name="category" value="3">
-												</c:otherwise>
-											</c:choose>
 											<input type="hidden" name="cpage" value="1">
 										</div>
 										<div class="col-2">
@@ -355,6 +338,7 @@ a{color:inherit;text-decoration: none;}
 			</div>
 			<div class="ms-section" id="right3">
 				<div class="container">
+					<input type="hidden" id="category" name="category" value="1">
 					<div class="logo">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">별보러갈래?
@@ -364,56 +348,58 @@ a{color:inherit;text-decoration: none;}
 					<div class="row body cnt">
 						<div class="col-12">
 							<div class="row boardlistMain">
+								<div class="col-2">카테고리</div>
 								<div class="col-2">글번호</div>
-								<div class="col-4">제목</div>
+								<div class="col-3">제목</div>
 								<div class="col-2">작성자</div>
 								<div class="col-2">등록일</div>
-								<div class="col-2">조회수</div>
+								<div class="col-1">조회수</div>
 							</div>
 							
-							<c:forEach var="i" items="${list}">
-								<c:if test="${i.category == 3 }">
+							<c:forEach var="i" items="${map.list}">
+								
 									<div class="row boardlist">
+										<div class="col-2">${i.category}</div>
 										<div class="col-2">${i.camp_tip_num}</div>
-										<div class="col-4" id="titleMove">
+										<div class="col-3" id="titleMove">
 											<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}">${i.title}</a>
 										</div>
 										<div class="col-2">${i.writer}</div>
 										<div class="col-2">${i.write_date}</div>
-										<div class="col-2">${i.view_count}</div>
+										<div class="col-1">${i.view_count}</div>
 									</div>
-								</c:if>
+								
 							</c:forEach>
 
 							<div id="boardlist">
-								<br>
-<%-- 								<nav aria-label="Page navigation example" class="page_nav">
-									<ul class="pagination justify-content-center">
-										<c:forEach var="w" items="${navi}" varStatus="s">
-
-											<!-- c:forEach var="i" begin="0" end="10" step="1" 같은 것. -->
-											<c:choose>
-												<c:when test="${w == '>'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index-1]+1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:when test="${w == '<'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index+1]-1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${w}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:otherwise>
-											</c:choose>
-
-											<!-- boolean으로 값이 마지막일 경우에만. true가 됩니다. -->
-										</c:forEach>
-									</ul>
-								</nav> --%>
+								<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('1')">[처음]</a>
+								</c:if>                
+								<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
+								</c:if>	                
+								<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+								<c:forEach var="p" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+								<!-- **현재페이지이면 하이퍼링크 제거 -->
+									<c:choose>
+										<c:when test="${p == map.boardPager.curPage}">
+											<span style="color: red">${p}</span>&nbsp;
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:list('${p}')">${p}</a>&nbsp;
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+									<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+								</c:if>
+								<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
+									<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+								</c:if>
 							</div>
 
 							<div class="row btns">
@@ -428,32 +414,20 @@ a{color:inherit;text-decoration: none;}
 
 							<div class="search_box">
 								<br>
-								<form action="${pageContext.request.contextPath}/select.board"
+								<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
 									method="get">
 									<div class="row">
 										<div class="col-3">
-											<select class="form-control" name="category1" id="srch_item">
+											<select class="form-control" name="searchOption" id="srch_item">
 												<option value="">선택해주세요</option>
-												<option value="category">카테고리</option>
-												<option value="nickname">작성자</option>
-												<option value="title">제목</option>
-												<option value="contents">내용</option>
+									            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >작성자</option>
+									            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+									            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 											</select>
 										</div>
 										<div class="col-7">
 											<input type="text" class="form-control mb-2" name="keyword"
 												id="" placeholder="검색할 내용을 입력해 주세요." value="">
-											<c:choose>
-												<c:when test="${param.category == 1 }">
-													<input type="hidden" name="category" value="1">
-												</c:when>
-												<c:when test="${param.category == 2 }">
-													<input type="hidden" name="category" value="2">
-												</c:when>
-												<c:otherwise>
-													<input type="hidden" name="category" value="3">
-												</c:otherwise>
-											</c:choose>
 											<input type="hidden" name="cpage" value="1">
 										</div>
 										<div class="col-2">
@@ -469,6 +443,7 @@ a{color:inherit;text-decoration: none;}
 			</div>
 			<div class="ms-section" id="right4">
 				<div class="container">
+					<input type="hidden" id="category" name="category" value="1">
 					<div class="logo">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script';font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width:60px;height:50px;margin-bottom:-6px;margin-right:-10px;">별보러갈래?
@@ -478,56 +453,58 @@ a{color:inherit;text-decoration: none;}
 					<div class="row body cnt">
 						<div class="col-12">
 							<div class="row boardlistMain">
+								<div class="col-2">카테고리</div>
 								<div class="col-2">글번호</div>
-								<div class="col-4">제목</div>
+								<div class="col-3">제목</div>
 								<div class="col-2">작성자</div>
 								<div class="col-2">등록일</div>
-								<div class="col-2">조회수</div>
+								<div class="col-1">조회수</div>
 							</div>
 							
-							<c:forEach var="i" items="${list}">
-								<c:if test="${i.category == 4 }">
+							<c:forEach var="i" items="${map.list}">
+								
 									<div class="row boardlist">
+										<div class="col-2">${i.category}</div>
 										<div class="col-2">${i.camp_tip_num}</div>
-										<div class="col-4" id="titleMove">
+										<div class="col-3" id="titleMove">
 											<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}">${i.title}</a>
 										</div>
 										<div class="col-2">${i.writer}</div>
 										<div class="col-2">${i.write_date}</div>
-										<div class="col-2">${i.view_count}</div>
+										<div class="col-1">${i.view_count}</div>
 									</div>
-								</c:if>
+								
 							</c:forEach>
 
 							<div id="boardlist">
-								<br>
-<%-- 								<nav aria-label="Page navigation example" class="page_nav">
-									<ul class="pagination justify-content-center">
-										<c:forEach var="w" items="${navi}" varStatus="s">
-
-											<!-- c:forEach var="i" begin="0" end="10" step="1" 같은 것. -->
-											<c:choose>
-												<c:when test="${w == '>'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index-1]+1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:when test="${w == '<'}">
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${navi[s.index+1]-1}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item"><a class="page-link"
-														href="${pageContext.request.contextPath}/select.board?cpage=${w}&&category=${param.category}">${w
-                                                                    }</a></li>
-												</c:otherwise>
-											</c:choose>
-
-											<!-- boolean으로 값이 마지막일 경우에만. true가 됩니다. -->
-										</c:forEach>
-									</ul>
-								</nav> --%>
+								<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('1')">[처음]</a>
+								</c:if>                
+								<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock > 1}">
+									<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
+								</c:if>	                
+								<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+								<c:forEach var="p" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+								<!-- **현재페이지이면 하이퍼링크 제거 -->
+									<c:choose>
+										<c:when test="${p == map.boardPager.curPage}">
+											<span style="color: red">${p}</span>&nbsp;
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:list('${p}')">${p}</a>&nbsp;
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+									<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+								</c:if>
+								<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+								<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
+									<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+								</c:if>
 							</div>
 
 							<div class="row btns">
@@ -542,32 +519,20 @@ a{color:inherit;text-decoration: none;}
 
 							<div class="search_box">
 								<br>
-								<form action="${pageContext.request.contextPath}/select.board"
+								<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
 									method="get">
 									<div class="row">
 										<div class="col-3">
-											<select class="form-control" name="category1" id="srch_item">
+											<select class="form-control" name="searchOption" id="srch_item">
 												<option value="">선택해주세요</option>
-												<option value="category">카테고리</option>
-												<option value="nickname">작성자</option>
-												<option value="title">제목</option>
-												<option value="contents">내용</option>
+									            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >작성자</option>
+									            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+									            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 											</select>
 										</div>
 										<div class="col-7">
 											<input type="text" class="form-control mb-2" name="keyword"
 												id="" placeholder="검색할 내용을 입력해 주세요." value="">
-											<c:choose>
-												<c:when test="${param.category == 1 }">
-													<input type="hidden" name="category" value="1">
-												</c:when>
-												<c:when test="${param.category == 2 }">
-													<input type="hidden" name="category" value="2">
-												</c:when>
-												<c:otherwise>
-													<input type="hidden" name="category" value="3">
-												</c:otherwise>
-											</c:choose>
 											<input type="hidden" name="cpage" value="1">
 										</div>
 										<div class="col-2">
@@ -583,6 +548,8 @@ a{color:inherit;text-decoration: none;}
 			</div>
 		</div>
 	</div>
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+	
 </body>
 
 </html>

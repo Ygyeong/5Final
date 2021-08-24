@@ -5,9 +5,24 @@
 
 <mapper namespace="Camp_info">
 
-	<select resultType="kh.spring.dto.Camp_infoDTO" id="selectAll">
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="listAll">
 		select * from camp_info 
+		<include refid="search"></include>
 	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test="searchOption ==  'all'">
+				where facltNm like '%'||#{keyword}||'%'
+				or lctCl like '%'||#{keyword}||'%'
+				or addr1 like '%'||#{keyword}||'%'
+			</when>
+			<otherwise>
+				where ${searchOption} like '%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	
 	
 	<select resultType="kh.spring.dto.Camp_infoDTO" id="detail">
 		select * from camp_info where contentId=${value} 
@@ -18,22 +33,23 @@
 	</select>	
 	
 	<select resultType="kh.spring.dto.Camp_wishlistDTO" id="selectwish">
-		select * from camp_wishlist where contentId=#{contentId} and cm_id=#{cm_id} 
+		select * from camp_wishlist where contentId=#{contentId} and cm_id=#{cm_id, jdbcType = VARCHAR } 
 	</select>
 		
 	<insert id="wishinsert">
 		insert into camp_wishlist values (wish_seq.nextval,#{contentId},#{cm_id},#{contents}) 
 	</insert>
-	
-	<insert id="campinsert">
-		insert into camp_info values (#{contentId},#{firstImageUrl, jdbcType = VARCHAR }, #{facltNm, jdbcType = VARCHAR },#{lineIntro, jdbcType = VARCHAR },#{resveUrl, jdbcType = VARCHAR },#{homepage, jdbcType = VARCHAR },#{addr1, jdbcType = VARCHAR },#{addr2, jdbcType = VARCHAR },
-											#{tel, jdbcType = VARCHAR },#{resveCl, jdbcType = VARCHAR },#{lctCl, jdbcType = VARCHAR },#{induty, jdbcType = VARCHAR },#{operPdCl, jdbcType = VARCHAR },#{operDeCl, jdbcType = VARCHAR },#{posblFcltyCl, jdbcType = VARCHAR },
-											#{intro, jdbcType = VARCHAR },#{gnrlSiteCo},#{autoSiteCo},#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{sbrsEtc, jdbcType = VARCHAR },
-											#{sbrsCl, jdbcType = VARCHAR },#{animalCmgCl, jdbcType = VARCHAR },#{brazierCl, jdbcType = VARCHAR },#{mapX},#{mapY}) 
-	</insert>
 
 	<delete id="wishdelete">
 		delete from camp_wishlist where wish_seq=#{wish_seq}
 	</delete>
+	
+	<select id="selectnum" resultType="kh.spring.dto.Camp_infoDTO">
+		select * from
+				(select row_number() over(order by contentId desc) rnum, contentId, facltNm, firstImageUrl   from camp_info)
+		 where rnum between #{startNum} and #{endNum}
+<!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
+	</select>
+	
 
 </mapper>

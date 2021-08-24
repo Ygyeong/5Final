@@ -22,13 +22,21 @@
 <script>
 	$(function(){
 		$("#myPageModify").on("click", function(){
+<<<<<<< HEAD
 			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
+=======
+			location.href="/member/memberModify?cm_id=${loginID}";
+>>>>>>> 104564cfcfeb4c3645d08c32dca303c3c0533bd7
 		})
 		$("#myPagePwChange").on("click", function(){
 			location.href="/member/pwChange?cm_id=${loginID.cm_id},a=1"
 		})
 		$("#myPageMemberDelete").on("click", function(){
+<<<<<<< HEAD
 			location.href="/member/memberOutProc?cm_id=${loginID.cm_id}"
+=======
+			location.href="/member/memberOutProc?cm_id=${loginID}"
+>>>>>>> 104564cfcfeb4c3645d08c32dca303c3c0533bd7
 		})
 		$("#goHome").on("click",function(){
 			location.href="/"
@@ -77,11 +85,20 @@
 	<div>
 		<div id="myBox">
 	        <div id="me" class="card">
+<<<<<<< HEAD
                 <div class="class=ard_body">
                     <h5 class="card-title"> ${member.cm_id}님의 마이페이지 </h5>
                     <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button></br>
                     <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button></br>
                     <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button></br>
+=======
+				<img src="card-img-top" src="" alt="card image">
+                <div class="card_body">
+                    <h5 class="card-title"> ${loginID}님의 마이페이지 </h5>
+                    <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button>
+                    <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button>
+                    <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>
+>>>>>>> 104564cfcfeb4c3645d08c32dca303c3c0533bd7
                     <button class="myPageBtn btn-dark" id="goHome">메인으로</button>
                 </div>
             </div>

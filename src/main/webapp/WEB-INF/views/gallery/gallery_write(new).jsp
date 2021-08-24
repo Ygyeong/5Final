@@ -8,12 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>캠핑 후기</title>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -177,53 +177,7 @@ $(function(){
    })   
 
    
-  
  
-   
-   
-   
-   /*  $('#summernote').summernote({
-           placeholder: '내용을 입력해주세요',
-           height: 500,
-           minHeight: 400,             // set minimum height of editor
-           maxHeight: 400,             // set maximum height of editor
-           codeviewFilter: true,
-           codeviewIframeFilter: true,
-           callbacks:{
-               onImageUpload:function(files) {
-                     
-                    let editor = this;  
-                    let file = files[0];      
-                  
-                    let form = new FormData()    
-                    form.append("file",file);    
-                    
-                    $.ajax({
-                       data:form,
-                       type:"post",
-                       url:"/gal/uploadImg",
-                       contentType:false,   
-                       processData:false,  
-                      dataType:"json",
-              
-                    }).done(function(resp){
-                      $(editor).summernote('insertImage',"${pageContext.request.contextPath}"+resp.returnPath); //editor 인스턴스의 insertImage 기능으로 이미지를 화면에 출력
-      
-                      // input type=hidden 노드
-                      let input = $("<input type='hidden'>");
-                      input.attr("name","summerImg");
-                      input.attr("value",[resp.oriName,resp.sysName]);
-                      
-                      $("#frm").append(input);
-                    }); 
-                  }
-              }
-         }); */
-         
-
- /*   $(window).on("unload",function(){
-      navigator.sendBeacon("${pageContext.request.contextPath}/unload.file");
-   }) */
    
 })
 </script>
@@ -267,18 +221,7 @@ $(function(){
             <button class="btn btn-danger" type="button" id="btn1">삭제</button>
            </div>
       </div>
-      <!-- <div class="input-group" >
-           <input type="file" class="form-control" id="file2"  name="file1" style="display:inline; width:430px" >
-           <div class="input-group-btn" style="display: inline;">
-            <button class="btn btn-danger" type="button" id="btn2">삭제</button>
-           </div>
-      </div>
-      <div class="input-group" >
-           <input type="file" class="form-control" id="file3"  name="file2" style="display:inline; width:430px">
-           <div class="input-group-btn" style="display: inline;">
-            <button class="btn btn-danger" type="button" id="btn3">삭제</button>
-           </div>
-      </div> -->
+     
        
         </div>
           
@@ -297,12 +240,7 @@ $(function(){
    
    
    
-    <%-- <label>평점: </label>
-    <select name="rating">
-    	<c:forEach items="${ ratingOptions }" var="r">
-    	<option>${r}</option>
-    	</c:forEach>
-    </select> --%>
+    
     
     <!--별점 -->
 
@@ -341,50 +279,6 @@ $(function(){
     </div>
 </form>
     </div>
-    
-    		
-    
-    <!-- <script>
-    var setting = {
-    		placeholder: '내용을 입력해주세요',
-            height: 500,
-            minHeight: 400,           
-            maxHeight: 400,
-            lang: "ko-KR",
-            codeviewFilter: true,
-            codeviewIframeFilter: true,
-            //콜백 함수
-            callbacks : { 
-            	onImageUpload : function(files, editor, welEditable) {
-            // 파일 업로드(다중업로드를 위해 반복문 사용)
-            for (var i = files.length - 1; i >= 0; i--) {
-            uploadSummernoteImageFile(files[i],
-            this);
-            		}
-            	}
-            }
-         };
-        $('#summernote').summernote(setting);
-        
-        
-        function uploadSummernoteImageFile(file, el) {
-			data = new FormData();
-			data.append("file", file);
-			$.ajax({
-				data : data,
-				type : "POST",
-				url : "/gal/uploadSummernoteImageFile",
-				contentType : false,
-				enctype : 'multipart/form-data',
-				processData : false,
-				success : function(data) {
-					$(el).summernote('editor.insertImage', data.url);
-				}
-			});
-		}
-    
-    
-    </script> -->
     
     <script>
     $('#summernote').summernote({

@@ -16,15 +16,20 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import kh.spring.config.InfoConfig;
+import kh.spring.config.ReProductConfig;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.Camp_photoDTO;
 import kh.spring.dto.Camp_wishlistDTO;
+import kh.spring.dto.ReProductDTO;
 import kh.spring.service.Camp_infoService;
 
 
@@ -38,27 +43,17 @@ public class InfoController {
 	
 	@Autowired
 	private HttpSession session;
-	
-	//파싱된 데이터를 DB에 저장
-	@RequestMapping("dataupdate")
-	public String practice(HttpServletRequest request) throws Exception {
-		System.out.println("출력");
-		PublicData data = new PublicData();
-		List <Camp_infoDTO> list = data.ParsingData();
-		
-		for(Camp_infoDTO dto : list) {
-			service.campinsert(dto);
-		}
-	    
-	    return "redirect:/";
-	}
 
 	
 	//정보 리스트
 	@RequestMapping("list")
-	public String home(HttpServletRequest request, Model model) throws Exception {	
-		List<Camp_infoDTO> list = service.selectAll();
+	public String home(int index, Model model) throws Exception {
+
+		int endNum = index*InfoConfig.RECORD_COUNT_PER_LIST;
+		int startNum = endNum -(InfoConfig.RECORD_COUNT_PER_LIST-1);
+		List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
 		model.addAttribute("list",list);
+		System.out.println("인덱스" + index +"끝" + endNum + "첫" + startNum);
 		return "camp_info/campinglist";
 	}
 	
@@ -73,12 +68,10 @@ public class InfoController {
 		String contentId1 = Integer.toString(contentId);
 		
 		List<Camp_wishlistDTO> wish  = service.selectwish(contentId1, loginID); 
-		
 		if(loginID == null) {
-			model.addAttribute("contents","dislike");
+			model.addAttribute("contents",null);
 		}else {
 			if(wish.size() > 0) {
-				System.out.println("찜하기 됐당" + wish.get(0).getContents());
 				model.addAttribute("contents",wish.get(0).getContents());
 			} else if(wish.size() == 0){
 				System.out.println("안됨");
@@ -87,7 +80,7 @@ public class InfoController {
 
 		}
 		
-
+		
 		model.addAttribute("list",list);
 		//model.addAttribute("image",image);
 		return "camp_info/campingdetail";
@@ -151,6 +144,32 @@ public class InfoController {
 		 
 		return "redirect:detail";
 	}
+	
+	
+	//무한스크롤
+	@ResponseBody
+	@RequestMapping(value="scroll",produces="text/html;charset=utf8")
+	public String scrollList(int index) {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
+		System.out.println(index);
+		return new Gson().toJson(list);
+	}
+	
+	
+	//검색
+	@RequestMapping(value="search",produces="text/html;charset=utf8")
+	public String search( Model model, @RequestParam(defaultValue="title")String searchOption,
+					@RequestParam(defaultValue="")String keyword) throws Exception {
+		
+		System.out.println("태그"+searchOption+"키워드"+keyword);
+		List<Camp_infoDTO> slist = service.search(searchOption, keyword);
+		model.addAttribute("slist", slist);
+		
+		return "camp_info/campinglist";
+	}
+	
 	
 
 
