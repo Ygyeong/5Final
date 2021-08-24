@@ -32,4 +32,8 @@ public class MemberService {
 		return dao.memberUpdate(dto);
 	}
 
+	public MemberDTO modifySelect(MemberDTO dto) {
+		return dao.modifySelect(dto);
+	}
+
 }
