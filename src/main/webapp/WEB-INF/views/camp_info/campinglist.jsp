@@ -193,6 +193,7 @@ a{
 </style>
 <script>
 	$(function(){
+		
 
 		let index=1;
 		$(window).scroll(function(){
