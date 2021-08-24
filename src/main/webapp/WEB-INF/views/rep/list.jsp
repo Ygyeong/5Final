@@ -366,7 +366,7 @@ a{
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
