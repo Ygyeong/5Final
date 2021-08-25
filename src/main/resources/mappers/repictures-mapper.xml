@@ -12,7 +12,7 @@
 		select * from camp_repictures
 	</select>
 	<select id="filesBySeq" resultType="kh.spring.dto.RePicturesDTO">
-		select * from camp_repictures where rep_seq2=${value}
+		select * from camp_repictures where rep_seq2=${value} order by repicture_seq
 	</select>
 	
 	<select id="selectThumbBySeq" resultType="kh.spring.dto.RePicturesDTO">

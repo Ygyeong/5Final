@@ -65,8 +65,10 @@ public class MemberController {
 		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
 		dto.setCm_id(cm_id);
+
 		MemberDTO modify = ms.modifySelect(dto);
 		session.setAttribute("member", modify);
+
 		return "/member/memberModify";
 	}
 	
@@ -89,9 +91,11 @@ public class MemberController {
 			System.out.println(login);
 			if(login.getCm_id() != null) {
 				String hash_password = login.getCm_pw();
+
 				System.out.println(hash_password);
 				boolean isAuthenticated = BCrypt.checkpw(cm_pw, hash_password);
 				if(isAuthenticated) {
+
 				session.setAttribute("loginID", login.getCm_id());
 				} else {
 				session.setAttribute("loginID", null);
