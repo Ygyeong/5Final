@@ -117,12 +117,12 @@
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                    
-                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
+                        <a href="/member/signPage" class="nav-item nav-link">회원가입</a>
                         <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
                     </div>
                 </div>
@@ -146,12 +146,12 @@
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
 
 
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="" class="nav-item nav-link">관리자 페이지</a>
+                        <a href="/admin/home" class="nav-item nav-link">관리자 페이지</a>
                         <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
@@ -221,7 +221,7 @@
                     <div class="col-lg-4 col-md-6" >
                         <div class="blog-item">
                             <div class="blog-img" style="width: 350px; height: 300px;">
-                                <a href="/gal/detail?seq=${list.seq }" class="a"><img src="/resources/aboutGallery/files/${list.thumbPath }" style="object-fit: cover;"></a> 
+                                <a href="/gal/detail?seq=${list.seq }" class="a"><img src="/resources/aboutGallery/files/${list.thumbPath }" alt="새로운 사진을 추가해보세요!" style="object-fit: cover;"></a> 
                             </div>
                             <div class="blog-meta">
                                 

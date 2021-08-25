@@ -20,6 +20,20 @@ $(function(){
 		location.href="/"
 	})
 	
+	$(".change_btn").on('click', function(){
+		var pw = $("#cm_pw").val();
+		var pwCheck = $("#password2").val();
+		
+		if(pw == pwCheck){
+			alert("변경완료!")
+			$("#changePw").attr("action","/member/pwModifyProc?cm_id=${member }").submit();
+			
+		}else if(pw != pwCheck){
+			alert("비밀번호가 일치하지 않습니다.")
+			return false;
+		}
+	})
+	
 	$("#password2").on('keyup', function(){
 		var pw = $("#cm_pw").val();
 		var pwCheck = $("#password2").val();
@@ -38,9 +52,6 @@ $(function(){
 		}
 	});
 	
-	$(".change_btn").on('click', function(){
-		alert("임시점검중");
-	})
 })
 </script>
 </head>
@@ -52,12 +63,13 @@ $(function(){
                     <h3>PASSWORD CHANGE</h3>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form id="changePw" method="POST">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" id="cm_pw" name="cm_pw" class="form-control" placeholder="새로운 비밀번호를 입력하세요." required>
+                   			
+                            <input type="password" id="cm_pw" name="cm_pw" class="form-control" placeholder="새로운 비밀번호를 입력하세요." required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">

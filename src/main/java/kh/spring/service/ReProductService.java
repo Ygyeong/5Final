@@ -129,6 +129,23 @@ public class ReProductService {
 		return list;
 		
 	}
+	public List<ReProductDTO> HomeThumbnail(int startNum,int endNum) {
+		List<ReProductDTO> list = this.getAll(startNum,endNum);
+		for(ReProductDTO dto : list) {
+			RePicturesDTO pdto = pdao.selectThumbBySeq(dto.getRep_seq());
+			dto.setThumsysName(pdto.getReSysName());
+			
+			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
+			dto.setRep_diff_date(diffDate);
+			
+			if(dto.getRep_name().length()>10) {
+				String subName = dto.getRep_name().substring(0, 10)+"...";
+				dto.setRep_name(subName);
+			}
+		}
+		return list;
+		
+	}
 	
 	public void modify(String realPath,MultipartFile[] file,String [] delTargets,ReProductDTO dto) throws Exception {
 		int seq = dto.getRep_seq();
@@ -168,6 +185,7 @@ public class ReProductService {
 		}
 
 	}
+	
 	public int saleInfo(int rep_stock,int rep_seq) {
 		Map<String,Object> param = new HashMap<>();
 		param.put("rep_stock", rep_stock);

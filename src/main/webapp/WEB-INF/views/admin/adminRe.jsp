@@ -6,15 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-<link rel="stylesheet" type="text/css" href="/semantic/semantic.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="/semantic/semantic.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
@@ -210,11 +202,12 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+			<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+			<li><a href="/products/selectAll?index=1">SHOP</a></li>
+			<li><a href="/rep/list?index=1">중고장터</a></li>
+			<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
             
 
         </ul>
@@ -250,6 +243,23 @@ a{
     <div class="body_txt" >
     여기는 중고
 	</div>
+
+
+	<!--네비바 스크립트  -->
+
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 
 
 </body>

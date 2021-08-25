@@ -165,7 +165,7 @@ $(function(){
       }else if(!contentResult){
          alert("내용은 4000글자 이내로 작성해주세요.")
       }else if(!bresult3){
-         alert("다녀오신 장소의 아름다운 장소를 사진과 함께 공유해 보아요~(사진은 꼭 첨부 부탁드립니다!)")
+    	  alert("사진을 첨부해 주세요.")
       }else{
          $("input[name=files]").remove();
          $("#frm").submit();

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>중고 마켓</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -21,10 +21,10 @@
 
 <style>
 	 *{box-sizing: border-box;}
-	 .container-fluid{width:1100px; height:1100px; margin: auto; margin-top:100px; margin-bottom:40px;}
+	 .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
        h2{text-align: center;}
 /* 	div{border:1px solid black;} */
-	   .jgBar{margin:60px 0px 40px 0px;}
+	   .jgBar{margin:60px 0px 60px 0px;}
 	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
@@ -37,24 +37,25 @@
        #word{border:0px solid black; width:90%;}
        #write,#writeNo:hover{cursor:pointer;}
        /*  input:focus {outline:none;}*/
-      .listbar{height:330px; margin: 0px; margin-top: 60px; }
+      .listbar{height:330px; margin: 0px; margin-top: 40px; margin-bottom:50px;}
       .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
       .list:hover{cursor:pointer;}
       .list .img{height:217px; margin-bottom: 10px; }
       .link{padding:0px 10px 0px 10px;}
+      
       .img,.link:hover {cursor:pointer;}
-      .img,.link:hover~.link{text-decoration:underline;}
       .img img{width:100%; height:100%;}
       .price{font-weight:bold;font-size:1.2em; padding:0px 0px 0px 10px;}
       .price span{font-size:0.7em; display:inline-block;padding-left:2px;}
       .diffD{padding:6px 12px 0px 0px; color:#a9a9a9; font-size:0.8em; text-align:right;}
       .area{font-size:0.8em; color:#606060; font-weight:500;}
-      .ar{border-top:1px solid #ddd;}
+      .ar{border-top:1px solid #ddd; margin-top:8px;}
 
       .camp{width:100%;margin:auto; height:500px;}
       .camp img{width:100%; height:100%; padding:0px;}
-
-      
+	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
+	  #count{margin-left:8px; font-weight:bold;}
+      .schResult{padding-left:24px;}
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -190,9 +191,6 @@ a{
 			if(scrollTop+windowHeight+30>=documentHeight){
 				index++;
 				if($("#searchKey").val()!=null){
-					if($("#total").val()>index){
-						return;
-					}
 					 setTimeout(getSearchList(),2000);
 				}else{
 					setTimeout(getList(),2000);	
@@ -231,23 +229,43 @@ a{
 				data:{"index":index}
 			}).done(function(resp){
 				for(let i=0;i<resp.length;i++){
-					let list = $("<div class='col-3 list'>");
+					let list = $("<div class='col-3 p-0 list'>");
 					
-					let img = $("<div id=img>");
-					img.text("사진");
-					let name =$("<div id=link>");
+					let img = $("<div class='col-12 img'>");
+					let thum = $("<img src=''>");
+					
+					thum.attr("src","/img/"+resp[i].thumsysName);
+					img.append(thum);
+					let name =$("<div class='col-12 mb-1 link'>");
 					name.text(resp[i].rep_name);
-					let price = $("<div>");
+					
+					let row1 =$("<div class='row m-0'>");
+					let price = $("<div class='col-6 price'>");
+					let span = $("<span>");
+					span.text("원");
 					price.text(resp[i].rep_price);
-					let date = $("<div>");
-					date.text(resp[i].rep_write_date);
+					price.append(span);
+					
+					let date = $("<div class='col-6 diffD'>");
+					date.text(resp[i].rep_diff_date);
+					
+					row1.append(price);
+					row1.append(date);
+					
+					let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
+					let area = $("<div class='col-12 area'>");
+					let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
+					area.append(font);
+					area.append(resp[i].rep_area);
+					row2.append(area);
 					let seq = $("<input type=hidden class=seq>");
 					seq.val(resp[i].rep_seq);
 					
+					
 					list.append(img);
 					list.append(name);
-					list.append(price);
-					list.append(date);
+					list.append(row1);
+					list.append(row2)
 					list.append(seq);
 					$(".listbar").append(list);
 					
@@ -255,11 +273,12 @@ a{
 				}
 			})
 		}
+		
 		function getSearchList(){
 			$.ajax({
 				url:"/rep/scrollSearchList",
 				dataType:"json",
-				data:{"index":index}
+				data:{"index":index,"keyword":$("#searchKey").val}
 			}).done(function(resp){
 				for(let i=0;i<resp.length;i++){
 					let list = $("<div class='col-3 list'>");
@@ -295,25 +314,26 @@ a{
 <body>
 
  
-<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID == null }">
 <nav class="navbar">
         <div class="navbar_logo">
-           
-            <a href="#"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -327,19 +347,19 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -353,20 +373,20 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -378,6 +398,12 @@ a{
 
 
 </c:choose> 
+
+<!--네비바 끝  -->
+
+
+
+
 
 
 <c:choose>
@@ -392,7 +418,6 @@ a{
                 	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
                 	<img src="/img/search.png" id=search>
                 	<input type=hidden value=${keyword } id=searchKey>
-                	<input type=hidden value=${total } id=total>
                 </div>
 
             </div>
@@ -403,6 +428,14 @@ a{
         <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
         </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
+        
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
@@ -426,6 +459,7 @@ a{
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
+                <a href="/rep/myJG?index=1&seq=1&id="+${loginID}>내중고마켓</a>
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>
@@ -441,10 +475,17 @@ a{
         <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
         </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/"></div>
+				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
 				<div class="col-12 mb-1 link">${i.rep_name }</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${i.rep_price }<span>원</span></div>

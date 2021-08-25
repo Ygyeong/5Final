@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>myJG</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -40,6 +40,7 @@
       .userID span{font-size:13px; margin-left:3px;}
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
+      .zero{margin-left:15px; margin-top:25px;}
 
 /*네비바 스타일  */     
 :root{
@@ -185,7 +186,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -211,7 +212,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -223,7 +224,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/mem">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -237,7 +238,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -269,7 +270,7 @@ a{
     		<div class="row m-0">
             <div class="col-3 p-0 mt-5">
                 <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0 pt-3">ui 구현중</div>
+                <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
                 <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div>
             </div>
             <div class="col-9 p-0">
@@ -341,7 +342,7 @@ a{
     		<div class="row m-0">
             <div class="col-3 p-0">
                 <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0">시작 날짜</div>
+                <div class="col-12 p-0">{mdto.cm_address1}</div>
             </div>
             <div class="col-9 p-0">
                 <div class="row m-0 mt-5">
@@ -350,7 +351,7 @@ a{
                 <div class="row listbar" >
                  <c:choose>
                 	<c:when test="${Count == 0}">
-                		<div class="col-12">판매중인 상품이 없습니다.</div>
+                		<div class="col-12 zero">판매중인 상품이 없습니다.</div>
                 	</c:when>
                 	<c:otherwise>
                 		<c:forEach var="i" items="${list }">

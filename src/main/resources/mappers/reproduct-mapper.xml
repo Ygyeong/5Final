@@ -20,12 +20,20 @@ rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_re
 where rnum between #{startNum} and #{endNum}
 <!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
 	</select>
+	<select id="getRep" resultType="kh.spring.dto.ReProductDTO">
+	select * from 
+(select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
+rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_stock = 1) 
+where rnum between #{startNum} and #{endNum}
+<!-- 		select * from camp_reproduct where rep_seq between #{startNum} and #{endNum} -->
+	</select>
 	<select id="search" resultType="kh.spring.dto.ReProductDTO">
 	select * from 
 (select row_number() over(order by rep_seq desc) rnum,rep_seq, rep_name,rep_price,rep_area,
 rep_category,rep_writer,rep_write_date,rep_diff_date,rep_view_count from camp_reproduct where rep_name like '%${keyword}%' or rep_area like '%${keyword}%') 
 where rnum between #{startNum} and #{endNum}
 	</select>
+	
 	<select id="detail" resultType="kh.spring.dto.ReProductDTO">
 		select * from camp_reproduct where rep_seq= ${value}
 	</select>

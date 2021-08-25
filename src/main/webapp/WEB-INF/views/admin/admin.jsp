@@ -6,20 +6,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-
-<link rel="stylesheet" type="text/css" href="/semantic/semantic.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="/semantic/semantic.js"></script>
 
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
+<script>
+$(function(){
+
+	$("#dataupdate").on("click",function(){
+		alert("ok");
+		location.href="/admin/dataupdate";
+	});
 
 
+})
+</script>
 
 <style>
 /*네비바 스타일  */     
@@ -210,11 +213,11 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+			<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+			<li><a href="/products/selectAll?index=1">SHOP</a></li>
+			<li><a href="/rep/list?index=1">중고장터</a></li>
+			<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
             
 
         </ul>
@@ -234,12 +237,11 @@ a{
      <div class="side_nav">
     
     	<ul class="side_menu">
-            <li><a href="/admin/mem">회원관리</a></li>
+            <li><a href="/admin/mem?cpage=1">회원관리</a></li>
             <li><a href="/admin/newProduct">새상품 관리</a></li>
             <li><a href="/admin/pay">중고상품 관리</a></li>
             <li><a href="/admin/re">결제내역 관리</a></li>
-            <li><a href="/admin/re">캠핑장 관리</a></li>
-           	<li style="height:180px;"></li>
+           	<li style="height:200px;"></li>
 
         </ul>
         
@@ -252,7 +254,27 @@ a{
     안녕하세요 관리자님!<br>
     관리자 페이지에 오신걸 환영합니다!
 	</div>
+	<button id=dataupdate>DB 업데이트</button>
 
+
+
+
+
+	<!--네비바 스크립트  -->
+
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 
 </body>
 </html>

@@ -26,11 +26,10 @@ public class Camp_infoService {
 		return dao.detail(contentId);
 	}
 	
-//	//캠프 사진
-//	public List<Camp_photoDTO> detailimage(int ci_seq){
-//		return dao.detailimage(ci_seq);
-//	}
-	
+	//캠프 사진 파싱
+	public int imageinsert(Camp_photoDTO dto) {
+		return dao.imageinsert(dto);
+	}	
 	
 	//찜하기
 	public int wishinsert(Camp_wishlistDTO dto) {
@@ -68,6 +67,10 @@ public class Camp_infoService {
 		param.put("keyword", keyword);
 		
 		return dao.search(param);
+	}
+	
+	public List<Camp_infoDTO> contentIdlist() {
+		return dao.contentIdlist();
 	}
 	
 	

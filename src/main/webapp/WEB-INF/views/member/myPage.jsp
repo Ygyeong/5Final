@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/myPage.css">
 <!-- diary -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
@@ -20,310 +19,208 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
-
+<script src="https://kit.fontawesome.com/4625b781d5.js"></script>
+<!-- import -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
 <script>
-	$(function(){
-		$("#myPageModify").on("click", function(){
-<<<<<<< HEAD
-=======
 
->>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
-			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
-
-		})
-		$("#myPagePwChange").on("click", function(){
-			location.href="/member/pwChange?cm_id=${loginID.cm_id}"
-		})
-		$("#myPageMemberDelete").on("click", function(){
-
-			location.href="/member/memberOutProc?cm_id=${loginID.cm_id}"
-
-		})
-		$("#goHome").on("click",function(){
-			location.href="/"
-		})
-		
-		$('#calendar').fullCalendar({
-			    header: {
-			      right: 'custom1 ,custom2 prevYear,prev,next,nextYear'
-			    },
-		        // 출석체크를 위한 버튼 생성
-			    customButtons: { 
-			    	custom1: {
-				          text: '일정확인',
-				          id: 'check',
-				          click: function() { 
-				          }
-				     },
-			        custom2: {
-			          text: '일정추가',
-			          id: 'add',
-			          click: function() { 
-			          }
-			        }
-			    }
-		});
-		
-		$(".fc-custom2-button").on('click', function(){
-			var url = "/schedule/scheduleOpen?cm_id=${loginID.cm_id}";
-			var name = "/schedule/scheduleOpen";
-			var option = "width=600,height=600 left=100, top=50, location=no";
-			window.open(url, name, option)
-		})
-		
-		$(".fc-custom1-button").on('click', function(){
-			var url ="/schedule/scheduleCheckOpen?cm_id=${loginID.cm_id}"
-			var name = "/schedule/scheduleCheckOpen";
-			var option = "width=600,height=600 left=100, top=50, location=no";
-			window.open(url, name, option)
-		})
-		
-		
+$(function(){
+	$("#myPageModify").on("click", function(){
+		location.href="/member/memberModify?cm_id=${loginID}"
 	})
+	$("#myPagePwChange").on("click", function(){
+		location.href="/member/pwChange?cm_id=${loginID}"
+	})
+	$("#myPageMemberDelete").on("click", function(){
+		location.href="/member/memberOutProc?cm_id=${loginID}"
+	})
+	$("#goHome").on("click",function(){
+		location.href="/"
+	})
+	$("#cartList").on("click",function(){
+		location.href="/cart/cartList?cm_id=${loginID}"
+	})
+	$('#calendar').fullCalendar({
+		header: {
+			right: 'custom1 ,custom2 prevYear,prev,next,nextYear'
+		},
+	    customButtons: {
+			custom2: {
+				text: '일정추가',
+		        id: 'add',
+				click: function() { 
+				}
+			}
+		}	
+	})
+
+
+		
+	$(".fc-custom2-button").on('click', function(){
+		var url = "/schedule/scheduleOpen?cm_id=${loginID}";
+		var name = "/schedule/scheduleOpen";
+		var option = "width=600,height=600 left=100, top=50, location=no";
+		window.open(url, name, option)
+	})
+	
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		  });
+		});
+
+});
 </script>
-
-<style>
-/*네비바 스타일  */     
-:root{
-    --text-color:#f0f4f5;
-    --background-color:#263343;
-    --accent-color:steelblue;
-}
-body{
-    margin: 0;
-    
-}
-a{
-    text-decoration: none;
-    color: white;
-
-
-}
-
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #263343;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    
-
-}
-
-
-.navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-   
-}
-
-
-.navbar_logo{
-    font-size: 32px;
-    color: white;
-    font-family: 'Nanum Brush Script';
-}
-
-.navbar_logo i {
-    color: white;
-}
-
-.navbar_menu{
-    display: flex;
-    list-style: none;
-    padding-left: 0;
-    margin-bottom:-3px;
-
-}
-
-.navbar_menu li {
-    padding: 8px 12px;
-}
-
-
-.navbar_menu li:hover {
-    background-color: steelblue;
-    border-radius: 4px;
-}
-
-
-
-
-.navbar_member {
-    list-style: none;
-    color: white;
-    display: flex;
-    padding-left: 0;
-	margin-bottom:-3px;
-}
-
-
-.navbar_member li{
-    padding: 8px 12px;
-}
-
-.navbar_toogleBtn{
-    display: none;
-    position: absolute;
-    right: 32px;
-    font-size: 24px;
-    
-}
-
-
-@media screen and (max-width: 768px) {
-    
-    .navbar{
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 8px 24px;
-        maring-bottom:50px;
+<style type="text/css">
+    div{ 
+       overflow: auto;   
     }
-
-    .navbar_menu{
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .navbar_menu li {
-        width: 100%;
+    #myBox{
+		border: 1px solid white;
+		    background-color: rgba(255, 255, 255, 0.144);
+		    width: 600px;
+		    height: 320px;
+		    margin-top: 20px;
+		    margin-right: auto;
+		    margin-left: auto;    
+		}
+    #me{
+        background-color: white;
+        width: 590px;
+        margin-top: 50px;
+        height: 200px;
         text-align: center;
+        float: left; 
     }
-
-    .navbar_member{
-        display: none;
-        justify-content: center;
-        width: 100%;
+    .card_body{
+        background-color: white;
+        width: 600px;
+        height: 200px;
     }
-    .navbar_toogleBtn{
-        display: block;
+    .myPageBtn{ margin-top: 10px;}
+    .add-button{
+    	position: absolute;
+    	top: 1px;
+    	right: 230px;
+    	background: #2C3E50;
+    	border: 0;
+    	color: white;
+    	height: 35px;
+    	border-radius: 3px;
+    	width: 157px;
     }
-
-    .navbar_menu.active,
-    .navbar_member.active{
-        display: flex;
     
+    .fc-left{
+    	textsize: 10px;
     }
-
-}
-
-/*네비바 스타일 끝  */   
 </style>
-
 </head>
 <body>
 	<div>
-	
-	<!--nav bar  -->
-<%-- <c:choose>
-<c:when test="${loginID==null }">
-<nav class="navbar">
-        <div class="navbar_logo">
-           
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
-        </div>
-        <ul class="navbar_menu">
-            <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
-        </ul>
-        <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
-            <li><a href="/member/loginPage">로그인</a></li>
-        </ul>
-
-        <a href="#" class="navbar_toogleBtn">
-            <i class="fas fa-bars"></i>
-        </a>
-    </nav>
-
-</c:when>
-<c:when test="${loginID=='admin'}">
-<nav class="navbar">
-        <div class="navbar_logo">
-           
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
-        </div>
-        <ul class="navbar_menu">
-            <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
-        </ul>
-        <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
-            <li><a href="/member/logOutProc">로그아웃</a></li>
-        </ul>
-
-        <a href="#" class="navbar_toogleBtn">
-            <i class="fas fa-bars"></i>
-        </a>
-    </nav>
-
-</c:when>
-<c:otherwise>
-<nav class="navbar">
-        <div class="navbar_logo">
-           
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
-        </div>
-        <ul class="navbar_menu">
-            <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
-        </ul>
-        <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
-        </ul>
-
-        <a href="#" class="navbar_toogleBtn">
-            <i class="fas fa-bars"></i>
-        </a>
-    </nav>
-
-</c:otherwise>
-
-
-</c:choose> --%>
-	
-	
+		<!--nav start -->
+		<c:choose>
+		<c:when test="${loginID==null }">
+		<nav class="navbar">
+		        <div class="navbar_logo">
+		     	   <a href="/"><img src="assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="/member/signUp">회원가입</a></li>
+		            <li><a href="/member/loginPage">로그인</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+		</c:when>
+		<c:when test="${loginID=='admin'}">
+		<nav class="navbar">
+		        <div class="navbar_logo">
+		            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="/admin/home">관리자페이지</a></li>
+		            <li><a href="/member/logOutProc">로그아웃</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+		</c:when>
+		<c:otherwise>
+		<nav class="navbar">
+		        <div class="navbar_logo">   
+		            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+		            <li><a href="/member/logOutProc">로그아웃</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+			</c:otherwise>
+		</c:choose>
+		<!-- nav end -->		
+		<!-- mypage start -->
 		<div id="myBox">
 	        <div id="me" class="card">
-<<<<<<< HEAD
-=======
+                <div class="card_bottom">
+                    <h5 class="card-title"> ${loginID }님의 마이페이지 </h5>
+                    <button class="btn btn-success" id="myPageModify">회원정보 수정</button>
+                    <button class="btn btn-primary" id="myPagePwChange">비밀번호 변경</button>
+                    <button class="btn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>
+                    <button class="btn btn-dark" id="goHome">메인으로</button><br><br>
 
->>>>>>> 95bef4e7602a4d4f46cf2ac0d23d94834cf1c14a
-                <div class="class=ard_body">
-                    <h5 class="card-title"> ${loginID.cm_id}님의 마이페이지 </h5>
-                    <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button><br>
-                    <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button><br>
-                    <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button><br>
-
-                    <button class="myPageBtn btn-dark" id="goHome">메인으로</button>
                 </div>
             </div>
-            <div id="calendar" style="max-width:600px; margin:auto;"></div>
-            
         </div>
+        <div id="calendar" style="width:600px; margin:auto;"></div>
+        <div id="tableBox" style="text-align: center;">
+        
+        	<input class="form-control" id="myInput" type="text" placeholder="키워드를 입력해주세요" style="width:600px;margin:auto; margin-top:10px;">
+			<table class="table table-striped" style="width:600px; margin:auto; margin-top:10px; margin-bottom:20px;">
+				
+				<thead class="thead-dark">
+				<tr><th> 날짜 </th><th> 일정 </th><th> 메모 </th></tr>
+				</thead>
+				
+				<tbody id="myTable">
+					<c:forEach items="${list}" var = "i">
+						<tr>
+							<td>${i.startDate}</td>
+							<td>${i.subject}</td>
+							<td>${i.memo}</td>
+						</tr>
+					</c:forEach>
+				</tbody>				
+		
+				</table>
+           </div>
     </div>  
 </body>
 </html>

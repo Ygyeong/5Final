@@ -36,10 +36,13 @@ public class ReProductDAO {
 		return mybatis.update("ReProduct.update",dto);
 	}
 	public List<ReProductDTO> getList(Map<String,Object> param){
-		return mybatis.selectList("ReProduct.setAll",param);
+		return mybatis.selectList("ReProduct.getRep",param);
 	}
 	public List<ReProductDTO> search(Map<String,Object> param){
 		return mybatis.selectList("ReProduct.search",param);
+	}
+	public List<ReProductDTO> userRepList(Map<String,Object> param){
+		return mybatis.selectList("ReProduct.userRepList",param);
 	}
 	public ReProductDTO getDetail(int seq) {
 		return mybatis.selectOne("ReProduct.detail",seq);

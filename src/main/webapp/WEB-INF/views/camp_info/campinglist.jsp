@@ -206,7 +206,11 @@ a{
 			if(scrollTop+windowHeight>=documentHeight){
 				index++;
 				console.log(index);
-				setTimeout(getList(),2000);
+				if($("#searchKey").val()!=null){
+					 setTimeout(getSearchList(),2000);
+				}else{
+					setTimeout(getList(),2000);	
+				}
 				
 			}
 					
@@ -242,28 +246,66 @@ a{
 			})
 		}
 		
+		
+		$("#search").on("click",function(){
+			var searchOption = $("#searchOption").val();
+			console.log(searchOption);
+			location.href="/info/list?index=1&keyword="+$("#keyword").val() +"&searchOption="+searchOption;
+		})
+		
+		$("#data").on("click",function(){
+			location.href="/info/imagelist";
+		})
+		
+		function getSearchList(){
+			$.ajax({
+				url:"/info/scrollsearch",
+				dataType:"json",
+				data:{"index":index,"keyword":$("#searchKey").val}
+			}).done(function(resp){
+				for(let i=0;i<resp.length;i++){
+					let list = $("<div class='col-3 list'>");
+					
+					let box = $("<div class='portfolio-item'>");
+					let detaillink = $("<a href='" + resp[i].contentId +"'>");
+					let image =$("<img class='img-fluid' src='" + resp[i].firstImageUrl + "''>");
+					let box2 = $("<div class='portfolio-caption'>");
+					let name = $("<div class='portfolio-caption-heading'>");
+					name.text(resp[i].facltNm);
+
+					list.append(box);
+					box.append(detaillink);
+					detaillink.append(image);
+					list.append(box2);
+					box2.append(name);
+					
+					$("#cmapinglist").append(list);
+					
+				}
+			})
+		}
+		
 	})
 </script>
-<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
-
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="/CampTipBoard/selectAll?cpage=1">캠핑정보</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -277,19 +319,19 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="/CampTipBoard/selectAll?cpage=1">캠핑정보</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -303,20 +345,20 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
-            <li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -327,7 +369,9 @@ a{
 </c:otherwise>
 
 
-</c:choose>
+</c:choose> 
+
+<!--네비바 끝  -->
 
     
     <script>
@@ -359,21 +403,20 @@ a{
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Camping</h2>
                     <h3 class="section-subheading text-muted"> 가고 싶은 캠핑장을 골라 보세요! </h3>
+                	<button id=data> 여기 </button>
                 </div>
              <!--  검색 박스 -->
              <div id="searchbox">
-             	<div id="search">
-             		<form name="form1" method="post" action="/info/search">
-             		<select name="searchOption">
+             검색 
+             		<select id="searchOption">
              			<option value="all" >전체</option>
              			<option value="facltNm"  > 캠핑장 이름 </option>
              			<option value="lctCl"> 주변 환경 </option>
              			<option value="addr1"  > 지역 </option>
              		</select>
-             		검색 <input type=text name="keyword">
-             			<input type=submit value="searchbtn">
-             		</form>
-             	</div>
+             		<input type=text name="keyword" >
+             			<input type=button id="search">
+             			<input type=hidden value=${keyword } id=searchKey>
 			</div>
 			<!-- 검색 목록 출력 -->
 			    <div class="row" id="cmapinglist">

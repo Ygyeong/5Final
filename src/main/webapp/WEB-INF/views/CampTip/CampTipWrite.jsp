@@ -195,7 +195,6 @@ $(function(){
 					</div>
 				</div>
 
- 				<input type="text" name="writer" value="${loginID }">
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">첨부파일</label>
 					<div class="col-sm-10 writeDiv">

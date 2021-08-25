@@ -26,6 +26,7 @@ import com.google.gson.JsonObject;
 import kh.spring.config.InfoConfig;
 import kh.spring.config.ReProductConfig;
 import kh.spring.data.PublicData;
+import kh.spring.data.PublicImage;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.Camp_photoDTO;
 import kh.spring.dto.Camp_wishlistDTO;
@@ -47,13 +48,26 @@ public class InfoController {
 	
 	//정보 리스트
 	@RequestMapping("list")
-	public String home(int index, Model model) throws Exception {
+	public String home(int index,String keyword, String searchOption,  Model model) throws Exception {
 
 		int endNum = index*InfoConfig.RECORD_COUNT_PER_LIST;
 		int startNum = endNum -(InfoConfig.RECORD_COUNT_PER_LIST-1);
-		List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
-		model.addAttribute("list",list);
+		
+		
+		if(keyword == null || keyword.contentEquals("")) {
+			List<Camp_infoDTO> list = service.selectAll(startNum,endNum);
+			model.addAttribute("list",list);
+		}else {
+			
+			List<Camp_infoDTO> list = service.search(searchOption, keyword);
+			int listsize = list.size();
+			int total = (int)Math.ceil(listsize/(double)InfoConfig.RECORD_COUNT_PER_LIST);
+			model.addAttribute("list", list);
+			model.addAttribute("keyword",keyword);		
+		}
+		
 		System.out.println("인덱스" + index +"끝" + endNum + "첫" + startNum);
+		
 		return "camp_info/campinglist";
 	}
 	
@@ -157,18 +171,40 @@ public class InfoController {
 		return new Gson().toJson(list);
 	}
 	
+	//무한 스크롤 (서치결과)
+	@ResponseBody
+	@RequestMapping(value="scrollsearch",produces="text/html;charset=utf8")
+	public String scrollSearchList(int index, String searchOption, String keyword) {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<Camp_infoDTO> list = service.search(searchOption, keyword);
+		System.out.println(index);
+		return new Gson().toJson(list);
+	}
 	
-	//검색
-	@RequestMapping(value="search",produces="text/html;charset=utf8")
-	public String search( Model model, @RequestParam(defaultValue="title")String searchOption,
-					@RequestParam(defaultValue="")String keyword) throws Exception {
+	//디테일 이미지 출력
+	@RequestMapping("imagelist")
+	public String ImageList(HttpServletRequest request) throws Exception {
+		System.out.println("출력");
 		
-		System.out.println("태그"+searchOption+"키워드"+keyword);
-		List<Camp_infoDTO> slist = service.search(searchOption, keyword);
-		model.addAttribute("slist", slist);
+		List <Camp_infoDTO> id = service.contentIdlist();
+		PublicImage image = new PublicImage();
+		Camp_photoDTO dto = new Camp_photoDTO(); 
+		
+		for(int i=0; i< 5; i++) {
+			Camp_infoDTO idlist = id.get(i);
+			int contentId = idlist.getContentId();
+			System.out.println(i + ": " + contentId);
+			List <Camp_photoDTO> list = image.ParsingData(contentId);
+			service.imageinsert(dto);
+		}
+
+	    
 		
 		return "camp_info/campinglist";
 	}
+	
+
 	
 	
 
