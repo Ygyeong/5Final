@@ -1,7 +1,5 @@
 package kh.spring.dto;
 
-import org.springframework.stereotype.Component;
-
 public class ScheduleDTO {
 	
 	private int ms_seq;
