@@ -77,6 +77,8 @@
 .star_rating a.on {
 	color: #ffd400;
 }
+
+
 </style>
 
 <script>
@@ -584,7 +586,7 @@ $(function() {
 							<li
 								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter list">
 								<a href="#" class="box-74">
-									<div class="thumbnail-74" style="width: 100%; height: 100%;">
+									<div class="thumbnail-74 rep" style="width: 100%; height: 100%;">
 										<img src="/img/${i.thumsysName}" class="wide"
 											alt="Thumbnail" />
 									</div>
