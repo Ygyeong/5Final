@@ -223,7 +223,7 @@ a {text-decoration: none;color: white;}
 			<nav class="navbar">
 				<div class="navbar_logo">
 
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 
 				</div>
@@ -249,7 +249,7 @@ a {text-decoration: none;color: white;}
 			<nav class="navbar">
 				<div class="navbar_logo">
 
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 
 				</div>
@@ -262,7 +262,7 @@ a {text-decoration: none;color: white;}
 
 				</ul>
 				<ul class="navbar_member">
-					<li><a href="">관리자페이지</a></li>
+					<li><a href="/admin/home">관리자페이지</a></li>
 					<li><a href="/member/logOutProc">로그아웃</a></li>
 				</ul>
 
@@ -275,7 +275,7 @@ a {text-decoration: none;color: white;}
 			<nav class="navbar">
 				<div class="navbar_logo">
 
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 
 				</div>
