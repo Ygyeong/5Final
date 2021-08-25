@@ -272,6 +272,7 @@ a{
 				}
 			})
 		}
+		
 		function getSearchList(){
 			$.ajax({
 				url:"/rep/scrollSearchList",
