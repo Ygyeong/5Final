@@ -142,7 +142,7 @@ $(function(){
 		<c:when test="${loginID==null }">
 			<nav class="navbar">
 				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
@@ -162,7 +162,7 @@ $(function(){
 		<c:when test="${loginID=='admin'}">
 			<nav class="navbar">
 				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
@@ -173,7 +173,7 @@ $(function(){
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 				</ul>
 				<ul class="navbar_member">
-					<li><a href="">관리자페이지</a></li>
+					<li><a href="/admin/mem">관리자페이지</a></li>
 					<li><a href="/member/logOutProc">로그아웃</a></li>
 				</ul>
 				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
@@ -182,7 +182,7 @@ $(function(){
 		<c:otherwise>
 			<nav class="navbar">
 				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/camp_logo.png"
+					<a href=""><img src="/assets/img/background/newLogo_negative.png"
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
