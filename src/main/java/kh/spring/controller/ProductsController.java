@@ -66,25 +66,24 @@ public class ProductsController {
 		return "shop/productsDetail";
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("delete") // 상품삭제
 	public String delete(int p_seq) {
 		service.delete(p_seq);
-		return "redirect:products?index=1";
+		return "redirect:/products/selectAll?index=1";
 	} 
-//	@RequestMapping("modify")
-//	public String update(int p_seq,Model model) {
-//		System.out.println("수정페이지");
-//		ProductsDTO dto = service.detail(p_seq);
-//		List<SummerDTO> sdto = service.filesBySeq(p_seq);
-//		model.addAttribute("sdto",sdto);
-//		model.addAttribute("dto",dto);
-//		return "shop/productsModify";
-//	} 
+	@RequestMapping("modify") // 상품수정
+	public String update(int p_seq,Model model) {
+		ProductsDTO dto = service.detail(p_seq);
+		List<SummerDTO> sdto = service.filesBySeq(p_seq);
+		model.addAttribute("sdto",sdto);
+		model.addAttribute("dto",dto);
+		return "shop/productsModify";
+	} 
 	
 	
 	@ResponseBody
 	@RequestMapping(value="scrollList",produces="text/html;charset=utf8")
-	public String scrollList(int index) {
+	public String scrollList(int index) { // 무한스크롤
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		List<ProductsDTO> list = service.selectAll(startNum, endNum);
