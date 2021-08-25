@@ -582,7 +582,21 @@ $(function() {
 					</div>
 					<div class="fix-12-12">
 						<ul class="grid grid-74 later equal margin-top-5">
-						<c:forEach var="i" items="${rlist }">
+						<%-- <c:forEach var="i" items="${rlist }">
+			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
+				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 mb-1 link">${i.rep_name }</div>
+				<div class="row m-0 ">
+					<div class="col-6 price">${i.rep_price }<span>원</span></div>
+					<div class="col-6 diffD">${i.rep_diff_date }</div>
+				</div>
+				<div class="row m-0 mt-2 pt-2 pb-2 ar">
+					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+				</div>
+				<input type=hidden value=${i.rep_seq } class=seq>
+			</div>       
+		</c:forEach> --%>
+						 <c:forEach var="i" items="${rlist }">
 							<li
 								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter list">
 								<a href="#" class="box-74">
@@ -592,9 +606,10 @@ $(function() {
 									</div>
 									<div class="name-74 equalElement table wide">
 										<div class="cell left top">
-											<h3 class="" style="font-weight: bold;">${i.rep_name }</h3>
-											<h3 class="" style="font-weight: bold; color: red;">{i.rep_price}</h3>
-											<p class="tiny opacity-6 cropBottom">${i.rep_detail }</p>
+										<div class="col-12 mb-1 link" style="font-weight: bold;">${i.rep_name }</div>
+											<div class="col-6 mt-1" style="font-weight: bold;">${i.rep_price }<span>원</span></div>
+											
+											<div class="tiny opacity-6 cropBottom">${i.rep_detail }</div>
 
 
 
@@ -603,7 +618,7 @@ $(function() {
 							</a>
 							<input type=hidden class="seq" value="${i.rep_seq }">
 							</li>
-						</c:forEach>
+						</c:forEach> 
 							
 <!-- 							<li
 								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
