@@ -198,7 +198,7 @@ $("body").on("click","#modi",function(){
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="" class="nav-item nav-link">관리자 페이지</a>
+                        <a href="/admin/home" class="nav-item nav-link">관리자 페이지</a>
                         <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>

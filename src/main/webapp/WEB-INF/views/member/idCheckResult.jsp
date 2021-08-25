@@ -36,8 +36,8 @@
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
@@ -57,8 +57,8 @@
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
@@ -78,13 +78,13 @@
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
 		        <ul class="navbar_member">
-		            <li><a href="/member/myPage">마이페이지</a></li>
+		            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
 		            <li><a href="/member/logOutProc">로그아웃</a></li>
 		        </ul>
 		        <a href="#" class="navbar_toogleBtn">
@@ -93,7 +93,7 @@
 		    </nav>
 			</c:otherwise>
 		</c:choose>
-		<!-- nav end -->
+		<!-- nav end -->	
 
     <div id="box">
         <div id="boxText">
