@@ -393,7 +393,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -418,7 +418,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -444,7 +444,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -808,7 +808,7 @@ a{
                 <div class="col-11 p-0">
                     <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
                 </div>
-                <div class="col-1" id=userBtn>댓글등록
+                <div class="col-1" id=cmtBtn>댓글등록
                 </div>
             </div>
 			<div class="box">
