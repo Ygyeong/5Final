@@ -107,13 +107,6 @@
 
 .logo>img {width: 150px;height: 75px;}
 
-#springImg>img {
-	padding-left: 10px;
-	float: left;
-	width: 50%;
-	height: 100%;
-}
-
 #myContainer{padding-top: 10px;}
 .ms-left{top:40px !important;}
 
@@ -210,6 +203,7 @@ a {text-decoration: none;color: white;}
 #menu>li{background-color: #0f4c8199;}
 #menu>li:hover{background-color: #0f4c8170;}
 #seasonImg>*{width: 80%;}
+#seasonImg>img{width: 850px; height: 480px;}
 .row{margin:0;padding:0;}
 .row.btns{line-height: 0;}
 
