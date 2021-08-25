@@ -24,7 +24,7 @@
 #detailB{height: 50px;line-height: 50px;}
 #detailB>div{height: 100%;}
 #img{height:100%;}
-img{width:93%; height:100%;}
+img{width:570%;; height:100%;}
 .content{margin: 120px 0px 150px 0px;}
 #detailB>div{border:1px solid #ddd;}
 #detailT{border-bottom: 1px solid #ddd;}
@@ -106,21 +106,25 @@ a{text-decoration: none;color: white;}
 <script>
  	$(function(){
 		$("#update").on("click",function(){
-			location.href="/rep/update?rep_seq="+$("#seq").val();	
+			location.href="/products/modify?p_seq="+$("#p_seq").val();	
+		})
+		
+		$("#delete").on("click",function(){
+			let result = confirm("게시글을 삭제하시겠습니까?");
+			if(result){
+				location.href="/products/delete?p_seq="+$("#p_seq").val();
+			}
 		})
 		
 		$("#userBtn").on("click",function(){
-			
+			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+			if(result){
+				location.href="/member/loginPage";
+			}
+			$("#content").val("");
 		})
-		function wishCount(){
- 			$.ajax({
-				url:"/rep/wishCount",
-				data:{"rep_seq":$("#seq").val()}
-			}).done(function(resp){
-				console.log(resp);
-				$("#count").text(resp);
-			})
- 		}
+		
+		
  		 // Activate tooltip
  	    $('[data-toggle="tooltip"]').tooltip();
  	    
@@ -130,17 +134,17 @@ a{text-decoration: none;color: white;}
  	       $("#okCart").attr("p_seq",seq);
  	    })
  	    
- 	    $("#okCart").on("click",function(){
- 	    	let p_seq = ${dto.p_seq};
- 	    	
- 	    	location.href = "/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
- 	    })
  	    $("#cart").on("click",function(){
  	    	
- 	    	let result = confirm("상품이 저장되었습니다.\n장바구니로 이동하시겠습니까?");
- 	    	if(result){
- 	    		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";	
- 	    	};
+ 	    	if(${loginID==null}){
+ 	    		let result1 = confirm("로그인이 필요합니다 기능입니다\n로그인하시겠습니까?");
+ 	    		if(result){
+ 	    			location.href="/member/loginPage";
+ 	    		}
+ 	    	}else{
+ 	    		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
+ 	    	}
+ 	    	
  	    })
 
  	})
@@ -214,10 +218,10 @@ a{text-decoration: none;color: white;}
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
 	<c:choose>
-		<c:when test="${loginID==camp_id}">
+		<c:when test="${loginID =='admin'}">
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
-					<c:forEach var="i" items="${sdto}">
+					<c:forEach var="i" items="${slist}">
 						<div class="col-2 p-0" id=img>
 							<img src="/img/${i.sysName}">
 						</div>
@@ -279,7 +283,11 @@ a{text-decoration: none;color: white;}
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
 					<div class="col-6 p-0" id=img>
-						<img src="/img/${i.sysName}">
+						<c:forEach var="i" items="${slist}">
+						<div class="col-2 p-0" id=img>
+							<img src="/img/${i.sysName}">
+						</div>
+					</c:forEach>
 					</div>
 					<div class="col-5 " id=infoBox>
 						<div class="row m-0 mb-4">

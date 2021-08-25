@@ -70,7 +70,7 @@ public class AdminController {
 		param2.put("endNum", endNum);
 		param2.put("startNum", startNum);
 		param2.put("category", category);
-		param2.put("keyword", keyword);
+//		param2.put("keyword", keyword);
 		
 		Map<String,Object> param3 = new HashMap<>();
 		
