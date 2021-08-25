@@ -209,10 +209,10 @@ $(function(){
 					<div class="col-sm-10 writeDiv">
 						<select class="form-control" id="category" name="category">
 							<option selected>선택하세요.</option>
-							<option value="1">봄</option>
-							<option value="2">여름</option>
-							<option value="3">가을</option>
-							<option value="4">겨울</option>
+							<option value="봄">봄</option>
+							<option value="여름">여름</option>
+							<option value="가을">가을</option>
+							<option value="겨울">겨울</option>
 						</select>	
 					</div>
 				</div>

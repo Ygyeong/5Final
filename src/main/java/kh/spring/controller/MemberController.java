@@ -22,6 +22,7 @@ import kh.spring.dto.ScheduleDTO;
 import kh.spring.service.MemberService;
 import kh.spring.service.ScheduleService;
 
+
 @Controller
 @RequestMapping("/member")
 public class MemberController {
@@ -89,8 +90,10 @@ public class MemberController {
 			MemberDTO login = ms.login(cm_id);
 			if(login.getCm_id() != null) {
 				String hash_password = login.getCm_pw();
+
 				
 				if(BCrypt.checkpw(cm_pw, hash_password) == true) {
+
 				session.setAttribute("loginID", login.getCm_id());
 
 				} else {

@@ -316,11 +316,12 @@ a{
  
 <!--네비바 시작 -->
 <c:choose>
-<c:when test="${loginID==null }">
+<c:when test="${loginID == null }">
 <nav class="navbar">
         <div class="navbar_logo">
-           
+
             <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
