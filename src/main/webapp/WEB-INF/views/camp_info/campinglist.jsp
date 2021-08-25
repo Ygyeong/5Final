@@ -398,7 +398,6 @@ a{
      <div id="headerimg"></div>  
 </div>           
 <body id="page-top" class="" style="">
-
            <div class="container">			
            	<div class="list">
            	<!-- 캠핑 글씨 -->
