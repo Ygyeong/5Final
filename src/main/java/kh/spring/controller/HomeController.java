@@ -31,7 +31,7 @@ public class HomeController {
 	public String home(HttpServletRequest request, Model model) throws Exception  {
 		List<Camp_infoDTO> list = service.selectAll(0,6);
 		int rating = gservice.selectRating();  
-		List<ReProductDTO> rlist = rservice.getAll(1, 3);
+		List<ReProductDTO> rlist = rservice.HomeThumbnail(1, 3);
 		model.addAttribute("rlist",rlist);
 		model.addAttribute("list",list);
 		model.addAttribute("rating",rating);

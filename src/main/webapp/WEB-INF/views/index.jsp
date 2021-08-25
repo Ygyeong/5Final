@@ -58,8 +58,6 @@
 	letter-spacing: -4px;
 	display: inline-block;
 	width: 200px;
-	
-	
 }
 
 .star_rating a {
@@ -81,7 +79,7 @@
 </style>
 
 <script>
-$(function() {
+	$(function() {
 
 		$.ajax({
 			url : "/gal/mainList?cpage=1",
@@ -99,21 +97,24 @@ $(function() {
 					$("#galContents").html(resp[0].contents);
 
 				})
-				
-			$(".list").on("click",function(){
-			let seq=$(this).find(".seq").val();
-			location.href="/rep/detail?rep_seq="+seq;
 
-			})	
-				
-		$("#search").on("click",function(){
-			var searchOption = $("#searchOption").val();
-			console.log(searchOption);
-			location.href="/info/list?index=1&keyword="+$("#keyword").val() +"&searchOption="+searchOption;
-		})		
-				
+		$(".list").on("click", function() {
+			let seq = $(this).find(".seq").val();
+			location.href = "/rep/detail?rep_seq=" + seq;
 
-	}) 
+		})
+
+		$("#search").on(
+				"click",
+				function() {
+					var searchOption = $("#searchOption").val();
+					console.log(searchOption);
+					location.href = "/info/list?index=1&keyword="
+							+ $("#keyword").val() + "&searchOption="
+							+ searchOption;
+				})
+
+	})
 </script>
 
 </head>
@@ -304,12 +305,12 @@ $(function() {
     </symbol>
 
   </svg>
-  <!-- Navigation -->
-  <nav class="side pole">
-    <div class="navigation">
-      <ul></ul>
-    </div>
-  </nav>
+	<!-- Navigation -->
+	<nav class="side pole">
+		<div class="navigation">
+			<ul></ul>
+		</div>
+	</nav>
 
 	<!-- Navigation -->
 	<nav class="side pole">
@@ -324,7 +325,7 @@ $(function() {
 
 			<nav class="panel top">
 				<div class="sections">
-					
+
 					<div class="left">
 						<a href="/" title="Slides Framework"
 							style="font-family: 'Nanum Brush Script'; font-size: 40px;"><img
@@ -357,7 +358,6 @@ $(function() {
         </svg></a>
 
 					<ul class="mainMenu margin-top-3">
-
 						<li><a href="/info/list?index=1">캠핑장</a></li>
 						<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
 						<li><a href="/products/selectAll?index=1">SHOP</a></li>
@@ -488,17 +488,21 @@ $(function() {
 							style="font-family: 'Nanum Pen Script', cursive; font-size: 50px;"
 							style="margin-bottom: 100px;">오늘은 어디로 떠나볼까?</span>
 					</p>
-						<select id="searchOption" class="input-9 ae-4 fromCenter" style="width:150px; height: 56px;">
-							<option value="all">전체</option>
-							<option value="facltNm">캠핑장 이름</option>
-							<option value="lctCl">주변 환경 (ex.숲/바다) </option>
-							<option value="addr1">지역</option>
-						</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword" id="keyword"
-							placeholder="원하시는 캠핑장소를 입력해보세요" style="width:400px;  height: 56px;"/>
 
-						<button type="submit" class="button blue gradient ae-7 fromCenter" id="search"
-							name="button">검색하기</button>
-							<input type=hidden value=${keyword } id=searchKey>
+					<select id="searchOption" class="input-9 ae-4 fromCenter"
+						style="width: 150px; height: 56px;">
+
+						<option value="all">전체</option>
+						<option value="facltNm">캠핑장 이름</option>
+						<option value="lctCl">주변 환경 (ex.숲/바다)</option>
+						<option value="addr1">지역</option>
+					</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
+						id="keyword" placeholder="원하시는 캠핑장소를 입력해보세요"
+						style="width: 400px; height: 56px;" />
+
+					<button type="submit" class="button blue gradient ae-7 fromCenter"
+						id="search" name="button">검색하기</button>
+					<input type=hidden value=${keyword } id=searchKey>
 				</div>
 
 			</div>
@@ -557,7 +561,8 @@ $(function() {
 									둘러보세요.<br> 텐트부터 렌턴까지 모든것이 준비되어 있습니다.
 								</span>
 							</p>
-							<a href="/products/selectAll?index=1" class="button blue gradient crop ae-3">둘러보러가기</a>
+							<a href="/products/selectAll?index=1"
+								class="button blue gradient crop ae-3">둘러보러가기</a>
 						</div>
 					</div>
 
@@ -581,30 +586,45 @@ $(function() {
 					</div>
 					<div class="fix-12-12">
 						<ul class="grid grid-74 later equal margin-top-5">
-						<c:forEach var="i" items="${rlist }">
-							<li
-								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter list">
-								<a href="#" class="box-74">
-									<div class="thumbnail-74" style="width: 100%; height: 100%;">
-										<img src="/img/${i.thumsysName}" class="wide"
-											alt="Thumbnail" />
-									</div>
-									<div class="name-74 equalElement table wide">
-										<div class="cell left top">
-											<h3 class="" style="font-weight: bold;">${i.rep_name }</h3>
-											<h3 class="" style="font-weight: bold; color: red;">{i.rep_price}</h3>
-											<p class="tiny opacity-6 cropBottom">${i.rep_detail }</p>
-
-
-
+							<%-- <c:forEach var="i" items="${rlist }">
+			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
+				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 mb-1 link">${i.rep_name }</div>
+				<div class="row m-0 ">
+					<div class="col-6 price">${i.rep_price }<span>원</span></div>
+					<div class="col-6 diffD">${i.rep_diff_date }</div>
+				</div>
+				<div class="row m-0 mt-2 pt-2 pb-2 ar">
+					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+				</div>
+				<input type=hidden value=${i.rep_seq } class=seq>
+			</div>       
+		</c:forEach> --%>
+							<c:forEach var="i" items="${rlist }">
+								<li
+									class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-3 fromCenter list">
+									<a href="#" class="box-74">
+										<div class="thumbnail-74 rep"
+											style="width: 100%; height: 100%;">
+											<img src="/img/${i.thumsysName}" class="wide" alt="Thumbnail" />
 										</div>
-									</div>
-							</a>
-							<input type=hidden class="seq" value="${i.rep_seq }">
-							</li>
-						</c:forEach>
-							
-<!-- 							<li
+										<div class="name-74 equalElement table wide">
+											<div class="cell left top">
+												<div class="col-12 mb-1 link" style="font-weight: bold;">${i.rep_name }</div>
+												<div class="col-6 mt-1" style="font-weight: bold;">${i.rep_price }<span>원</span>
+												</div>
+
+												<div class="tiny opacity-6 cropBottom">${i.rep_detail }</div>
+
+
+
+											</div>
+										</div>
+								</a> <input type=hidden class="seq" value="${i.rep_seq }">
+								</li>
+							</c:forEach>
+
+							<!-- 							<li
 								class="col-3-12 col-tablet-1-2 col-phablet-1-1 ae-4 fromCenter">
 								<a href="#" class="box-74">
 									<div class="thumbnail-74">
@@ -697,7 +717,8 @@ $(function() {
 
 									</li>
 
-									<li class="col-6-12 ae-5"><a href="/CampTipBoard/selectAll"
+									<li class="col-6-12 ae-5"><a
+										href="/CampTipBoard/selectAll"
 										class="button blue gradient crop ae-3">둘러보러가기</a></li>
 
 								</ul>
@@ -777,8 +798,10 @@ $(function() {
 										<ul class="p tiny">
 											<li><strong id="galTitle"></strong></li>
 
-											<li class="opacity-8" >
-											<div id="galContents" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; height: 150px;"></div></li>
+											<li class="opacity-8">
+												<div id="galContents"
+													style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; height: 150px;"></div>
+											</li>
 
 										</ul>
 										<div class="thumbnail-74">
@@ -788,8 +811,11 @@ $(function() {
 												<c:when test="${rating==1 }">
 
 													<p class="star_rating">
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
-														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -797,8 +823,11 @@ $(function() {
 												<c:when test="${rating==2 }">
 
 													<p class="star_rating">
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -806,8 +835,11 @@ $(function() {
 												<c:when test="${rating==3 }">
 
 													<p class="star_rating">
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1">★</a> <a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1">★</a> <a
+															href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -815,9 +847,11 @@ $(function() {
 												<c:when test="${rating==4 }">
 
 													<p class="star_rating">
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1">★</a>
 													</p>
 
 												</c:when>
@@ -825,9 +859,11 @@ $(function() {
 												<c:when test="${rating==5 }">
 
 													<p class="star_rating">
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1" class="on">★</a> <a href="/gal/list?cpage=1" class="on">★</a>
-														<a href="/gal/list?cpage=1" class="on">★</a>
+														<a href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a> <a
+															href="/gal/list?cpage=1" class="on">★</a>
 													</p>
 
 												</c:when>
@@ -975,7 +1011,7 @@ $(function() {
 	<!-- Loading Progress Bar -->
 	<div class="progress-bar blue"></div>
 
-<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"> </script>
 
 
 </body>

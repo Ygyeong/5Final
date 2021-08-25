@@ -5,7 +5,7 @@ import java.sql.Date;
 public class CampTipDTO {
 	
 	private int camp_tip_num;
-	private int category;
+	private String category;
 	private String writer;
 	private String title;
 	private String contents;
@@ -14,7 +14,7 @@ public class CampTipDTO {
 	
 	public CampTipDTO() {}
 
-	public CampTipDTO(int camp_tip_num, int category, String writer, String title, String contents, Date write_date,
+	public CampTipDTO(int camp_tip_num, String category, String writer, String title, String contents, Date write_date,
 			int view_count) {
 		super();
 		this.camp_tip_num = camp_tip_num;
@@ -32,10 +32,10 @@ public class CampTipDTO {
 	public void setCamp_tip_num(int camp_tip_num) {
 		this.camp_tip_num = camp_tip_num;
 	}
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
-	public void setCategory(int category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 	public String getWriter() {
@@ -68,5 +68,6 @@ public class CampTipDTO {
 	public void setView_count(int view_count) {
 		this.view_count = view_count;
 	}
+	
 }
 

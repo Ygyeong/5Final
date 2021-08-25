@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detail</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
@@ -221,9 +221,13 @@ a{
 				location.href="/member/loginPage";
 			}
  		})
- 		$("#userID,#repCount,.userRep img").on("click",function(){
+ 		$("#userID,#repCount").on("click",function(){
  			console.log($("#user").val());
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
+ 		})
+ 		$(".userRep").on("click",function(){
+ 			let userRepSeq = $(this).parent("PMBox").find(".userRepSeq").val();
+ 			location.href="/rep/detail?rep_seq="+userRepSeq;
  		})
  		/* $("#detailT").on("click",function(){
  			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
@@ -253,9 +257,9 @@ a{
 					
 					let row3 = $("<div class='row m-0'>");
 					let col = $("<div class='col-12 p-0 btnBox'>");
-					let modi = $("<input type='button' class='modi'>");
+					let modi = $("<input type='button' class='btn btn-secondary modi'>");
 					modi.val("수정");
-					let del = $("<input type='button' class='del'>");
+					let del = $("<input type='button' class='btn btn-secondary del'>");
 					del.val("삭제");
 					let hidden = $("<input type='hidden' class='recmt_seq'>");
 					hidden.val(resp.recmt_seq);
@@ -393,7 +397,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -418,7 +422,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -444,7 +448,7 @@ a{
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -687,6 +691,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
+                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
@@ -793,6 +798,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
+                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
@@ -808,7 +814,7 @@ a{
                 <div class="col-11 p-0">
                     <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
                 </div>
-                <div class="col-1" id=userBtn>댓글등록
+                <div class="col-1" id=cmtBtn>댓글등록
                 </div>
             </div>
 			<div class="box">
