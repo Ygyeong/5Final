@@ -12,8 +12,17 @@
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
+<script>
+$(function(){
+
+	$("#dataupdate").on("click",function(){
+		alert("ok");
+		location.href="/admin/dataupdate";
+	});
 
 
+})
+</script>
 
 <style>
 /*네비바 스타일  */     
@@ -245,6 +254,7 @@ a{
     안녕하세요 관리자님!<br>
     관리자 페이지에 오신걸 환영합니다!
 	</div>
+	<button id=dataupdate>DB 업데이트</button>
 
 
 
