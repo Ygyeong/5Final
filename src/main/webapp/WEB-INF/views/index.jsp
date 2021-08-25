@@ -59,6 +59,7 @@
 	display: inline-block;
 	width: 200px;
 	
+	
 }
 
 .star_rating a {
@@ -784,7 +785,7 @@ $(function() {
 
 									<div class="price ae-6">
 										<div class="thumbnail-74">
-											<img src="" class="wide" alt="Thumbnail" id="galImg" />
+											<img src="" class="wide" id="galImg" />
 										</div>
 
 									</div>
@@ -797,7 +798,7 @@ $(function() {
 											<div id="galContents" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; height: 150px;"></div></li>
 
 										</ul>
-										<div class="thumbnail-74" style="width: 100px; height: 100px;">
+										<div class="thumbnail-74">
 
 											<c:choose>
 
