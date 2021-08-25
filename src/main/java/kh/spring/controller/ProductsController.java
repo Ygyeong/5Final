@@ -41,7 +41,7 @@ public class ProductsController {
 		dto.setP_seq(p_seq);
 		String realPath = session.getServletContext().getRealPath("/resources/imgs");
 		service.insert(dto,p_seq,file,realPath);
-		return "redirect:/shop/selectAll?index=1";
+		return "redirect:/products/selectAll?index=1";
 	}
 
 	@RequestMapping("selectAll") // 상품목록
@@ -58,7 +58,9 @@ public class ProductsController {
 	@RequestMapping("detail") // 상품상세
 	public String detail(int p_seq, Model model) {
 		ProductsDTO dto = service.detail(p_seq);
-		List<SummerDTO> sdto = service.filesBySeq(p_seq);
+		List<SummerDTO> slist = service.filesBySeq(p_seq);
+		SummerDTO sdto = service.selectThumBySeq(dto.getP_seq());
+		model.addAttribute("slist",slist);
 		model.addAttribute("sdto",sdto);
 		model.addAttribute("dto",dto);
 		return "shop/productsDetail";

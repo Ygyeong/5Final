@@ -27,14 +27,13 @@
 	$(function(){
 		$("#myPageModify").on("click", function(){
 			location.href="/member/memberModify?cm_id=${loginID.cm_id}"
-
 		})
 		$("#myPagePwChange").on("click", function(){
-			location.href="/member/pwChange?cm_id=${loginID.cm_id}"
+			location.href="/member/pwChange?cm_id=${loginID}"
 		})
 		$("#myPageMemberDelete").on("click", function(){
 
-			location.href="/member/memberOutProc?cm_id=${loginID.cm_id}"
+			location.href="/member/memberOutProc?cm_id=${loginID}"
 
 		})
 		$("#goHome").on("click",function(){
@@ -63,14 +62,14 @@
 		});
 		
 		$(".fc-custom2-button").on('click', function(){
-			var url = "/schedule/scheduleOpen?cm_id=${loginID.cm_id}";
+			var url = "/schedule/scheduleOpen?cm_id=${loginID}";
 			var name = "/schedule/scheduleOpen";
 			var option = "width=600,height=600 left=100, top=50, location=no";
 			window.open(url, name, option)
 		})
 		
 		$(".fc-custom1-button").on('click', function(){
-			var url ="/schedule/scheduleCheckOpen?cm_id=${loginID.cm_id}"
+			var url ="/schedule/scheduleCheckOpen?cm_id=${loginID}"
 			var name = "/schedule/scheduleCheckOpen";
 			var option = "width=600,height=600 left=100, top=50, location=no";
 			window.open(url, name, option)
@@ -304,12 +303,9 @@ a{
 	
 		<div id="myBox">
 	        <div id="me" class="card">
-<<<<<<< HEAD
 
-=======
->>>>>>> c370d8247b8d7c63dc505313eca785b7e9dcc2d9
                 <div class="class=ard_body">
-                    <h5 class="card-title"> ${loginID.cm_id}님의 마이페이지 </h5>
+                    <h5 class="card-title"> ${loginID}님의 마이페이지 </h5>
                     <button class="myPageBtn btn-success" id="myPageModify">회원정보 수정</button></br>
                     <button class="myPageBtn btn-primary" id="myPagePwChange">비밀번호 변경</button></br>
                     <button class="myPageBtn btn-danger" id="myPageMemberDelete">회원 탈퇴</button></br>

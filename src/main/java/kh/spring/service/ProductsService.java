@@ -66,6 +66,10 @@ public class ProductsService {
 		return sdao.filesBySeq(s_seq);
 	}
 	
+	public SummerDTO selectThumBySeq(int p_seq) {
+		return sdao.selectThumbBySeq(p_seq);
+	}
+	
 	public int getP_seq() {
 		return dao.getP_seq();
 	}

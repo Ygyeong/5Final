@@ -56,12 +56,12 @@ public class ReProductController {
 			List<ReProductDTO> list = service.search(keyword,startNum,endNum);
 			int listsize = list.size();
 			int total = (int)Math.ceil(listsize/(double)ReProductConfig.RECORD_COUNT_PER_LIST);
+			System.out.println("총인덱스 :"+ total);
 			m.addAttribute("list",list);
 			m.addAttribute("keyword",keyword);
 			m.addAttribute("total",total);
 			
 		}
-
 		return "rep/list";
 	}
 	
@@ -76,6 +76,7 @@ public class ReProductController {
 		m.addAttribute("plist",plist);
 		m.addAttribute("dto",dto);
 		m.addAttribute("cdto",cdto);
+		m.addAttribute("pdto",pdto);
 		m.addAttribute("repCount",repCount);
 		return "rep/detail";
 	}

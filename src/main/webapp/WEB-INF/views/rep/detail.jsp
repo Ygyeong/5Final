@@ -69,10 +69,11 @@
      
      .recmtBox{ border-bottom: 1px solid #ddd; padding-bottom: 15px; margin: 0px 80px 0px 12px; padding-top:10px;}
      .ID{font-weight:600; font-size:18px;}
-     .ID span{margin-left:5px; font-weight:400; font-size:14px;}
+     .ID span{margin-left:8px; font-weight:400; font-size:14px;}
      .cmt{width:930px; margin-bottom:15px;}
      .btnBox{text-align:right;}
      .del{margin-left:5px;}
+     .carousel-item img{width:100%; height:100%;}
      
 /*네비바 스타일  */     
 :root{
@@ -101,7 +102,7 @@ a{
     top: 0;
     left: 0;
     right: 0;
-   
+    z-index:100 !important;
 }
 .navbar_logo{
     font-size: 32px;
@@ -215,6 +216,7 @@ a{
 			}
  		})
  		$("#userID").on("click",function(){
+ 			console.log($("#user").val());
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
  		/* $("#detailT").on("click",function(){
@@ -351,7 +353,7 @@ a{
 			if(result){
 				location.href="/member/loginPage";
 			}
-			
+			$("#content").val("");
 		})
 		
 		
@@ -365,7 +367,9 @@ a{
 			})
  		}
  		
-		
+ 		$(".1").attr("class","carousel-item active");
+		    
+		        $('.carousel').carousel('pause');
 		
  	})
  </script>
@@ -377,7 +381,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -402,7 +406,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -428,7 +432,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -441,7 +445,7 @@ a{
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -458,11 +462,32 @@ a{
 	<c:when test="${loginID == dto.rep_writer}">
 		<div class="container-fluid">
        		 <div class="row" id=menu>
-        	<c:forEach var="i" items="${plist }">
+
         		<div class="col-6 p-0" id=img>
-            	<img src="/img/${i.reSysName }">
-            </div>
-        	</c:forEach>
+						<div id="carouselExampleControls" class="carousel slide"
+							data-interval="false">
+
+							<div class="carousel-inner">
+								<c:forEach var="i" items="${plist }" varStatus="s">
+									<div class="carousel-item ${s.count}">
+										<img src="/img/${i.reSysName }" class="d-block w-100"
+											alt="...">
+									</div>
+								</c:forEach>
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
+					</div>
+        	
             <%-- div class="col-6 p-0" id=img>
             	<img src="/img/${pdto.reSysName }">
             </div> --%>
@@ -558,8 +583,8 @@ a{
             			</div>
             			<div class="row m-0">
             				<div class="col-12 p-0 btnBox">
-            					<input type="button" class="modi" value="수정">
-            					<input type="button" class="del" value="삭제">
+            					<input type="button"  class="modi btn btn-primary " value="수정">
+            					<input type="button" class="del btn btn-primary "  value="삭제">
             					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
             				</div>
             			</div>
@@ -585,11 +610,30 @@ a{
 	<c:when test="${loginID==null }">
 		<div class="container-fluid">
         <div class="row" id=menu>
-            <c:forEach var="i" items="${plist }">
         		<div class="col-6 p-0" id=img>
-            	<img src="/img/${i.reSysName }">
-            </div>
-        	</c:forEach>
+            		<div id="carouselExampleControls" class="carousel slide"
+							data-interval="false">
+
+							<div class="carousel-inner">
+								<c:forEach var="i" items="${plist }" varStatus="s">
+									<div class="carousel-item ${s.count}">
+										<img src="/img/${i.reSysName }" class="d-block w-100"
+											alt="...">
+									</div>
+								</c:forEach>
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
+           		</div>
             <div class="col-5 " id=infoBox>
             	<div class="row m-0 mb-4">
             		<div class="col-2 txt">개인중고</div>
@@ -663,11 +707,30 @@ a{
 	<c:otherwise>
 		<div class="container-fluid">
         <div class="row" id=menu>
-            <c:forEach var="i" items="${plist }">
         		<div class="col-6 p-0" id=img>
-            	<img src="/img/${i.reSysName }">
+            	<div id="carouselExampleControls" class="carousel slide"
+							data-interval="false">
+
+							<div class="carousel-inner">
+								<c:forEach var="i" items="${plist }" varStatus="s">
+									<div class="carousel-item ${s.count}">
+										<img src="/img/${i.reSysName }" class="d-block w-100"
+											alt="...">
+									</div>
+								</c:forEach>
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
             </div>
-        	</c:forEach>
             <div class="col-5 " id=infoBox>
             	<div class="row m-0 mb-4">
             		<div class="col-2 txt">개인중고</div>
@@ -710,6 +773,7 @@ a{
             <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
                  <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+                 <input type=hidden value="${dto.rep_writer}" id=user>
             </div>
         </div>
      

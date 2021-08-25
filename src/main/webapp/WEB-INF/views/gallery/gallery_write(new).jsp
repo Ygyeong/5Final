@@ -8,12 +8,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>캠핑 후기</title>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -23,6 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+
 
 
 
@@ -142,8 +144,8 @@ $(function(){
       
       
       let blankRegex = /.*\S+/;
-      let titleLengthRegex = /^.{0,66}$/;
-      let contentLengthRegex = /^.{0,1333}$/;
+      let titleLengthRegex = /^.{0,60}$/;
+      let contentLengthRegex = /^.{0,4000}$/;
       
       let bresult1 = blankRegex.test(title);
       let bresult2 = blankRegex.test(content);
@@ -156,9 +158,9 @@ $(function(){
       }else if(!bresult2){
          alert("내용을 입력해주세요!");
       }else if(!titleResult){
-         alert("제목은 66글자 이내로 작성해주세요.")
+         alert("제목은 60글자 이내로 작성해주세요.")
       }else if(!contentResult){
-         alert("사진은 첨부파일을 이용해주세요.")
+         alert("내용은 4000글자 이내로 작성해주세요.")
       }
       else{
          $("input[name=files]").remove();
@@ -289,7 +291,7 @@ $(function(){
         maxHeight: 400,
         lang: "ko-KR",
         toolbar: [
-		    // [groupName, [list of button]]
+		    
 		    ['fontname', ['fontname']],
 		    ['fontsize', ['fontsize']],
 		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
@@ -297,7 +299,6 @@ $(function(){
 		    ['table', ['table']],
 		    ['para', ['ul', 'ol', 'paragraph']],
 		    ['height', ['height']],
-		    /* ['insert',['picture']], */
 		    ['view', ['fullscreen', 'help']]
 		  ],
 		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],

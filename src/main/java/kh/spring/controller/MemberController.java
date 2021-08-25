@@ -49,15 +49,22 @@ public class MemberController {
 		return "/member/pwChange";
 	}
 	
-	@RequestMapping("memberModify")
-	public String memberModify(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		MemberDTO dto = new MemberDTO();
-		dto.setCm_id(cm_id);
-		//MemberDTO modify = ms.login(dto);
+//	@RequestMapping("memberModify")
+//	public String memberModify(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
+//		HttpSession session = req.getSession();
+//		MemberDTO dto = new MemberDTO();
+//		dto.setCm_id(cm_id);
+//<<<<<<< HEAD
+//		//MemberDTO modify = ms.login(dto);
+////		session.setAttribute("member", modify);
+//=======
+//
+//		MemberDTO modify = ms.modifySelect(dto);
 //		session.setAttribute("member", modify);
-		return "/member/memberModify";
-	}
+//
+//>>>>>>> 75b931285410ec5f66cffda6fbd72a65df808f28
+//		return "/member/memberModify";
+//	}
 	
 	@RequestMapping("signProc")
 	public String signProc(MemberDTO dto) throws Exception {
