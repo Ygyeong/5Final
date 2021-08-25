@@ -27,73 +27,91 @@
 </script>
 </head>
 <body>
-		<!--nav start -->
-		<c:choose>
-		<c:when test="${loginID==null }">
-		<nav class="navbar">
-		        <div class="navbar_logo">
-		     	   <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="/member/signUp">회원가입</a></li>
-		            <li><a href="/member/loginPage">로그인</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-		</c:when>
-		<c:when test="${loginID=='admin'}">
-		<nav class="navbar">
-		        <div class="navbar_logo">
-		            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="">관리자페이지</a></li>
-		            <li><a href="/member/logOutProc">로그아웃</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-		</c:when>
-		<c:otherwise>
-		<nav class="navbar">
-		        <div class="navbar_logo">   
-		            <a href=""><img src="assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
-		            <li><a href="/member/logOutProc">로그아웃</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-			</c:otherwise>
-		</c:choose>
-		<!-- nav end -->	
+<!--네비바 시작 -->
+<c:choose>
+<c:when test="${loginID==null }">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/signPage">회원가입</a></li>
+            <li><a href="/member/loginPage">로그인</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:when>
+<c:when test="${loginID=='admin'}">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/admin/home">관리자페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:when>
+<c:otherwise>
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+</c:otherwise>
+
+
+</c:choose> 
+
+<!--네비바 끝  -->
 
     <div id="box">
         <div id="boxText">

@@ -15,15 +15,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
+<link rel="stylesheet" type="t	ext/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** login **</title>
 <script>
 	$(function(){
-		
+		$(".login_btn").on('click', function(){
+			$.ajax({
+				url:"/member/idDuplCheck",
+				type: "POST",
+				dataType:"JSON",
+				data:{"cm_id" : $("#cm_id").val()},
+				success : function(data){
+					if(data > 0){
+						$("#loginProc").attr("action","/member/loginProc").submit();
+					}else if(data == 0){
+						alert("로그인 실패");
+						return false;
+					}
+				}
+			})
+		});
 	})
 
 </script>
+<style>
+@charset "UTF-8";
 
+:root{
+	--text-color:#f0f4f5;
+	--background-color:#263343;
+	--accent-color:steelblue;
+}
+body{margin: 0;z-index: 1;}
+a{	text-decoration: none;
+	color: white;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+.navbar_logo{
+    font-size: 32px;
+    color: white;
+    font-family: 'Nanum Brush Script';
+}
+.navbar_logo i {color: white;}
+.navbar_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom:-3px;
+}
+.navbar_menu li {padding: 8px 12px;}
+.navbar_menu li:hover {
+	background-color: steelblue;
+	border-radius: 4px;
+}
+.navbar_member {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0;
+	margin-bottom:-3px;
+}
+.navbar_member li{padding: 8px 12px;}
+.navbar_toogleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;	    
+}
+@media screen and (max-width: 768px) {   
+	.navbar{
+		flex-direction: column;
+	    align-items: flex-start;
+	    padding: 8px 24px;
+	    margin-bottom:50px;
+	 }
+	.navbar_menu{
+		display: none;
+	    flex-direction: column;
+	    align-items: center;
+	    width: 100%;
+	 }
+	 .navbar_menu li {
+	 	width: 100%;
+	    text-align: center;
+	 }
+	 .navbar_member{
+	  	display: none;
+	    justify-content: center;
+	    width: 100%;
+	 }
+	 .navbar_toogleBtn{display: block;}
+	 .navbar_menu.active,
+	 .navbar_member.active{display: flex;}
+}
+	/*네비바 스타일 끝  */   
+</style>
 
 </head>
 <body>
@@ -102,7 +202,7 @@
                     <h3>LogIn</h3>
                 </div>
                 <div class="card-body">
-                    <form action="loginProc" method="POST">
+                    <form id="loginProc" method="POST">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -117,7 +217,7 @@
                             <input type="password" name="cm_pw"class="form-control" placeholder="비밀번호를 입력하세요." required>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="로그인" class="btn float-right login_btn">
+                            <input type="button" value="로그인" class="btn float-right login_btn">
                         </div>
                     </form>
                 </div>

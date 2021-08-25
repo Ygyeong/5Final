@@ -73,10 +73,8 @@ $(function(){
 </script>
 <style type="text/css">
     div{ 
-       overflow: auto;
-      
+       overflow: auto;   
     }
-
     #myBox{
 		border: 1px solid white;
 		    background-color: rgba(255, 255, 255, 0.144);
@@ -84,28 +82,22 @@ $(function(){
 		    height: 320px;
 		    margin-top: 20px;
 		    margin-right: auto;
-		    margin-left: auto;
-		        
+		    margin-left: auto;    
 		}
-
     #me{
         background-color: white;
         width: 590px;
         margin-top: 50px;
         height: 200px;
         text-align: center;
-        float: left;
-        
+        float: left; 
     }
-
     .card_body{
         background-color: white;
         width: 600px;
         height: 200px;
     }
-
     .myPageBtn{ margin-top: 10px;}
-    
     .add-button{
     	position: absolute;
     	top: 1px;
