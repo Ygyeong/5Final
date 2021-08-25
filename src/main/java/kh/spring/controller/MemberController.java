@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.ScheduleDTO;
 import kh.spring.service.MemberService;
+import kh.spring.service.ScheduleService;
 
 
 @Controller
@@ -23,9 +27,16 @@ public class MemberController {
 	
 	@Autowired
 	public MemberService ms;
+	@Autowired
+	public ScheduleService ss;
 	
 	@RequestMapping("myPage")
-	public String myPage() {
+	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
+		HttpSession session = req.getSession();
+		ScheduleDTO dto = new ScheduleDTO();
+		dto.setCm_id(cm_id);
+		List<ScheduleDTO> show = ss.showSchedule(dto);
+		session.setAttribute("list", show);
 		return "/member/myPage";
 	}
 	
@@ -65,7 +76,6 @@ public class MemberController {
 		String bcPass = BCrypt.hashpw(dto.getCm_pw(), BCrypt.gensalt());
 		dto.setCm_pw(bcPass);
 		ms.memberSign(dto);
-		System.out.println("성공!");
 		
 		return "redirect:/";
 	}
@@ -73,17 +83,19 @@ public class MemberController {
 	@RequestMapping("loginProc")
 	public String loginProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		HttpSession session = req.getSession();
-		MemberDTO dto = new MemberDTO();	
-		
-			dto.setCm_id(cm_id);
+			System.out.println(cm_id);
+			System.out.println(cm_pw);
 			MemberDTO login = ms.login(cm_id);
-			if(login != null) {
-				System.out.println(login.getCm_pw());
+			System.out.println(login);
+			if(login.getCm_id() != null) {
 				String hash_password = login.getCm_pw();
-				if(BCrypt.checkpw(cm_pw, hash_password)) {
-				session.setAttribute("loginID", login);
+				System.out.println(hash_password);
+				boolean isAuthenticated = BCrypt.checkpw(cm_pw, hash_password);
+				if(isAuthenticated) {
+				session.setAttribute("loginID", login.getCm_id());
 				} else {
 				session.setAttribute("loginID", null);
+				return "/member/login";
 				}
 			}
 		return "redirect:/";
@@ -118,13 +130,29 @@ public class MemberController {
 		return "/member/myPage";
 	}
 	
+	@RequestMapping("pwModifyProc")
+	public String memberModifyProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpSession session)throws Exception{
+		MemberDTO dto = new MemberDTO();
+		System.out.println(cm_id);
+		System.out.println(cm_pw);
+		String bcPass = BCrypt.hashpw(dto.getCm_pw(), BCrypt.gensalt());
+		System.out.println(bcPass);
+		dto.setCm_pw(bcPass);
+		dto.setCm_id(cm_id);
+		ms.pwUpdate(dto);
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@RequestMapping("pwIdDuplCheck")
-	public String pwIdDuplCheck(String cm_id) throws Exception {
+	public String pwIdDuplCheck(String cm_id, HttpSession session, HttpServletResponse response) throws Exception {
 		int result = ms.idDuplCheck(cm_id);
-		if(result < 0) {
-			return "/";
+		if(result > 0) {
+			session.setAttribute("member", cm_id);
+			return "/member/idCheckResult";
+		}else {
+			return "/member/login";
 		}
-		return "/member/pwChange";
 	}
 
 	@ResponseBody

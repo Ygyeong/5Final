@@ -43,7 +43,7 @@ $(function(){
 	});
 	
 	$("#back").on('click', function(){
-		location.href="javascript:history.back()";
+		location.href="/member/myPage?cm_id=${member.cm_id}";
 	});
 	
 	$("#signup").on('click', function(){

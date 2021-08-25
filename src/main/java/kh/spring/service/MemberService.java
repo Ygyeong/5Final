@@ -31,6 +31,10 @@ public class MemberService {
 	public String memberUpdate(MemberDTO dto) {
 		return dao.memberUpdate(dto);
 	}
+	
+	public String pwUpdate(MemberDTO dto) {
+		return dao.pwUpdate(dto);
+	}
 
 	public MemberDTO modifySelect(MemberDTO dto) {
 		return dao.modifySelect(dto);

@@ -38,9 +38,6 @@ $(function(){
 		}
 	});
 	
-	$(".change_btn").on('click', function(){
-		alert("임시점검중");
-	})
 })
 </script>
 </head>
@@ -52,12 +49,13 @@ $(function(){
                     <h3>PASSWORD CHANGE</h3>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="POST">
+                    <form action="/member/pwModifyProc?cm_id=${member }" method="POST">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" id="cm_pw" name="cm_pw" class="form-control" placeholder="새로운 비밀번호를 입력하세요." required>
+                            
+                            <input type="password" id="cm_pw" name="cm_pw" class="form-control" placeholder="새로운 비밀번호를 입력하세요." required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
@@ -67,7 +65,7 @@ $(function(){
                         </div>
                         <div class=pwCheckText></div><br>
                         <div class="form-group" style="text-align:center">
-                            <input type="button" value="변경완료" class="btn btn-success change_btn">
+                            <input type="submit" value="변경완료" class="btn btn-success change_btn">
                             <input type="button" value="뒤로가기" class="btn btn-danger back_btn">
                         </div>
                     </form>
