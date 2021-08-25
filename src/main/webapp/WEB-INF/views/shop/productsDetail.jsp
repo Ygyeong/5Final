@@ -214,49 +214,55 @@ a{text-decoration: none;color: white;}
 		<c:when test="${loginID =='admin'}">
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
-					<c:forEach var="i" items="${slist}">
+					<div class="col-6 p-0" id=img>
+						<c:forEach var="i" items="${slist}">
 						<div class="col-2 p-0" id=img>
 							<img src="/img/${i.sysName}">
 						</div>
 					</c:forEach>
-					<<%-- div class="col-6 p-0" id=img> <img src="/img/${pdto.reSysName
-					}"> </div> --%> <div class="col-5 " id=infoBox> <div class="row m-0
-					mb-4"> <div class="col-2 txt">상품 상세정보</div>
-				</div>
-
-				<div class="row m-0">
-					<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
-				</div>
-				<div class="row m-0" id=priceBox>
-					<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
-				</div>
-				<div class="row m-0 pb-2">
-					<div class="col-3 p-0">배송비</div>
-					<div class="col-9 p-0">50,000이상 무료배송</div>
-					<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
-				</div>
-
-				<div class="row m-0 pb-4">
-					<div class="col-3 p-0">거래지역</div>
-					<div class="col-9 p-0">전지역</div>
-				</div>
-				<div class="row" id=crudBox>
-					<div class="col-4 p-0">
-						<div class="row m-0">
-							<div class="col-8 pt-1" id=update>수정</div>
-							<div class="col-8 pt-1" id=delete>삭제</div>
-							<div class="col-8 pt-1" id=submit>적용</div>
+					</div>
+					<div class="col-5 " id=infoBox>
+						<div class="row m-0 mb-4">
+							<div class="col-2 txt">${dto.p_category}</div>
+							<div class="col-2 ex">
+							</div>
 						</div>
+
+						<div class="row m-0">
+							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
+						</div>
+						<div class="row m-0" id=priceBox>
+							<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
+						</div>
+						<div class="row m-0 pb-2">
+							<div class="col-3 p-0">배송비</div>
+							<div class="col-9 p-0">50,000이상 무료배송</div>
+							<div class="col-3 p-0"></div>
+							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
+						</div>
+
+						<div class="row m-0 pb-4">
+							<div class="col-3 p-0">거래지역</div>
+							<div class="col-9 p-0">전지역</div>
+						</div>
+						<div class="row pt-3" id=funcBox>
+							<div class="col-5 p-0" id=like>
+								<button class="btn btn-outline-dark" id="modifyBtn">수정하기</button>
+							</div>
+							<div class="col-5 p-0" id=like>
+								<button class="btn btn-outline-dark" id="deleteBtn">삭제하기</button>
+							</div>
+
+						</div>
+						<input type=hidden id=p_seq value="${dto.p_seq}">
 					</div>
 				</div>
-				<input type=hidden id=seq value="${dto.c_seq}">
-			</div>
-			<div class="row p-0 content">
-				<div class="col-8">
-					<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-					<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+				<div class="row p-0 content">
+					<div class="col-11">
+						<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+					</div>
 				</div>
-
 			</div>
 		</c:when>
 		<c:otherwise>
