@@ -12,7 +12,13 @@
 		select count(cm_id) from camp_mem where cm_id=#{cm_id}
 	</select>
 	<select id="login" parameterType="kh.spring.dto.MemberDTO" resultType="kh.spring.dto.MemberDTO">
-		select * from camp_mem where cm_id = #{cm_id} 
+		select * from camp_mem where cm_id = #{cm_id}
+	</select>
+	<select id="wishCount" parameterType="kh.spring.dto.Camp_wishlistDTO" resultType="int">
+		select count(cm_id) from camp_wishlist where cm_id = #{cm_id}
+	</select>
+	<select id="wishList" parameterType="kh.spring.dto.Camp_wishlistDTO" resultType="kh.spring.dto.Camp_wishlistDTO">
+		select * from camp_wishlist where cm_id = #{cm_id}
 	</select>
 	<delete id="memberOut">
 		delete from camp_mem where cm_id=#{cm_id}

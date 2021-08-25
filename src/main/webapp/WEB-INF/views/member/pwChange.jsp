@@ -20,6 +20,20 @@ $(function(){
 		location.href="/"
 	})
 	
+	$(".change_btn").on('click', function(){
+		var pw = $("#cm_pw").val();
+		var pwCheck = $("#password2").val();
+		
+		if(pw == pwCheck){
+			alert("변경완료!")
+			$("#changePw").attr("action","/member/pwModifyProc?cm_id=${member }").submit();
+			
+		}else if(pw != pwCheck){
+			alert("비밀번호가 일치하지 않습니다.")
+			return false;
+		}
+	})
+	
 	$("#password2").on('keyup', function(){
 		var pw = $("#cm_pw").val();
 		var pwCheck = $("#password2").val();
@@ -49,12 +63,12 @@ $(function(){
                     <h3>PASSWORD CHANGE</h3>
                 </div>
                 <div class="card-body">
-                    <form action="/member/pwModifyProc?cm_id=${member }" method="POST">
+                    <form id="changePw" method="POST">
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            
+                   			
                             <input type="password" id="cm_pw" name="cm_pw" class="form-control" placeholder="새로운 비밀번호를 입력하세요." required>
                         </div>
                         <div class="input-group form-group">
@@ -65,7 +79,7 @@ $(function(){
                         </div>
                         <div class=pwCheckText></div><br>
                         <div class="form-group" style="text-align:center">
-                            <input type="submit" value="변경완료" class="btn btn-success change_btn">
+                            <input type="button" value="변경완료" class="btn btn-success change_btn">
                             <input type="button" value="뒤로가기" class="btn btn-danger back_btn">
                         </div>
                     </form>
