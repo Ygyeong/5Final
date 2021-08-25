@@ -15,12 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
-import kh.spring.config.InfoConfig;
 import kh.spring.config.ReProductConfig;
+import kh.spring.dto.MemberDTO;
 import kh.spring.dto.ReCommentsDTO;
 import kh.spring.dto.RePicturesDTO;
 import kh.spring.dto.ReProductDTO;
 import kh.spring.dto.ReWishListDTO;
+import kh.spring.service.MemberService;
 import kh.spring.service.ReCommentService;
 import kh.spring.service.ReProductService;
 
@@ -34,6 +35,9 @@ public class ReProductController {
 	
 	@Autowired
 	private ReCommentService cservice;
+	
+	@Autowired
+	private MemberService mservice;
 	
 	@Autowired
 	private HttpSession session;
@@ -128,7 +132,7 @@ public class ReProductController {
 	
 	@RequestMapping("myJG")
 	public String myJG(String id,int seq,int index,Model m){
-		System.out.println(id+" : "+seq);
+		MemberDTO mdto = mservice.login(id);
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		
@@ -137,6 +141,7 @@ public class ReProductController {
 			int totalCount = service.repCount(id);
 			List<String> pageNavi = service.getPageNavi(index,id,seq);
 			System.out.println(pageNavi);
+			m.addAttribute("mdto",mdto);
 			m.addAttribute("userID",id);
 			m.addAttribute("list",list);
 			m.addAttribute("navi",pageNavi);

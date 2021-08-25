@@ -39,6 +39,8 @@
 		height:100px;
   		margin:auto;
   		text-align:center;
+  		padding-top:3%;
+
 	}
 	
 	#cmapinglist{
@@ -54,11 +56,11 @@
 		width:40%;
 	}
 	
-	#search {
-		width:100%;
-  		display: inline-block;
-    	margin-top: 30px;
-	}	
+#search {
+    width: 80px;
+    height: 30px;
+    color:black;
+}	
 	
 	
 /*네비바 스타일  */     
@@ -396,18 +398,15 @@ a{
      <div id="headerimg"></div>  
 </div>           
 <body id="page-top" class="" style="">
-
            <div class="container">			
            	<div class="list">
            	<!-- 캠핑 글씨 -->
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Camping</h2>
                     <h3 class="section-subheading text-muted"> 가고 싶은 캠핑장을 골라 보세요! </h3>
-                	<button id=data> 여기 </button>
                 </div>
              <!--  검색 박스 -->
-             <div id="searchbox">
-             검색 
+             <div id="searchbox"> 
              		<select id="searchOption">
              			<option value="all" >전체</option>
              			<option value="facltNm"  > 캠핑장 이름 </option>
@@ -415,7 +414,7 @@ a{
              			<option value="addr1"  > 지역 </option>
              		</select>
              		<input type=text name="keyword" >
-             			<input type=button id="search">
+             			<button type="button" class="btn btn-light" id="search">검색</button>
              			<input type=hidden value=${keyword } id=searchKey>
 			</div>
 			<!-- 검색 목록 출력 -->

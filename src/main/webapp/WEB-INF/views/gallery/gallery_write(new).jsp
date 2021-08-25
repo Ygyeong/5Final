@@ -250,32 +250,32 @@ $(function(){
     
     <!--별점 -->
 
-		<label>평점: </label>
-			<div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
-				<label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="1" checked> <span class="startRadio__img"><span
-						class="blind">별 1개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="2"> <span class="startRadio__img"><span
-						class="blind">별 2개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="3"> <span class="startRadio__img"><span
-						class="blind">별 3개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="4"> <span class="startRadio__img"><span
-						class="blind">별 4개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="5"> <span class="startRadio__img"><span
-						class="blind">별 5개</span></span>
-				</label>
+      <label>평점: </label>
+         <div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
+            <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="1" checked> <span class="startRadio__img"><span
+                  class="blind">별 1개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="2"> <span class="startRadio__img"><span
+                  class="blind">별 2개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="3"> <span class="startRadio__img"><span
+                  class="blind">별 3개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="4"> <span class="startRadio__img"><span
+                  class="blind">별 4개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="5"> <span class="startRadio__img"><span
+                  class="blind">별 5개</span></span>
+            </label>
 
-			</div>
-
-
+         </div>
 
 
 
-			<div class="row">
+
+
+         <div class="row">
       <hr>
       <div class="col-12">
         <button type="button" id="backBtn" class="btn btn-default pull-left" style="background-color: #00285b; color:white">목록</button>
@@ -288,26 +288,26 @@ $(function(){
     
     <script>
     $('#summernote').summernote({
-    	
-    	placeholder: '내용을 입력해주세요',
+       
+       placeholder: '내용을 입력해주세요',
         height: 500,
         minHeight: 400,           
         maxHeight: 400,
         lang: "ko-KR",
         toolbar: [
-		    
-		    ['fontname', ['fontname']],
-		    ['fontsize', ['fontsize']],
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    ['color', ['forecolor','color']],
-		    ['table', ['table']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']],
-		    ['view', ['fullscreen', 'help']]
-		  ],
-		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-	
+          
+          ['fontname', ['fontname']],
+          ['fontsize', ['fontsize']],
+          ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+          ['color', ['forecolor','color']],
+          ['table', ['table']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']],
+          ['view', ['fullscreen', 'help']]
+        ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+      fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+   
    
     });
     
