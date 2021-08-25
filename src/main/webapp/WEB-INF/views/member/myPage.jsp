@@ -24,8 +24,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/myPage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
-
-
 <script>
 $(function(){
 	$("#myPageModify").on("click", function(){
