@@ -221,9 +221,13 @@ a{
 				location.href="/member/loginPage";
 			}
  		})
- 		$("#userID,#repCount,.userRep img").on("click",function(){
+ 		$("#userID,#repCount").on("click",function(){
  			console.log($("#user").val());
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
+ 		})
+ 		$(".userRep").on("click",function(){
+ 			console.log($("#userRepSeq").val())
+ 			location.href="/rep/detail?rep_seq="+$("#userRepSeq").val();
  		})
  		/* $("#detailT").on("click",function(){
  			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
@@ -253,9 +257,9 @@ a{
 					
 					let row3 = $("<div class='row m-0'>");
 					let col = $("<div class='col-12 p-0 btnBox'>");
-					let modi = $("<input type='button' class='modi'>");
+					let modi = $("<input type='button' class='btn btn-secondary modi'>");
 					modi.val("수정");
-					let del = $("<input type='button' class='del'>");
+					let del = $("<input type='button' class='btn btn-secondary del'>");
 					del.val("삭제");
 					let hidden = $("<input type='hidden' class='recmt_seq'>");
 					hidden.val(resp.recmt_seq);
@@ -687,6 +691,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
+                	<input type=hidden id=userRepSeq value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
@@ -793,6 +798,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
+                	<input type=hidden id=userRepSeq value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
