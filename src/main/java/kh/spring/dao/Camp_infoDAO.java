@@ -49,8 +49,18 @@ public class Camp_infoDAO {
 				
 	}
 	
+	//검색 리스트
 	public List<Camp_infoDTO> search(Map<String,String> param){
 		return mybatis.selectList("Camp_info.listAll", param);
 	}
 	
+	//캠핑장 번호 뽑기(이미지 데려오는 용)
+	public List<Camp_infoDTO> contentIdlist(){
+		return mybatis.selectList("Camp_info.contentidlist");
+	}
+	
+	//이미지 데이터 파싱
+	public int imageinsert(Camp_photoDTO dto) {
+		return mybatis.insert("Camp_info.imageinsert", dto);
+	}
 }

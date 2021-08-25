@@ -220,6 +220,9 @@ a{
 	
 	display:inline-block;
 	text-align:center;
+<<<<<<< HEAD
+	padding:10%;
+=======
 	top:120px; left:230px; 
 	position:absolute;
 
@@ -262,6 +265,7 @@ a{
 .pagination{
 
 	diplay:inline;
+>>>>>>> 98afcbb78e320ff0d8e89514932453a62e7bc88c
 	position:absolute;
 	top:600px;
 	left:700px;
@@ -279,8 +283,26 @@ a{
 
 
 </style>
+<script>
+$(function(){
+	
+	$("#delete").on("click",function(){
+		alert("클릭");
+		var cm_id = $("#cm_id").val();
+		console.log(cm_id);
+		 $.ajax({
+             url: "/admin/memberdelete",
+             data: {cm_id: cm_id},
+             method:"post",
+             dataType:"application/json"
+          }).done(function(){
+        	  alert(cm_id+"님이 탈퇴됐습니다.");
+          });
 
-
+	})
+	
+}
+</script>
 </head>
 <body>
 	<nav class="navbar">
@@ -292,11 +314,11 @@ a{
 
         </div>
         <ul class="navbar_menu">
-            <li><a href="/info/list">캠핑장</a></li>
-            <li><a href="">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
-            <li><a href="/rep/list?index=1">중고장터</a></li>
-            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+			<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+			<li><a href="/products/selectAll?index=1">SHOP</a></li>
+			<li><a href="/rep/list?index=1">중고장터</a></li>
+			<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
             
 
         </ul>
@@ -472,6 +494,7 @@ a{
                         	</form>
                         </div>
              
+
 
 
 

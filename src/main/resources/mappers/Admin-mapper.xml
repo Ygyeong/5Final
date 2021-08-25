@@ -11,8 +11,7 @@
 											#{sbrsCl, jdbcType = VARCHAR },#{animalCmgCl, jdbcType = VARCHAR },#{brazierCl, jdbcType = VARCHAR },#{mapX},#{mapY}) 
 	</insert>
 	
-	
-	
+
 	
 	<select id="getRecordCount" resultType="int">
 		
@@ -42,5 +41,6 @@
 																																	
 	</select>
 	
+
 	
 </mapper> 

@@ -1,6 +1,7 @@
 package kh.spring.dao;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 
@@ -42,19 +43,6 @@ public class AdminDAO {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private int getRecordCount()throws Exception {
 
 		return mybatis.selectOne("Admin.getRecordCount");
@@ -68,12 +56,6 @@ public class AdminDAO {
 		return mybatis.selectOne("Admin.getRecordCount2",param4);
 
 	}
-
-
-
-
-
-
 
 
 	public List<String> getPageNavi(int currentPage,Map<String,Object> param4)throws Exception{
@@ -128,6 +110,7 @@ public class AdminDAO {
 		if(needNext) {pageNavi.add(">");}
 		return pageNavi;
 	}
+
 
 
 }
