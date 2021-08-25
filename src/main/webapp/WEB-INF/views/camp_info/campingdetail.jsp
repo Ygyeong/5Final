@@ -26,7 +26,7 @@
     --background-color:#263343;
     --accent-color:steelblue;
 }
-#navibody{
+body {
     margin: 0;
     
 }
@@ -153,7 +153,7 @@ a{
 </style>
 <Script>
    $(function(){
-     	alert("디테일 사진은 임의로 넣어놨습니다. 수정할 예정이에요.");
+
       $(".likeicon").on("click", function(){
 
          var like = $(".likeicon").attr('id');
@@ -259,17 +259,14 @@ a{
 })
    
 </Script>
-<body id=navibody>
-<!--nav bar  -->
+<body>
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
-
         <div class="navbar_logo">
            
-
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -281,7 +278,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -295,9 +292,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -309,7 +304,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -323,9 +318,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -337,8 +330,8 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -349,8 +342,9 @@ a{
 </c:otherwise>
 
 
-</c:choose>
+</c:choose> 
 
+<!--네비바 끝  -->
     <script>
     
     
