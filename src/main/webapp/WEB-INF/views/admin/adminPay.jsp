@@ -6,14 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-<link rel="stylesheet" type="text/css" href="/semantic/semantic.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="/semantic/semantic.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -252,6 +245,22 @@ a{
     여기는 결제관리
 	</div>
 
+
+<!--네비바 스크립트  -->
+
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 
 </body>
 </html>
