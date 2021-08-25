@@ -24,7 +24,7 @@
 	 .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
        h2{text-align: center;}
 /* 	div{border:1px solid black;} */
-	   .jgBar{margin:60px 0px 40px 0px;}
+	   .jgBar{margin:60px 0px 60px 0px;}
 	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
@@ -37,7 +37,7 @@
        #word{border:0px solid black; width:90%;}
        #write,#writeNo:hover{cursor:pointer;}
        /*  input:focus {outline:none;}*/
-      .listbar{height:330px; margin: 0px; margin-top: 60px; margin-bottom:50px;}
+      .listbar{height:330px; margin: 0px; margin-top: 40px; margin-bottom:50px;}
       .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
       .list:hover{cursor:pointer;}
       .list .img{height:217px; margin-bottom: 10px; }
@@ -53,8 +53,9 @@
 
       .camp{width:100%;margin:auto; height:500px;}
       .camp img{width:100%; height:100%; padding:0px;}
-
-      
+	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
+	  #count{margin-left:8px; font-weight:bold;}
+      .schResult{padding-left:24px;}
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -420,6 +421,14 @@ a{
         <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
         </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
+        
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
@@ -458,6 +467,13 @@ a{
         <!-- <div class="row camp m-0">
         	<img src="/img/camp.jpg" >
         </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">

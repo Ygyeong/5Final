@@ -41,6 +41,9 @@ public class ReProductDAO {
 	public List<ReProductDTO> search(Map<String,Object> param){
 		return mybatis.selectList("ReProduct.search",param);
 	}
+	public List<ReProductDTO> userRepList(Map<String,Object> param){
+		return mybatis.selectList("ReProduct.userRepList",param);
+	}
 	public ReProductDTO getDetail(int seq) {
 		return mybatis.selectOne("ReProduct.detail",seq);
 	}

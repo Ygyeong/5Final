@@ -51,12 +51,16 @@
      #like,#chat:hover {cursor: pointer;}
      #like button{width:100%; height:100%;}
      
+     .PMBox{position:relative;}
+     .userPrice{position:absolute; bottom:0px; left:4px; width:125px; text-align:center; color:white; font-weight:bold; background-color:black; opacity:0.5;}
+     .userRep{padding:0px; margin:0px 3px 0px 3px; height:100px; width:127px;}
+     .userRep img{width:100%; height:100%; }
      #user{font-size: 1.3em; font-weight: bold; text-align:center; margin:10px 0px 30px 0px;}
-     #userBox{background-color:#F6F6F6;margin:38px 20px 0px 50px; width: 230px; height: 200px;}
-     #userID{text-align:center; font-weight:600; font-size:20px; margin-top:20px;}
-     #repCount{margin-left:20px;width:100px;}
-     #repCount span{font-weight:600; padding-left:5px;}
-     #userID,#repCount,#repCount span:hover{cursor:pointer;}
+     #userBox{background-color:#F6F6F6;margin:38px 20px 0px 35px; width: 270px; height: 230px;}
+     #userID{text-align:center; font-weight:600; font-size:20px; margin-top:10px; margin-bottom:25px;}
+     #repCount{text-align:center;}
+     #repCount span{font-weight:600; padding-left:5px; color:steelblue;}
+     #userID,#repCount,.userRep,#repCount span:hover{cursor:pointer;}
      
      #crudBox{border: 1px solid #ddd;margin: 0px; padding-left:10px;}
      .ckT{font-size:20px; font-weight:600;}
@@ -73,6 +77,8 @@
      .cmt{width:930px; margin-bottom:15px;}
      .btnBox{text-align:right;}
      .del{margin-left:5px;}
+     #img{margin:0px 40px 0px 20px;}
+     #img div{height:96%;}
      .carousel-item img{width:100%; height:100%;}
      
 /*네비바 스타일  */     
@@ -215,7 +221,7 @@ a{
 				location.href="/member/loginPage";
 			}
  		})
- 		$("#userID").on("click",function(){
+ 		$("#userID,#repCount,.userRep img").on("click",function(){
  			console.log($("#user").val());
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
@@ -675,7 +681,16 @@ a{
             </div>
             <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
-                 <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+                <div class="row m-0">
+                	<c:forEach var="i" items="${list }">
+                	<div class="col-6 p-0 PMBox">
+                		<div class="col-6 userPrice">${i.rep_price}원</div>
+                		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                	</div>
+               		</c:forEach>
+                </div>
+                
+                 <div class="col-12 mt-3" id=repCount><span>${repCount}</span>개 상품더보기</div>
                  <input type=hidden value="${dto.rep_writer}" id=user>
             </div>
         </div>
@@ -770,9 +785,18 @@ a{
                 <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
                 <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
             </div>
-            <div class="col-3 p-0" id=userBox>
+             <div class="col-3 p-0" id=userBox>
                 <div class="col-12 " id=userID>${dto.rep_writer}<span>님</span></div>
-                 <div class="col-12 " id=repCount>상품<span>${repCount}</span></div>
+                <div class="row m-0">
+                	<c:forEach var="i" items="${list }">
+                	<div class="col-6 p-0 PMBox">
+                		<div class="col-6 userPrice">${i.rep_price}원</div>
+                		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                	</div>
+               		</c:forEach>
+                </div>
+                
+                 <div class="col-12 mt-3" id=repCount><span>${repCount}</span>개 상품더보기</div>
                  <input type=hidden value="${dto.rep_writer}" id=user>
             </div>
         </div>
