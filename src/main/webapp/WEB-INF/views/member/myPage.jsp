@@ -24,6 +24,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
 <script>
+
 $(function(){
 	$("#myPageModify").on("click", function(){
 		location.href="/member/memberModify?cm_id=${loginID}"
@@ -53,6 +54,7 @@ $(function(){
 			}
 		}	
 	})
+
 
 		
 	$(".fc-custom2-button").on('click', function(){
@@ -187,7 +189,6 @@ $(function(){
 		<!-- mypage start -->
 		<div id="myBox">
 	        <div id="me" class="card">
-
                 <div class="card_bottom">
                     <h5 class="card-title"> ${loginID }님의 마이페이지 </h5>
                     <button class="btn btn-success" id="myPageModify">회원정보 수정</button>
