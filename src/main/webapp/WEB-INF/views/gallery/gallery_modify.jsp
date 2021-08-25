@@ -16,7 +16,7 @@
 	rel="stylesheet">
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 
 <!-- include summernote css/js -->
 <link
@@ -146,8 +146,8 @@ $(function(){
       
       
       let blankRegex = /.*\S+/;
-      let titleLengthRegex = /^.{0,66}$/;
-      let contentLengthRegex = /^.{0,1333}$/;
+      let titleLengthRegex = /^.{0,60}$/;
+      let contentLengthRegex = /^.{0,4000}$/;
       
       let bresult1 = blankRegex.test(title);
       let bresult2 = blankRegex.test(content);
@@ -160,9 +160,9 @@ $(function(){
       }else if(!bresult2){
          alert("내용을 입력해주세요!");
       }else if(!titleResult){
-         alert("제목은 66글자 이내로 작성해주세요.")
+         alert("제목은 60글자 이내로 작성해주세요.")
       }else if(!contentResult){
-         alert("사진은 첨부파일을 이용해주세요.")
+         alert("내용은 4000글자 이내로 작성해주세요.")
       }
       else{
          $("input[name=files]").remove();

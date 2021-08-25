@@ -136,32 +136,6 @@ $(function(){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#!">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="/products/boardWritePage">All Products</a></li>
-							<li><hr class="dropdown-divider" /></li>
-							<li><a class="dropdown-item" href="#!">Popular Items</a></li>
-							<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-						</ul></li>
-=======
 <!-- 네비바 시작
 ----------------------------------------------------------------------------------------------------------------->
 	<c:choose>
@@ -172,12 +146,11 @@ $(function(){
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
 					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
->>>>>>> c23678e2148c512164d148ab2142ac6fa3d1e090
 				</ul>
 				<ul class="navbar_member">
 					<li><a href="/member/signUp">회원가입</a></li>
@@ -193,8 +166,8 @@ $(function(){
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
 					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -213,8 +186,8 @@ $(function(){
 						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
 				</div>
 				<ul class="navbar_menu">
-					<li><a href="/info/list">캠핑장</a></li>
-					<li><a href="">캠핑정보</a></li>
+					<li><a href="/info/list?index=1">캠핑장</a></li>
+					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
 					<li><a href="/products/selectAll?index=1">SHOP</a></li>
 					<li><a href="/rep/list?index=1">중고장터</a></li>
 					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
@@ -229,47 +202,101 @@ $(function(){
 	</c:choose>
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-	<div class="container-fluid">
-        <h2>캠핑상품</h2>
-        <div class="row m-0 mt-5 h-120">
-            <div class="col-2 p-0" id="category">
-                <select name="rep_category" >
-  					<option selected>전체종류</option>
-                    <option value="텐트/타프">텐트/타프</option>
-                    <option value="침낭/매트">침낭/매트</option>
-                    <option value="테이블/의자">테이블/의자</option>
-                    <option value="조명기구">조명기구</option>
-                    <option value="주방용품">주방용품</option>
-                    <option value="화로/버너/bbq">화로/버너/bbq</option>
-                    <option value="겨울용품">겨울용품</option>
-                    <option value="기타캠핑용품">기타캠핑용품</option>
-                </select>
-            </div>
-            <div class="col-4" id=searchBox>
-                <input type="text" id=word  placeholder="상품명을 입력하세요.">
-                <img src="/img/search.png">
-            </div>
-            <div class="col-5 p-0 pt-1" id=writeBox>
-            	<a href="/products/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
-            </div>
-        </div>
-        <div class="row listbar" >
-        <c:forEach var="list" items="${list}">
-			<div class="col-3 p-0 list"  seq="${list.p_seq}">
-				<div class="col-12 img"><img src="/img/${list.p_thumsysName}"></div>
-				<div class="col-12 mb-1 link">${list.p_name}</div>
-				<div class="row m-0 ">
-					<div class="col-6 price">${list.p_price}<span>원</span></div>
-					<div class="col-6 diffD">${list.p_rdate}</div>
+	<c:choose>
+		<c:when test="${loginID == 'admin'}">
+			<div class="container-fluid">
+				<h2>캠핑상품</h2>
+				<div class="row m-0 mt-5 h-120">
+					<div class="col-2 p-0" id="category">
+						<select name="rep_category">
+							<option selected>전체종류</option>
+							<option value="텐트/타프">텐트/타프</option>
+							<option value="침낭/매트">침낭/매트</option>
+							<option value="테이블/의자">테이블/의자</option>
+							<option value="조명기구">조명기구</option>
+							<option value="주방용품">주방용품</option>
+							<option value="화로/버너/bbq">화로/버너/bbq</option>
+							<option value="겨울용품">겨울용품</option>
+							<option value="기타캠핑용품">기타캠핑용품</option>
+						</select>
+					</div>
+					<div class="col-4" id=searchBox>
+						<input type="text" id=word placeholder="상품명을 입력하세요."> <img
+							src="/img/search.png">
+					</div>
+					<div class="col-5 p-0 pt-1" id=writeBox>
+						<a href="/products/write" id=write><i
+							class="fas fa-pen-square"></i>등록하기</a>
+					</div>
 				</div>
-				<div class="row m-0 mt-2 pt-2 pb-2 ar">
-					<div class="col-12 area"><a href="" id="cart"><i class="fas fa-shopping-cart 7x" style="color:black"></i></a>장바구니</div>
+				<div class="row listbar">
+					<c:forEach var="list" items="${list}">
+						<div class="col-3 p-0 list" seq="${list.p_seq}">
+							<div class="col-12 img">
+								<img src="/img/${list.p_thumsysName}">
+							</div>
+							<div class="col-12 mb-1 link">${list.p_name}</div>
+							<div class="row m-0 ">
+								<div class="col-6 price">${list.p_price}<span>원</span>
+								</div>
+								<div class="col-6 diffD">${list.p_rdate}</div>
+							</div>
+							<div class="row m-0 mt-2 pt-2 pb-2 ar">
+								<div class="col-12 area">
+									<a href="" id="cart"><i class="fas fa-shopping-cart 7x"
+										style="color: black"></i></a>장바구니
+								</div>
+							</div>
+							<input type=hidden value="${list.p_seq}" class=p_seq>
+						</div>
+					</c:forEach>
 				</div>
-				<input type=hidden value="${list.p_seq}" class=p_seq>
-			</div>       
-		</c:forEach>
-		</div> 
-    </div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="container-fluid">
+				<h2>캠핑상품</h2>
+				<div class="row m-0 mt-5 h-120">
+					<div class="col-2 p-0" id="category">
+						<select name="rep_category">
+							<option selected>전체종류</option>
+							<option value="텐트/타프">텐트/타프</option>
+							<option value="침낭/매트">침낭/매트</option>
+							<option value="테이블/의자">테이블/의자</option>
+							<option value="조명기구">조명기구</option>
+							<option value="주방용품">주방용품</option>
+							<option value="화로/버너/bbq">화로/버너/bbq</option>
+							<option value="겨울용품">겨울용품</option>
+							<option value="기타캠핑용품">기타캠핑용품</option>
+						</select>
+					</div>
+					<div class="col-4" id=searchBox>
+						<input type="text" id=word placeholder="상품명을 입력하세요."> <img
+							src="/img/search.png">
+					</div>
+				</div>
+				<div class="row listbar">
+					<c:forEach var="list" items="${list}">
+						<div class="col-3 p-0 list" seq="${list.p_seq}">
+							<div class="col-12 img">
+								<img src="/img/${list.p_thumsysName}">
+							</div>
+							<div class="col-12 mb-1 link">${list.p_name}</div>
+							<div class="row m-0 ">
+								<div class="col-6 price">${list.p_price}<span>원</span>
+								</div>
+								<div class="col-6 diffD">${list.p_rdate}</div>
+							</div>
+							<div class="row m-0 mt-2 pt-2 pb-2 ar">
+								<div class="col-12 area"></div>
+							</div>
+							<input type=hidden value="${list.p_seq}" class=p_seq>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

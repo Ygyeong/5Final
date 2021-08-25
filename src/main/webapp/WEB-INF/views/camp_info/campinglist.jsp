@@ -206,7 +206,11 @@ a{
 			if(scrollTop+windowHeight>=documentHeight){
 				index++;
 				console.log(index);
-				setTimeout(getList(),2000);
+				if($("#searchKey").val()!=null){
+					 setTimeout(getSearchList(),2000);
+				}else{
+					setTimeout(getList(),2000);	
+				}
 				
 			}
 					
@@ -237,6 +241,45 @@ a{
 
 					$("#cmapinglist").append(list);
 					
+					
+				}
+			})
+		}
+		
+		
+		$("#search").on("click",function(){
+			var searchOption = $("#searchOption").val();
+			console.log(searchOption);
+			location.href="/info/list?index=1&keyword="+$("#keyword").val() +"&searchOption="+searchOption;
+		})
+		
+		$("#data").on("click",function(){
+			location.href="/info/imagelist";
+		})
+		
+		function getSearchList(){
+			$.ajax({
+				url:"/info/scrollsearch",
+				dataType:"json",
+				data:{"index":index,"keyword":$("#searchKey").val}
+			}).done(function(resp){
+				for(let i=0;i<resp.length;i++){
+					let list = $("<div class='col-3 list'>");
+					
+					let box = $("<div class='portfolio-item'>");
+					let detaillink = $("<a href='" + resp[i].contentId +"'>");
+					let image =$("<img class='img-fluid' src='" + resp[i].firstImageUrl + "''>");
+					let box2 = $("<div class='portfolio-caption'>");
+					let name = $("<div class='portfolio-caption-heading'>");
+					name.text(resp[i].facltNm);
+
+					list.append(box);
+					box.append(detaillink);
+					detaillink.append(image);
+					list.append(box2);
+					box2.append(name);
+					
+					$("#cmapinglist").append(list);
 					
 				}
 			})
@@ -359,21 +402,20 @@ a{
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Camping</h2>
                     <h3 class="section-subheading text-muted"> 가고 싶은 캠핑장을 골라 보세요! </h3>
+                	<button id=data>여기 ㅡㅡ </button>
                 </div>
              <!--  검색 박스 -->
              <div id="searchbox">
-             	<div id="search">
-             		<form name="form1" method="post" action="/info/search">
-             		<select name="searchOption">
+             검색 
+             		<select id="searchOption">
              			<option value="all" >전체</option>
              			<option value="facltNm"  > 캠핑장 이름 </option>
              			<option value="lctCl"> 주변 환경 </option>
              			<option value="addr1"  > 지역 </option>
              		</select>
-             		검색 <input type=text name="keyword">
-             			<input type=submit value="searchbtn">
-             		</form>
-             	</div>
+             		<input type=text name="keyword" >
+             			<input type=button id="search">
+             			<input type=hidden value=${keyword } id=searchKey>
 			</div>
 			<!-- 검색 목록 출력 -->
 			    <div class="row" id="cmapinglist">

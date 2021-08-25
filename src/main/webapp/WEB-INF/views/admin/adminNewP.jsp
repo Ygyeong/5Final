@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
-
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
@@ -228,7 +226,7 @@ a{
      <div class="side_nav">
     
     	<ul class="side_menu">
-            <li><a href="/admin/mem?cpage=1">회원관리</a></li>
+            <li><a href="/admin/mem">회원관리</a></li>
             <li><a href="/admin/newProduct">새상품 관리</a></li>
             <li><a href="/admin/pay">중고상품 관리</a></li>
             <li><a href="/admin/re">결제내역 관리</a></li>
@@ -242,14 +240,9 @@ a{
     
     
     <div class="body_txt" >
-    안녕하세요 관리자님!<br>
-    관리자 페이지에 오신걸 환영합니다!
+    여기는 새 상품관리
 	</div>
-
-
-
-
-
+	
 	<!--네비바 스크립트  -->
 
     <script>
@@ -265,6 +258,7 @@ a{
     });
     
     </script>
+
 
 </body>
 </html>

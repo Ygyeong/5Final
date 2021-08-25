@@ -147,12 +147,7 @@ public class GalleryDAO {
 		
 		
 	}
- 	
-// 	private int getRecordCount(Map<String,Object> param4)throws Exception {
-// 		
-// 		return mybatis.selectOne("Gallery.getRecordCount",param4);
-// 	
-//	}
+
  	
  	private int getRecordCount2(Map<String,Object> param4)throws Exception {
  		

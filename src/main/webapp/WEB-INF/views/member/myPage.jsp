@@ -24,7 +24,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/myPage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
-
 <script>
 $(function(){
 	$("#myPageModify").on("click", function(){
@@ -55,6 +54,7 @@ $(function(){
 			}
 		}	
 	})
+
 		
 	$(".fc-custom2-button").on('click', function(){
 		var url = "/schedule/scheduleOpen?cm_id=${loginID}";
@@ -196,12 +196,14 @@ $(function(){
 		<!-- mypage start -->
 		<div id="myBox">
 	        <div id="me" class="card">
+
                 <div class="card_bottom">
                     <h5 class="card-title"> ${loginID }님의 마이페이지 </h5>
                     <button class="btn btn-success" id="myPageModify">회원정보 수정</button>
                     <button class="btn btn-primary" id="myPagePwChange">비밀번호 변경</button>
                     <button class="btn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>
                     <button class="btn btn-dark" id="goHome">메인으로</button><br><br>
+
                 </div>
             </div>
         </div>

@@ -168,6 +168,7 @@ public class ReProductService {
 		}
 
 	}
+	
 	public int saleInfo(int rep_stock,int rep_seq) {
 		Map<String,Object> param = new HashMap<>();
 		param.put("rep_stock", rep_stock);
