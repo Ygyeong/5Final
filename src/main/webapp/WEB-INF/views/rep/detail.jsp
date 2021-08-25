@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detail</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
@@ -226,8 +226,8 @@ a{
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
  		$(".userRep").on("click",function(){
- 			console.log($("#userRepSeq").val())
- 			location.href="/rep/detail?rep_seq="+$("#userRepSeq").val();
+ 			let userRepSeq = $(this).parent("PMBox").find(".userRepSeq").val();
+ 			location.href="/rep/detail?rep_seq="+userRepSeq;
  		})
  		/* $("#detailT").on("click",function(){
  			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
@@ -691,7 +691,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
-                	<input type=hidden id=userRepSeq value="${i.rep_seq}">
+                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
@@ -798,7 +798,7 @@ a{
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
                 	</div>
-                	<input type=hidden id=userRepSeq value="${i.rep_seq}">
+                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
