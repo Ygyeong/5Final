@@ -111,6 +111,7 @@ public class MemberController {
 				return "/member/login";
 				}
 			}
+			}
 		return "redirect:/";
 	}
 	
