@@ -287,14 +287,13 @@ a{
 		
 	})
 </script>
-<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
-
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -306,7 +305,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -320,7 +319,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -346,7 +345,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -358,8 +357,8 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -370,7 +369,9 @@ a{
 </c:otherwise>
 
 
-</c:choose>
+</c:choose> 
+
+<!--네비바 끝  -->
 
     
     <script>
@@ -402,7 +403,7 @@ a{
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Camping</h2>
                     <h3 class="section-subheading text-muted"> 가고 싶은 캠핑장을 골라 보세요! </h3>
-                	
+                	<button id=data> 여기 </button>
                 </div>
              <!--  검색 박스 -->
              <div id="searchbox">
