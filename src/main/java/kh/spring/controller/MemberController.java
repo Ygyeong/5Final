@@ -24,12 +24,12 @@ import kh.spring.service.ScheduleService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	public MemberService ms;
 	@Autowired
 	public ScheduleService ss;
-	
+
 	@RequestMapping("myPage")
 	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession();
@@ -39,104 +39,86 @@ public class MemberController {
 		session.setAttribute("list", show);
 		return "/member/myPage";
 	}
-	
+
 	@RequestMapping("loginPage")
 	public String loginPage() {
 		return "/member/login";
 	}
-	
+
 	@RequestMapping("signPage")
 	public String signPage() {
 		return "/member/signUp";
 	}
-	
+
 	@RequestMapping("idCheck")
 	public String emailCheckPage() {
 		return "/member/idCheck";
 	}
-	
+
 	@RequestMapping("pwChange")
 	public String pwChange() {
 		return "/member/pwChange";
 	}
-	
-//	@RequestMapping("memberModify")
-//	public String memberModify(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
-//		HttpSession session = req.getSession();
-//		MemberDTO dto = new MemberDTO();
-//		dto.setCm_id(cm_id);
-//<<<<<<< HEAD
-//		//MemberDTO modify = ms.login(dto);
-////		session.setAttribute("member", modify);
-//=======
-//
-//		MemberDTO modify = ms.modifySelect(dto);
-//		session.setAttribute("member", modify);
-//
-//>>>>>>> 75b931285410ec5f66cffda6fbd72a65df808f28
-//		return "/member/memberModify";
-//	}
-	
+
 	@RequestMapping("signProc")
 	public String signProc(MemberDTO dto) throws Exception {
-		
+
 		String bcPass = BCrypt.hashpw(dto.getCm_pw(), BCrypt.gensalt());
 		dto.setCm_pw(bcPass);
 		ms.memberSign(dto);
-		
+
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("loginProc")
 	public String loginProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		HttpSession session = req.getSession();
-			System.out.println(cm_id);
-			System.out.println(cm_pw);
-			MemberDTO login = ms.login(cm_id);
-			System.out.println(login);
-			if(login.getCm_id() != null) {
-				String hash_password = login.getCm_pw();
+		System.out.println(cm_id);
+		System.out.println(cm_pw);
+		MemberDTO login = ms.login(cm_id);
+		System.out.println(login);
+		if(login.getCm_id() != null) {
+			String hash_password = login.getCm_pw();
 
-				System.out.println(login.getCm_id());
-				if(BCrypt.checkpw(cm_pw, hash_password)) {
+			System.out.println(login.getCm_id());
+			if(BCrypt.checkpw(cm_pw, hash_password)) {
 
 
 				System.out.println(hash_password);
 				boolean isAuthenticated = BCrypt.checkpw(cm_pw, hash_password);
 				if(isAuthenticated) {
 
-				session.setAttribute("loginID", login.getCm_id());
+					session.setAttribute("loginID", login.getCm_id());
 				} else {
-				session.setAttribute("loginID", null);
-				return "/member/login";
+					session.setAttribute("loginID", null);
+					return "/member/login";
 				}
 			}
+		}
 
-			}
 		return "redirect:/";
-			}
-	
-	
-	
+	}
+
+
 	@RequestMapping("logOutProc")
 	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
-		
+
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("memberOutProc")
 	public String memberOutProc(String cm_id, HttpSession session) throws Exception {
 		ms.memberOut(cm_id);
 		session.invalidate();
 		return "index";
 	}
-	
+
 	@RequestMapping("memberModifyProc")
 	public String memberModifyProc(@RequestParam("") String cm_id,@RequestParam("cm_email") String cm_email,
 			@RequestParam("cm_phone") String cm_phone, @RequestParam("cm_zipcode") String cm_zipcode,@RequestParam("cm_address1") String cm_address1, @RequestParam("cm_address2") String cm_address2)throws Exception{
 		MemberDTO dto = new MemberDTO();
-	
+
 		dto.setCm_email(cm_email);
 		dto.setCm_phone(cm_phone);
 		dto.setCm_zipcode(cm_zipcode);
@@ -146,7 +128,7 @@ public class MemberController {
 		ms.memberUpdate(dto);
 		return "/member/myPage";
 	}
-	
+
 	@RequestMapping("pwModifyProc")
 	public String memberModifyProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpSession session)throws Exception{
 		MemberDTO dto = new MemberDTO();
@@ -160,7 +142,7 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("pwIdDuplCheck")
 	public String pwIdDuplCheck(String cm_id, HttpSession session, HttpServletResponse response) throws Exception {
 		int result = ms.idDuplCheck(cm_id);

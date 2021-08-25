@@ -31,26 +31,24 @@ public class ProductsService {
 		DecimalFormat df = new DecimalFormat("#,###");
 		dto.setP_price(df.format(Integer.parseInt(dto.getP_price())));
 		dao.insert(dto);
-		
+
 		File filesPath = new File(realPath);
 		if(!filesPath.exists()) { filesPath.mkdir(); }
 		for(MultipartFile tmp : file) { 
-				String oriName = tmp.getOriginalFilename();
-				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
-				
-				System.out.println(oriName+" : "+sysName+" : "+ p_seq);
-				
-				if(sdao.insert(new SummerDTO(0,oriName,sysName, p_seq))>0) {
-					tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
-				
+			String oriName = tmp.getOriginalFilename();
+			String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
+
+			if(sdao.insert(new SummerDTO(0,oriName,sysName, p_seq))>0) {
+				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
+
 			}
 		}
 	}
-	
+
 	public List<SummerDTO> getSList(){
 		return sdao.getSList();
 	}
-	
+
 	public int delete(int p_seq) {
 		return dao.delete(p_seq);
 	}
@@ -65,11 +63,11 @@ public class ProductsService {
 	public List<SummerDTO> filesBySeq(int s_seq) {
 		return sdao.filesBySeq(s_seq);
 	}
-	
+
 	public SummerDTO selectThumBySeq(int p_seq) {
 		return sdao.selectThumbBySeq(p_seq);
 	}
-	
+
 	public int getP_seq() {
 		return dao.getP_seq();
 	}
@@ -88,10 +86,39 @@ public class ProductsService {
 		return list;
 
 	}
-	
-	public ProductsDTO detail(int p_seq) {
-	return dao.detail(p_seq);
-}
-	
 
+	public ProductsDTO detail(int p_seq) {
+		return dao.detail(p_seq);
+	}
+	
+//	public void modify(String realPath,MultipartFile[] file,String [] delTargets,ProductsDTO dto) throws Exception {
+//		int p_seq = dto.getP_seq();
+//		dao.modify(dto);
+//		File filesPath = new File(realPath);
+//
+//		if(delTargets != null) {
+//			for(String target : delTargets) {
+//				
+//				String sysName = sdao.sysName(Integer.parseInt(target));
+//				File targetFile = new File(filesPath+"/"+sysName);
+//				boolean result = targetFile.delete();
+//
+//     			if(result) {sdao.delete(Integer.parseInt(target));}
+//
+//			}
+//		}
+//		for(MultipartFile tmp : file) {
+//			if(tmp.getSize() > 0) {
+//				String oriName = tmp.getOriginalFilename();
+//				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
+//
+//				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
+//
+//				if(oriName!=null) {
+//					sdao.insert(new SummerDTO(0,oriName,sysName,p_seq));
+//				}
+//			}
+//		}
+//	}
+	
 }

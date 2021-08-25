@@ -17,6 +17,14 @@ public class SummerDAO {
 		return mybatis.insert("Summer.insert",dto);
 	}
 	
+	public int delete(int p_seq) {
+		return mybatis.delete("Summer.delete",p_seq);
+	}
+	
+	public String sysName(int p_seq) {
+		return mybatis.selectOne("Summer.sysName",p_seq);
+	}
+	
 	public List<SummerDTO> getSList(){
 		return mybatis.selectList("Summer.getAll");
 	}

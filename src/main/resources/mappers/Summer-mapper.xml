@@ -21,4 +21,7 @@
 	<delete id="delete">
 		delete from camp_summernote where p_seq = #{value}
 	</delete>
+	<select id="sysName" resultType="string">
+		select sysName from camp_summernote where s_seq = ${value}
+	</select>
 </mapper>
