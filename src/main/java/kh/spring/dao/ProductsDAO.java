@@ -38,6 +38,10 @@ public class ProductsDAO {
 		return mybatis.delete("Products.delete",p_seq);
 	}
 	
+	public int modify(ProductsDTO dto) {
+		return mybatis.update("Products.modify",dto);
+	}
+	
 	public int getP_seq() {
 		return mybatis.selectOne("Products.getP_seq");
 	}
