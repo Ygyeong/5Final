@@ -153,7 +153,7 @@ a{
 </style>
 <Script>
    $(function(){
-      
+     	alert("디테일 사진은 임의로 넣어놨습니다. 수정할 예정이에요.");
       $(".likeicon").on("click", function(){
 
          var like = $(".likeicon").attr('id');
@@ -264,15 +264,18 @@ a{
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
+
         <div class="navbar_logo">
            
+
             <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -288,23 +291,25 @@ a{
     </nav>
 
 </c:when>
-<c:when test="${loginID='admin'}">
+<c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
            
+
             <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/admin/home">관리자페이지</a></li>
+            <li><a href="">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -318,13 +323,15 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
+
             <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
@@ -371,9 +378,10 @@ a{
 
       <c:forEach var="i" items="${list}">
         <div id=onebox>
+        <h1>
          <div id=namebox>
-            ${i.facltNm} 
-         </div>
+           ${i.facltNm}  
+         </div></h1>
 
 
          <!-- 슬라이드 -->

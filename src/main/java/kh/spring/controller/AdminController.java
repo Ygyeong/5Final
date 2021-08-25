@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import kh.spring.config.AdminConfig;
 import kh.spring.dao.AdminDAO;
@@ -30,6 +31,7 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
+
 	@Autowired
 	private AdminDAO dao;
 	
@@ -37,12 +39,9 @@ public class AdminController {
 	public MemberService ms;
 	
 	
-	
-	
-	//파싱된 데이터를 DB에 저장
+
 	@RequestMapping("home")
-	public String home(HttpServletRequest request) throws Exception {
-		
+	public String home(HttpServletRequest request,Model model) throws Exception {
 	    return "admin/admin";
 	}
 	
@@ -70,7 +69,7 @@ public class AdminController {
 		param2.put("endNum", endNum);
 		param2.put("startNum", startNum);
 		param2.put("category", category);
-		param2.put("keyword", keyword);
+//		param2.put("keyword", keyword);
 		
 		Map<String,Object> param3 = new HashMap<>();
 		
@@ -106,7 +105,7 @@ public class AdminController {
 		model.addAttribute("keyword", keyword);
 		
 		
-		
+	
 	    return "admin/adminMember";
 	}
 	
@@ -127,6 +126,7 @@ public class AdminController {
 		
 	    return "admin/adminRe";
 	}
+	
 	//파싱된 데이터를 DB에 저장
 	@RequestMapping("dataupdate")
 	public String practice(HttpServletRequest request) throws Exception {
@@ -150,6 +150,7 @@ public class AdminController {
 		
 		return  "redirect:/admin/mem?cpage=1";
 	}
+
 	
 
 }

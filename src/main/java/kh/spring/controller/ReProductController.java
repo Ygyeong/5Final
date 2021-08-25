@@ -56,11 +56,9 @@ public class ReProductController {
 			List<ReProductDTO> list = service.search(keyword,startNum,endNum);
 			int listsize = list.size();
 			int total = (int)Math.ceil(listsize/(double)ReProductConfig.RECORD_COUNT_PER_LIST);
-			System.out.println("총인덱스 :"+ total);
 			m.addAttribute("list",list);
 			m.addAttribute("keyword",keyword);
-			m.addAttribute("total",total);
-			
+			m.addAttribute("count",listsize);
 		}
 		return "rep/list";
 	}
@@ -71,9 +69,11 @@ public class ReProductController {
 		ReProductDTO dto = service.getDetail(rep_seq);
 		List<RePicturesDTO> plist = service.filesBySeq(rep_seq);
 		RePicturesDTO pdto = service.selectThumbBySeq(dto.getRep_seq());
+		List<ReProductDTO> list = service.repList(dto.getRep_writer(),1,1,2);
 		int repCount = service.repCount(dto.getRep_writer());
 		List<ReCommentsDTO> cdto = cservice.getWriter(rep_seq);
 		m.addAttribute("plist",plist);
+		m.addAttribute("list",list);
 		m.addAttribute("dto",dto);
 		m.addAttribute("cdto",cdto);
 		m.addAttribute("pdto",pdto);

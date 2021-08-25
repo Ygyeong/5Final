@@ -24,8 +24,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/myPage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
-
-
 <script>
 $(function(){
 	$("#myPageModify").on("click", function(){
@@ -65,12 +63,12 @@ $(function(){
 		window.open(url, name, option)
 	})
 	
-	  $("#myInput").on("click", function() {
-		    var value = $(this).val().toLowerCase();
-		    $("#myTable tr").filter(function() {
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		    });
+	$("#myInput").on("click", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		  });
+		});
 
 });
 </script>
@@ -137,8 +135,8 @@ $(function(){
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
@@ -158,8 +156,8 @@ $(function(){
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
@@ -179,8 +177,8 @@ $(function(){
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="">캠핑정보</a></li>
-		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
 		            <li><a href="/rep/list?index=1">중고장터</a></li>
 		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 		        </ul>
@@ -205,8 +203,6 @@ $(function(){
                     <button class="btn btn-primary" id="myPagePwChange">비밀번호 변경</button>
                     <button class="btn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>
                     <button class="btn btn-dark" id="goHome">메인으로</button><br><br>
-                    <button class="btn btn-info" id="cartList">장바구니 확인</button>
-                    <button class="btn btn-secondary">찜목록 확인</button>
 
                 </div>
             </div>
