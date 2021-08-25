@@ -152,6 +152,23 @@ public class GalleryService {
 	}
 	
 	
+	public void modify3(String title,String contents,int rating,int seq)throws Exception {
+		
+
+		System.out.println("여기까지 넘어오나?");
+		Map<String,String> param = new HashMap<>();
+		param.put("rating", String.valueOf(rating));
+		param.put("seq", String.valueOf(seq));
+		param.put("title", title);
+		param.put("contents", contents);
+		
+		System.out.println("modify"+seq);
+		dao.modify(param);
+
+
+	}
+	
+	
 	
 	
 	@Transactional

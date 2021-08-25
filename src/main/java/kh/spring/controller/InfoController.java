@@ -191,7 +191,7 @@ public class InfoController {
 		PublicImage image = new PublicImage();
 		Camp_photoDTO dto = new Camp_photoDTO(); 
 		
-		for(int i=0; i< 208; i++) {
+		for(int i=0; i< 5; i++) {
 			Camp_infoDTO idlist = id.get(i);
 			int contentId = idlist.getContentId();
 			System.out.println(i + ": " + contentId);

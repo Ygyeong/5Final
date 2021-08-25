@@ -75,9 +75,14 @@ public class GalleryController {
 			System.out.println("modify delete :" +  delTargets);
 			service.modify(title,contents,realPath,file,rating,seq,delTargets);
 			
-			}else {
+			}else if(delete == null){
 				
 				service.modify2(title,contents,realPath,file,rating,seq);
+			
+			}else if(delete ==null && file == null) {
+				 
+				service.modify3(title,contents,rating,seq);
+				
 			}
 			
 			
@@ -183,7 +188,9 @@ public class GalleryController {
 				System.out.println("gdto seq:"+gdto.getSeq());
 				
 				Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
+				if(idto!=null) {
 				gdto.setThumbPath(idto.getSysName());
+				}
 			}
 
 			model.addAttribute("list", list);
