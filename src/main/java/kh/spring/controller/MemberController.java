@@ -1,6 +1,10 @@
 package kh.spring.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,12 +35,18 @@ public class MemberController {
 	public ScheduleService ss;
 	
 	@RequestMapping("myPage")
-	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
+	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req, Locale locale) throws Exception {
 		HttpSession session = req.getSession();
+		Date date = new Date();
 		ScheduleDTO dto = new ScheduleDTO();
+		
+		SimpleDateFormat SDFAdd = new SimpleDateFormat("yyyy.MM.dd.");
+		String toDayFormatAdd = SDFAdd.format(date);
+
 		dto.setCm_id(cm_id);
 		List<ScheduleDTO> show = ss.showSchedule(dto);
 		session.setAttribute("list", show);
+		session.setAttribute("today", toDayFormatAdd);
 		return "/member/myPage";
 	}
 	
@@ -60,22 +70,15 @@ public class MemberController {
 		return "/member/pwChange";
 	}
 	
-//	@RequestMapping("memberModify")
-//	public String memberModify(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
-//		HttpSession session = req.getSession();
-//		MemberDTO dto = new MemberDTO();
-//		dto.setCm_id(cm_id);
-//<<<<<<< HEAD
-//		//MemberDTO modify = ms.login(dto);
-////		session.setAttribute("member", modify);
-//=======
-//
-//		MemberDTO modify = ms.modifySelect(dto);
-//		session.setAttribute("member", modify);
-//
-//>>>>>>> 75b931285410ec5f66cffda6fbd72a65df808f28
-//		return "/member/memberModify";
-//	}
+	@RequestMapping("memberModify")
+	public String memberModify(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		MemberDTO dto = new MemberDTO();
+		dto.setCm_id(cm_id);
+		MemberDTO modify = ms.modifySelect(dto);
+		session.setAttribute("member", modify);
+		return "/member/memberModify";
+	}
 	
 	@RequestMapping("signProc")
 	public String signProc(MemberDTO dto) throws Exception {
@@ -96,22 +99,20 @@ public class MemberController {
 			System.out.println(login);
 			if(login.getCm_id() != null) {
 				String hash_password = login.getCm_pw();
-
 				System.out.println(login.getCm_id());
 				if(BCrypt.checkpw(cm_pw, hash_password)) {
-
-
 				System.out.println(hash_password);
 				boolean isAuthenticated = BCrypt.checkpw(cm_pw, hash_password);
 				if(isAuthenticated) {
-
 				session.setAttribute("loginID", login.getCm_id());
 				} else {
 				session.setAttribute("loginID", null);
 				return "/member/login";
 				}
 			}
-		return "redirect:/";
+		
+		}
+			return "redirect:/";
 	}
 	
 	@RequestMapping("logOutProc")

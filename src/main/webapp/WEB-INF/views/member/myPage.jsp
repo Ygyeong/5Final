@@ -21,7 +21,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js"></script>
 <!-- import -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/myPage.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** MY PAGE **</title>
 <script>
@@ -63,7 +62,7 @@ $(function(){
 		window.open(url, name, option)
 	})
 	
-	$("#myInput").on("click", function() {
+	$("#myInput").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
 		$("#myTable").filter(function() {
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -131,7 +130,7 @@ $(function(){
 		<c:when test="${loginID==null }">
 		<nav class="navbar">
 		        <div class="navbar_logo">
-		     	   <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		     	   <a href="/"><img src="assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 		        </div>
 		        <ul class="navbar_menu">
 		            <li><a href="/info/list?index=1">캠핑장</a></li>
@@ -209,7 +208,8 @@ $(function(){
         </div>
         <div id="calendar" style="width:600px; margin:auto;"></div>
         <div id="tableBox" style="text-align: center;">
-        	<input class="form-control" id="myInput" type="date" placeholder="Search.." style="width:600px;margin:auto; margin-top:10px;">
+        
+        	<input class="form-control" id="myInput" type="text" placeholder="키워드를 입력해주세요" style="width:600px;margin:auto; margin-top:10px;">
 			<table class="table table-striped" style="width:600px; margin:auto; margin-top:10px; margin-bottom:20px;">
 				
 				<thead class="thead-dark">
