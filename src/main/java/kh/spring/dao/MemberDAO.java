@@ -31,6 +31,10 @@ public class MemberDAO {
 	public String memberUpdate(MemberDTO dto) {
 		return mybatis.selectOne("Member.memberUpdate", dto);
 	}
+	
+	public String pwUpdate(MemberDTO dto) {
+		return mybatis.selectOne("Member.pwUpdate", dto);
+	}
 
 	public MemberDTO modifySelect(MemberDTO dto) {
 		return mybatis.selectOne("Member.modifySelect", dto);
