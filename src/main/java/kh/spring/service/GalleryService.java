@@ -62,8 +62,6 @@ public class GalleryService {
 
 		File filesPath = new File(realPath);
 
-
-
 		if(delTargets != null) {
 
 
@@ -79,8 +77,55 @@ public class GalleryService {
 
 
 			}
+			
+			
+			
+			
+			
+		}
+		
+		for(MultipartFile tmp : file) {
+
+			
+			if(tmp.getSize() > 0) {
+				String oriName = tmp.getOriginalFilename();
+				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
+
+
+				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
+				
+				Gallery_ImgDTO fdto = new Gallery_ImgDTO(0,oriName, sysName,seq);
+
+				if(oriName!=null) {
+					System.out.println("파일 이름" + oriName +"DB에 저장됨.");
+					fdao.filesInsert(fdto);
+				}
+
+
+			}
+
 		}
 
+
+	}
+	
+	public void modify2(String title,String contents,String realPath, MultipartFile[] file,int rating,int seq)throws Exception {
+		
+
+		System.out.println("여기까지 넘어오나?");
+		Map<String,String> param = new HashMap<>();
+		param.put("rating", String.valueOf(rating));
+		param.put("seq", String.valueOf(seq));
+		param.put("title", title);
+		param.put("contents", contents);
+		
+		System.out.println("modify"+seq);
+		dao.modify(param);
+
+
+		File filesPath = new File(realPath);
+
+		
 		for(MultipartFile tmp : file) {
 
 			
