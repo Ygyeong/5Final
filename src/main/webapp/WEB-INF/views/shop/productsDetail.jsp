@@ -105,11 +105,11 @@ a{text-decoration: none;color: white;}
 </style>
 <script>
  	$(function(){
-		$("#update").on("click",function(){
+		$("#modifyBtn").on("click",function(){
 			location.href="/products/modify?p_seq="+$("#p_seq").val();	
 		})
 		
-		$("#delete").on("click",function(){
+		$("#deleteBtn").on("click",function(){
 			let result = confirm("게시글을 삭제하시겠습니까?");
 			if(result){
 				location.href="/products/delete?p_seq="+$("#p_seq").val();
@@ -124,27 +124,20 @@ a{text-decoration: none;color: white;}
 			$("#content").val("");
 		})
 		
-		
- 		 // Activate tooltip
- 	    $('[data-toggle="tooltip"]').tooltip();
- 	    
- 	    // 장바구니 modal에 p_seq 값 부여
- 	    $("#inputCart").on("shown.bs.modal",function(e){
- 	       let seq = $(e.relatedTarget).data("seq");
- 	       $("#okCart").attr("p_seq",seq);
- 	    })
- 	    
- 	    $("#cart").on("click",function(){
+ 	    $("#cartBtn").on("click",function(){
  	    	
  	    	if(${loginID==null}){
  	    		let result1 = confirm("로그인이 필요합니다 기능입니다\n로그인하시겠습니까?");
- 	    		if(result){
+ 	    		if(result1){
  	    			location.href="/member/loginPage";
  	    		}
  	    	}else{
  	    		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
  	    	}
  	    	
+ 	    })
+ 	    $("#payBtn").on("click",function(){
+ 	    	alert("현재 구현중인 기능입니다.\n21/8/27 구현예정입니다.");
  	    })
 
  	})
@@ -153,130 +146,126 @@ a{text-decoration: none;color: white;}
 <body>
 <!-- 네비바 시작
 ----------------------------------------------------------------------------------------------------------------->
-	<c:choose>
-		<c:when test="${loginID==null }">
-			<nav class="navbar">
-				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/newLogo_negative.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="/member/signUp">회원가입</a></li>
-					<li><a href="/member/loginPage">로그인</a></li>
-				</ul>
-				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
-			</nav>
-		</c:when>
-		<c:when test="${loginID=='admin'}">
-			<nav class="navbar">
-				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/newLogo_negative.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="/admin/mem">관리자페이지</a></li>
-					<li><a href="/member/logOutProc">로그아웃</a></li>
-				</ul>
-				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
-			</nav>
-		</c:when>
-		<c:otherwise>
-			<nav class="navbar">
-				<div class="navbar_logo">
-					<a href=""><img src="/assets/img/background/newLogo_negative.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="/member/myPage">마이페이지</a></li>
-					<li><a href="/memeber/logOutProc">로그아웃</a></li>
-				</ul>
-				<a href="#" class="navbar_toogleBtn"><i class="fas fa-bars"></i></a>
-			</nav>
-		</c:otherwise>
-	</c:choose>
+<c:choose>
+<c:when test="${loginID==null }">
+<nav class="navbar">
+        <div class="navbar_logo">
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/signPage">회원가입</a></li>
+            <li><a href="/member/loginPage">로그인</a></li>
+        </ul>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+</c:when>
+<c:when test="${loginID=='admin'}">
+<nav class="navbar">
+        <div class="navbar_logo">
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/admin/home">관리자페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+</c:when>
+<c:otherwise>
+<nav class="navbar">
+        <div class="navbar_logo">
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+</c:otherwise>
+</c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
 	<c:choose>
 		<c:when test="${loginID =='admin'}">
 			<div class="container-fluid">
 				<div class="row m-0" id=menu>
-					<c:forEach var="i" items="${slist}">
+					<div class="col-6 p-0" id=img>
+						<c:forEach var="i" items="${slist}">
 						<div class="col-2 p-0" id=img>
 							<img src="/img/${i.sysName}">
 						</div>
 					</c:forEach>
-					<<%-- div class="col-6 p-0" id=img> <img src="/img/${pdto.reSysName
-					}"> </div> --%> <div class="col-5 " id=infoBox> <div class="row m-0
-					mb-4"> <div class="col-2 txt">상품 상세정보</div> <div class="col-2 ex">
-					·찜<span id=count></span></div>
-				</div>
-
-				<div class="row m-0">
-					<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
-				</div>
-				<div class="row m-0" id=priceBox>
-					<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
-				</div>
-				<div class="row m-0 pb-2">
-					<div class="col-3 p-0">배송비</div>
-					<div class="col-9 p-0">50,000이상 무료배송</div>
-					<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
-				</div>
-
-				<div class="row m-0 pb-4">
-					<div class="col-3 p-0">거래지역</div>
-					<div class="col-9 p-0">전지역</div>
-				</div>
-				<div class="row" id=crudBox>
-					<div class="col-8 p-0" id=>
-						<div class="row m-0 mt-3 mb-3">
-							<div class="col-12 mb-1 ckT">상품판매관리</div>
-							<div class="col-12 mb-1 ck">상태변경</div>
-							<div class="col-4 sold">
-								<input type=radio name="sold" value="판매중"><span>판매중</span>
-							</div>
-							<div class="col-5 sold">
-								<input type=radio name="sold" value="판매완료"><span>판매완료</span>
+					</div>
+					<div class="col-5 " id=infoBox>
+						<div class="row m-0 mb-4">
+							<div class="col-2 txt">${dto.p_category}</div>
+							<div class="col-2 ex">
 							</div>
 						</div>
-					</div>
-					<div class="col-4 p-0">
+
 						<div class="row m-0">
-							<div class="col-8 pt-1" id=update>수정</div>
-							<div class="col-8 pt-1" id=delete>삭제</div>
-							<div class="col-8 pt-1" id=submit>적용</div>
+							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
 						</div>
+						<div class="row m-0" id=priceBox>
+							<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
+						</div>
+						<div class="row m-0 pb-2">
+							<div class="col-3 p-0">배송비</div>
+							<div class="col-9 p-0">50,000이상 무료배송</div>
+							<div class="col-3 p-0"></div>
+							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
+						</div>
+
+						<div class="row m-0 pb-4">
+							<div class="col-3 p-0">거래지역</div>
+							<div class="col-9 p-0">전지역</div>
+						</div>
+						<div class="row pt-3" id=funcBox>
+							<div class="col-5 p-0" id=like>
+								<button class="btn btn-outline-dark" id="modifyBtn">수정하기</button>
+							</div>
+							<div class="col-5 p-0" id=like>
+								<button class="btn btn-outline-dark" id="deleteBtn">삭제하기</button>
+							</div>
+
+						</div>
+						<input type=hidden id=p_seq value="${dto.p_seq}">
 					</div>
 				</div>
-				<input type=hidden id=seq value="${dto.c_seq}">
-			</div>
-			<div class="row p-0 content">
-				<div class="col-8">
-					<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-					<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+				<div class="row p-0 content">
+					<div class="col-11">
+						<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+					</div>
 				</div>
-
 			</div>
 		</c:when>
 		<c:otherwise>
@@ -315,14 +304,14 @@ a{text-decoration: none;color: white;}
 						</div>
 						<div class="row pt-3" id=funcBox>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="cart">장바구니</button>
+								<button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
 							</div>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id=likeBtn>결제하기</button>
+								<button class="btn btn-outline-dark" id="payBtn">결제하기</button>
 							</div>
 
 						</div>
-						<input type=hidden id=seq value="${dto.p_seq}">
+						<input type=hidden id=p_seq value="${dto.p_seq}">
 					</div>
 				</div>
 				<div class="row p-0 content">
@@ -334,31 +323,6 @@ a{text-decoration: none;color: white;}
 			</div>
 		</c:otherwise>
 	</c:choose>
-
-	<!-- 장바구니 이동 여부 확인 -->
-	<div id="inputCart" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="/products/insertCart" method="">
-					<div class="modal-header">
-						<h4 class="modal-title">장바구니에 상품을 담았습니다.</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>장바구니로 이동하시겠습니까?</p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="취소"> <input type="hidden" class="p_seq"
-							value="${dto.p_seq }"> <input type="submit"
-							class="btn btn-danger" value="확인" id="okCart"
-							data-dismiss="modal">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

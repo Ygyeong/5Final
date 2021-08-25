@@ -220,9 +220,6 @@ a{
 	
 	display:inline-block;
 	text-align:center;
-<<<<<<< HEAD
-	padding:10%;
-=======
 	top:120px; left:230px; 
 	position:absolute;
 
@@ -265,7 +262,6 @@ a{
 .pagination{
 
 	diplay:inline;
->>>>>>> 98afcbb78e320ff0d8e89514932453a62e7bc88c
 	position:absolute;
 	top:600px;
 	left:700px;
@@ -411,22 +407,22 @@ $(function(){
           	  		<c:choose>
           	  			<c:when test="${i == '>' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index-1]+1}"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="mem?cpage=${navi[s.index-1]+1}"> ${i} </a></li>
           	  			 
           	  			</c:when>
           	  			<c:when test="${i == '<' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index+1]-1}"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="mem?cpage=${navi[s.index+1]-1}"> ${i} </a></li>
           	  			
           	  			</c:when>
           	  		
           	  			<c:otherwise>
           	  				<c:choose>
           	  					<c:when test="${i==cpage}">
-          	  						<li class="page-item active"><a class="page-link" href="list?cpage=${i}"> ${cpage} </a></li>
+          	  						<li class="page-item active"><a class="page-link" href="mem?cpage=${i}"> ${cpage} </a></li>
           	  					</c:when>
           	  					<c:otherwise>
-          	  						<li class="page-item"><a class="page-link" href="list?cpage=${i}"> ${i} </a></li>
+          	  						<li class="page-item"><a class="page-link" href="mem?cpage=${i}"> ${i} </a></li>
           	  					</c:otherwise>
           	  				</c:choose>
           	  			</c:otherwise>
@@ -439,22 +435,22 @@ $(function(){
           	  		<c:choose>
           	  			<c:when test="${i == '>' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="mem?cpage=${navi[s.index-1]+1}&category=${category}&keyword=${keyword}" id="rightArrow"> ${i} </a></li>
           	  			 
           	  			</c:when>
           	  			<c:when test="${i == '<' }">
           	  		
-          	  				<li class="page-item"><a class="page-link" href="list?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
+          	  				<li class="page-item"><a class="page-link" href="mem?cpage=${navi[s.index+1]-1}&category=${category}&keyword=${keyword}" id="leftArrow"> ${i} </a></li>
           	  			
           	  			</c:when>
           	  		
           	  			<c:otherwise>
           	  				<c:choose>
           	  					<c:when test="${i==cpage}">
-          	  						<li class="page-item active"><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${cpage} </a></li>
+          	  						<li class="page-item active"><a class="page-link" href="mem?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${cpage} </a></li>
           	  					</c:when>
           	  					<c:otherwise>
-          	  						<li class="page-item"><a class="page-link" href="list?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
+          	  						<li class="page-item"><a class="page-link" href="mem?cpage=${i}&category=${category}&keyword=${keyword}" id="bottomNumber"> ${i} </a></li>
           	  					</c:otherwise>
           	  				</c:choose>
           	  			</c:otherwise>

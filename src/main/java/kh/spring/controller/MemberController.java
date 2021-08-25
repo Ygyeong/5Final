@@ -1,10 +1,6 @@
 package kh.spring.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,12 +25,12 @@ import kh.spring.service.ScheduleService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	public MemberService ms;
 	@Autowired
 	public ScheduleService ss;
-	
+
 	@RequestMapping("myPage")
 	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession();
@@ -45,22 +41,22 @@ public class MemberController {
 		session.setAttribute("list", show);
 		return "/member/myPage";
 	}
-	
+
 	@RequestMapping("loginPage")
 	public String loginPage() {
 		return "/member/login";
 	}
-	
+
 	@RequestMapping("signPage")
 	public String signPage() {
 		return "/member/signUp";
 	}
-	
+
 	@RequestMapping("idCheck")
 	public String emailCheckPage() {
 		return "/member/idCheck";
 	}
-	
+
 	@RequestMapping("pwChange")
 	public String pwChange() {
 		return "/member/pwChange";
@@ -85,44 +81,49 @@ public class MemberController {
 		ms.memberSign(dto);
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("loginProc")
 	public String loginProc(@RequestParam("cm_id") String cm_id, @RequestParam("cm_pw") String cm_pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		HttpSession session = req.getSession();
+
 			MemberDTO login = ms.login(cm_id);
 			if(login.getCm_id() != null) {
 				String hash_password = login.getCm_pw();
 				
 				if(BCrypt.checkpw(cm_pw, hash_password) == true) {
 				session.setAttribute("loginID", login.getCm_id());
+
 				} else {
-				session.setAttribute("loginID", null);
-				return "/member/login";
+					session.setAttribute("loginID", null);
+					return "/member/login";
 				}
 			}
 
 			return "redirect:/";
 	}
+
 	
+	
+
 	@RequestMapping("logOutProc")
 	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
 		session.invalidate();
-		
+
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("memberOutProc")
 	public String memberOutProc(String cm_id, HttpSession session) throws Exception {
 		ms.memberOut(cm_id);
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("memberModifyProc")
 	public String memberModifyProc(@RequestParam("") String cm_id,@RequestParam("cm_email") String cm_email,
 			@RequestParam("cm_phone") String cm_phone, @RequestParam("cm_zipcode") String cm_zipcode,@RequestParam("cm_address1") String cm_address1, @RequestParam("cm_address2") String cm_address2)throws Exception{
 		MemberDTO dto = new MemberDTO();
-	
+
 		dto.setCm_email(cm_email);
 		dto.setCm_phone(cm_phone);
 		dto.setCm_zipcode(cm_zipcode);
@@ -132,7 +133,7 @@ public class MemberController {
 		ms.memberUpdate(dto);
 		return "/member/myPage";
 	}
-	
+
 	@RequestMapping("pwModifyProc")
 	public String memberModifyProc(MemberDTO dto, HttpSession session)throws Exception{
 		BCryptPasswordEncoder scpwd = new BCryptPasswordEncoder();
@@ -144,7 +145,7 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-	
+
 	@RequestMapping("pwIdDuplCheck")
 	public String pwIdDuplCheck(String cm_id, HttpSession session, HttpServletResponse response) throws Exception {
 		int result = ms.idDuplCheck(cm_id);
@@ -170,7 +171,7 @@ public class MemberController {
 
 		dto.setCm_id(cm_id);
 		List<Camp_wishlistDTO> wish = ms.wishListSelectAll(dto);
-		session.setAttribute("list", show);
+		session.setAttribute("list", wish);
 		return "member/wishlist";
 	}
 }

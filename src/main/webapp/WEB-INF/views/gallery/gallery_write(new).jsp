@@ -141,7 +141,8 @@ $(function(){
       
       let title = $("#bbs_title").val();
       let content = $("#summernote").val();
-      
+      let file = $('#file1').val();
+       
       
       let blankRegex = /.*\S+/;
       let titleLengthRegex = /^.{0,60}$/;
@@ -149,9 +150,11 @@ $(function(){
       
       let bresult1 = blankRegex.test(title);
       let bresult2 = blankRegex.test(content);
+      let bresult3 = blankRegex.test(file);
       
       let titleResult = titleLengthRegex.test(title);
       let contentResult = contentLengthRegex.test(content);
+      
       
       if(!bresult1){
          alert("제목을 반드시 입력해주세요!");
@@ -161,8 +164,9 @@ $(function(){
          alert("제목은 60글자 이내로 작성해주세요.")
       }else if(!contentResult){
          alert("내용은 4000글자 이내로 작성해주세요.")
-      }
-      else{
+      }else if(!bresult3){
+    	  alert("사진을 첨부해 주세요.")
+      }else{
          $("input[name=files]").remove();
          $("#frm").submit();
       }
@@ -218,7 +222,7 @@ $(function(){
 
        
         <div class="input-group" >
-           <input type="file" class="form-control" id="file1"  name="file" style="display:inline; width:430px" accept="image/jpeg,.png" multiple required>
+           <input type="file" class="form-control" id="file1"  name="file" style="display:inline; width:430px" accept="image/jpeg,.png" multiple>
            <div class="input-group-btn" style="display: inline;">
             <button class="btn btn-danger" type="button" id="btn1">삭제</button>
            </div>

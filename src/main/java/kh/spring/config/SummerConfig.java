@@ -13,6 +13,6 @@ public class SummerConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/summernoteImage/**")
-                .addResourceLocations("file:///C:/Users/jinwon/git/5Final/src/main/webapp/file/");
+                .addResourceLocations("절대경로");
     }
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>중고 마켓</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -314,13 +314,13 @@ a{
 <body>
 
  
-<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -332,7 +332,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -346,7 +346,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -372,7 +372,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -384,7 +384,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -397,6 +397,12 @@ a{
 
 
 </c:choose> 
+
+<!--네비바 끝  -->
+
+
+
+
 
 
 <c:choose>
@@ -452,6 +458,7 @@ a{
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
+                <a href="/rep/myJG?index=1&seq=1&id="+${loginID}>내중고마켓</a>
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>

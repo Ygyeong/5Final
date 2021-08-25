@@ -66,14 +66,28 @@ public class GalleryController {
 		
 		
 		@RequestMapping("modifyProc")
-		public String modify(@RequestParam(value="delete") String[] delete ,String title, String contents, MultipartFile[] file,int rating,int seq,Model model) throws Exception {
+		public String modify(String[] delete ,String title, String contents, MultipartFile[] file,int rating,int seq,Model model) throws Exception {
 			
 			String realPath = session.getServletContext().getRealPath("resources/aboutGallery/files");
+			
+			if(delete !=null) {
 			String [] delTargets = delete;
 			System.out.println("modify delete :" +  delTargets);
 			service.modify(title,contents,realPath,file,rating,seq,delTargets);
-
-			System.out.println("modifyProc : "+seq);
+			
+			}else if(delete == null){
+				
+				service.modify2(title,contents,realPath,file,rating,seq);
+			
+			}else if(delete ==null && file == null) {
+				 
+				service.modify3(title,contents,rating,seq);
+				
+			}
+			
+			
+			
+			
 			return "redirect:detail?seq="+seq;
 		}
 		
@@ -174,7 +188,9 @@ public class GalleryController {
 				System.out.println("gdto seq:"+gdto.getSeq());
 				
 				Gallery_ImgDTO idto = idao.selectThumbBySeq(gdto.getSeq());
+				if(idto!=null) {
 				gdto.setThumbPath(idto.getSysName());
+				}
 			}
 
 			model.addAttribute("list", list);

@@ -168,12 +168,12 @@ $("body").on("click","#modi",function(){
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                    
-                        <a href="/member/signUp" class="nav-item nav-link">회원가입</a>
+                        <a href="/member/signPage" class="nav-item nav-link">회원가입</a>
                         <a href="/member/loginPage" class="nav-item nav-link">로그인</a>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ $("body").on("click","#modi",function(){
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
@@ -219,7 +219,7 @@ $("body").on("click","#modi",function(){
                     <div class="navbar-nav ml-auto">
                         <a href="/info/list?index=1" class="nav-item nav-link">캠핑장</a>
                         <a href="/CampTipBoard/selectAll" class="nav-item nav-link">캠핑정보</a>
-                        <a href="/products/selectAll" class="nav-item nav-link">SHOP</a>
+                        <a href="/products/selectAll?index=1" class="nav-item nav-link">SHOP</a>
                         <a href="/rep/list?index=1" class="nav-item nav-link">중고장터</a>
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
@@ -340,6 +340,15 @@ $("body").on("click","#modi",function(){
 							<a href="#boardDeleteForm" class="btn btn-danger"
 								data-toggle="modal">삭제</a>
 						</c:when>
+						
+						<c:when test="${loginID=='admin'}">
+						
+						<a href="#boardDeleteForm" class="btn btn-danger"
+								data-toggle="modal">삭제</a>
+						
+						
+						</c:when>
+						
 					</c:choose>
 					<a href="/gal/list?cpage=1" id="backBtn" class="btn btn-default pull-left"
 						style="background-color: #00285b; color: white">목록</a>

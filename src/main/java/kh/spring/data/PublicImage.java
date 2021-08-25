@@ -59,7 +59,7 @@ public class PublicImage extends HttpServlet {
         
         try {
             String addr = "http://api.visitkorea.or.kr/openapi/service/rest/GoCamping/imageList?ServiceKey=";
-            String serviceKey = "8yrqp1Tt%2B%2BBzz43eYt7Z2PEzjukvMZdao%2Fg6UZVQOYjRxUUf3eQlaZLUqYMIxQPs7TQtPo%2FGQs1%2BBgc6acyA6Q%3D%3D";
+            String serviceKey = "W05%2Ff%2F1rf%2F6z4akF%2BzwMgqrKjNgWu1jciL1m13ZMCFiLlr%2BQEeGMWkFO3dcMfda%2BsKut3XxKeZoBbk0rZyn99A%3D%3D";
             String parameter = "";
 //            serviceKey = URLEncoder.encode(serviceKey,"utf-8");
             

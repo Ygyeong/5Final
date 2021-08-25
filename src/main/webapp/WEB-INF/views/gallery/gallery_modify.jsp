@@ -144,6 +144,7 @@ $(function(){
       let title = $("#bbs_title").val();
       let content = $("#summernote").val();
       
+       
       
       let blankRegex = /.*\S+/;
       let titleLengthRegex = /^.{0,60}$/;
@@ -152,8 +153,10 @@ $(function(){
       let bresult1 = blankRegex.test(title);
       let bresult2 = blankRegex.test(content);
       
+      
       let titleResult = titleLengthRegex.test(title);
       let contentResult = contentLengthRegex.test(content);
+      
       
       if(!bresult1){
          alert("제목을 반드시 입력해주세요!");
@@ -163,8 +166,7 @@ $(function(){
          alert("제목은 60글자 이내로 작성해주세요.")
       }else if(!contentResult){
          alert("내용은 4000글자 이내로 작성해주세요.")
-      }
-      else{
+      }else{
          $("input[name=files]").remove();
          $("#frm").submit();
       }
