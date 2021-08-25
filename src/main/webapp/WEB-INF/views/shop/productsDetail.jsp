@@ -124,27 +124,20 @@ a{text-decoration: none;color: white;}
 			$("#content").val("");
 		})
 		
-		
- 		 // Activate tooltip
- 	    $('[data-toggle="tooltip"]').tooltip();
- 	    
- 	    // 장바구니 modal에 p_seq 값 부여
- 	    $("#inputCart").on("shown.bs.modal",function(e){
- 	       let seq = $(e.relatedTarget).data("seq");
- 	       $("#okCart").attr("p_seq",seq);
- 	    })
- 	    
- 	    $("#cart").on("click",function(){
+ 	    $("#cartBtn").on("click",function(){
  	    	
  	    	if(${loginID==null}){
  	    		let result1 = confirm("로그인이 필요합니다 기능입니다\n로그인하시겠습니까?");
- 	    		if(result){
+ 	    		if(result1){
  	    			location.href="/member/loginPage";
  	    		}
  	    	}else{
  	    		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
  	    	}
  	    	
+ 	    })
+ 	    $("#payBtn").on("click",function(){
+ 	    	alert("현재 구현중인 기능입니다.\n21/8/27 구현예정입니다.");
  	    })
 
  	})
@@ -228,8 +221,7 @@ a{text-decoration: none;color: white;}
 					</c:forEach>
 					<<%-- div class="col-6 p-0" id=img> <img src="/img/${pdto.reSysName
 					}"> </div> --%> <div class="col-5 " id=infoBox> <div class="row m-0
-					mb-4"> <div class="col-2 txt">상품 상세정보</div> <div class="col-2 ex">
-					·찜<span id=count></span></div>
+					mb-4"> <div class="col-2 txt">상품 상세정보</div>
 				</div>
 
 				<div class="row m-0">
@@ -249,18 +241,6 @@ a{text-decoration: none;color: white;}
 					<div class="col-9 p-0">전지역</div>
 				</div>
 				<div class="row" id=crudBox>
-					<div class="col-8 p-0" id=>
-						<div class="row m-0 mt-3 mb-3">
-							<div class="col-12 mb-1 ckT">상품판매관리</div>
-							<div class="col-12 mb-1 ck">상태변경</div>
-							<div class="col-4 sold">
-								<input type=radio name="sold" value="판매중"><span>판매중</span>
-							</div>
-							<div class="col-5 sold">
-								<input type=radio name="sold" value="판매완료"><span>판매완료</span>
-							</div>
-						</div>
-					</div>
 					<div class="col-4 p-0">
 						<div class="row m-0">
 							<div class="col-8 pt-1" id=update>수정</div>
@@ -315,10 +295,10 @@ a{text-decoration: none;color: white;}
 						</div>
 						<div class="row pt-3" id=funcBox>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="cart">장바구니</button>
+								<button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
 							</div>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id=likeBtn>결제하기</button>
+								<button class="btn btn-outline-dark" id="payBtn">결제하기</button>
 							</div>
 
 						</div>
@@ -334,31 +314,6 @@ a{text-decoration: none;color: white;}
 			</div>
 		</c:otherwise>
 	</c:choose>
-
-	<!-- 장바구니 이동 여부 확인 -->
-	<div id="inputCart" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form action="/products/insertCart" method="">
-					<div class="modal-header">
-						<h4 class="modal-title">장바구니에 상품을 담았습니다.</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<p>장바구니로 이동하시겠습니까?</p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
-							value="취소"> <input type="hidden" class="p_seq"
-							value="${dto.p_seq }"> <input type="submit"
-							class="btn btn-danger" value="확인" id="okCart"
-							data-dismiss="modal">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

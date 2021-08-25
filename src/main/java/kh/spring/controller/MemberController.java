@@ -113,7 +113,9 @@ public class MemberController {
 			}
 			}
 		return "redirect:/";
+			}
 	}
+	
 	
 	@RequestMapping("logOutProc")
 	public String logOutProc(HttpSession session, HttpServletResponse response) throws Exception {
