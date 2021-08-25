@@ -12,33 +12,94 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/4625b781d5.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <title>** login **</title>
 <script>
-
-	Kakao.init('6b3c3c63b3e936ce62f9510a5191d297');
-	Kakao.isInitialized();
-	console.log(Kakao.isInitialized());
-
 	$(function(){
-		$("#kakaoLogin").on('click', function(){
-			alert("준비중입니다.");
-		})
 		
-		$("#googleLogin").on('click', function(){
-			alert("준비중입니다.");
-		})
 	})
 
 </script>
+
+
 </head>
 <body>
+		<!--nav start -->
+		<c:choose>
+		<c:when test="${loginID==null }">
+		<nav class="navbar">
+		        <div class="navbar_logo">
+		     	   <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="">캠핑정보</a></li>
+		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="/member/signUp">회원가입</a></li>
+		            <li><a href="/member/loginPage">로그인</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+		</c:when>
+		<c:when test="${loginID=='admin'}">
+		<nav class="navbar">
+		        <div class="navbar_logo">
+		            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="">캠핑정보</a></li>
+		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="">관리자페이지</a></li>
+		            <li><a href="/member/logOutProc">로그아웃</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+		</c:when>
+		<c:otherwise>
+		<nav class="navbar">
+		        <div class="navbar_logo">   
+		            <a href=""><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+		        </div>
+		        <ul class="navbar_menu">
+		            <li><a href="/info/list?index=1">캠핑장</a></li>
+		            <li><a href="">캠핑정보</a></li>
+		            <li><a href="/products/selectAll">SHOP</a></li>
+		            <li><a href="/rep/list?index=1">중고장터</a></li>
+		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+		        </ul>
+		        <ul class="navbar_member">
+		            <li><a href="/member/myPage">마이페이지</a></li>
+		            <li><a href="/member/logOutProc">로그아웃</a></li>
+		        </ul>
+		        <a href="#" class="navbar_toogleBtn">
+		            <i class="fas fa-bars"></i>
+		        </a>
+		    </nav>
+			</c:otherwise>
+		</c:choose>
+		<!-- nav end -->	
     <div class="container">
+    
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
                     <h3>LogIn</h3>
-
                 </div>
                 <div class="card-body">
                     <form action="loginProc" method="POST">
