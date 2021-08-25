@@ -466,7 +466,7 @@ $(function() {
 						<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 					</ul>
 					<ul class="subMenu small opacity-8">
-						<li><a href="/member/myPage?cm_id=${loginID }">마이페이지</a></li>
+						<li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
 						<li><a href="/member/logOutProc">로그아웃</a></li>
 					</ul>
 

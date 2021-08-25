@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kh.spring.dto.MemberDTO;
 import kh.spring.dto.ScheduleDTO;
 import kh.spring.service.ScheduleService;
 
@@ -30,16 +29,6 @@ public class ScheduleController {
 	@RequestMapping("scheduleOpen")
 	public String scheduleOpen() throws Exception {
 		return "/member/schedulePopup";
-	}
-	
-	@RequestMapping("scheduleCheckOpen")
-	public String scheduleCheckOpen(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
-		HttpSession session = req.getSession();
-		ScheduleDTO dto = new ScheduleDTO();
-		dto.setCm_id(cm_id);
-		List<ScheduleDTO> show = ss.showSchedule(dto);
-		session.setAttribute("list", show);
-		return "/member/scheduleCheck";
 	}
 	
 	@RequestMapping("addSchedule")

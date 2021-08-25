@@ -29,7 +29,7 @@
 			<td>${i.startDate}</td>
 			<td>${i.memo}</td>
 		</tr>
-	</c:forEach>		
+		</c:forEach>		
 </table>
 
 

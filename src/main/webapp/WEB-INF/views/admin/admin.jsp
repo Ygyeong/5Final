@@ -6,14 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-
-<link rel="stylesheet" type="text/css" href="/semantic/semantic.css">
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="/semantic/semantic.js"></script>
 
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -234,7 +228,7 @@ a{
      <div class="side_nav">
     
     	<ul class="side_menu">
-            <li><a href="/admin/mem">회원관리</a></li>
+            <li><a href="/admin/mem?cpage=1">회원관리</a></li>
             <li><a href="/admin/newProduct">새상품 관리</a></li>
             <li><a href="/admin/pay">중고상품 관리</a></li>
             <li><a href="/admin/re">결제내역 관리</a></li>
@@ -253,6 +247,25 @@ a{
     관리자 페이지에 오신걸 환영합니다!
 	</div>
 
+
+
+
+
+	<!--네비바 스크립트  -->
+
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 
 </body>
 </html>
