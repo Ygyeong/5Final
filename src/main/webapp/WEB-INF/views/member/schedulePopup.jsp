@@ -42,7 +42,7 @@ $(function(){
 		</div>
 		<div class="group-body">
 		<form action="/schedule/addSchedule" method="POST">
-			<input type="text" name="cm_id" value=${member.cm_id }>
+			<input type="hidden" name="cm_id" value=${loginID }>
 			<div class="top">
 				<input class="subject" id="subject" name="subject" type="text" placeholder="제목을 입력해주세요.">
 			</div>
