@@ -165,22 +165,24 @@ body{
 #reservebox {
     margin: 0;
     width: 50%;
-    height: 50%;
+    height: 100%;
     float: left;
 }
 
 
 #reservebtn {
-	width: 100%;
-	height: 100%;
-	cursor:pointer;
-	font-size:17px;
-	border-radius:28px;
-	background-color:white;
-	border-radius:7px;
-    border:1px solid blcak;	
-	display:inline-block;
-
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 28px;
+    background-color: #EEEE;
+    border-radius: 7px;
+    border: 1px solid blcak;
+    display: inline-block;
+    color: black;
+    align-items: center;
+    vertical-align: middle;
 }
 
 #twotop ul #camptab li a {
