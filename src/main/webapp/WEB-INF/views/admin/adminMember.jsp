@@ -189,7 +189,7 @@ a{
 	
 	display:inline-block;
 	text-align:center;
-	top:250px; left:600px; 
+	padding:10%;
 	position:absolute;
 
 }
@@ -197,8 +197,26 @@ a{
 
 
 </style>
+<script>
+$(function(){
+	
+	$("#delete").on("click",function(){
+		alert("클릭");
+		var cm_id = $("#cm_id").val();
+		console.log(cm_id);
+		 $.ajax({
+             url: "/admin/memberdelete",
+             data: {cm_id: cm_id},
+             method:"post",
+             dataType:"application/json"
+          }).done(function(){
+        	  alert(cm_id+"님이 탈퇴됐습니다.");
+          });
 
-
+	})
+	
+}
+</script>
 </head>
 <body>
 	<nav class="navbar">
@@ -248,8 +266,38 @@ a{
     
     
     <div class="body_txt" >
-    여기는 회원관리 페이지<br>
-    
+    	<h1>회원 관리</h1>
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">회원</th>
+			      <th scope="col" id="cm_id">ID</th>
+			      <th scope="col">이름</th>
+			      <th scope="col">E-mail</th>
+			      <th scope="col">번호</th>
+			      <th scope="col">주소1</th>
+			      <th scope="col">주소2</th>
+			      <th scope="col">우편번호</th>
+			      <th scope="col"> 탈퇴 </th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			   <c:forEach var="i" items="${member}">
+			    <tr>
+			      <th scope="row">${i.cm_no}</th>
+			      <td>${i.cm_id}</td>
+			      <td>${i.cm_name}</td>
+			      <td>${i.cm_email}</td>
+			      <td>${i.cm_phone}</td>
+			      <td>${i.cm_address1}</td>
+			      <td>${i.cm_address1}</td>
+			      <td>${i.cm_zipcode}</td>
+			      <td> <button id="delete">강탈</button></td>
+			    </tr>
+			  </c:forEach>
+			  </tbody>
+			</table>
+
 	</div>
 
 

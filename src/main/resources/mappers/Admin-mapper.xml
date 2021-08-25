@@ -10,4 +10,13 @@
 											#{intro, jdbcType = VARCHAR },#{gnrlSiteCo},#{autoSiteCo},#{glampSiteCo},#{caravSiteCo},#{indvdlCaravSiteCo},#{sbrsEtc, jdbcType = VARCHAR },
 											#{sbrsCl, jdbcType = VARCHAR },#{animalCmgCl, jdbcType = VARCHAR },#{brazierCl, jdbcType = VARCHAR },#{mapX},#{mapY}) 
 	</insert>
+	
+	<select id="member"  resultType="kh.spring.dto.MemberDTO">
+		select * from camp_mem 
+	</select>
+	
+	<delete id="memberdelete">
+		delete from camp_mem where cm_id=#{cm_id}
+	</delete>
+	
 </mapper> 
