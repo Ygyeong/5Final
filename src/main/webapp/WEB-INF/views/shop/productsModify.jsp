@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상품등록</title>
+<title>상품수정</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 <style>
-	body{background-color:#F9F9F9;}
+body{background-color:#F9F9F9;}
     *{box-sizing: border-box;}
     /* div{border: 1px solid black;} */
     .container{margin-top: 95px; margin-bottom: 80px; width:950px; height: 1000px;padding:20px 30px 0px 30px; 
@@ -61,7 +59,7 @@ a{text-decoration: none;color: white;}
 :root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
 }
 /*네비바 스타일 끝
---------------------------------------------------------------------------------------------------------------- */  
+--------------------------------------------------------------------------------------------------------------- */   
 </style>
 <script>
 $(function(){
@@ -107,10 +105,22 @@ $(function(){
 			}
 		});
 	}
+	
+	$(".delBtn").on("click",function(){
+		 let p_seq = $(this).attr("p_seq");
+		 $(this).parents(".delBox").remove();
+		 
+		 let delTarget = $("<input>");
+		 delTarget.attr("type","hidden");
+		 delTarget.attr("name","delete");
+		 delTarget.attr("value",p_seq);
+		 
+		 $("#input-file").append(delTarget);
+		 
+	});
 });
-</script>
-
-</head>
+	
+</script> 
 <body>
 <!-- 네비바 시작
 ----------------------------------------------------------------------------------------------------------------->
@@ -181,13 +191,13 @@ $(function(){
 </c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-<div class="container">
-        <form action="/products/insert" method="post" enctype="multipart/form-data">
-        <div id=title>상품 등록</div>
+	<div class="container">
+        <form action="/rep/updateProc" method="post" enctype="multipart/form-data">
+        <div id=title>상품 수정</div>
         <div class="row m-0 mt-3 mb-3 box">
-            <div class="col-2 p-0 txt">카테고리</div>
-            <div class="col-6 p-0">
-                <select name="p_category" id="">
+            <div class="col-2 p-0 txt">종류</div>
+            <div class="col-5 p-0">
+                <select name="rep_category" id="">
                     <option value="텐트/타프" selected>텐트/타프</option>
                     <option value="침낭/매트">침낭/매트</option>
                     <option value="테이블/의자">테이블/의자</option>
@@ -198,24 +208,31 @@ $(function(){
                     <option value="기타캠핑용품">기타캠핑용품</option>
                 </select>
             </div>
-           
+           <input type=hidden value="${dto.p_category}" id=category>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">이름</div>
-            <div class="col-5 p-0"><input type="text" name=p_name class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control" value="${dto.p_name}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">금액</div>
-            <div class="col-5 p-0"><input type="text" name=p_price class="form-control"></div>
+            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control" value="${dto.p_price}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
-            <div class="col-5 p-0">
-                <input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+            <div class="col-10 p-0">
+           		<div class="row m-0">
+            		<div class="col-12">
+            			<input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+            		</div>
+            		<c:forEach var="i" items="${sdto}">
+            			<div class="col-12 delBox">${i.sysName} <span><input type=button class=delBtn s_seq="${i.s_seq}" value="삭제"></span></div>
+            		</c:forEach>
+            	</div>
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
-		        <textarea class="col-12" id="summernote" name=p_contents></textarea>
+		        <textarea class="col-12" id="summernote" name=rep_detail>${dto.p_contents}</textarea>
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>
@@ -223,8 +240,14 @@ $(function(){
                 <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
             </div>
         </div>
+        <input type=hidden name="p_seq" value="${dto.p_seq }">
         </form>
 	</div>
+	<!-- Bootstrap core JS-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="/js/products.js"></script>
 	<script>
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');

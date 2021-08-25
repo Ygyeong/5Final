@@ -45,7 +45,7 @@ public class SummerController {
 //			File targetFile = new File(filesPath + sysName);
 //			try {
 //				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
-//				json.addProperty("url","/resources/imgs/"+sysName);
+//				json.addProperty("url","절대경로"+sysName);
 //				json.addProperty("oriName", oriName);
 //				json.addProperty("sysName", sysName);
 //			} catch (IOException e) {
