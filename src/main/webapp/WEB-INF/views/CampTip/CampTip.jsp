@@ -82,12 +82,12 @@
 	text-decoration: none;
 }
 
-.search_box {
-	width: 1000px;
-	margin: auto;
-}
+.search_box {margin: auto;}
 .container{
 	max-width: 850px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden
 }
 
 #boardlist{text-align: center;}
@@ -119,7 +119,7 @@
 	line-height: 75px;
 }
 #myContainer{padding-top: 10px;}
-.ms-left{top:20px !important;}
+.ms-left{top:40px !important;}
 
 /*네비바 스타일  */
 :root { -
@@ -213,93 +213,99 @@ a {text-decoration: none;color: white;}
 #boardlist>*{color: black;}
 #menu>li{background-color: #0f4c8199;}
 #menu>li:hover{background-color: #0f4c8170;}
+#seasonImg>*{width: 80%;}
+.row{margin:0;padding:0;}
+.row.btns{line-height: 0;}
 
 </style>
 </head>
 
 <body>
-	<!--nav bar  -->
-	<c:choose>
-		<c:when test="${loginID == null }">
-			<nav class="navbar">
-				<div class="navbar_logo">
+<!--네비바 시작 -->
+<c:choose>
+<c:when test="${loginID==null }">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
-					<a href="/"><img src="/assets/img/background/camp_logo.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/signPage">회원가입</a></li>
+            <li><a href="/member/loginPage">로그인</a></li>
+        </ul>
 
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="/member/signUp">회원가입</a></li>
-					<li><a href="/member/loginPage">로그인</a></li>
-				</ul>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
 
-				<a href="#" class="navbar_toogleBtn"> <i class="fas fa-bars"></i>
-				</a>
-			</nav>
+</c:when>
+<c:when test="${loginID=='admin'}">
+<nav class="navbar">
+        <div class="navbar_logo">
+           
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
-		</c:when>
-		<c:when test="${loginID =='admin'}">
-			<nav class="navbar">
-				<div class="navbar_logo">
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
-					<a href="/"><img src="/assets/img/background/camp_logo.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/admin/home">관리자페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
 
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
 
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="">관리자페이지</a></li>
-					<li><a href="/member/logOutProc">로그아웃</a></li>
-				</ul>
+</c:when>
+<c:otherwise>
+<nav class="navbar">
+        <div class="navbar_logo">
+         
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
-				<a href="#" class="navbar_toogleBtn"> <i class="fas fa-bars"></i>
-				</a>
-			</nav>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="/info/list?index=1">캠핑장</a></li>
+            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+            <li><a href="/rep/list?index=1">중고장터</a></li>
+            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
-		</c:when>
-		<c:otherwise>
-			<nav class="navbar">
-				<div class="navbar_logo">
+        </ul>
+        <ul class="navbar_member">
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
+        </ul>
 
-					<a href="/"><img src="/assets/img/background/camp_logo.png"
-						style="width: 50px; height: auto; margin-right: 7px; margin-top: -12px;">별보러갈래?</a>
+        <a href="#" class="navbar_toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
 
-				</div>
-				<ul class="navbar_menu">
-					<li><a href="/info/list?index=1">캠핑장</a></li>
-					<li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-					<li><a href="/products/selectAll?index=1">SHOP</a></li>
-					<li><a href="/rep/list?index=1">중고장터</a></li>
-					<li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+</c:otherwise>
 
-				</ul>
-				<ul class="navbar_member">
-					<li><a href="/member/myPage">마이페이지</a></li>
-					<li><a href="/member/logOutProc">로그아웃</a></li>
-				</ul>
 
-				<a href="#" class="navbar_toogleBtn"> <i class="fas fa-bars"></i>
-				</a>
-			</nav>
+</c:choose> 
 
-		</c:otherwise>
-
-	</c:choose>
+<!--네비바 끝  -->
 
 	<div id="myContainer">
 		<ul id="menu">
@@ -310,183 +316,142 @@ a {text-decoration: none;color: white;}
 		</ul>
 		<div class="ms-left">
 			<div class="ms-section" id="left1">
-				<div id="springImg">
+				<div id="seasonImg">
 					<img src="/resources/assets/img/background/spring.jpg">
 				</div>
-				<div id="springText">
-					<h3>추위 조심</h3>
-					<h4>핫팩 필수</h4>
-					<h3>벌레 조심</h3>
-					<h4>벌레 퇴치제 필수</h4>
-					<h3>뱀 조심!</h3>
-					<h4>물리면 즉시 119</h4>
-				</div>
+
 			</div>
 			<div class="ms-section" id="left2">
-				<div id="springImg">
+				<div id="seasonImg">
 					<img src="/resources/assets/img/background/summer.jpg">
 				</div>
-				<div id="springText">
-					<h3>날씨 조심!</h3>
-					<h4>폭염과 장마 그리고 태풍</h4>
-					<h3>화재 조심!</h3>
-					<h4>가스버너는 조심히 다뤄주세요.</h4>
-					<h3>해충 조심!</h3>
-					<h4>몸을 보호할 겉옷이 필요해요</h4>
-				</div>
+
 			</div>
 			<div class="ms-section" id="left3">
-				<div id="springImg">
+				<div id="seasonImg">
 					<img src="/resources/assets/img/background/autumn.jpg">
 				</div>
-				<div id="springText">
-					<h3>날씨 조심!</h3>
-					<h4>일교차가 커요</h4>
-					<h3>화재 조심!</h3>
-					<h4>화재사고가 흔한 계절!</h4>
-					<h3>뱀, 독충 조심!</h3>
-					<h4>몸을 보호할 겉옷이 필요해요</h4>
-				</div>
+
 			</div>
 			<div class="ms-section" id="left4">
-				<div id="springImg">
+				<div id="seasonImg">
 					<img src="/resources/assets/img/background/winter.jpg">
-				</div>
-				<div id="springText">
-					<h3>날씨 조심!</h3>
-					<h4>방한도구 꼼꼼히 확인</h4>
-					<h3>가스 조심!</h3>
-					<h4>가스 중독사고가 흔한 계절!</h4>
-					<h3>화재 조심!</h3>
-					<h4>난방용품 수시 점검해요</h4>
 				</div>
 			</div>
 		</div>
 
 		<div class="ms-right">
 			<div class="ms-section" id="right1">
-				<div class="container">
-					<input type="hidden" id="category" name="category" value="1">
+				<input type="hidden" id="category" name="category" value="1">
 					<div class="logo">
-						<a href="/" title="Slides Framework"
-							style="font-family: 'Nanum Brush Script'; font-size: 40px;">
-							<img src="/resources/assets/img/background/tent_logo.png"
-							style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
+						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script'; font-size: 40px;">
+							<img src="/resources/assets/img/background/tent_logo.png" style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
 						</a>
-					</div>
-					<br>
-					<div class="row body cnt">
-						<div class="col-12">
-							<div class="row boardlistMain">
-								<div class="col-1">분류</div>
-								<div class="col-1">번호</div>
-								<div class="col-3">제목</div>
-								<div class="col-3">작성자</div>
-								<div class="col-2">등록일</div>
-								<div class="col-2">조회수</div>
+					</div><br>
+				<div class="container">
+					<div class="body cnt">
+						<div class="tb_header bg-dark text-white">
+							<div class="row">
+								<div class="col-1 d-none d-md-block">분류</div>
+								<div class="col-1 d-none d-md-block">번호</div>
+								<div class="col-4 col-sm-4 col-md-4">제목</div>
+								<div class="col-2 d-none d-md-block">작성자</div>
+								<div class="col-2 d-none d-xl-block">등록일</div>
+								<div class="col-2 d-none d-xl-block">조회수</div>
 							</div>
-
+						</div>
+						<div class="tb_body">
 							<c:forEach var="i" items="${map.list}">
-
-								<div class="row boardlist">
-									<div class="col-1">${i.category}</div>
-									<div class="col-1">${i.camp_tip_num}</div>
-									<div class="col-3" id="titleMove">
-										<a
-											href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
+								<div class="row">
+									<div class="col-1 d-none d-md-block">${i.category}</div>
+									<div class="col-1 d-none d-md-block">${i.camp_tip_num}</div>
+									<div class="col-4 col-sm-4 col-md-4" id="titleMove">
+										<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
 									</div>
-									<div class="col-3">${i.writer}</div>
-									<div class="col-2">${i.write_date}</div>
-									<div class="col-2">${i.view_count}</div>
-								</div>
-
+									<div class="col-2 d-none d-md-block">${i.writer}</div>
+									<div class="col-2 d-none d-xl-block">${i.write_date}</div>
+									<div class="col-2 d-none d-xl-block">${i.view_count}</div>
+								</div>						
 							</c:forEach>
+						</div>
+						<hr>
+						<div id="boardlist">
+							<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+							<c:if test="${map.boardPager.curBlock > 1}">
+								<a href="javascript:list('1')">[처음]</a>
+							</c:if>
+							<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
+							<c:if test="${map.boardPager.curBlock > 1}">
+								<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
+							</c:if>
+							<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
+							<c:forEach var="p" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+							<!-- **현재페이지이면 하이퍼링크 제거 -->
+								<c:choose>
+									<c:when test="${p == map.boardPager.curPage}">
+										<span style="color: red">${p}</span>&nbsp;
+									</c:when>
+									<c:otherwise><a href="javascript:list('${p}')">${p}</a>&nbsp;</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
+							<c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+								<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
+							</c:if>
+							<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
+							<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
+								<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
+							</c:if>
+						</div>
+						<hr>
 
-							<div id="boardlist">
-								<!-- **처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
-								<c:if test="${map.boardPager.curBlock > 1}">
-									<a href="javascript:list('1')">[처음]</a>
-								</c:if>
-								<!-- **이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
-								<c:if test="${map.boardPager.curBlock > 1}">
-									<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
-								</c:if>
-								<!-- **하나의 블럭에서 반복문 수행 시작페이지부터 끝페이지까지 -->
-								<c:forEach var="p" begin="${map.boardPager.blockBegin}"
-									end="${map.boardPager.blockEnd}">
-									<!-- **현재페이지이면 하이퍼링크 제거 -->
-									<c:choose>
-										<c:when test="${p == map.boardPager.curPage}">
-											<span style="color: red">${p}</span>&nbsp;
-										</c:when>
-										<c:otherwise>
-											<a href="javascript:list('${p}')">${p}</a>&nbsp;
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<!-- **다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같으면 [다음]하이퍼링크를 화면에 출력 -->
-								<c:if
-									test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
-									<a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
-								</c:if>
-								<!-- **끝페이지로 이동 : 현재 페이지가 전체 페이지보다 작거나 같으면 [끝]하이퍼링크를 화면에 출력 -->
-								<c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
-									<a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
-								</c:if>
-							</div>
-
-							<c:choose>
-								<c:when test="${loginID == null }">
-									<div class="row btns">
-										<div class="col-12 btns" align="right"><br>
-											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
-										</div>
+						<c:choose>
+							<c:when test="${loginID == null }">
+								<div class="row btns">
+									<div class="col-2 col-sm-4 col-md-6 col-lg-6 col-xl-12 btns" align="right"><br>
+										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
 									</div>
-								</c:when>
-								<c:otherwise>
-									<div class="row btns">
-										<div class="col-12 btns" align="right"><br>
-											<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
-											<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
-										</div>
-									</div>	
-								</c:otherwise>
-							</c:choose>
-
-							<div class="search_box">
-								<br>
-								<form
-									action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
-									method="get">
-									<div class="row">
-										<div class="col-3">
-											<select class="form-control" name="searchOption"
-												id="srch_item">
-												<option value="">선택해주세요</option>
-												<option value="writer"
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="row btns">
+									<div class="col-sm-12 btns" align="right"><br>
+										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
+									</div>
+								</div>	
+							</c:otherwise>
+						</c:choose>
+						
+						<br>
+						<div class="col-12 search_box">
+							<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}" method="get">
+								<div class="row col-12">
+									<div class="col-sm-12 col-lg-3">
+										<select class="form-control" name="searchOption" id="srch_item">
+											<option value="">선택해주세요</option>
+												<option value="writer">
 													<c:out value="${map.searchOption == 'writer'?'selected':''}"/>>작성자</option>
-												<option value="contents"
+												<option value="contents">
 													<c:out value="${map.searchOption == 'contents'?'selected':''}"/>>내용</option>
-												<option value="title"
+												<option value="title">
 													<c:out value="${map.searchOption == 'title'?'selected':''}"/>>제목</option>
-											</select>
-										</div>
-										<div class="col-7">
-											<input type="text" class="form-control mb-2" name="keyword"
-												id="" placeholder="검색할 내용을 입력해 주세요." value=""> <input
-												type="hidden" name="cpage" value="1">
-										</div>
-										<div class="col-2">
-											<button type="submit" class="btn btn-dark mb-2 w-100"
-												id="btn_srch">검색</button>
-										</div>
+										</select>
 									</div>
-								</form>
-							</div>
+									<div class="col-sm-12 col-lg-7">
+										<input type="text" class="form-control mb-2" name="keyword" id="" placeholder="검색할 내용을 입력해 주세요." value=""> 
+										<input type="hidden" name="cpage" value="1">
+									</div>
+									<div class="col-sm-12 col-lg-2">
+										<button type="submit" class="btn btn-dark mb-2 w-100" id="btn_srch">검색</button>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 			<div class="ms-section" id="right2">
 				<div class="container">
 					<input type="hidden" id="category" name="category" value="1">
@@ -699,13 +664,10 @@ a {text-decoration: none;color: white;}
 								</c:otherwise>
 							</c:choose>
 
-							<div class="search_box">
-								<br>
-								<form
-									action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}"
-									method="get">
-									<div class="row">
-										<div class="col-3">
+							<div class="col-12 search_box">
+								<form action="${pageContext.request.contextPath}/CampTipBoard/selectAll?curPage='+page+'&searchOption-${map.searchOption}'+'&keyword=${map.keyword}" method="get">
+									<div class="col-12">
+										<div class="row col-3">
 											<select class="form-control" name="searchOption"
 												id="srch_item">
 												<option value="">선택해주세요</option>
@@ -717,12 +679,12 @@ a {text-decoration: none;color: white;}
 													<c:out value="${map.searchOption == 'title'?'selected':''}"/>>제목</option>
 											</select>
 										</div>
-										<div class="col-7">
+										<div class="row col-7">
 											<input type="text" class="form-control mb-2" name="keyword"
 												id="" placeholder="검색할 내용을 입력해 주세요." value=""> <input
 												type="hidden" name="cpage" value="1">
 										</div>
-										<div class="col-2">
+										<div class="row col-2">
 											<button type="submit" class="btn btn-dark mb-2 w-100"
 												id="btn_srch">검색</button>
 										</div>

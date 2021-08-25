@@ -141,7 +141,8 @@ $(function(){
       
       let title = $("#bbs_title").val();
       let content = $("#summernote").val();
-      
+      let file = $('#file1').val();
+       
       
       let blankRegex = /.*\S+/;
       let titleLengthRegex = /^.{0,60}$/;
@@ -149,9 +150,11 @@ $(function(){
       
       let bresult1 = blankRegex.test(title);
       let bresult2 = blankRegex.test(content);
+      let bresult3 = blankRegex.test(file);
       
       let titleResult = titleLengthRegex.test(title);
       let contentResult = contentLengthRegex.test(content);
+      
       
       if(!bresult1){
          alert("제목을 반드시 입력해주세요!");
@@ -161,8 +164,9 @@ $(function(){
          alert("제목은 60글자 이내로 작성해주세요.")
       }else if(!contentResult){
          alert("내용은 4000글자 이내로 작성해주세요.")
-      }
-      else{
+      }else if(!bresult3){
+         alert("다녀오신 장소의 아름다운 장소를 사진과 함께 공유해 보아요~(사진은 꼭 첨부 부탁드립니다!)")
+      }else{
          $("input[name=files]").remove();
          $("#frm").submit();
       }
@@ -218,7 +222,7 @@ $(function(){
 
        
         <div class="input-group" >
-           <input type="file" class="form-control" id="file1"  name="file" style="display:inline; width:430px" accept="image/jpeg,.png" multiple required>
+           <input type="file" class="form-control" id="file1"  name="file" style="display:inline; width:430px" accept="image/jpeg,.png" multiple>
            <div class="input-group-btn" style="display: inline;">
             <button class="btn btn-danger" type="button" id="btn1">삭제</button>
            </div>
@@ -246,32 +250,32 @@ $(function(){
     
     <!--별점 -->
 
-		<label>평점: </label>
-			<div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
-				<label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="1" checked> <span class="startRadio__img"><span
-						class="blind">별 1개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="2"> <span class="startRadio__img"><span
-						class="blind">별 2개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="3"> <span class="startRadio__img"><span
-						class="blind">별 3개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="4"> <span class="startRadio__img"><span
-						class="blind">별 4개</span></span>
-				</label> <label class="startRadio__box"> <input type="radio"
-					name="rating" id="" value="5"> <span class="startRadio__img"><span
-						class="blind">별 5개</span></span>
-				</label>
+      <label>평점: </label>
+         <div class="startRadio" style="margin-left:10px;margin-bottom:-10px;">
+            <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="1" checked> <span class="startRadio__img"><span
+                  class="blind">별 1개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="2"> <span class="startRadio__img"><span
+                  class="blind">별 2개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="3"> <span class="startRadio__img"><span
+                  class="blind">별 3개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="4"> <span class="startRadio__img"><span
+                  class="blind">별 4개</span></span>
+            </label> <label class="startRadio__box"> <input type="radio"
+               name="rating" id="" value="5"> <span class="startRadio__img"><span
+                  class="blind">별 5개</span></span>
+            </label>
 
-			</div>
-
-
+         </div>
 
 
 
-			<div class="row">
+
+
+         <div class="row">
       <hr>
       <div class="col-12">
         <button type="button" id="backBtn" class="btn btn-default pull-left" style="background-color: #00285b; color:white">목록</button>
@@ -284,26 +288,26 @@ $(function(){
     
     <script>
     $('#summernote').summernote({
-    	
-    	placeholder: '내용을 입력해주세요',
+       
+       placeholder: '내용을 입력해주세요',
         height: 500,
         minHeight: 400,           
         maxHeight: 400,
         lang: "ko-KR",
         toolbar: [
-		    
-		    ['fontname', ['fontname']],
-		    ['fontsize', ['fontsize']],
-		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-		    ['color', ['forecolor','color']],
-		    ['table', ['table']],
-		    ['para', ['ul', 'ol', 'paragraph']],
-		    ['height', ['height']],
-		    ['view', ['fullscreen', 'help']]
-		  ],
-		fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-		fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-	
+          
+          ['fontname', ['fontname']],
+          ['fontsize', ['fontsize']],
+          ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+          ['color', ['forecolor','color']],
+          ['table', ['table']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']],
+          ['view', ['fullscreen', 'help']]
+        ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+      fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+   
    
     });
     
