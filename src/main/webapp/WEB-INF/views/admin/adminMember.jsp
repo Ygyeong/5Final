@@ -317,7 +317,7 @@ $(function(){
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
