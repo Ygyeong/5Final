@@ -323,10 +323,10 @@ a{text-decoration: none;color: white;}
 						</div>
 						<div class="row pt-3" id=funcBox>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="nullCartBtn">장바구니</button>
+								<button type=button class="btn btn-outline-dark" id="nullCartBtn">장바구니</button>
 							</div>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="nullPayBtn">결제하기</button>
+								<button type=button class="btn btn-outline-dark" id="nullPayBtn">결제하기</button>
 							</div>
 
 						</div>
@@ -383,10 +383,10 @@ a{text-decoration: none;color: white;}
 						</div>
 						<div class="row pt-3" id=funcBox>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
+								<button type=button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
 							</div>
 							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="payBtn">결제하기</button>
+								<button type=button class="btn btn-outline-dark" id="payBtn">결제하기</button>
 							</div>
 
 						</div>
