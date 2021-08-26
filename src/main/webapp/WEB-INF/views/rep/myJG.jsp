@@ -15,11 +15,12 @@
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
  <style>
         
-        .container-fluid{width:1000px; margin: auto; margin-top:160px; margin-bottom:100px;}
+        .container-fluid{width:1000px; margin: auto; margin-top:60px; margin-bottom:100px;}
         #sell,#wish,#soldout{font-weight:1000;}
         #sell a,#wish a,#soldout a{border-bottom:2px solid black; margin-top:22px;}
         .sell,.wish,.soldout a{cursor:pointer;}
-        .sell,.wish,.soldout{font-size:20px; font-weight:300px;}
+        .sell,.wish,.soldout{font-size:20px; font-weight:300px; text-align:center;}
+        .sell{margin-left:125px;}
         .wish{padding-left:18px;}
         .count{font-weight:600;}
         .count span{margin-left:5px;}
@@ -40,8 +41,9 @@
       .userID span{font-size:13px; margin-left:3px;}
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
-      .zero{margin-left:15px; margin-top:25px;}
-
+      .zero{width:100%; height:250px; text-align:center; line-height:240px;}
+	  .userBox{background-color: #f6f6f6; height:150px;}	
+	
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -271,16 +273,16 @@ a{
     <c:choose>
     	<c:when test="${loginID==userID}">
     		<div class="row m-0">
-            <div class="col-3 p-0 mt-5">
-                <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
-                <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div>
+            <div class="col-12 p-0 mt-5 userBox">
+                <div class="col-12 p-0 mt-4 userID">${userID }<span>님</span></div>
+                <%-- <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
+                <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div> --%>
             </div>
-            <div class="col-9 p-0">
-                <div class="row m-0">
-                    <div class="col-2 sell" seq=1><a>판매상품</a></div>
-                    <div class="col-2 wish" seq=2><a>찜상품</a></div>
-                    <div class="col-2 soldout" seq=3><a>판매완료</a></div>
+            <div class="col-12 p-0">
+                <div class="row m-0 ">
+                    <div class="col-3 p-0 sell" seq=1><a>판매상품</a></div>
+                    <div class="col-3 p-0 wish" seq=2><a>찜상품</a></div>
+                    <div class="col-3 p-0 soldout" seq=3><a>판매완료</a></div>
                     <input type=hidden id="click" value="${seq}" >
                     <input type=hidden id="id" value="${userID}" >
                 </div>
@@ -290,7 +292,7 @@ a{
                 <div class="row listbar" >
                 <c:choose>
                 	<c:when test="${Count == 0}">
-                		<div class="col-12"></div>
+                		<div class="col-12 zero">상품이 없습니다.</div>
                 	</c:when>
                 	<c:otherwise>
                 		
@@ -343,8 +345,8 @@ a{
     	</c:when>
     	<c:otherwise>
     		<div class="row m-0">
-            <div class="col-3 p-0">
-                <div class="col-12 p-0 userID">${userID }<span>님</span></div>
+            <div class="col-3 p-0 userBox">
+                <div class="col-12 p-0 ">${userID }<span>님</span></div>
                 <div class="col-12 p-0">{mdto.cm_address1}</div>
             </div>
             <div class="col-9 p-0">
