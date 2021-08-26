@@ -6,13 +6,92 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니 목록</title>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/cartList.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 <style>
+.container{
+background-color:#f5f5f0;
+font-size:13pt;
+min-width:1480px;
+width:100%;
+padding:50px 0;
+margin-top: 60px;
+}
+#frame{
+width:80%;
+margin:0 auto;
+padding:50px 50px;
+background-color:#fff;
+}
+#frame2{
+border-botton:solid 1px #e0e0eb;
+padding-bottom:10px;
+}
+.home{
+folat:rignt;
+}
+table.calculation1{
+clear:both;
+border: solid 1px #e0e0eb;
+border-collapse:collapse;
+background-color:#f5f5f0;
+width:100%;
+font-size:10pt;
+}
+table.calculation1 th{
+border:solid 1px #e0e0eb;
+padding:10px 0;
+}
+table.calculation1 td{
+border:solid 1px #e0e0eb;
+text-align:center;
+}
+table.calculation2{
+border:solid 1px #e0e0eb;
+boarder-collapse:collapse;
+background-color:#f5f5f0;
+width:100%;
+font-size:10pt;
+}
+table.calculation2 th{
+border:solid 1px #e0e0eb;
+
+}
+table.calculation2 td{
+boarder:solid 1px #e0e0eb;
+text-align:center;
+}
+.price{
+font-size:20pt;
+font-weight:bold;
+}
+.lifont{
+font-size:10pt; color:gray;}
+.btn{
+border:none;
+color:white;
+padding:5px 10px;
+font-size:13px;
+cursor:pointer;
+border-radius:5px;
+}
+.default{background-color:#fff; border:solid 1px gray; color:black;}
+.default:hover{background:#ddd;}
+.backBtn{background:#fff; border:solid 1px gray;}
+
+.btnfloat{float:left;}
+.btnfloat2{float:right;}
+.clearboth{clear:both;}
+
+.footerbtn{float:right; font-weight:bolder; font-size:12pt; border-radius:3px;}
+#allProduct,#productClear, #footerbtn{padding:11px 25px;}
+#allProduct{margin-left:140px; background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
+#productClear{background-color:gray; color:#fff; font-weight:bold; font-size:12pt;}
+
+.aa:hover{cursor:pointer;}
+
 /*네비바 스타일 시작
 --------------------------------------------------------------------------------------------------------------- */   
 :root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
@@ -41,14 +120,41 @@ a{text-decoration: none;color: white;}
 --------------------------------------------------------------------------------------------------------------- */   
 </style>
 </head>
+<script>
+	$(document).ready(function(){
+		$(".calculation1 thead input:checkbox[id=check]").click(function(){
+			let bool = $(this).prop("checked");
+			$(".calculation1 tbody input:checkbox[name=checknox]").prop("checked",bool);
+		});
+	
+	
+		$(".calculation1 tbody input:checkbox[name=checkbox]").click(function(){
+			let flag = false;
+			$(".calculation1 tbody input:checkbox[name=checknox]").each(function(){
+				val bool = $(this).prop("checked");
+			
+				if(!bool){
+					$(".calculation1 thead input:checkbox[id=check]").prop("checked",false);
+					flag = true;
+					return false;
+				}
+			});
+		
+		if(!falag){
+			$(".calculation1 thead input:checkbox[id=check]").prop("checked",true);
+		}
+		
+		})
+	})
+</script>
 <body>
 <!-- 네비바 시작
 ----------------------------------------------------------------------------------------------------------------->
 <c:choose>
-<c:when test="${loginID==null }">
+<c:when test="${loginID == null }">
 <nav class="navbar">
         <div class="navbar_logo">
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-10px;">별보러갈래?</a>
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
@@ -56,20 +162,25 @@ a{text-decoration: none;color: white;}
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
+
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
+
 </c:when>
 <c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
+           
             <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
@@ -77,134 +188,167 @@ a{text-decoration: none;color: white;}
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
         </ul>
         <ul class="navbar_member">
             <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
+
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
+
 </c:when>
 <c:otherwise>
 <nav class="navbar">
         <div class="navbar_logo">
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-        </div>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-10px;">별보러갈래?</a>
+    </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
+
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
+
 </c:otherwise>
+
+
 </c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-	<form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
-		<input type="hidden" name="cmd" value="order">
-		<div class="basketdiv" id="basket">
-			<div class="row head">
-				<div class="subdiv">
-					<div class="check">선택</div>
-					<div class="img">이미지</div>
-					<div class="pname">상품명</div>
+<div class="container">
+		<div id="frame">
+			<form>
+				<div id="frame2">
+					<span style="font-size: 16pt; font-weight: bold">장바구니</span> <span
+						class="home">홈 > 장바구니</span> <span> </span>
 				</div>
-				<div class="subdiv">
-					<div class="basketprice">가격</div>
-					<div class="num">수량</div>
-					<div class="sum">합계</div>
-				</div>
-				<div class="subdiv">
+				<br />
 
-					<div class="basketcmd">삭제</div>
+				<div>
+					<table class="calculation1">
+						<tr>
+							<th class="aa">구매상품</th>
+							<th style="width: 700px;"></th>
+						</tr>
+					</table>
 				</div>
-				<div class="split"></div>
-			</div>
-			<c:forEach var="list" items="${map.list}">
-			<div class="row data">
-				<div class="subdiv">
-					<div class="check">
-						<input type="checkbox" name="buy" value="260" checked=""
-							onclick="javascript:basket.checkItem();">&nbsp;
+				<br />
+				<div>
+					<table class="calculation1">
+						<thead>
+							<tr>
+								<th colspan="10" style="text-align: left; padding-left: 10px;">일반상품</th>
+							</tr>
+
+							<tr>
+								<th><input type="checkbox" name="checkbox" id="check" /></th>
+								<th><span>이미지</span></th>
+								<th style="width: 550px;"><span>상품정보</span></th>
+								<th>판매가</th>
+								<th>수량</th>
+								
+								<th>배송구분</th>
+								<th>배송비</th>
+								<th>합계</th>
+								<th>선택</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="height: 90px; background-color: #fff;">
+								<td style="text-align:left; text-align:center; border-right: none;">
+									<input type="checkbox" id="checkbox">
+								</td>
+								<td style="border-left:none; border-right:none;">
+									<img style="width:80%" src=""/></td>
+								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
+								</td>
+								<td><span style="padding-left:10px;">0</span>원</td>
+								<td style="width:80px;">
+									<input type="number" style="text-align:right; width:43px; margin-bottom:5px;" min="1" max="99" step="1" value="1"/>
+									<button class="btn default" style="border-radius:3px; size:10px;">변경</button>
+								</td>
+								
+								
+								<td>기본배송</td>
+								<td>2,500<br/>고정</td>
+								<td><span>0</span>원</td>
+								
+								<td>
+									<button class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
+									<button class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;">삭제</button>
+								</td>
+								</tr>
+						</tbody>
+						<tfoot>
+						<tr style="height:60px;">
+						<td colspan="5" style="border-right:none; text-align:left; padding-left:10px;">
+							<span>[기본배송]</span>
+						</td>
+						<td>
+						상품금액<span>0</span>+ <span>배송비 2,500원 = 합계</span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
+						</td>
+						</tr>
+						</tfoot>
+					</table>
+					<div style="margin:10px 0;">
+						<span style="margin: 0 10px;" class="btnfloat">선택상품을</span>
+						<button class="btn default btnfloat" style="background-color:gray; color:#fff;">삭제하기</button>
+						<button class="btn default backBtn btnfloat2">장바구니 비우기</button>
 					</div>
-					<div class="img">
-						<img src="/img/surf.jpg" width="60">
+					<br/><br/>
+					
+					<table class="calculation2">
+						<tr>
+							<th>총 상품금액</th>
+							<th>총 배송비</th>
+							<th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
+						</tr>
+						
+						<tr style="background-color:#fff;">
+						<td style="padding:22px 0;"><span class="price">0</span>원</td>
+						<td>+<span class="price">0</span>원</td>
+						<td>=<span class="price">0</span>원</td>
+						</tr>
+					</table>
+					
+					<div align="center">
+						<button class="btn default" id="allProduct">전체상품</button>
+						<button class="btn default backBtn" id="productClear">선택상품주문</button>
+						<button class="btn default footerbtn" id="footerbtn">쇼핑계속하기</button>
+						<span class="clearboth"></span>
 					</div>
-					<div class="pname">
-						<span>${list.p_name}</span>
-						<input type="hidden" value="${list.c_seq}" class="c_seq">
-						<input type="hidden" value="${list.p_seq}" class="p_seq">
-					</div>
+					<br/><br/><br/><br/><br/>
 				</div>
-				<div class="subdiv">
-					<div class="basketprice">
-						<input type="hidden" name="p_price" id="p_price${list.c_seq}" class="p_price"
-							value="${list.p_price}">${list.p_price}
-					</div>
-					<div class="num">
-						<div class="updown">
-							<input type="text" name="p_num${list.c_seq}" id="p_num${list.c_seq}" size="2"
-								maxlength="4" class="p_num" value="${list.c_qty}"
-								onkeyup="javascript:basket.changePNum(${list.c_seq});"> <span
-								onclick="javascript:basket.changePNum(${list.c_seq});"><i
-								class="fas fa-arrow-alt-circle-up up"></i></span> <span
-								onclick="javascript:basket.changePNum(${list.c_seq});"><i
-								class="fas fa-arrow-alt-circle-down down"></i></span>
-						</div>
-					</div>
-					<div class="sum"></div>
-				</div>
-				<div class="subdiv">
-					<div class="basketcmd">
-						<a href="javascript:void(0)" class="abutton"
-							onclick="javascript:basket.delItem();">삭제</a>
-							
-					</div>
-				</div>
-			</div>
-			</c:forEach>
+			</form>
 		</div>
-
-		<div class="right-align basketrowcmd">
-			<a href="javascript:void(0)" class="abutton"
-				onclick="javascript:basket.delCheckedItem();">선택상품삭제</a> <a
-				href="javascript:void(0)" class="abutton"
-				onclick="javascript:basket.delAllItem();">장바구니비우기</a>
-		</div>
-
-		<div class="bigtext right-align sumcount" id="sum_p_num">상품갯수:
-			4개</div>
-		<div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액:
-			${dto.c_price}</div>
-
-		<div id="goorder" class="">
-			<div class="clear"></div>
-			<div class="buttongroup center-align cmd">
-				<a href="javascript:void(0);">선택한 상품 주문</a>
-			</div>
-		</div>
-	</form>
-</body>
-<script type="text/javascript" src="/js/cartList.js"></script>
-<script src="/js/products.js"></script>
+	</div>
 	<script>
+    
+    
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
+
     toogleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         member.classList.toggle('active');
     });
-</script>
+    
+    </script>
+</body>
 </html>

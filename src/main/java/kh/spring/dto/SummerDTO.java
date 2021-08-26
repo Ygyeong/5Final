@@ -8,7 +8,6 @@ public class SummerDTO {
 	private int p_seq;
 
 	public SummerDTO() {}
-
 	public SummerDTO(int s_seq, String oriName, String sysName, int p_seq) {
 		super();
 		this.s_seq = s_seq;
