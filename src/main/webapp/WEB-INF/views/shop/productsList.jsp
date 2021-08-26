@@ -300,10 +300,7 @@ $(function(){
       </c:otherwise>
    </c:choose>
    
-   <!--챗봇  -->
-   <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
-      
-   </script>
+  
    
    <!-- Bootstrap core JS-->
    <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
