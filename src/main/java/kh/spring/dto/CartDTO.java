@@ -6,13 +6,13 @@ public class CartDTO {
 	private int p_seq;
 	private int c_qty;
 	private String p_name;
-	private String p_price;
+	private int p_price;
 	private int c_price;
 	
 	public CartDTO() {}
 	
 
-	public CartDTO(int c_seq, String camp_id, int p_seq, int c_qty, String p_name, String p_price, int c_price) {
+	public CartDTO(int c_seq, String camp_id, int p_seq, int c_qty, String p_name, int p_price, int c_price) {
 		super();
 		this.c_seq = c_seq;
 		this.camp_id = camp_id;
@@ -64,11 +64,11 @@ public class CartDTO {
 		this.p_name = p_name;
 	}
 
-	public String getP_price() {
+	public int getP_price() {
 		return p_price;
 	}
 
-	public void setP_price(String p_price) {
+	public void setP_price(int p_price) {
 		this.p_price = p_price;
 	}
 
@@ -79,9 +79,6 @@ public class CartDTO {
 	public void setC_price(int c_price) {
 		this.c_price = c_price;
 	}
-	
-	
-	
 	
 
 }
