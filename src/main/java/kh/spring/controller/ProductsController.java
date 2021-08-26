@@ -80,5 +80,16 @@ public class ProductsController {
 		System.out.println(index);
 		return new Gson().toJson(list);
 	}
+	
+	@RequestMapping("insert") // 상품등록
+	   public String insert(ProductsDTO dto,MultipartFile[] file) throws Exception {
+	      
+	      int p_seq = service.getP_seq();
+	      dto.setCamp_id((String)session.getAttribute("loginID"));
+	      dto.setP_seq(p_seq);
+	      String realPath = session.getServletContext().getRealPath("/resources/imgs");
+	      service.insert(dto,p_seq,file,realPath);
+	      return "redirect:/products/selectAll?index=1";
+	   }
 
 }
