@@ -187,8 +187,27 @@ a{
 
 }
 
+#paymenu {
+	height: 60px;
+	width: 200px;
 
+}
 
+#paylist, #payinsert {
+	height: 100%;
+	width: 50%;
+	background-color: #D9E5FF;
+	float:left;	
+	align-items: center;
+}
+
+#paylist:hover , #payinsert:hover {
+	height: 100%;
+	width: 50%;
+	background-color: #EEEE;
+	float:left;	
+	align-items: center;
+}
 </style>
 
 
@@ -228,21 +247,23 @@ a{
      <div class="side_nav">
     
     	<ul class="side_menu">
-            <li><a href="/admin/mem">회원관리</a></li>
+            <li><a href="/admin/mem?cpage=1">회원관리</a></li>
             <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/pay">중고상품 관리</a></li>
-            <li><a href="/admin/re">결제내역 관리</a></li>
+            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/pay">결제내역 관리</a></li>
            	<li style="height:200px;"></li>
-
-        </ul>
-        
-    
-    
+        </ul>   
     </div> 
     
     
     <div class="body_txt" >
-    여기는 결제관리
+    	<div id=paymenu>
+    		<div id=paylist>상품 목록</div>
+    		<div id=payinsert><a href="/admin/insert">상품 등록</a></div>
+    	</div>
+    	
+    	
+    	
 	</div>
 
 

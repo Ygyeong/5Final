@@ -8,7 +8,10 @@ public class SummerDTO {
 	private int p_seq;
 
 	public SummerDTO() {}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 8d353e385446e4b5a26defc8e32ca6e06a7858cb
 	public SummerDTO(int s_seq, String oriName, String sysName, int p_seq) {
 		super();
 		this.s_seq = s_seq;
