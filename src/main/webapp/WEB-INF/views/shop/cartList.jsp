@@ -128,6 +128,7 @@ a{text-decoration: none;color: white;}
 			let result = confirm("상품을 삭제하시겠습니까?");
 			let c_seq = $(this).attr('value');
 			let tr = $("calculation1tbody tr").val();
+			console.log(tr);
 			if(result){
 				if(tr==null){
 					
@@ -239,35 +240,26 @@ a{text-decoration: none;color: white;}
 							<tr>
 								<th colspan="2"><span>이미지</span></th>
 								<th style="width: 550px;"><span>상품정보</span></th>
-								<th>판매가</th>
+								<th colspan="2">판매가</th>
 								<th>수량</th>
-								<th>배송구분</th>
-								<th>배송비</th>
-								<th>합계</th>
+								<th colspan="2">합계</th>
 								<th>선택</th>
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach var="list" items="${map.list}" varStatus="i">
 							<tr style="height: 90px; background-color: #fff;">
-								<td style="text-align:left; text-align:center; border-right: none;">
-									<input type="checkbox" id="checkbox">
-								</td>
-								<td style="border-left:none; border-right:none;">
+								<td style="border-left:none; border-right:none;"colspan="2">
 									<img style="width:80%" src="/img/"/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
 								${list.p_name}
 								</td>
 								<td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
-								<td style="width:80px;">
-									<input type="number" style="text-align:right; width:43px; margin-bottom:5px;" min="1" max="99" step="1" value="1"/>
+								<td style="width:50px;" colspan="2">
+									<input type="number" style="text-align:right; margin-bottom:5px;" min="1" max="99" step="1" value="${list.c_qty}"/>
 									<button class="btn default" style="border-radius:3px; size:10px;">변경</button>
 								</td>
-								
-								
-								<td>기본배송</td>
-								<td>2,500<br/>고</td>
-								<td><span>0</span>원</td>
+								<td colspan="2"><span>0</span>원</td>
 								
 								<td>
 									<button class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
