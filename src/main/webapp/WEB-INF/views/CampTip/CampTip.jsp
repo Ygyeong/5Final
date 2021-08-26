@@ -138,6 +138,9 @@ a {text-decoration: none;color: white;}
 	color: white;
 	font-family: 'Nanum Brush Script';
 }
+.navbar_logo>a:hover{
+	text-decoration: none;
+}
 .navbar_logo i {color: white;}
 
 .navbar_menu {
