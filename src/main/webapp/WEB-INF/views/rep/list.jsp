@@ -56,6 +56,8 @@
 	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
 	  #count{margin-left:8px; font-weight:bold;}
       .schResult{padding-left:24px;}
+      
+      
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -459,7 +461,7 @@ a{
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
-                <a href="/rep/myJG?index=1&seq=1&id="+${loginID}>내중고마켓</a>
+                <a href="/rep/myJG?index=1&seq=1&id=${loginID}">${loginID}내중고마켓</a>
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>
@@ -497,8 +499,9 @@ a{
 				<input type=hidden value="${i.rep_seq}" class="seq">
 			</div>       
 		</c:forEach>
-		</div> 
+		</div>
     </div>
+    
 	</c:otherwise>
 </c:choose>
 
