@@ -33,7 +33,7 @@
 </style>
 <script>
     $(function(){
-    	  $("#payBtn").click(function () {
+    	  $("#payBtn").on("click",function () {
     	        var IMP = window.IMP; // 생략가능
     	        IMP.init('imp81223023');
     	        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -67,13 +67,15 @@
     	        참고하세요.
     	        나중에 포스팅 해볼게요.
     	        */
-    	        name: '캠핑쇼핑몰',
+    	        name: '별보러갈래',
     	        //결제창에서 보여질 이름
     	        amount: 100,
     	        //가격
     	        buyer_name: '${dto.m_id}',
     	        buyer_tel: '${dto.o_phone}',
-    	        buyer_addr: '${dto.o_address1}',
+    	        buyer_email: '${dto.o_email}',
+    	        buyer_addr: '${dto.o_address1}'+'${dto.o_address2 }',
+    	        buyer_postcode : '${dto.o_zipcode}',
     	        m_redirect_url: 'https://www.yourdomain.com/payments/complete'
     	        /*
     	        모바일 결제시,
@@ -88,10 +90,11 @@
     	        msg += '상점 거래ID : ' + rsp.merchant_uid;
     	        msg += '결제 금액 : ' + rsp.paid_amount;
     	        msg += '카드 승인번호 : ' + rsp.apply_num;
-    	        location.href="/order/result";
+    	        location.href="/order/payResult?apply_num="+rsp.apply_num+"&o_seq="+$("#o_seq").val();
     	        } else {
     	        var msg = '결제에 실패하였습니다.';
     	        msg += '에러내용 : ' + rsp.error_msg;
+    	        location.href="error.jsp"
     	        }
     	        alert(msg);
     	        });
@@ -99,15 +102,9 @@
     	
     	
     	
-        document.getElementById("search").onclick= function() {
-            new daum.Postcode({
-                oncomplete: function (data) {
-                    var roadAddr = data.roadAddress; // 도로명 주소 변수
-                    document.getElementById("postcode").value = data.zonecode;
-                    document.getElementById("address1").value = roadAddr;
-                }
-            }).open();
-        }
+        $("#back").on("click",function(){
+        	location.href="/cart/cartList";
+        })
     })
 </script>
 </head>
@@ -120,7 +117,7 @@
             <div class="col-12 pb-2 title">구매자 정보</div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3 ">이름</div>
-                <div class="col-4"><input type="text" name="" value="${dto.o_id }" disabled></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_name }" disabled></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">연락처</div>
@@ -128,11 +125,11 @@
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">이메일</div>
-                <div class="col-4"><input type="text" name="" value=""></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_email}"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3 ">우편번호</div>
-                <div class="col-4 "><input type="text" name="" id=postcode value="">
+                <div class="col-4 "><input type="text" name="" id=postcode value="${dto.o_zipcode}">
                 </div>
             </div>
             <div class="row m-0 p-0 txt">
@@ -147,22 +144,22 @@
         <div class="row m-0 mt-4">
             <div class="col-12 title">상품정보</div>
             <div class="row m-0 p-0 txt">
-                <div class="col-6">상품이름<span>1개</span></div>
+                <div class="col-6">${dto.o_product}<span>${dto.o_qcy}</span></div>
             </div>
         </div>
         <div class="row m-0 mt-4">
             <div class="col-12 title">결제 정보</div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">총상품가격</div>
-                <div class="col-4"><input type="text" name=""></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_allSum}"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">배송비</div>
-                <div class="col-4"><input type="text" name=""></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_delivery}"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">총결제금액</div>
-                <div class="col-4"><input type="text" name=""></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_allSum}"+"${dto.o_delivery }"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">결제방법</div>
@@ -172,6 +169,7 @@
                     <input type="radio" name=pay onclick="return(false);"> 무통장입금
                 </div>
             </div>
+            <input type=hidden id="o_seq" value="${dto.o_seq }">
             <div class="row bt">
                 <div class="col-12 btnBox">
                     <button type="button" id="back" class="btn btn-outline-dark">메인으로</button>
