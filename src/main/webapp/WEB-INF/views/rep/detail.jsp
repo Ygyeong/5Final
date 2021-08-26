@@ -597,8 +597,8 @@ a{
             			</div>
             			<div class="row m-0">
             				<div class="col-12 p-0 btnBox">
-            					<input type="button"  class="modi btn btn-primary " value="수정">
-            					<input type="button" class="del btn btn-primary "  value="삭제">
+            					<input type="button"  class="modi btn btn-secondary" value="수정">
+            					<input type="button" class="del btn btn-secondary "  value="삭제">
             					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
             				</div>
             			</div>
@@ -817,13 +817,15 @@ a{
             </div>
             <div class="row cmtBox">
                 <div class="col-11 p-0">
-                    <textarea name="recmt_comments" id=content placeholder="로그인이 필요한 기능입니다."></textarea>
+                    <textarea name="recmt_comments" id=content placeholder=""></textarea>
                 </div>
                 <div class="col-1" id=cmtBtn>댓글등록
                 </div>
             </div>
 			<div class="box">
 				<c:forEach var="i" items="${cdto }">
+            	<c:choose>
+            	<c:when test="${loginID==i.recmt_writer }">
             		<div class="row recmtBox" id="id${i.recmt_seq }">
             			<div class="row m-0">
             				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
@@ -831,7 +833,26 @@ a{
             			<div class="row m-0">
             				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
             			</div>
+            			<div class="row m-0">
+            				<div class="col-12 p-0 btnBox"> 
+            					<input type="button"  class="modi btn btn-secondary " value="수정">
+            					<input type="button" class="del btn btn-secondary "  value="삭제">
+            					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
+            				</div>
+            			</div>
             		</div>
+            	</c:when>
+            	<c:otherwise>
+            		<div class="row recmtBox">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            		</div>
+            	</c:otherwise>
+            	</c:choose>
             	</c:forEach>
 			</div>
     </div>
