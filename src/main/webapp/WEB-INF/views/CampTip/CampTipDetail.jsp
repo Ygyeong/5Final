@@ -55,8 +55,10 @@ form>div:first-child {
 	margin-top: 3px;
 }
 
-select {
-	margin-top: 3px;
+select {margin-top: 3px;}
+#contents{
+	height:500px;
+	overflow: scroll;
 }
 </style>
 

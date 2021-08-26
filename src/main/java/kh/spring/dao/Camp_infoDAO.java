@@ -29,8 +29,8 @@ public class Camp_infoDAO {
 	}
 	
 	//사진 출력
-	public List<Camp_photoDTO> detailimage(int ci_seq){
-		return mybatis.selectList("Camp_info.detailimage",ci_seq);
+	public List<Camp_photoDTO> detailimage(int contentId){
+		return mybatis.selectList("Camp_info.detailimage",contentId);
 	}
 		
 	//찜하기 
@@ -64,6 +64,7 @@ public class Camp_infoDAO {
 		return mybatis.insert("Camp_info.imageinsert", dto);
 	}
 	
+	//메인 썸네일용 리스트
 	public List<Camp_infoDTO> indexlist(){
 		return mybatis.selectList("Camp_info.indexlist");
 	}
