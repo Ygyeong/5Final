@@ -292,9 +292,9 @@ a{text-decoration: none;color: white;}
 						</tr>
 						
 						<tr style="background-color:#fff;">
-						<td style="padding:22px 0;"><span class="price">0</span>원</td>
-						<td>+<span class="price">0</span>원</td>
-						<td>=<span class="price">0</span>원</td>
+						<td style="padding:22px 0;"><span class="price">{map.sumMoney}</span>원</td>
+						<td>+<span class="price">${map.delivery}</span>원</td>
+						<td>=<span class="price">${map.allSum}</span>원</td>
 						</tr>
 					</table>
 					
