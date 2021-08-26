@@ -65,7 +65,7 @@ select {
 $(function(){
 	let i=0;
 	$("#back").on("click", function() {
-		location.href = "javascript:history.back()";
+		location.href = "/CampTipBoard/selectAll";
 	})
 	
 	$("#delBtn").on("click",function(){
@@ -81,9 +81,9 @@ $(function(){
 		let contents = $("#summernote").val();
 		
 		let blankRegex = /.*\S+/;
-		let titleLengthRegex = /^.{0,30}$/;
+		let titleLengthRegex = /^.{0,50}$/;
 		let writerLengthRegex = /^.{0,7}$/;
-		let contentsLengthRegex = /^.{0,500}$/;
+		let contentsLengthRegex = /^.{0,1500}$/;
 		
 		let bresult1 = blankRegex.test(title);
 		let bresult2 = blankRegex.test(writer);
@@ -100,11 +100,12 @@ $(function(){
 		}else if(!bresult4){
 			alert("내용을 입력해주세요!");
 		}else if(!titleResult){
-			alert("제목은 30 글자 이내로 작성해주세요.")
+			alert("제목은 50 글자 이내로 작성해주세요.")
 		}else if(!contentsResult){
 			alert("내용은 500 글자 이내로 작성해주세요.")
-		}
-		else{
+		}else if(category == null){
+			alert("카테고리를 선택해주세요.")
+		}else{
 			$("input[name=files]").remove();
 			$("#frm").submit();
 		}
@@ -208,7 +209,7 @@ $(function(){
 					<label for="inputEmail3" class="col-sm-2 control-label">카테고리</label>
 					<div class="col-sm-10 writeDiv">
 						<select class="form-control" id="category" name="category">
-							<option selected>선택하세요.</option>
+							<option value="${list.category } "selected>${list.category }</option>
 							<option value="봄">봄</option>
 							<option value="여름">여름</option>
 							<option value="가을">가을</option>
@@ -257,7 +258,7 @@ $(function(){
 				<div class="form-group">
 					<label for="inputPassword3" class="col-sm-2 control-label">내용</label>
 					<div class="col-sm-10 writeDiv">
-						<textarea cols="3" name="contents" id="summernote"></textarea>
+						<textarea cols="3" name="contents" id="summernote">${list.contents }</textarea>
 					</div>
 				</div>
 			</div>

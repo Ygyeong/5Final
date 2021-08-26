@@ -20,6 +20,10 @@ $(function(){
 		location.href="/admin/dataupdate";
 	});
 
+	$("#imageupdate").on("click",function(){
+		alert("ok");
+		location.href="/info/imagelist";
+	});
 
 })
 </script>
@@ -255,7 +259,7 @@ a{
     관리자 페이지에 오신걸 환영합니다!
 	</div>
 	<button id=dataupdate>DB 업데이트</button>
-
+	<button id=imageupdate>이미지 DB 입력</button>
 
 
 
