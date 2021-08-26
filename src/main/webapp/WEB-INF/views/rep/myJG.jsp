@@ -42,7 +42,7 @@
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
       .zero{width:100%; height:250px; text-align:center; line-height:240px;}
-	  .userBox{background-color: #f6f6f6; height:150px;}	
+	  .userBox{background-color: #f6f6f6; height:100px; margin : 30px 0px 20px 0px;}	
 	
 /*네비바 스타일  */     
 :root{
@@ -146,7 +146,7 @@ a{
     </style>
     <script>
     	$(function(){
-    		$(".userID").text($(".writer").val());
+    		$(".userID").html($("#id").val()+"<span>님</span>");
     		
     		let cseq = $("#click").val();
     		console.log(cseq);
@@ -273,7 +273,7 @@ a{
     <c:choose>
     	<c:when test="${loginID==userID}">
     		<div class="row m-0">
-            <div class="col-12 p-0 mt-5 userBox">
+            <div class="col-12 p-0 userBox">
                 <div class="col-12 p-0 mt-4 userID">${userID }<span>님</span></div>
                 <%-- <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
                 <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div> --%>
@@ -284,7 +284,7 @@ a{
                     <div class="col-3 p-0 wish" seq=2><a>찜상품</a></div>
                     <div class="col-3 p-0 soldout" seq=3><a>판매완료</a></div>
                     <input type=hidden id="click" value="${seq}" >
-                    <input type=hidden id="id" value="${userID}" >
+                    <input type=hidden id="id" value="${loginID}" >
                 </div>
                 <div class="row m-0 mt-5">
                     <div class="col-12 count">전체<span>${Count }</span></div>
@@ -345,11 +345,11 @@ a{
     	</c:when>
     	<c:otherwise>
     		<div class="row m-0">
-            <div class="col-3 p-0 userBox">
-                <div class="col-12 p-0 ">${userID }<span>님</span></div>
-                <div class="col-12 p-0">{mdto.cm_address1}</div>
+            <div class="col-12 p-0 userBox">
+                <div class="col-12 p-0 mt-4 userID">${userID }<span>님</span></div>
+                <input type=hidden id="id" value="${userID}" >
             </div>
-            <div class="col-9 p-0">
+            <div class="col-12 p-0">
                 <div class="row m-0 mt-5">
                     <div class="col-12 count">전체<span>${Count }</span></div>
                 </div>

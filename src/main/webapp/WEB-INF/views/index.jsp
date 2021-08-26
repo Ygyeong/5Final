@@ -76,6 +76,7 @@
 .star_rating a.on {
 	color: #ffd400;
 }
+.rep img{ object-fit:cover;}
 </style>
 
 <script>
@@ -606,12 +607,12 @@
 									<a href="#" class="box-74">
 										<div class="thumbnail-74 rep"
 											style="width: 100%; height: 100%;">
-											<img src="/img/${i.thumsysName}" class="wide" alt="Thumbnail" />
+											<img src="/img/${i.thumsysName}" class="wide" alt="Thumbnail" style="width:200px; height:200px;" />
 										</div>
 										<div class="name-74 equalElement table wide">
 											<div class="cell left top">
 												<div class="col-12 mb-1 link" style="font-weight: bold;">${i.rep_name }</div>
-												<div class="col-6 mt-1" style="font-weight: bold;">${i.rep_price }<span>원</span>
+												<div class="col-6 mt-1" style="font-weight: bold;"><span style="color:#ff4040">${i.rep_price }</span>원
 												</div>
 
 												<div class="tiny opacity-6 cropBottom">${i.rep_detail }</div>

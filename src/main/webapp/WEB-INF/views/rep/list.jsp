@@ -499,7 +499,7 @@ a{
 				<input type=hidden value="${i.rep_seq}" class="seq">
 			</div>       
 		</c:forEach>
-		</div> 
+		</div>
     </div>
     
 	</c:otherwise>
