@@ -285,7 +285,7 @@ $(function(){
                      <div class="col-12 mb-1 link">${list.p_name}</div>
                      <div class="row m-0 ">
                         <div class="col-6 price">
-                           <fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+                           <fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/><span>원</span>
                         </div>
                         <div class="col-6 diffD">${list.p_rdate}</div>
                      </div>
