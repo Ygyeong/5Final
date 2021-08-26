@@ -14,8 +14,8 @@ public class OrderDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis; 
 	
-	public int insert(OrderDTO dto) {
-		return mybatis.insert("Order.insert",dto);
+	public int insert(Map<String,Object> param) {
+		return mybatis.insert("Order.insert",param);
 	} 
 	public OrderDTO select(String m_id) {
 		return mybatis.selectOne("Order.select",m_id);

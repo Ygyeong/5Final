@@ -5,9 +5,11 @@
 
 <mapper namespace="Cart">
 	<insert id="insert"> <!-- 상품등록 --> 
+
       insert into camp_cart(c_seq, camp_id,p_seq,c_qty) values
       (c_seq.nextval, #{camp_id}, #{p_seq},#{c_qty})
    </insert>
+
 	
 	<select id="list" resultType="kh.spring.dto.CartDTO">
 		select c.c_seq as c_seq, c.camp_id as camp_id, p.p_seq as p_seq, p.p_name as p_name, c.c_qty, p.p_price as p_price,
@@ -17,9 +19,9 @@
 	</select>
 	
 	<select id="sumMoney" resultType="int">
-		select NVL(SUM(to_number(p_price) * c_qty),0)c_price 
+		select NVL(SUM(p_price * c_qty),0)c_price 
 		from camp_cart c,camp_products p 
-		where c.camp_id = #{camp_id}
+		where c.p_seq=p.p_seq and c.camp_id = #{camp_id}
 	
 	</select>
 	

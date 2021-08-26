@@ -138,7 +138,8 @@ a{text-decoration: none;color: white;}
  	    	
  	    })
  	    $("#payBtn").on("click",function(){
- 	    	alert("현재 구현중인 기능입니다.\n21/8/27 구현예정입니다.");
+ 	    	$("#payF").attr("action","/order/payView");
+ 	    	$("#payF").submit();
  	    })
 
  	})
@@ -273,6 +274,7 @@ a{text-decoration: none;color: white;}
 		</c:when>
 		<c:otherwise>
 			<div class="container-fluid">
+			<form action="" method="post" id="payF">
 				<div class="row m-0" id=menu>
 					<div class="col-6 p-0" id=img>
 						<c:forEach var="i" items="${slist}">
@@ -325,6 +327,9 @@ a{text-decoration: none;color: white;}
 						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
 					</div>
 				</div>
+				<input type=hidden name=product value="${dto.p_name }">
+				<input type=hidden name=price value="${dto.p_price }">
+				</form>
 			</div>
 		</c:otherwise>
 	</c:choose>

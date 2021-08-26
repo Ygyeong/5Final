@@ -28,14 +28,14 @@ public class OrderController {
 	
 	
 	@RequestMapping("payView")
-	public String payView(String [] seq ,Model m) {
+	public String payView(String product,String price ,Model m) {
 		System.out.println("결제페이지로 ㄱㄱ");
-		System.out.println(seq);
-		String id = (String)session.getAttribute("loginID");
-		MemberDTO mdto = mservice.login(id); 
+		System.out.println(product+" : "+price);
+		String id = ((String)session.getAttribute("loginID"));
+		MemberDTO mdto = mservice.login(id);
+		service.insert(mdto,product,price);
 		OrderDTO dto =service.select(id);
 		int o_seq = dto.getO_seq();
-		System.out.println(dto.getO_email());
 		m.addAttribute("o_seq",o_seq);
 		m.addAttribute("dto",dto);
 		return "shop/pay";
