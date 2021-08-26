@@ -211,7 +211,7 @@ $(function(){
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
             <div class="col-5 p-0">
-                <input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple>
+                <input type="file" id=input-file name=file accept=".gif, .jpg, .png" multiple required>
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
