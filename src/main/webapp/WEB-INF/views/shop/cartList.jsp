@@ -261,7 +261,7 @@ a{text-decoration: none;color: white;}
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="list" items="${map.list}">
+						<c:forEach var="list" items="${map.list}" varStatus="i">
 							<tr style="height: 90px; background-color: #fff;">
 								<td style="text-align:left; text-align:center; border-right: none;">
 									<input type="checkbox" id="checkbox">
@@ -295,7 +295,7 @@ a{text-decoration: none;color: white;}
 							<span>[기본배송]</span>
 						</td>
 						<td>
-						상품금액<span>0</span>+ <span>배송비 2,500원 = 합계</span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
+						상품금액 : <span>${map.sumMoney}</span>+ <span>배송비 2,500원 = 합계</span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
 						</td>
 						</tr>
 						</tfoot>
