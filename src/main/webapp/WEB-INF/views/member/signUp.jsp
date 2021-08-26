@@ -26,8 +26,8 @@ $(function(){
 	
 	$("#signup").on('click', function(){
 		var email = $("#cm_email").val();
-		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
-		
+
+		var regExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
 		if(!regExp.test(email)){
 			alert("이메일 형식이 틀립니다.")
 		}else{
@@ -155,7 +155,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"></span>
                             </div>
-                            <input type="text" id="cm_phone" name="cm_phone" class="form-control" placeholder="01012345678">
+                            <input type="text" id="cm_phone" name="cm_phone" class="form-control" placeholder="01012345678" required>
                         </div>
 
                         <div class="input-group form-group">
