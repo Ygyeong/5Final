@@ -28,8 +28,6 @@ public class ProductsService {
 
 	@Transactional
 	public void insert(ProductsDTO dto,int p_seq,MultipartFile[] file,String realPath)throws Exception {
-		DecimalFormat df = new DecimalFormat("#,###");
-		dto.setP_price(df.format(Integer.parseInt(dto.getP_price())));
 		dao.insert(dto);
 
 		File filesPath = new File(realPath);
@@ -91,34 +89,36 @@ public class ProductsService {
 		return dao.detail(p_seq);
 	}
 	
-//	public void modify(String realPath,MultipartFile[] file,String [] delTargets,ProductsDTO dto) throws Exception {
-//		int p_seq = dto.getP_seq();
-//		dao.modify(dto);
-//		File filesPath = new File(realPath);
-//
-//		if(delTargets != null) {
-//			for(String target : delTargets) {
-//				
-//				String sysName = sdao.sysName(Integer.parseInt(target));
-//				File targetFile = new File(filesPath+"/"+sysName);
-//				boolean result = targetFile.delete();
-//
-//     			if(result) {sdao.delete(Integer.parseInt(target));}
-//
-//			}
-//		}
-//		for(MultipartFile tmp : file) {
-//			if(tmp.getSize() > 0) {
-//				String oriName = tmp.getOriginalFilename();
-//				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
-//
-//				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
-//
-//				if(oriName!=null) {
-//					sdao.insert(new SummerDTO(0,oriName,sysName,p_seq));
-//				}
-//			}
-//		}
-//	}
+	public void modify(String realPath,MultipartFile[] file,String [] delTargets,ProductsDTO dto) throws Exception {
+		int p_seq = dto.getP_seq();
+		dao.modify(dto);
+		File filesPath = new File(realPath);
+
+		if(delTargets != null) {
+			for(String target : delTargets) {
+				
+				String sysName = sdao.sysName(Integer.parseInt(target));
+				File targetFile = new File(filesPath+"/"+sysName);
+				boolean result = targetFile.delete();
+
+     			if(result) {sdao.delete(Integer.parseInt(target));}
+
+			}
+		}
+		for(MultipartFile tmp : file) {
+			if(tmp.getSize() > 0) {
+				String oriName = tmp.getOriginalFilename();
+				String sysName = UUID.randomUUID().toString().replaceAll("-", "")+"_"+oriName;
+
+				tmp.transferTo(new File(filesPath.getAbsolutePath()+"/"+sysName));
+
+				if(oriName!=null) {
+					sdao.insert(new SummerDTO(0,oriName,sysName,p_seq));
+				}
+			}
+		}
+	}
+	
+	
 	
 }

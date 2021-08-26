@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -240,7 +241,8 @@ $(function(){
 							</div>
 							<div class="col-12 mb-1 link">${list.p_name}</div>
 							<div class="row m-0 ">
-								<div class="col-6 price">${list.p_price}<span>원</span>
+								<div class="col-6 price">
+								<fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/><span>원</span>
 								</div>
 								<div class="col-6 diffD">${list.p_rdate}</div>
 							</div>
@@ -282,7 +284,8 @@ $(function(){
 							</div>
 							<div class="col-12 mb-1 link">${list.p_name}</div>
 							<div class="row m-0 ">
-								<div class="col-6 price">${list.p_price}<span>원</span>
+								<div class="col-6 price">
+									<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
 								</div>
 								<div class="col-6 diffD">${list.p_rdate}</div>
 							</div>
@@ -296,9 +299,15 @@ $(function(){
 			</div>
 		</c:otherwise>
 	</c:choose>
+	
+	<!--챗봇  -->
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
+		
+	</script>
+	
 	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="/js/products.js"></script>
 	<script>

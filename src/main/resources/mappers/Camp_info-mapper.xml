@@ -5,6 +5,10 @@
 
 <mapper namespace="Camp_info">
 
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="indexlist">
+		select * from camp_info 
+	</select>
+	
 	<select resultType="kh.spring.dto.Camp_infoDTO" id="listAll">
 		select * from camp_info 
 		<include refid="search"></include>
