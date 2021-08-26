@@ -10,7 +10,139 @@
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
+<script>
+	$(function(){
+		
+		let index=1;
+		$(window).scroll(function(){
+			let $window = $(this);
+			let scrollTop = $(this).scrollTop();
+			let windowHeight = $window.height();
+			let documentHeight = $(document).height();
+			console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+					"| documentHeight"+documentHeight)
+			if(scrollTop+windowHeight+30>=documentHeight){
+				index++;
+				if($("#searchKey").val()!=null){
+					 setTimeout(getSearchList(),2000);
+				}else{
+					setTimeout(getList(),2000);	
+				}
+				
+			}
+					
+		})
+		
+		$(".list").on("click",function(){
+			let seq=$(this).find(".seq").val();
+			location.href="/rep/detail?rep_seq="+seq;
 
+		})
+		$(document).on("click",".list",function(){
+			let seq=$(this).find(".seq").val();
+			location.href="/rep/detail?rep_seq="+seq;
+		})
+		
+		
+		
+		$("#search").on("click",function(){
+			location.href="/rep/list?index=1&keyword="+$("#keyword").val();
+		})
+		$("#writeNo").on("click",function(){
+			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+			if(result){
+				location.href="/member/loginPage";
+			}
+		})
+		
+		function getList(){
+			$.ajax({
+				url:"/rep/scrollList",
+				dataType:"json",
+				data:{"index":index}
+			}).done(function(resp){
+				for(let i=0;i<resp.length;i++){
+					let list = $("<div class='col-3 p-0 list'>");
+					
+					let img = $("<div class='col-12 img'>");
+					let thum = $("<img src=''>");
+					
+					thum.attr("src","/img/"+resp[i].thumsysName);
+					img.append(thum);
+					let name =$("<div class='col-12 mb-1 link'>");
+					name.text(resp[i].rep_name);
+					
+					let row1 =$("<div class='row m-0'>");
+					let price = $("<div class='col-6 price'>");
+					let span = $("<span>");
+					span.text("원");
+					price.text(resp[i].rep_price);
+					price.append(span);
+					
+					let date = $("<div class='col-6 diffD'>");
+					date.text(resp[i].rep_diff_date);
+					
+					row1.append(price);
+					row1.append(date);
+					
+					let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
+					let area = $("<div class='col-12 area'>");
+					let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
+					area.append(font);
+					area.append(resp[i].rep_area);
+					row2.append(area);
+					let seq = $("<input type=hidden class=seq>");
+					seq.val(resp[i].rep_seq);
+					
+					
+					list.append(img);
+					list.append(name);
+					list.append(row1);
+					list.append(row2)
+					list.append(seq);
+					$(".listbar").append(list);
+					
+					
+				}
+			})
+		}
+		
+		function getSearchList(){
+			$.ajax({
+				url:"/rep/scrollSearchList",
+				dataType:"json",
+				data:{"index":index,"keyword":$("#searchKey").val}
+			}).done(function(resp){
+				for(let i=0;i<resp.length;i++){
+					let list = $("<div class='col-3 list'>");
+					
+					let img = $("<div id=img>");
+					img.text("사진");
+					let name =$("<div id=link>");
+					name.text(resp[i].rep_name);
+					let price = $("<div>");
+					price.text(resp[i].rep_price);
+					let date = $("<div>");
+					date.text(resp[i].rep_write_date);
+					let seq = $("<input type=hidden class=seq>");
+					seq.val(resp[i].rep_seq);
+					
+					list.append(img);
+					list.append(name);
+					list.append(price);
+					list.append(date);
+					list.append(seq);
+					$(".listbar").append(list);
+					
+					
+				}
+			})
+		}
+		
+		
+		
+	})
+</script>
 
 
 <style>
@@ -18,21 +150,21 @@
 	 .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
        h2{text-align: center;}
 /* 	div{border:1px solid black;} */
-	   .jgBar{margin:60px 0px 60px 0px;}
-	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
+	   .jgBar{margin:0px 0px 0px 0px; display:inline-block;}
+	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;margin-left:230px; }
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
        input[type=text]:focus{outline:none;}
-       #searchBox{border:1px solid black; width:400px; height:100%; padding-top:5px; padding-bottom:5px; }
-       #searchBox img{height:18px; width:18px;}
+       #searchBox{border:1px solid black; width:400px; height:100%; padding-top:5px; padding-bottom:5px;display:inline-block; margin-top:20px;}
+       #searchBox img{height:18px; width:18px;margin-bottom:-3px;}
        #keyword{width:90%; border:none;padding-left:10px; margin-top:3px;}
-       #writeBox{text-align:right; padding:8px 10px 0px 0px;}
+       #writeBox{text-align:right; padding:8px 10px 0px 0px; display:inline-block;}
        #write{ text-decoration:none; color:black; height:100%;}
        #word{border:0px solid black; width:90%;}
        #write,#writeNo:hover{cursor:pointer;}
        /*  input:focus {outline:none;}*/
       .listbar{height:330px; margin: 0px; margin-top: 40px; margin-bottom:50px;}
-      .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
+      .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; display:inline-block;}
       .list:hover{cursor:pointer;}
       .list .img{height:217px; margin-bottom: 10px; }
       .link{padding:0px 10px 0px 10px;}
@@ -77,6 +209,7 @@ a{
     align-items: center;
     background-color: #263343;
     padding: 8px 12px;
+    z-index:1000;
     
 
 }
@@ -194,8 +327,13 @@ a{
     align-items: center;
     background-color: #263343;
     padding-top:100px;
+    z-index:100;
    
    
+}
+.side_nav{
+
+	position:fixed
 }
 
 .side_menu{
@@ -221,7 +359,7 @@ a{
 	
 	display:inline-block;
 	text-align:center;
-	top:250px; left:600px; 
+	top:30px; left:250px; 
 	position:absolute;
 
 }
@@ -252,7 +390,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -268,10 +406,10 @@ a{
     
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
-            <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/newProduct?index=1">새상품 관리</a></li>
+            <li><a href="/admin/re?index=1">중고상품 관리</a></li>
             <li><a href="/admin/pay">결제내역 관리</a></li>
-           	<li style="height:200px;"></li>
+           	<li style="height:300px;"></li>
 
         </ul>
         
@@ -286,7 +424,7 @@ a{
 		<div class="container-fluid">
         <div class="row jgBar">
             <div class="col-6 " id="jg">
-                중고장터
+                중고상품 관리
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>

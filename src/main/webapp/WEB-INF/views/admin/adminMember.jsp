@@ -210,10 +210,7 @@ a{
     border-radius: 4px;
 }
 
-.side{
-	height:220px;
 
-}
 
 
 
@@ -336,10 +333,10 @@ $(function(){
     
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
-            <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/pay">중고상품 관리</a></li>
-            <li><a href="/admin/re">결제내역 관리</a></li>
-           	<li class="side"></li>
+            <li><a href="/admin/newProduct?index=1">새상품 관리</a></li>
+            <li><a href="/admin/re?index=1">중고상품 관리</a></li>
+            <li><a href="/admin/pay">결제내역 관리</a></li>
+           	<li style="height:300px;"></li>
 
         </ul>
         
