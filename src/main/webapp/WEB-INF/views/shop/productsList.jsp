@@ -299,6 +299,12 @@ $(function(){
 			</div>
 		</c:otherwise>
 	</c:choose>
+	
+	<!--챗봇  -->
+	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
+		
+	</script>
+	
 	<!-- Bootstrap core JS-->
 	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
