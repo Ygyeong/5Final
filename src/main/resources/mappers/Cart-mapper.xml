@@ -15,12 +15,12 @@
 		where p.p_seq = c.p_seq and c.camp_id=#{camp_id} order by c.c_seq
 	</select>
 	
-<!-- 	<select id="sumMoney" resultType="int"> -->
-<!-- 		select NVL(SUM(to_num(p_price) * c_qty),0)c_price  -->
-<!-- 		from camp_cart c,camp_products p  -->
-<!-- 		where c.camp_id = #{camp_id} -->
+	<select id="sumMoney" resultType="int">
+		select NVL(SUM(to_number(p_price) * c_qty),0)c_price 
+		from camp_cart c,camp_products p 
+		where c.camp_id = #{camp_id}
 	
-<!-- 	</select> -->
+	</select>
 	
 	<delete id="delete"> <!-- 장바구니 삭제 -->
 		delete from camp_cart where c_seq=#{c_seq}
