@@ -319,6 +319,7 @@ html {
                     	<span class="badge badge-primary"> ${wish }</span>
                     </c:if>
                     </button>
+                    <button>경태</button>
 
                 </div>
             </div>
