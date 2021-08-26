@@ -44,7 +44,7 @@
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
       .zero{width:100%; height:250px; text-align:center; line-height:240px;}
-	  .userBox{background-color: #f6f6f6; height:100px; margin : 30px 0px 20px 0px;}	
+	  .userBox{background-color: #f5f5f0; height:100px; margin : 30px 0px 20px 0px;}	
 	
 /*네비바 스타일  */     
 :root{

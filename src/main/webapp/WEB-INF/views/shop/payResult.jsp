@@ -30,21 +30,23 @@
             <div class="col-12 top">주문 감사합니다</div>
         </div>
         <div class="row m-0">
-            <div class="col-12 txt">임경태님의 결제 내용은 다음과 같습니다</div>
+            <div class="col-12 txt">님의 결제 내용은 다음과 같습니다</div>
         </div>
             <div class="row m-0 mt-4 p-0 box topB">
                 <div class="col-3 infoT">주문번호</div>
-                <div class="col-4"><input type="text" name=""></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_num }"></div>
             </div>
         <div class="row m-0 p-0 box">
             <div class="col-3 infoT">이름</div>
-            <div class="col-4"><input type="text" name=""></div>
+            <div class="col-4"><input type="text" name="" value="${dto.o_name}"></div>
         </div>
-        <div class="row m-0 ">
-            <div class="row m-0 p-0 box">
-                <div class="col-3 infoT">결제금액</div>
-                <div class="col-4"><input type="text" name=""></div>
-            </div>
+        <div class="row m-0 p-0 box">
+             <div class="col-3 infoT">주소</div>
+             <div class="col-4"><input type="text" name="" value="${dto.o_address1 } ${dto.o_address2}"></div>
+        </div>
+         <div class="row m-0 p-0 box">
+            <div class="col-3 infoT">상품</div>
+            <div class="col-4"><input type="text" name=""></div>
         </div>
     </div>
 </body>
