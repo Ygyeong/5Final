@@ -444,6 +444,7 @@ a {text-decoration: none;color: white;}
 								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
 								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
 								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+								            <option value="category" <c:out value="${map.searchOption == 'category'?'selected':''}"/> >카테고리</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
