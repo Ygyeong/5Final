@@ -28,10 +28,11 @@ public class OrderController {
 	
 	
 	@RequestMapping("payView")
-	public String payView(Model m) {
+	public String payView(String [] seq ,Model m) {
 		System.out.println("결제페이지로 ㄱㄱ");
+		System.out.println(seq);
 		String id = (String)session.getAttribute("loginID");
-		/* MemberDTO mdto = mservice.login(id); */
+		MemberDTO mdto = mservice.login(id); 
 		OrderDTO dto =service.select(id);
 		int o_seq = dto.getO_seq();
 		System.out.println(dto.getO_email());

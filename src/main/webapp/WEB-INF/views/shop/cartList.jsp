@@ -58,7 +58,6 @@ font-size:10pt;
 }
 table.calculation2 th{
 border:solid 1px #e0e0eb;
-
 }
 table.calculation2 td{
 boarder:solid 1px #e0e0eb;
@@ -81,18 +80,14 @@ border-radius:5px;
 .default{background-color:#fff; border:solid 1px gray; color:black;}
 .default:hover{background:#ddd;}
 .backBtn{background:#fff; border:solid 1px gray;}
-
 .btnfloat{float:left;}
 .btnfloat2{float:right;}
 .clearboth{clear:both;}
-
 .footerbtn{float:right; font-weight:bolder; font-size:12pt; border-radius:3px;}
 #allProduct,#productClear, #footerbtn{padding:11px 25px;}
-#allProduct{margin-left:140px; background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
+#allProduct{background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
 #productClear{background-color:gray; color:#fff; font-weight:bold; font-size:12pt;}
-
 .aa:hover{cursor:pointer;}
-
 /*네비바 스타일 시작
 --------------------------------------------------------------------------------------------------------------- */   
 :root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
@@ -107,7 +102,6 @@ a{text-decoration: none;color: white;}
 .navbar_menu li:hover {background-color: steelblue; border-radius: 4px;}
 .navbar_member {list-style: none; color: white; display: flex; padding-left: 0; margin-bottom:-3px;}
 .navbar_member li{padding: 8px 12px;}
-
 .navbar_toogleBtn{display: none; position: absolute; right: 32px; font-size: 24px;}
 @media screen and (max-width: 768px) {
 .navbar{flex-direction: column;align-items: flex-start;padding: 8px 24px;}
@@ -226,19 +220,8 @@ a{text-decoration: none;color: white;}
 <div class="container">
 		<div id="frame">
 			<form>
-				<div id="frame2">
-					<span style="font-size: 16pt; font-weight: bold">장바구니</span> <span
-						class="home">홈 > 장바구니</span> <span> </span>
-				</div>
-				<br />
-
-				<div>
-					<table class="calculation1">
-						<tr>
-							<th class="aa">구매상품</th>
-							<th style="width: 700px;"></th>
-						</tr>
-					</table>
+				<div id="frame2"align="center">
+					<span style="font-size: 30pt; font-weight: bold;">장바구니</span>
 				</div>
 				<br />
 				<div>
@@ -249,8 +232,7 @@ a{text-decoration: none;color: white;}
 							</tr>
 
 							<tr>
-								<th><input type="checkbox" name="checkbox" id="check" /></th>
-								<th><span>이미지</span></th>
+								<th colspan="2"><span>이미지</span></th>
 								<th style="width: 550px;"><span>상품정보</span></th>
 								<th>판매가</th>
 								<th>수량</th>
@@ -267,7 +249,7 @@ a{text-decoration: none;color: white;}
 									<input type="checkbox" id="checkbox">
 								</td>
 								<td style="border-left:none; border-right:none;">
-									<img style="width:80%" src=""/></td>
+									<img style="width:80%" src="/img/"/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
 								${list.p_name}
 								</td>
@@ -301,8 +283,6 @@ a{text-decoration: none;color: white;}
 						</tfoot>
 					</table>
 					<div style="margin:10px 0;">
-						<span style="margin: 0 10px;" class="btnfloat">선택상품을</span>
-						<button class="btn default btnfloat" style="background-color:gray; color:#fff;">삭제하기</button>
 						<button class="btn default backBtn btnfloat2">장바구니 비우기</button>
 					</div>
 					<br/><br/>
@@ -321,10 +301,9 @@ a{text-decoration: none;color: white;}
 						</tr>
 					</table>
 					
-					<div align="center">
-						<button class="btn default" id="allProduct">전체상품</button>
-						<button class="btn default backBtn" id="productClear">선택상품주문</button>
-						<button class="btn default footerbtn" id="footerbtn">쇼핑계속하기</button>
+					<div align="center" style="margin-top:10px;">
+						<button class="btn default" id="allProduct">전체상품주문</button>
+						<button class="btn default backBtn" id="productClear">쇼핑계속하기</button>
 						<span class="clearboth"></span>
 					</div>
 					<br/><br/><br/><br/><br/>
@@ -338,7 +317,6 @@ a{text-decoration: none;color: white;}
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
-
     toogleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         member.classList.toggle('active');
