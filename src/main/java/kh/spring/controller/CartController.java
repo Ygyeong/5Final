@@ -11,11 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kh.spring.dto.CartDTO;
 import kh.spring.service.CartService;
+import kh.spring.service.ProductsService;
 
 @RequestMapping("cart")
 @Controller
@@ -23,6 +23,9 @@ public class CartController {
 	
 	@Autowired
 	private CartService cservice;
+	
+	@Autowired
+	private ProductsService pservice;
 	
 	@RequestMapping("insertCart") // 장바구니 넣기
 	public String insertCart(@ModelAttribute CartDTO dto,HttpSession session) {
@@ -54,7 +57,7 @@ public class CartController {
 		map.put("sumMoney", sumMoney); // 장바구니 전체 금액
 		map.put("delivery", delivery); // 배송비
 		map.put("allSum", sumMoney+delivery); // 주문 상품 전체 금액
-		model.setViewName("/shop/cart");
+		model.setViewName("shop/cartList");
 		model.addObject("map",map);
 		return model;
 	}
