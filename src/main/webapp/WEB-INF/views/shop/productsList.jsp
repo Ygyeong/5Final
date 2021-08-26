@@ -95,7 +95,7 @@ $(function(){
       let documentHeight = $(document).height();
       console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
             "| documentHeight"+documentHeight)
-      if(scrollTop+windowHeight>=documentHeight){
+      if(scrollTop+windowHeight+50>=documentHeight){
          index++;
          setTimeout(getList(),2000);
          
