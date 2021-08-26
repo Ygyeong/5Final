@@ -484,7 +484,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -631,7 +631,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -738,7 +738,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -800,7 +800,7 @@ a{
                 	<c:forEach var="i" items="${list }">
                 	<div class="col-6 p-0 PMBox">
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
-                		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                		<div class="col-6 userRep"><img src="/img/rep/${i.thumsysName}"></div>
                 		<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                 	</div>
                 	
