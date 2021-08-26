@@ -26,7 +26,7 @@ $(function(){
 	
 	$("#signup").on('click', function(){
 		var email = $("#cm_email").val();
-		var regExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[0-9a-zA-Z]{2,5}$/i;
 					
 		if(!regExp.test(email)){
 			alert("이메일 형식이 틀립니다.")
