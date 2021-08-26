@@ -208,6 +208,37 @@ a{
 	float:left;	
 	align-items: center;
 }
+/*회원테이블 */
+
+.id{
+	width:150px;
+}
+.name {
+	width:100px;
+
+}
+
+.mail{
+	width:200px;
+
+}
+
+.phone{
+	width:180px;
+}
+
+.address{
+
+   width:330px;
+}
+
+.deleteBtn{
+	
+	width:100px;
+
+
+}
+
 </style>
 
 
@@ -257,10 +288,44 @@ a{
     
     
     <div class="body_txt" >
-    	<div id=paymenu>
-    		<div id=paylist>상품 목록</div>
-    		<div id=payinsert><a href="/admin/insert">상품 등록</a></div>
-    	</div>
+    		
+		<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" class="id">아이디</th>
+      <th scope="col" class="name">성명</th>
+      <th scope="col" class="mail">주문번호</th>
+      <th scope="col" class="phone">상품</th>
+      <th scope="col" class="address">개수</th>
+      <th scope="col" class="deleteBtn">가격</th>
+    </tr>
+  </thead>
+  
+  
+ 
+  <tbody>
+  
+  <c:forEach var="i" items="${list}"> 	
+    <tr>
+      <th scope="row">${i.cm_no }</th>
+      
+      <td id="targetID">${i.cm_id }</td>
+      <td>${i.cm_name }</td>
+      <td>${i.cm_email }</td>
+      <td>${i.cm_phone }</td>
+      <td>${i.cm_address1 }</td>
+      <form action="/admin/memberOutProc" method="post" id="deleteForm">
+      <input type="hidden" name="cm_id" value="${i.cm_id }">
+      <td><input type="submit" value="강제탈퇴" onclick="if(!confirm('정말 강제탈퇴를 실행하시겠습니까?')){return false;}"></td>
+     </form>
+    </tr>    
+    </c:forEach>
+  
+  </tbody>
+  
+ 
+</table>
     	
     	
     	

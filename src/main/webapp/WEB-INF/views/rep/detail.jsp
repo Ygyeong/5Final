@@ -474,6 +474,140 @@ a{
 
 <!-- 사용자가 게시글 작성자일때  / 아닐때  -->
 <c:choose>
+	<c:when test="${loginID == 'admin'}">
+		<div class="container-fluid">
+       		 <div class="row" id=menu>
+
+        		<div class="col-6 p-0" id=img>
+						<div id="carouselExampleControls" class="carousel slide"
+							data-interval="false">
+
+							<div class="carousel-inner">
+								<c:forEach var="i" items="${plist }" varStatus="s">
+									<div class="carousel-item ${s.count}">
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
+											alt="...">
+									</div>
+								</c:forEach>
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
+					</div>
+        	
+            <%-- div class="col-6 p-0" id=img>
+            	<img src="/img/${pdto.reSysName }">
+            </div> --%>
+            <div class="col-5 " id=infoBox>
+            	<div class="row m-0 mb-4">
+            		<div class="col-2 txt">개인중고</div>
+            		<div class="col-2 ex">${dto.rep_diff_date} ·찜<span id=count></span></div>
+            	</div>
+            	
+                <div class="row m-0">
+                    <div class="col-12 p-0 pb-1" id=name>${dto.rep_name}</div>
+                </div>
+                <div class="row m-0" id=priceBox>
+                    <div class="col-12 p-0 pb-2" id=price>${dto.rep_price}원</div>
+                  </div>
+                <div class="row m-0 pb-2 pt-4">
+                    <div class="col-3 p-0">거래방법</div>
+                    <div class="col-9 p-0">${dto.rep_delivery}</div>
+                </div>
+                <div class="row m-0 pb-2">
+                    <div class="col-3 p-0">배송비</div>
+                    <div class="col-9 p-0">${dto.rep_delivery_price}</div>
+                </div>
+                
+                <div class="row m-0 pb-4">
+                    <div class="col-3 p-0">거래지역</div>
+                    <div class="col-9 p-0">${dto.rep_area}</div>
+                </div>
+                <div class="row" id=crudBox>
+                    <div class="col-8 p-0" id=>
+						 <div class="row m-0 mt-3 mb-3">
+						 	<div class="col-12 mb-4 ckT">상품판매관리</div>
+						 	<div class="col-12 mb-1 ck">상태변경</div>
+						 	<c:choose>
+						 		<c:when test="${dto.rep_stock==1}">
+						 			<div class="col-4 sold">
+						 			<input type=radio name="sale" value="판매중" checked><span>판매중</span>
+						 		</div>
+						 		<div class="col-5 sold">
+						 			<input type=radio name="sale" value="판매완료" ><span>판매완료</span>
+						 		</div>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<div class="col-4 sold">
+						 				<input type=radio name="sale" value="판매중" ><span>판매중</span>
+						 			</div>
+						 			<div class="col-5 sold">
+						 				<input type=radio name="sale" value="판매완료" checked><span>판매완료</span>
+						 			</div>
+						 		</c:otherwise>
+							</c:choose>
+						 </div>
+					</div>
+                    <div class="col-4 p-0">
+                    	<div class="row m-0">
+						 	<div class="col-8 pt-1" id=update>수정</div>
+						 	<div class="col-8 pt-1" id=delete>삭제</div>
+						 	<div class="col-8 pt-1" id=submit>적용</div>
+						 </div>
+                    </div>
+                </div>
+                <input type=hidden id=seq value="${dto.rep_seq}">
+            </div>
+        </div>
+        <div class="row p-0 content">
+            <div class="col-8">
+                <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                <div class="col-12 pt-4 pb-4" >${dto.rep_detail}</div>
+            </div>
+            
+        </div>
+     
+            <div class="row m-0">
+                <div class="col-12" id=cmtT>댓글</div>
+            </div>
+            <div class="row cmtBox">
+                <div class="col-11 p-0">
+                    <textarea name="" id=content placeholder="댓글을 입력해주세요."></textarea>
+                </div>
+                <div class="col-1" id=cmtBtn>댓글등록
+                </div>
+            </div>
+             <div class="box">
+            	<c:forEach var="i" items="${cdto }">
+            		<div class="row recmtBox" id="id${i.recmt_seq }">
+            			<div class="row m-0">
+            				<div class="col-5 p-0 ID">${i.recmt_writer }<span>${i.recmt_write_date }</span></div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-5 p-0 cmt">${i.recmt_comments }</div>
+            			</div>
+            			<div class="row m-0">
+            				<div class="col-12 p-0 btnBox">
+            					<input type="button"  class="modi btn btn-secondary" value="수정">
+            					<input type="button" class="del btn btn-secondary "  value="삭제">
+            					<input type="hidden" class="recmt_seq" value="${i.recmt_seq }">
+            				</div>
+            			</div>
+            		</div>
+            	</c:forEach>
+            	
+            </div> 
+
+    </div>
+	</c:when>
 	<c:when test="${loginID == dto.rep_writer}">
 		<div class="container-fluid">
        		 <div class="row" id=menu>
