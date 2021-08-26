@@ -8,20 +8,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script  src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- diary -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css'rel='stylesheet'/>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css' rel='stylesheet' media='print'/>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js"></script>
 <!-- import -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
+
 <title>** MY PAGE **</title>
 <script>
 
@@ -41,23 +38,15 @@ $(function(){
 	$("#cartList").on("click",function(){
 		location.href="/cart/cartList?cm_id=${loginID}"
 	})
-	$('#calendar').fullCalendar({
-		header: {
-			right: 'custom1 ,custom2 prevYear,prev,next,nextYear'
-		},
-	    customButtons: {
-			custom2: {
-				text: '일정추가',
-		        id: 'add',
-				click: function() { 
-				}
-			}
-		}	
+	$("#wishlist").on('click', function(){
+		var url = "/member/wishlist?cm_id=${loginID}";
+		var name = "/member/wishlist";
+		var option = "width=600,height=600 left=100, top=50, location=no";
+		window.open(url, name, option)
 	})
-
-
-		
-	$(".fc-custom2-button").on('click', function(){
+	
+	$(".days div").on('click', function(){
+		var a= $(".day div").html();
 		var url = "/schedule/scheduleOpen?cm_id=${loginID}";
 		var name = "/schedule/scheduleOpen";
 		var option = "width=600,height=600 left=100, top=50, location=no";
@@ -115,77 +104,203 @@ $(function(){
     .fc-left{
     	textsize: 10px;
     }
+    
+    
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+html {
+}
+
+.container {
+  font-family: "Quicksand", sans-serif;
+  width: 50%;
+  height: 100vh;
+  background-color: #12121f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  width: 45rem;
+  height: 52rem;
+  background-color: #222227;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+
+.month {
+  width: 100%;
+  height: 12rem;
+  background-color: #167e56;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.month i {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.month h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.month p {
+  font-size: 1.6rem;
+}
+
+.weekdays {
+  width: 100%;
+  height: 5rem;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.weekdays div {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  width: calc(44.2rem / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.2rem;
+}
+
+.days div {
+  font-size: 1.4rem;
+  margin: 0.3rem;
+  width: calc(40.2rem / 7);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s;
+}
+
+.days div:hover:not(.today) {
+  background-color: #262626;
+  border: 0.2rem solid #777;
+  cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.today {
+  background-color: #167e56;
+}
 </style>
 </head>
 <body>
 	<div>
-		<!--nav start -->
-		<c:choose>
-		<c:when test="${loginID==null }">
-		<nav class="navbar">
-		        <div class="navbar_logo">
-		     	   <a href="/"><img src="assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="/member/signUp">회원가입</a></li>
-		            <li><a href="/member/loginPage">로그인</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-		</c:when>
-		<c:when test="${loginID=='admin'}">
-		<nav class="navbar">
-		        <div class="navbar_logo">
-		            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="/admin/home">관리자페이지</a></li>
-		            <li><a href="/member/logOutProc">로그아웃</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-		</c:when>
-		<c:otherwise>
-		<nav class="navbar">
-		        <div class="navbar_logo">   
-		            <a href=""><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-		        </div>
-		        <ul class="navbar_menu">
-		            <li><a href="/info/list?index=1">캠핑장</a></li>
-		            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-		            <li><a href="/products/selectAll?index=1">SHOP</a></li>
-		            <li><a href="/rep/list?index=1">중고장터</a></li>
-		            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-		        </ul>
-		        <ul class="navbar_member">
-		            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
-		            <li><a href="/member/logOutProc">로그아웃</a></li>
-		        </ul>
-		        <a href="#" class="navbar_toogleBtn">
-		            <i class="fas fa-bars"></i>
-		        </a>
-		    </nav>
-			</c:otherwise>
-		</c:choose>
-		<!-- nav end -->		
+	<!--네비바 시작 -->
+	<c:choose>
+	<c:when test="${loginID == null }">
+	<nav class="navbar">
+	        <div class="navbar_logo">
+	            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+	        </div>
+	        
+	        <ul class="navbar_menu">
+	            <li><a href="/info/list?index=1">캠핑장</a></li>
+	            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+	            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+	            <li><a href="/rep/list?index=1">중고장터</a></li>
+	            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+	        </ul>
+	        
+	        <ul class="navbar_member">
+	            <li><a href="/member/signPage">회원가입</a></li>
+	            <li><a href="/member/loginPage">로그인</a></li>
+	        </ul>
+	
+	        <a href="#" class="navbar_toogleBtn">
+	            <i class="fas fa-bars"></i>
+	        </a>
+	    </nav>
+	
+	</c:when>
+	<c:when test="${loginID=='admin'}">
+	<nav class="navbar">
+	        <div class="navbar_logo">
+	            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+	        </div>	        
+	        <ul class="navbar_menu">
+	            <li><a href="/info/list?index=1">캠핑장</a></li>
+	            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+	            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+	            <li><a href="/rep/list?index=1">중고장터</a></li>
+	            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+	        </ul>
+	        
+	        <ul class="navbar_member">
+	            <li><a href="/admin/home">관리자페이지</a></li>
+	            <li><a href="/member/logOutProc">로그아웃</a></li>
+	        </ul>
+	        
+	        <a href="#" class="navbar_toogleBtn">
+	            <i class="fas fa-bars"></i>
+	        </a>
+	    </nav>
+	
+	</c:when>
+	<c:otherwise>
+	<nav class="navbar">
+	        <div class="navbar_logo">
+	           
+	            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+	
+	        </div>
+	        <ul class="navbar_menu">
+	            <li><a href="/info/list?index=1">캠핑장</a></li>
+	            <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
+	            <li><a href="/products/selectAll?index=1">SHOP</a></li>
+	            <li><a href="/rep/list?index=1">중고장터</a></li>
+	            <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
+	        </ul>
+	        
+	        <ul class="navbar_member">
+	            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+	            <li><a href="/member/logOutProc">로그아웃</a></li>
+	        </ul>
+	
+	        <a href="#" class="navbar_toogleBtn">
+	            <i class="fas fa-bars"></i>
+	        </a>
+	        
+	    </nav>
+	</c:otherwise>
+	</c:choose> 
+	
+	<!--네비바 끝  -->
+						
 		<!-- mypage start -->
 		<div id="myBox">
 	        <div id="me" class="card">
@@ -195,11 +310,43 @@ $(function(){
                     <button class="btn btn-primary" id="myPagePwChange">비밀번호 변경</button>
                     <button class="btn btn-danger" id="myPageMemberDelete">회원 탈퇴</button>
                     <button class="btn btn-dark" id="goHome">메인으로</button><br><br>
+                    <button class="btn btn-info" id="cartList">장바구니</button>
+                    <button class="btn btn-light" id="wishlist">찜목록 
+                    <c:if test="${wish == 0}">
+                    	<span class="badge badge-secondary"> ${wish }</span>
+                    </c:if>
+                    <c:if test="${wish > 0}">
+                    	<span class="badge badge-primary"> ${wish }</span>
+                    </c:if>
+                    </button>
+                    <button>경태</button>
 
                 </div>
             </div>
         </div>
-        <div id="calendar" style="width:600px; margin:auto;"></div>
+        
+           <div class="container">
+        <div class="calendar">
+          <div class="month">
+            <i class="fas fa-angle-left prev"></i>
+            <div class="date">
+              <h1></h1>
+              <p></p>
+            </div>
+            <i class="fas fa-angle-right next"></i>
+          </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="days"></div>
+        </div>
+    </div>
         <div id="tableBox" style="text-align: center;">
         
         	<input class="form-control" id="myInput" type="text" placeholder="키워드를 입력해주세요" style="width:600px;margin:auto; margin-top:10px;">
@@ -222,5 +369,21 @@ $(function(){
 				</table>
            </div>
     </div>  
+    
+    
+ <!--네비바 스크립트  -->
+    <script>
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+	</script>
+	<script src="${pageContext.request.contextPath}/resources/js/asd.js"></script>
+    
 </body>
 </html>
