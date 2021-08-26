@@ -84,7 +84,7 @@
 
 .search_box {margin: auto;}
 .container{
-	max-width: 850px;
+	max-width: 830px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden
@@ -108,7 +108,7 @@
 .logo>img {width: 150px;height: 75px;}
 
 #myContainer{padding-top: 10px;}
-.ms-left{top:40px !important;}
+.ms-left{top:32px !important;}
 
 /*네비바 스타일  */
 :root { -
@@ -202,11 +202,28 @@ a {text-decoration: none;color: white;}
 #boardlist>*{color: black;}
 #menu>li{background-color: #0f4c8199;}
 #menu>li:hover{background-color: #0f4c8170;}
-#seasonImg>*{width: 80%;}
-#seasonImg>img{width: 850px; height: 480px;}
+#seasonImg>img{width: 94%;}
 .row{margin:0;padding:0;}
 .row.btns{line-height: 0;}
-
+#titleLink{
+	display: inline-block;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	width: 200px;
+}
+.col-12.body.cnt{
+	padding: 0;
+	margin: 0;
+}
+.tb_header{
+	padding: 0;
+	margin: 0;
+}
+.tb_header>.row>*{
+	padding: 0;
+	margin: 0;
+}
 </style>
 </head>
 
@@ -335,34 +352,34 @@ a {text-decoration: none;color: white;}
 		<div class="ms-right">
 			<div class="ms-section" id="right1">
 				<input type="hidden" id="category" name="category" value="1">
-					<div class="logo">
+					<div class="logo d-none d-sm-block">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script'; font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
 						</a>
 					</div><br>
-				<div class="container">
-					<div class="body cnt">
-						<div class="tb_header bg-dark text-white">
+				<div class="row container">
+					<div class="col-12 body cnt">
+						<div class="col-12 tb_header bg-dark text-white">
 							<div class="row">
-								<div class="col-1 d-none d-md-block">분류</div>
-								<div class="col-1 d-none d-md-block">번호</div>
-								<div class="col-4 col-sm-4 col-md-4">제목</div>
-								<div class="col-2 d-none d-md-block">작성자</div>
-								<div class="col-2 d-none d-xl-block">등록일</div>
-								<div class="col-2 d-none d-xl-block">조회수</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">분류</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">번호</div>
+								<div class="col-md-7 col-lg-5">제목</div>
+								<div class="col-md-3 col-lg-2 d-none d-md-block">작성자</div>
+								<div class="col-lg-2 d-none d-xl-block">등록일</div>
+								<div class="col-lg-1 d-none d-xl-block">조회수</div>
 							</div>
 						</div>
 						<div class="tb_body">
 							<c:forEach var="i" items="${map.list}">
 								<div class="row">
-									<div class="col-1 d-none d-md-block">${i.category}</div>
-									<div class="col-1 d-none d-md-block">${i.camp_tip_num}</div>
-									<div class="col-4 col-sm-4 col-md-4" id="titleMove">
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.category}</div>
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.camp_tip_num}</div>
+									<div class="col-md-7 col-lg-5" id="titleMove">
 										<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
 									</div>
-									<div class="col-2 d-none d-md-block">${i.writer}</div>
-									<div class="col-2 d-none d-xl-block">${i.write_date}</div>
-									<div class="col-2 d-none d-xl-block">${i.view_count}</div>
+									<div class="col-md-3 col-lg-2 d-none d-md-block">${i.writer}</div>
+									<div class="col-lg-2 d-none d-xl-block">${i.write_date}</div>
+									<div class="col-lg-1 d-none d-xl-block">${i.view_count}</div>
 								</div>						
 							</c:forEach>
 						</div>
@@ -421,16 +438,9 @@ a {text-decoration: none;color: white;}
 								<div class="row col-12">
 									<div class="col-sm-12 col-lg-3">
 										<select class="form-control" name="searchOption" id="srch_item">
-											<option value="">선택해주세요</option>
-												<option value="writer">
-													<c:out value="${map.searchOption == 'writer'?'selected':''}"/>작성자
-												</option>
-												<option value="contents">
-													<c:out value="${map.searchOption == 'contents'?'selected':''}"/>내용
-												</option>
-												<option value="title">
-													<c:out value="${map.searchOption == 'title'?'selected':''}"/>제목
-												</option>
+								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
+								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -535,16 +545,9 @@ a {text-decoration: none;color: white;}
 								<div class="row col-12">
 									<div class="col-sm-12 col-lg-3">
 										<select class="form-control" name="searchOption" id="srch_item">
-											<option value="">선택해주세요</option>
-												<option value="writer">
-													<c:out value="${map.searchOption == 'writer'?'selected':''}"/>작성자
-												</option>
-												<option value="contents">
-													<c:out value="${map.searchOption == 'contents'?'selected':''}"/>내용
-												</option>
-												<option value="title">
-													<c:out value="${map.searchOption == 'title'?'selected':''}"/>제목
-												</option>
+								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
+								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -648,16 +651,9 @@ a {text-decoration: none;color: white;}
 								<div class="row col-12">
 									<div class="col-sm-12 col-lg-3">
 										<select class="form-control" name="searchOption" id="srch_item">
-											<option value="">선택해주세요</option>
-												<option value="writer">
-													<c:out value="${map.searchOption == 'writer'?'selected':''}"/>작성자
-												</option>
-												<option value="contents">
-													<c:out value="${map.searchOption == 'contents'?'selected':''}"/>내용
-												</option>
-												<option value="title">
-													<c:out value="${map.searchOption == 'title'?'selected':''}"/>제목
-												</option>
+								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
+								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -761,16 +757,9 @@ a {text-decoration: none;color: white;}
 								<div class="row col-12">
 									<div class="col-sm-12 col-lg-3">
 										<select class="form-control" name="searchOption" id="srch_item">
-											<option value="">선택해주세요</option>
-												<option value="writer">
-													<c:out value="${map.searchOption == 'writer'?'selected':''}"/>작성자
-												</option>
-												<option value="contents">
-													<c:out value="${map.searchOption == 'contents'?'selected':''}"/>내용
-												</option>
-												<option value="title">
-													<c:out value="${map.searchOption == 'title'?'selected':''}"/>제목
-												</option>
+						            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
+						            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+						            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
