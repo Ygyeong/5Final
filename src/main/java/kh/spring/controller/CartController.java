@@ -64,7 +64,6 @@ public class CartController {
 	
 	@RequestMapping("delete")
 	public String delete(@RequestParam int c_seq) {
-		System.out.println(c_seq);
 		cservice.delete(c_seq);
 		return "redirect:/shop/cartList";
 	}
@@ -72,7 +71,8 @@ public class CartController {
 	@RequestMapping("update")
 	public String update(@RequestParam int[] c_qty, @RequestParam int[] p_seq, HttpSession session) {
 		String camp_id = (String)session.getAttribute("camp_id");
-		
+		System.out.println("p_seq" + p_seq);
+		System.out.println(p_seq.length);
 		for(int i=0; i<p_seq.length; i++) {
 			CartDTO dto = new CartDTO();
 			dto.setCamp_id(camp_id);
