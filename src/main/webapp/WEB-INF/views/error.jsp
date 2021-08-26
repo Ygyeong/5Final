@@ -15,11 +15,7 @@
 
 
 
-.logo{
 
-    
-
-}
 
 .title_message{
 
