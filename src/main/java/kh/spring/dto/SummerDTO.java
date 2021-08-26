@@ -17,6 +17,7 @@ public class SummerDTO {
 		this.p_seq = p_seq;
 	}
 
+
 	public int getS_seq() {
 		return s_seq;
 	}
@@ -48,6 +49,5 @@ public class SummerDTO {
 	public void setP_seq(int p_seq) {
 		this.p_seq = p_seq;
 	}
-	
-	
+
 }

@@ -36,5 +36,4 @@
 		select * from camp_products where camp_id = #{value} 
 	</select>
 	
-	
 </mapper>

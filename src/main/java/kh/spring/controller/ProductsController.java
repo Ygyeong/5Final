@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.google.gson.Gson;
 
 import kh.spring.config.ReProductConfig;
 import kh.spring.dto.ProductsDTO;
-
 import kh.spring.dto.SummerDTO;
 import kh.spring.service.ProductsService;
 
@@ -32,6 +33,18 @@ public class ProductsController {
 	public String boardWritePage() {
 		return "admin/productsInsert";
 	}
+
+	@RequestMapping("insert") // 상품등록
+	public String insert(ProductsDTO dto,MultipartFile[] file) throws Exception {
+
+		int p_seq = service.getP_seq();
+		dto.setCamp_id((String)session.getAttribute("loginID"));
+		dto.setP_seq(p_seq);
+		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		service.insert(dto,p_seq,file,realPath);
+		return "redirect:/products/selectAll?index=1";
+	}
+
 
 
 	@RequestMapping("selectAll") // 상품목록
@@ -55,22 +68,23 @@ public class ProductsController {
 		model.addAttribute("dto",dto);
 		return "shop/productsDetail";
 	}
-	
+
 	@RequestMapping("delete") // 상품삭제
 	public String delete(int p_seq) {
 		service.delete(p_seq);
 		return "redirect:/products/selectAll?index=1";
 	} 
 	@RequestMapping("modify") // 상품수정
-	public String update(int p_seq,Model model) {
-		ProductsDTO dto = service.detail(p_seq);
-		List<SummerDTO> sdto = service.filesBySeq(p_seq);
-		model.addAttribute("sdto",sdto);
-		model.addAttribute("dto",dto);
-		return "shop/productsModify";
+	public String update(@RequestParam(value="delete") String[] delete , MultipartFile[] file,ProductsDTO dto,Model m)throws Exception {
+		
+		String realPath = session.getServletContext().getRealPath("/resoures/imgs");
+		String [] delTargets = delete;
+		service.modify(realPath, file, delTargets, dto);
+		return "redirect:/products/selectAll?index=1";
 	} 
 	
 	
+
 	@ResponseBody
 	@RequestMapping(value="scrollList",produces="text/html;charset=utf8")
 	public String scrollList(int index) { // 무한스크롤
@@ -80,16 +94,5 @@ public class ProductsController {
 		System.out.println(index);
 		return new Gson().toJson(list);
 	}
-	
-	@RequestMapping("insert") // 상품등록
-	   public String insert(ProductsDTO dto,MultipartFile[] file) throws Exception {
-	      
-	      int p_seq = service.getP_seq();
-	      dto.setCamp_id((String)session.getAttribute("loginID"));
-	      dto.setP_seq(p_seq);
-	      String realPath = session.getServletContext().getRealPath("/resources/imgs");
-	      service.insert(dto,p_seq,file,realPath);
-	      return "redirect:/products/selectAll?index=1";
-	   }
 
 }

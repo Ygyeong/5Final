@@ -12,9 +12,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
 <link href="/css/liststyles.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
 
 </head>
 <style>
+	
+	.portfolio-caption-heading, .portfolio-caption-subheading text-muted {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 1%;
+    font-size: 17px;
+    text-align: left;
+}
+	
 	#header{
 		width:100%;
 		height:200px;
@@ -40,11 +52,12 @@
   		margin:auto;
   		text-align:center;
   		padding-top:3%;
+  		margin-bottom: 5%;
 
 	}
 	
 	#cmapinglist{
-		margin: 3% 1% 0 1%;
+		margin: 0% 1% 0 1%;
 	}
 	
 	#items{
@@ -228,7 +241,7 @@ a{
 					let list = $("<div class='col-lg-3 col-sm-6 mb-4' id='items'>");
 					
 					let box = $("<div class='portfolio-item'>");
-					let detaillink = $("<a href='" + resp[i].contentId +"'>");
+					let detaillink = $("<a href= /info/detail?contentId=" + resp[i].contentId +">");
 					let image =$("<img class='img-fluid' src='" + resp[i].firstImageUrl + "''>");
 					let box2 = $("<div class='portfolio-caption'>");
 					let name = $("<div class='portfolio-caption-heading'>");
@@ -241,7 +254,7 @@ a{
 					box2.append(name);
 					
 
-					$("#cmapinglist").append(list);
+					$("#campinglist").append(list);
 					
 					
 				}
@@ -278,7 +291,7 @@ a{
 					list.append(box2);
 					box2.append(name);
 					
-					$("#cmapinglist").append(list);
+					$("#campinglist").append(list);
 					
 				}
 			})
@@ -407,15 +420,16 @@ a{
              		<select id="searchOption">
              			<option value="all" >전체</option>
              			<option value="facltNm"  > 캠핑장 이름 </option>
-             			<option value="lctCl"> 주변 환경 </option>
+             			<option value="lctCl"> 주변 환경 (ex. 산 / 해변 / 계곡) </option>
              			<option value="addr1"  > 지역 </option>
              		</select>
-             		<input type=text name="keyword" >
+             		<input type=text name="keyword" id="keyword">
              			<button type="button" class="btn btn-light" id="search">검색</button>
-             			<input type=hidden value=${keyword } id=searchKey>
+             			<input type=hidden value=${keyword} id=searchKey>
 			</div>
 			<!-- 검색 목록 출력 -->
-			    <div class="row" id="cmapinglist">
+			    <div class="row" id="campinglist">
+
                 <c:forEach var="i" items="${slist}">
                     <div class="col-lg-3 col-sm-6 mb-4" id=items>
                         <div class="portfolio-item">
@@ -427,7 +441,8 @@ a{
                             </div>
                         </div>
                     </div>
-                 </c:forEach>   
+                 </c:forEach> 
+ 
                 </div>
 			<!--  목록 출력 -->
                 <div class="row" id="cmapinglist">
@@ -438,7 +453,7 @@ a{
                         		<a href='/info/detail?contentId=${i.contentId }'><img class="img-fluid" src="${i.firstImageUrl}">
                             	</a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">${i.facltNm}</div>
+                                <div class="portfolio-caption-heading">${i.facltNm} </div>
                                 <div class="portfolio-caption-subheading text-muted"></div>
                             </div>
                         </div>

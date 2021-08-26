@@ -184,6 +184,7 @@ a{
 	text-align:center;
 	top:150px; left:300px; 
 	position:absolute;
+	overflow-y:auto;
 
 }
 
@@ -224,17 +225,17 @@ a{
 }
 
 .phone{
-	width:180px;
+	width:300px;
 }
 
 .address{
 
-   width:330px;
+   width:60px;
 }
 
 .deleteBtn{
 	
-	width:100px;
+	width:180px;
 
 
 }
@@ -298,7 +299,7 @@ a{
       <th scope="col" class="mail">주문번호</th>
       <th scope="col" class="phone">상품</th>
       <th scope="col" class="address">개수</th>
-      <th scope="col" class="deleteBtn">가격</th>
+      <th scope="col" class="deleteBtn">총 가격</th>
     </tr>
   </thead>
   
@@ -308,16 +309,14 @@ a{
   
   <c:forEach var="i" items="${list}"> 	
     <tr>
-      <th scope="row">${i.cm_no }</th>
+      <th scope="row">${i.o_seq }</th>
       
-      <td id="targetID">${i.cm_id }</td>
-      <td>${i.cm_name }</td>
-      <td>${i.cm_email }</td>
-      <td>${i.cm_phone }</td>
-      <td>${i.cm_address1 }</td>
-      <form action="/admin/memberOutProc" method="post" id="deleteForm">
-      <input type="hidden" name="cm_id" value="${i.cm_id }">
-      <td><input type="submit" value="강제탈퇴" onclick="if(!confirm('정말 강제탈퇴를 실행하시겠습니까?')){return false;}"></td>
+      <td id="targetID">${i.m_id }</td>
+      <td>${i.o_name }</td>
+      <td>${i.o_num }</td>
+      <td>${i.o_product }</td>
+      <td>${i.o_qcy }</td>
+      <td>${i.o_allSum }<span style="margin-left:4px;">원</span></td>
      </form>
     </tr>    
     </c:forEach>
