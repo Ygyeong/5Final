@@ -5,9 +5,11 @@
 
 <mapper namespace="Cart">
 	<insert id="insert"> <!-- 상품등록 --> 
-		insert into camp_cart(c_seq, camp_id,p_seq,c_qty) values
-		(c_seq.nextval, #{camp_id}, #{p_seq},#{c_qty})
-	</insert>
+
+      insert into camp_cart(c_seq, camp_id,p_seq,c_qty) values
+      (c_seq.nextval, #{camp_id}, #{p_seq},#{c_qty})
+   </insert>
+
 	
 	<select id="list" resultType="kh.spring.dto.CartDTO">
 		select c.c_seq as c_seq, c.camp_id as camp_id, p.p_seq as p_seq, p.p_name as p_name, c.c_qty, p.p_price as p_price,

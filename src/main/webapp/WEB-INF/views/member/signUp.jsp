@@ -26,8 +26,9 @@ $(function(){
 	
 	$("#signup").on('click', function(){
 		var email = $("#cm_email").val();
+
 		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[0-9a-zA-Z]{2,5}$/i;
-					
+
 		if(!regExp.test(email)){
 			alert("이메일 형식이 틀립니다.")
 		}else{
@@ -162,7 +163,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"></span>
                             </div>
-                            <input type="text" id="cm_zipcode" name="cm_zipcode" class="form-control" placeholder="postcode">
+                            <input type="text" id="cm_zipcode" name="cm_zipcode" class="form-control" placeholder="postcode" required>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="button" id="postBtn" class="btn btn-primary" value="주소찾기">
                         </div>
@@ -171,7 +172,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                             </div>
-                            <input type="text" id="roadAddress" name="cm_address1" class="form-control" placeholder="도로명 주소">
+                            <input type="text" id="roadAddress" name="cm_address1" class="form-control" placeholder="도로명 주소" required>
 
                         </div>
 
@@ -179,7 +180,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"></span>
                             </div>
-                            <input type="text" class="form-control" name="cm_address2" placeholder="상세주소">
+                            <input type="text" class="form-control" name="cm_address2" placeholder="상세주소" required>
                         </div>
 
                         <div class="form-group">

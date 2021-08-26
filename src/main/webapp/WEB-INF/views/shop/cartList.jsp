@@ -58,7 +58,6 @@ font-size:10pt;
 }
 table.calculation2 th{
 border:solid 1px #e0e0eb;
-
 }
 table.calculation2 td{
 boarder:solid 1px #e0e0eb;
@@ -81,17 +80,14 @@ border-radius:5px;
 .default{background-color:#fff; border:solid 1px gray; color:black;}
 .default:hover{background:#ddd;}
 .backBtn{background:#fff; border:solid 1px gray;}
-
 .btnfloat{float:left;}
 .btnfloat2{float:right;}
 .clearboth{clear:both;}
-
 .footerbtn{float:right; font-weight:bolder; font-size:12pt; border-radius:3px;}
 #allProduct,#productClear, #footerbtn{padding:11px 25px;}
 #allProduct{background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
 #productClear{background-color:gray; color:#fff; font-weight:bold; font-size:12pt;}
 .aa:hover{cursor:pointer;}
-
 /*네비바 스타일 시작
 --------------------------------------------------------------------------------------------------------------- */   
 :root{--text-color:#f0f4f5;--background-color:#263343; --accent-color:steelblue;}
@@ -106,7 +102,6 @@ a{text-decoration: none;color: white;}
 .navbar_menu li:hover {background-color: steelblue; border-radius: 4px;}
 .navbar_member {list-style: none; color: white; display: flex; padding-left: 0; margin-bottom:-3px;}
 .navbar_member li{padding: 8px 12px;}
-
 .navbar_toogleBtn{display: none; position: absolute; right: 32px; font-size: 24px;}
 @media screen and (max-width: 768px) {
 .navbar{flex-direction: column;align-items: flex-start;padding: 8px 24px;}
@@ -383,7 +378,6 @@ a{text-decoration: none;color: white;}
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
-
     toogleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         member.classList.toggle('active');

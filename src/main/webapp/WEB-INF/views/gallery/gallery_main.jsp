@@ -232,7 +232,7 @@
                                 <i class="fas fa-user" style="margin-left:-1px;"></i>
                                 <p>${list.writer}</p>
                             </div>
-                            <div class="blog-text" style="height:100px;">
+                            <div class="blog-text" style="height:100px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
                                <h3> <a href="/gal/detail?seq=${list.seq }"> ${list.title }</a></h3>
                                                
                                 <c:choose>

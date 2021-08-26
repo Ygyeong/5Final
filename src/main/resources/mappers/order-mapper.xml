@@ -4,14 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Order">
 	<insert id="insert">
-		insert into camp_orders values(o_seq.nextval,#{m_id},sysdate,#{o_name},#{o_phone},#{o_email},
+		insert into camp_orders values(#{o_seq},#{m_id},sysdate,#{o_name},#{o_phone},#{o_email},
 		#{o_zipcode},#{o_address1},#{o_address2},#{o_product},#{o_qcy},#{o_allSum},#{o_delivery},0,0)
 	</insert>
-	
+	<select id="getSeq" resultType="int">
+		select o_seq.nextval from dual
+	</select>
 	<select id="select" resultType="kh.spring.dto.OrderDTO">
-		select * from camp_orders where m_id=#{value}
+		select * from camp_orders where o_seq=#{value}
 	</select>
 	<update id="update">
 		update camp_orders set o_num = #{o_num}, o_check = 1 where o_seq = #{o_seq}
 	</update>
+	<select id="getAll" resultType="kh.spring.dto.OrderDTO">
+		select * from camp_orders where o_check = 1
+	</select>
 </mapper>
