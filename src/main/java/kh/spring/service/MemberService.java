@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.spring.dao.MemberDAO;
 import kh.spring.dao.ReWishListDAO;
+import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.Camp_wishlistDTO;
 import kh.spring.dto.MemberDTO;
 
@@ -50,5 +51,15 @@ public class MemberService {
 	
 	public int wishCount(String cm_id) {
 		return dao.wishCount(cm_id);
-	}	
+	}
+
+	public List<Camp_infoDTO> selectAll() {
+		
+		return dao.selectAll();
+	}
+	
+	public int idPwCheck(MemberDTO dto) {
+		return dao.pwIdCheck(dto);
+	}
+
 }
