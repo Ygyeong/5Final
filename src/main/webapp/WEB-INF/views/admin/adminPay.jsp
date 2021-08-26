@@ -182,7 +182,7 @@ a{
 	
 	display:inline-block;
 	text-align:center;
-	top:250px; left:600px; 
+	top:150px; left:300px; 
 	position:absolute;
 
 }
