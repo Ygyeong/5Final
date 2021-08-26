@@ -26,6 +26,11 @@ public class Camp_infoService {
 		return dao.detail(contentId);
 	}
 	
+	//캠프 사진 디테일에 뿌리기
+	public List<Camp_photoDTO> detailimage(int contentId){
+		return dao.detailimage(contentId);
+	}
+	
 	//캠프 사진 파싱
 	public int imageinsert(Camp_photoDTO dto) {
 		return dao.imageinsert(dto);

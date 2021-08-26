@@ -74,7 +74,7 @@ public class InfoController {
 	//캠핑 디테일
 	@RequestMapping("detail")
 	public String detail(HttpServletRequest request, Model model, int contentId) throws Exception {
-		//List<Camp_photoDTO> image = service.detailimagecontentId);
+		List<Camp_photoDTO> image = service.detailimage(contentId);
 		List<Camp_infoDTO> list = service.detail(contentId);
 
 		HttpSession session = request.getSession();
@@ -96,7 +96,7 @@ public class InfoController {
 		
 		
 		model.addAttribute("list",list);
-		//model.addAttribute("image",image);
+		model.addAttribute("image",image);
 		return "camp_info/campingdetail";
 	}
 	
@@ -189,17 +189,21 @@ public class InfoController {
 		
 		List <Camp_infoDTO> id = service.contentIdlist();
 		PublicImage image = new PublicImage();
-		Camp_photoDTO dto = new Camp_photoDTO(); 
-		
-		for(int i=0; i< 5; i++) {
+		//Camp_photoDTO dto = new Camp_photoDTO(); 
+
+		for(int i=0; i< 260; i++) {
 			Camp_infoDTO idlist = id.get(i);
 			int contentId = idlist.getContentId();
 			System.out.println(i + ": " + contentId);
+			
 			List <Camp_photoDTO> list = image.ParsingData(contentId);
-			service.imageinsert(dto);
+			
+			for(Camp_photoDTO dto : list){	
+				
+				service.imageinsert(dto);
+			}
+			
 		}
-
-	    
 		
 		return "camp_info/campinglist";
 	}
