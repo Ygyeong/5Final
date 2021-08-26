@@ -54,7 +54,7 @@ public class CartController {
 		map.put("sumMoney", sumMoney); // 장바구니 전체 금액
 		map.put("delivery", delivery); // 배송비
 		map.put("allSum", sumMoney+delivery); // 주문 상품 전체 금액
-		model.setViewName("shop/cartList");
+		model.setViewName("/shop/cart");
 		model.addObject("map",map);
 		return model;
 	}
