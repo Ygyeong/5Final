@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>상품목록</title>
@@ -25,7 +25,7 @@
 *{box-sizing: border-box;}
 .container-fluid{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
 h2{text-align: center;}
-/* 	div{border:1px solid black;} */
+/*    div{border:1px solid black;} */
 #category{text-align:right; margin-right:10px;}
 #category select{height:100%;}
 #searchBox{border:1px solid black;
@@ -77,62 +77,62 @@ a{text-decoration: none;color: white;}
 </style>
 <script type="text/javascript">
 $(function(){
- 	
- 	$(".list").on("click",function(){
- 		let p_seq=$(this).find(".p_seq").val();
- 		location.href="/products/detail?p_seq="+p_seq;
-	})
-	$(document).on("click",".list",function(){
-		let p_seq=$(this).find(".p_seq").val();
-		location.href="/products/detail?p_seq="+p_seq;
-	})
-	
-	let index=1;
-	$(window).scroll(function(){
-		let $window = $(this);
-		let scrollTop = $(this).scrollTop();
-		let windowHeight = $window.height();
-		let documentHeight = $(document).height();
-		console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
-				"| documentHeight"+documentHeight)
-		if(scrollTop+windowHeight>=documentHeight){
-			index++;
-			setTimeout(getList(),2000);
-			
-		}
-				
-	})
-	
-	function getList(){
-		$.ajax({
-			url:"/products/scrollList",
-			dataType:"json",
-			data:{"index":index}
-		}).done(function(resp){
-			for(let i=0;i<resp.length;i++){
-				let list = $("<div class='col-4 list'>");
-				
-				let img = $("<div id=img>");
-				img.text("사진");
-				let name =$("<div id=link>");
-				name.text(resp[i].rep_name);
-				let price = $("<div>");
-				price.text(resp[i].rep_price);
-				let date = $("<div>");
-				date.text(resp[i].rep_write_date);
-				let seq = $("<input type=hidden class=seq>");
-				seq.val(resp[i].rep_seq);
-				
-				list.append(img);
-				list.append(name);
-				list.append(price);
-				list.append(p_seq);
-				$(".listbar").append(list);
-				
-				
-			}
-		})
-	}
+    
+    $(".list").on("click",function(){
+       let p_seq=$(this).find(".p_seq").val();
+       location.href="/products/detail?p_seq="+p_seq;
+   })
+   $(document).on("click",".list",function(){
+      let p_seq=$(this).find(".p_seq").val();
+      location.href="/products/detail?p_seq="+p_seq;
+   })
+   
+   let index=1;
+   $(window).scroll(function(){
+      let $window = $(this);
+      let scrollTop = $(this).scrollTop();
+      let windowHeight = $window.height();
+      let documentHeight = $(document).height();
+      console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+            "| documentHeight"+documentHeight)
+      if(scrollTop+windowHeight>=documentHeight){
+         index++;
+         setTimeout(getList(),2000);
+         
+      }
+            
+   })
+   
+   function getList(){
+      $.ajax({
+         url:"/products/scrollList",
+         dataType:"json",
+         data:{"index":index}
+      }).done(function(resp){
+         for(let i=0;i<resp.length;i++){
+            let list = $("<div class='col-4 list'>");
+            
+            let img = $("<div id=img>");
+            img.text("사진");
+            let name =$("<div id=link>");
+            name.text(resp[i].rep_name);
+            let price = $("<div>");
+            price.text(resp[i].rep_price);
+            let date = $("<div>");
+            date.text(resp[i].rep_write_date);
+            let seq = $("<input type=hidden class=seq>");
+            seq.val(resp[i].rep_seq);
+            
+            list.append(img);
+            list.append(name);
+            list.append(price);
+            list.append(p_seq);
+            $(".listbar").append(list);
+            
+            
+         }
+      })
+   }
 })
 </script>
 </head>
@@ -206,111 +206,108 @@ $(function(){
 </c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-	<c:choose>
-		<c:when test="${loginID == 'admin'}">
-			<div class="container-fluid">
-				<h2>캠핑상품</h2>
-				<div class="row m-0 mt-5 h-120">
-					<div class="col-2 p-0" id="category">
-						<select name="rep_category">
-							<option selected>전체종류</option>
-							<option value="텐트/타프">텐트/타프</option>
-							<option value="침낭/매트">침낭/매트</option>
-							<option value="테이블/의자">테이블/의자</option>
-							<option value="조명기구">조명기구</option>
-							<option value="주방용품">주방용품</option>
-							<option value="화로/버너/bbq">화로/버너/bbq</option>
-							<option value="겨울용품">겨울용품</option>
-							<option value="기타캠핑용품">기타캠핑용품</option>
-						</select>
-					</div>
-					<div class="col-4" id=searchBox>
-						<input type="text" id=word placeholder="상품명을 입력하세요."> <img
-							src="/img/search.png">
-					</div>
-					<div class="col-5 p-0 pt-1" id=writeBox>
-						<a href="/products/write" id=write><i
-							class="fas fa-pen-square"></i>등록하기</a>
-					</div>
-				</div>
-				<div class="row listbar">
-					<c:forEach var="list" items="${list}">
-						<div class="col-3 p-0 list" seq="${list.p_seq}">
-							<div class="col-12 img">
-								<img src="/img/${list.p_thumsysName}">
-							</div>
-							<div class="col-12 mb-1 link">${list.p_name}</div>
-							<div class="row m-0 ">
-								<div class="col-6 price">
-								<fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/><span>원</span>
-								</div>
-								<div class="col-6 diffD">${list.p_rdate}</div>
-							</div>
-							<div class="row m-0 mt-2 pt-2 pb-2 ar">
-							</div>
-							<input type=hidden value="${list.p_seq}" class=p_seq>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</c:when>
-		<c:otherwise>
-			<div class="container-fluid">
-				<h2>캠핑상품</h2>
-				<div class="row m-0 mt-5 h-120">
-					<div class="col-2 p-0" id="category">
-						<select name="rep_category">
-							<option selected>전체종류</option>
-							<option value="텐트/타프">텐트/타프</option>
-							<option value="침낭/매트">침낭/매트</option>
-							<option value="테이블/의자">테이블/의자</option>
-							<option value="조명기구">조명기구</option>
-							<option value="주방용품">주방용품</option>
-							<option value="화로/버너/bbq">화로/버너/bbq</option>
-							<option value="겨울용품">겨울용품</option>
-							<option value="기타캠핑용품">기타캠핑용품</option>
-						</select>
-					</div>
-					<div class="col-4" id=searchBox>
-						<input type="text" id=word placeholder="상품명을 입력하세요."> <img
-							src="/img/search.png">
-					</div>
-				</div>
-				<div class="row listbar">
-					<c:forEach var="list" items="${list}">
-						<div class="col-3 p-0 list" seq="${list.p_seq}">
-							<div class="col-12 img">
-								<img src="/img/${list.p_thumsysName}">
-							</div>
-							<div class="col-12 mb-1 link">${list.p_name}</div>
-							<div class="row m-0 ">
-								<div class="col-6 price">
-									<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
-								</div>
-								<div class="col-6 diffD">${list.p_rdate}</div>
-							</div>
-							<div class="row m-0 mt-2 pt-2 pb-2 ar">
-								<div class="col-12 area"></div>
-							</div>
-							<input type=hidden value="${list.p_seq}" class=p_seq>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</c:otherwise>
-	</c:choose>
-	
-	<!--챗봇  -->
-	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
-		
-	</script>
-	
-	<!-- Bootstrap core JS-->
-	<script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="/js/products.js"></script>
-	<script>
+   <c:choose>
+      <c:when test="${loginID == 'admin'}">
+         <div class="container-fluid">
+            <h2>캠핑상품</h2>
+            <div class="row m-0 mt-5 h-120">
+               <div class="col-2 p-0" id="category">
+                  <select name="rep_category">
+                     <option selected>전체종류</option>
+                     <option value="텐트/타프">텐트/타프</option>
+                     <option value="침낭/매트">침낭/매트</option>
+                     <option value="테이블/의자">테이블/의자</option>
+                     <option value="조명기구">조명기구</option>
+                     <option value="주방용품">주방용품</option>
+                     <option value="화로/버너/bbq">화로/버너/bbq</option>
+                     <option value="겨울용품">겨울용품</option>
+                     <option value="기타캠핑용품">기타캠핑용품</option>
+                  </select>
+               </div>
+               <div class="col-4" id=searchBox>
+                  <input type="text" id=word placeholder="상품명을 입력하세요."> <img
+                     src="/img/search.png">
+               </div>
+               <div class="col-5 p-0 pt-1" id=writeBox>
+                  <a href="/products/write" id=write><i
+                     class="fas fa-pen-square"></i>등록하기</a>
+               </div>
+            </div>
+            <div class="row listbar">
+               <c:forEach var="list" items="${list}">
+                  <div class="col-3 p-0 list" seq="${list.p_seq}">
+                     <div class="col-12 img">
+                        <img src="/img/${list.p_thumsysName}">
+                     </div>
+                     <div class="col-12 mb-1 link">${list.p_name}</div>
+                     <div class="row m-0 ">
+                        <div class="col-6 price">
+                        <fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/><span>원</span>
+                        </div>
+                        <div class="col-6 diffD">${list.p_rdate}</div>
+                     </div>
+                     <div class="row m-0 mt-2 pt-2 pb-2 ar">
+                     </div>
+                     <input type=hidden value="${list.p_seq}" class=p_seq>
+                  </div>
+               </c:forEach>
+            </div>
+         </div>
+      </c:when>
+      <c:otherwise>
+         <div class="container-fluid">
+            <h2>캠핑상품</h2>
+            <div class="row m-0 mt-5 h-120">
+               <div class="col-2 p-0" id="category">
+                  <select name="rep_category">
+                     <option selected>전체종류</option>
+                     <option value="텐트/타프">텐트/타프</option>
+                     <option value="침낭/매트">침낭/매트</option>
+                     <option value="테이블/의자">테이블/의자</option>
+                     <option value="조명기구">조명기구</option>
+                     <option value="주방용품">주방용품</option>
+                     <option value="화로/버너/bbq">화로/버너/bbq</option>
+                     <option value="겨울용품">겨울용품</option>
+                     <option value="기타캠핑용품">기타캠핑용품</option>
+                  </select>
+               </div>
+               <div class="col-4" id=searchBox>
+                  <input type="text" id=word placeholder="상품명을 입력하세요."> <img
+                     src="/img/search.png">
+               </div>
+            </div>
+            <div class="row listbar">
+               <c:forEach var="list" items="${list}">
+                  <div class="col-3 p-0 list" seq="${list.p_seq}">
+                     <div class="col-12 img">
+                        <img src="/img/${list.p_thumsysName}">
+                     </div>
+                     <div class="col-12 mb-1 link">${list.p_name}</div>
+                     <div class="row m-0 ">
+                        <div class="col-6 price">
+                           <fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+                        </div>
+                        <div class="col-6 diffD">${list.p_rdate}</div>
+                     </div>
+                     <div class="row m-0 mt-2 pt-2 pb-2 ar">
+                        <div class="col-12 area"></div>
+                     </div>
+                     <input type=hidden value="${list.p_seq}" class=p_seq>
+                  </div>
+               </c:forEach>
+            </div>
+         </div>
+      </c:otherwise>
+   </c:choose>
+   
+  
+   
+   <!-- Bootstrap core JS-->
+   <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script src="/js/products.js"></script>
+   <script>
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
