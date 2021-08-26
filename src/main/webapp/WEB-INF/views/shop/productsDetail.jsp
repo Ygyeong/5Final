@@ -240,7 +240,7 @@ a{text-decoration: none;color: white;}
 					</div>
 					<div class="col-5 " id=infoBox>
 						<div class="row m-0 mb-4">
-							<div class="col-3 txt">${dto.p_category}</div>
+							<div class="col-4 txt">${dto.p_category}</div>
 							<div class="col-2 ex">
 							</div>
 						</div>
@@ -257,7 +257,7 @@ a{text-decoration: none;color: white;}
 							<div class="col-3 p-0">배송비</div>
 							<div class="col-9 p-0">50,000이상 무료배송</div>
 							<div class="col-3 p-0"></div>
-							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
+							<div class="col-9 p-0">2,500원</div>
 						</div>
 
 						<div class="row m-0 pb-4">

@@ -495,7 +495,7 @@
 
 						<option value="all">전체</option>
 						<option value="facltNm">캠핑장 이름</option>
-						<option value="lctCl">주변 환경 (ex.숲/바다)</option>
+						<option value="lctCl">주변 환경 (ex.숲/해변/계곡)</option>
 						<option value="addr1">지역</option>
 					</select> <input type="text" class="input-9 ae-4 fromCenter" name="keyword"
 						id="keyword" placeholder="원하시는 캠핑장소를 입력해보세요"

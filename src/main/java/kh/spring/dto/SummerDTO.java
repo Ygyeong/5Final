@@ -9,6 +9,7 @@ public class SummerDTO {
 
 	public SummerDTO() {}
 
+
 	public SummerDTO(int s_seq, String oriName, String sysName, int p_seq) {
 		super();
 		this.s_seq = s_seq;
@@ -16,6 +17,7 @@ public class SummerDTO {
 		this.sysName = sysName;
 		this.p_seq = p_seq;
 	}
+
 
 	public int getS_seq() {
 		return s_seq;
@@ -48,6 +50,5 @@ public class SummerDTO {
 	public void setP_seq(int p_seq) {
 		this.p_seq = p_seq;
 	}
-	
-	
+
 }

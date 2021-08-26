@@ -1,9 +1,6 @@
 @charset "UTF-8";
 
-body{
-	background-color:#EAEAEA;
-	
-}
+
 
 .container{
 	background-color:#FFFFFF;
@@ -34,12 +31,6 @@ body{
 	height:600px;
 }
 
-#namebox{
-	width:100%;
-	height: 100px;
- 	display: flex;
-    align-items: center;
-}
 
 #slidebox {
 	width: 60%;
@@ -83,22 +74,7 @@ body{
 }
 
 
-.infotable1 {
-	width: 90%;
-	border-bottom: solid 3px #E8D9FF;
-	border-top: solid 3px #E8D9FF;
-	margin: auto;
-}
 
-.infotable1 th {
-	border-bottom: solid 1.5px #E8D9FF;
-	height:45px;
-}
-
-.infotable1 td {
-	border-bottom: solid 1px #E8D9FF;
-	height:45px;
-}
 
 
 #one {
@@ -139,11 +115,6 @@ body{
     padding-left: 50%;
 }
 
-#wishbox{
-	width:20%;
-	float:left;
-	
-}
 
 
 #wishbox_icon {
@@ -170,20 +141,6 @@ body{
 }
 
 
-#reservebtn {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    font-size: 17px;
-    border-radius: 28px;
-    background-color: #EEEE;
-    border-radius: 7px;
-    border: 1px solid blcak;
-    display: inline-block;
-    color: black;
-    align-items: center;
-    vertical-align: middle;
-}
 
 #twotop ul #camptab li a {
     color: #fff;
@@ -422,7 +379,4 @@ html {
     overflow-x:hidden;
 }
 
-body {
-    height:5000px;
-}
 

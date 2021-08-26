@@ -50,7 +50,6 @@ public class CartController {
 		Map<String,Object>map = new HashMap<String,Object>();
 		List<CartDTO> list = cservice.list(camp_id); // 장바구니 목록
 		CartDTO dto = new CartDTO();
-		System.out.println(dto.getP_seq());
 		List<SummerDTO> slist = pservice.filesBySeq(dto.getP_seq());
 		int sumMoney = cservice.sumMoney(camp_id); // 장바구니 전체 금액
 		// 장바구니 전체 금액에 따라 배송비 구분

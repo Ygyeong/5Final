@@ -77,6 +77,11 @@ a{text-decoration: none;color: white;}
 </style>
 <script type="text/javascript">
 $(function(){
+	
+	$("#word").on("click",function(){
+		alert("현재 미구현 기능입니다.\n21/08/28 구현 예정입니다. 죄송합니다.");
+		
+	})
     
     $(".list").on("click",function(){
        let p_seq=$(this).find(".p_seq").val();
