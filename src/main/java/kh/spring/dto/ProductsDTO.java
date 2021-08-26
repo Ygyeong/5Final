@@ -5,7 +5,7 @@ import java.sql.Date;
 public class ProductsDTO {
 	private int p_seq;
 	private String p_name;
-	private String p_price;
+	private int p_price;
 	private String p_delivery;
 	private String p_category;
 	private Date p_rdate;
@@ -16,9 +16,7 @@ public class ProductsDTO {
 	private String p_thumsysName;
 	
 	public ProductsDTO() {}
-	
-
-	public ProductsDTO(int p_seq, String p_name, String p_price, String p_delivery, String p_category, Date p_rdate,
+	public ProductsDTO(int p_seq, String p_name, int p_price, String p_delivery, String p_category, Date p_rdate,
 			int p_stock, String p_contents, int p_view_count, String camp_id, String p_thumsysName) {
 		super();
 		this.p_seq = p_seq;
@@ -51,11 +49,11 @@ public class ProductsDTO {
 		this.p_name = p_name;
 	}
 
-	public String getP_price() {
+	public int getP_price() {
 		return p_price;
 	}
 
-	public void setP_price(String p_price) {
+	public void setP_price(int p_price) {
 		this.p_price = p_price;
 	}
 
@@ -122,8 +120,6 @@ public class ProductsDTO {
 	public void setP_thumsysName(String p_thumsysName) {
 		this.p_thumsysName = p_thumsysName;
 	}
-
-	
 	
 	
 }
