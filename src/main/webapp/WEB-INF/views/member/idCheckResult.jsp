@@ -14,7 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js"></script>
 <link rel="stylesheet" type="text/css" href="styles.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/navBar.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/idCheckResult.css">
 <meta charset="UTF-8">
 <title>Result</title>
@@ -25,15 +24,142 @@
 		})
 	})
 </script>
+<style>
+/*네비바 스타일  */     
+:root{
+    --text-color:#f0f4f5;
+    --background-color:#263343;
+    --accent-color:steelblue;
+}
+body{
+    margin: 0;
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #263343;
+    padding: 8px 12px;
+    
+
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+}
+
+
+.navbar_logo{
+    font-size: 32px;
+    color: white;
+    font-family: 'Nanum Brush Script';
+}
+
+.navbar_logo i {
+    color: white;
+}
+
+.navbar_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom:-3px;
+
+}
+.navbar_menu li {
+    padding: 8px 12px;
+}
+
+.navbar_menu li:hover {
+    background-color: steelblue;
+    border-radius: 4px;
+}
+
+
+.navbar_member {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0;
+	margin-bottom:-3px;
+}
+
+.navbar_member li{
+    padding: 8px 12px;
+}
+
+.navbar_toogleBtn{
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navbar_menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar_member{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+    .navbar_toogleBtn{
+        display: block;
+    }
+
+    .navbar_menu.active,
+    .navbar_member.active{
+        display: flex;
+    
+    }
+
+}
+/*네비바 스타일 끝  */ 
+</style>
+</head>
+<body>
+
+<!--네비바 시작 -->
+</style>
 </head>
 <body>
 <!--네비바 시작 -->
 <c:choose>
-<c:when test="${loginID==null }">
+<c:when test="${loginID == null }">
 <nav class="navbar">
         <div class="navbar_logo">
-           
+
             <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+
 
         </div>
         <ul class="navbar_menu">
@@ -111,8 +237,6 @@
 
 </c:choose> 
 
-<!--네비바 끝  -->
-
     <div id="box">
         <div id="boxText">
             <c:if test="${member != null}">
@@ -123,5 +247,19 @@
             <button id="pwChange" class="btn btn-primary"> 비밀번호 변경 </button>
         </div>
     </div>
+    
+    <script>
+    
+    
+    const toogleBtn = document.querySelector('.navbar_toogleBtn');
+    const menu = document.querySelector('.navbar_menu');
+    const member = document.querySelector('navbar_member');
+
+    toogleBtn.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        member.classList.toggle('active');
+    });
+    
+    </script>
 </body>
 </html>

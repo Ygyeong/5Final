@@ -77,19 +77,22 @@ public class Camp_TipController {
     }
 
     @RequestMapping("insert") // 게시글 등록
-    public String insert(int category, String title, String contents, MultipartFile[] file) throws Exception {
-    	String realPath = session.getServletContext().getRealPath("resources/campTipImg/files");
-		
+    public String insert(String category, String title, String contents, MultipartFile[] file) throws Exception {
+    	String realPath = session.getServletContext().getRealPath("/resources/campTipImg/files");
+    	
+    	System.out.println("realPath : " + realPath);
+		System.out.println("글쓰기요청");
 		service.insert(category,title,contents,realPath,file); 
 		
 		return "redirect:selectAll?cpage=1";
     }
 
     @RequestMapping("detail")
-    public String detail(int camp_tip_num, Model model) throws Exception {
+    public String detail(int camp_tip_num, Model model,HttpServletResponse resp) throws Exception {
     	//조회수 증가
     	service.viewCount(camp_tip_num);		
 		CampTipDTO list = service.search(camp_tip_num);
+		System.out.println(list.getWriter());
 		List<CampTipImgDTO> flist= idao.filesBySeq(camp_tip_num);
 		model.addAttribute("list",list);
 		model.addAttribute("flist", flist);
@@ -144,7 +147,7 @@ public class Camp_TipController {
 //	}
 	
 	@RequestMapping("modifyProc")
-	public String modify(@RequestParam(defaultValue="") String[] delete, int category,String title, String contents, MultipartFile[] file,int camp_tip_num, Model model) throws Exception {
+	public String modify(@RequestParam(defaultValue="") String[] delete, String category,String title, String contents, MultipartFile[] file,int camp_tip_num, Model model) throws Exception {
 		System.out.println("확인용");
 		String realPath = session.getServletContext().getRealPath("resources/campTipImg/files");
 		System.out.println("카테고리값 : " + category);

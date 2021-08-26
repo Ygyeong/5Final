@@ -59,7 +59,6 @@ public class CartController {
 		return model;
 	}
 	
-	
 	@RequestMapping("delete")
 	public String delete(@RequestParam int c_seq) {
 		System.out.println(c_seq);
