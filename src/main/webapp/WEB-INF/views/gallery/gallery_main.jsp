@@ -179,8 +179,8 @@
                         <a href="/gal/list?cpage=1" class="nav-item nav-link">캠핑후기</a>
                         <div style="border: 1px solid none; width: 100px;"></div>
                         
-                        <a href="/member/myPage" class="nav-item nav-link">마이페이지</a>
-                        <a href="/memeber/logOutProc" class="nav-item nav-link">로그아웃</a>
+                        <a href="/member/myPage?cm_id=${loginID}" class="nav-item nav-link">마이페이지</a>
+                        <a href="/member/logOutProc" class="nav-item nav-link">로그아웃</a>
                     </div>
                 </div>
             </div>

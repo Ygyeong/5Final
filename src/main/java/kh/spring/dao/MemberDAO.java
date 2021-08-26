@@ -45,7 +45,7 @@ public class MemberDAO {
 	}
 	
 	public List<Camp_wishlistDTO> wishListSelectAll(Camp_wishlistDTO dto) {
-		return mybatis.selectList("Member.wishlist",dto);
+		return mybatis.selectList("Member.wishList",dto);
 	}
 	
 	public int wishCount(String cm_id) {

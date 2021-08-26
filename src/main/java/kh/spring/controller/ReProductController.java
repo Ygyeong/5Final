@@ -133,6 +133,7 @@ public class ReProductController {
 	@RequestMapping("myJG")
 	public String myJG(String id,int seq,int index,Model m){
 		MemberDTO mdto = mservice.login(id);
+		System.out.println("mdto는 : "+mdto+" : "+id);
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		

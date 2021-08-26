@@ -50,7 +50,7 @@ $(function(){
 				<h3 class="zTree-h3"> 시작 </h3>
 			</div>
 			<div class="domain">
-				<input class="date" id="startDate" name="startDate" id="startDate" type="text" readonly>
+				<input class="date" id="startDate" name="startDate" type="text" value="a" readonly>
 			</div>
 			<div class="domain">
 				<h3 class="zTree-h3"> 메모 </h3>
