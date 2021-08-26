@@ -226,8 +226,8 @@ a{
  			location.href="/rep/myJG?index=1&seq=1&id="+$("#user").val();
  		})
  		$(".userRep").on("click",function(){
- 			let userRepSeq = $(this).parent("PMBox").find(".userRepSeq").val();
- 			location.href="/rep/detail?rep_seq="+userRepSeq;
+ 			let userRepSeq = $(this).siblings(".userRepSeq").val();
+ 			location.href="/rep/detail?rep_seq="+userRepSeq; 
  		})
  		/* $("#detailT").on("click",function(){
  			location.href="/rep/myJG?index=1&id=test"+"&seq=1";
@@ -385,13 +385,13 @@ a{
  </script>
 </head>
 <body>
-<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -403,7 +403,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -411,12 +411,13 @@ a{
             <i class="fas fa-bars"></i>
         </a>
     </nav>
+
 </c:when>
 <c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -428,7 +429,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -442,7 +443,7 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/camp_logo.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
@@ -454,7 +455,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -462,10 +463,13 @@ a{
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-	
+
 </c:otherwise>
-</c:choose>
-<!--nav bar 끝  -->
+
+
+</c:choose> 
+
+<!--네비바 끝  -->
 
 <!-- 사용자가 게시글 작성자일때  / 아닐때  -->
 <c:choose>
@@ -480,7 +484,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -627,7 +631,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -690,8 +694,8 @@ a{
                 	<div class="col-6 p-0 PMBox">
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
                 		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                		<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                 	</div>
-                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                		</c:forEach>
                 </div>
                 
@@ -734,7 +738,7 @@ a{
 							<div class="carousel-inner">
 								<c:forEach var="i" items="${plist }" varStatus="s">
 									<div class="carousel-item ${s.count}">
-										<img src="/img/${i.reSysName }" class="d-block w-100"
+										<img src="/img/rep/${i.reSysName }" class="d-block w-100"
 											alt="...">
 									</div>
 								</c:forEach>
@@ -796,9 +800,10 @@ a{
                 	<c:forEach var="i" items="${list }">
                 	<div class="col-6 p-0 PMBox">
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
-                		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                		<div class="col-6 userRep"><img src="/img/rep/${i.thumsysName}"></div>
+                		<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                 	</div>
-                	<input type=hidden class="userRepSeq" value="${i.rep_seq}">
+                	
                		</c:forEach>
                 </div>
                 

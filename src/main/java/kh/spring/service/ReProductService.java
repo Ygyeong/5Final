@@ -138,8 +138,8 @@ public class ReProductService {
 			String diffDate = TimeConfig.calculateTime(dto.getRep_write_date());
 			dto.setRep_diff_date(diffDate);
 			
-			if(dto.getRep_name().length()>10) {
-				String subName = dto.getRep_name().substring(0, 10)+"...";
+			if(dto.getRep_name().length()>16) {
+				String subName = dto.getRep_name().substring(0, 16)+"...";
 				dto.setRep_name(subName);
 			}
 		}

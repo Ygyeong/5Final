@@ -123,7 +123,7 @@ public class ReProductController {
 
 		dto.setRep_writer((String)session.getAttribute("loginID"));
 		dto.setRep_seq(rep_seq);
-		String realPath = session.getServletContext().getRealPath("resources/imgs");
+		String realPath = session.getServletContext().getRealPath("resources/imgs/rep");
 
 		System.out.println(realPath);
 		service.insert(dto,rep_seq,file,realPath);
@@ -133,6 +133,7 @@ public class ReProductController {
 	@RequestMapping("myJG")
 	public String myJG(String id,int seq,int index,Model m){
 		MemberDTO mdto = mservice.login(id);
+		System.out.println("mdto는 : "+mdto+" : "+id);
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
 		
@@ -222,7 +223,7 @@ public class ReProductController {
 	} 
 	@RequestMapping("updateProc")
 	public String updateProc(@RequestParam(value="delete") String[] delete , MultipartFile[] file,ReProductDTO dto,Model m)throws Exception {
-		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		String realPath = session.getServletContext().getRealPath("/resources/imgs/rep");
 		String [] delTargets = delete;
 		System.out.println("modify delete :" +  delTargets);
 		service.modify(realPath,file,delTargets,dto);

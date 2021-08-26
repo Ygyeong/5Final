@@ -15,11 +15,12 @@
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
  <style>
         
-        .container-fluid{width:1000px; margin: auto; margin-top:160px; margin-bottom:100px;}
+        .container-fluid{width:1000px; margin: auto; margin-top:60px; margin-bottom:100px;}
         #sell,#wish,#soldout{font-weight:1000;}
         #sell a,#wish a,#soldout a{border-bottom:2px solid black; margin-top:22px;}
         .sell,.wish,.soldout a{cursor:pointer;}
-        .sell,.wish,.soldout{font-size:20px; font-weight:300px;}
+        .sell,.wish,.soldout{font-size:20px; font-weight:300px; text-align:center;}
+        .sell{margin-left:125px;}
         .wish{padding-left:18px;}
         .count{font-weight:600;}
         .count span{margin-left:5px;}
@@ -37,11 +38,14 @@
       .area{font-size:0.8em; color:#606060; font-weight:500;}
       .ar{border-top:1px solid #ddd;}
       .userID{font-size:25px;font-weight:bold; text-align:center;}
+      .myID{text-align:center; font-size:25px;font-weight:bold;  }
       .userID span{font-size:13px; margin-left:3px;}
+      
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
-      .zero{margin-left:15px; margin-top:25px;}
-
+      .zero{width:100%; height:250px; text-align:center; line-height:240px;}
+	  .userBox{background-color: #f6f6f6; height:100px; margin : 30px 0px 20px 0px;}	
+	
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -144,7 +148,7 @@ a{
     </style>
     <script>
     	$(function(){
-    		$(".userID").text($(".writer").val());
+    		$(".userID").html($("#id").val()+"<span>님의 중고장터</span>");
     		
     		let cseq = $("#click").val();
     		console.log(cseq);
@@ -180,25 +184,25 @@ a{
     </script>
 </head>
 <body>
-	<!--nav bar  -->
+<!--네비바 시작 -->
 <c:choose>
 <c:when test="${loginID==null }">
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/signUp">회원가입</a></li>
+            <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
 
@@ -212,19 +216,19 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/admin/mem">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -238,20 +242,20 @@ a{
 <nav class="navbar">
         <div class="navbar_logo">
            
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:50px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
 
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
-            <li><a href="/products/selectAll">SHOP</a></li>
+            <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="/member/myPage">마이페이지</a></li>
-            <li><a href="/memeber/logOutProc">로그아웃</a></li>
+            <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
+            <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
         <a href="#" class="navbar_toogleBtn">
@@ -262,24 +266,27 @@ a{
 </c:otherwise>
 
 
-</c:choose>
+</c:choose> 
+
+<!--네비바 끝  -->
+
 
     <div class="container-fluid p-0">
     <c:choose>
     	<c:when test="${loginID==userID}">
     		<div class="row m-0">
-            <div class="col-3 p-0 mt-5">
-                <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
-                <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div>
+            <div class="col-12 p-0 userBox">
+                <div class="col-12 p-0 mt-4 myID">내 중고장터</div>
+                <%-- <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
+                <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div> --%>
             </div>
-            <div class="col-9 p-0">
-                <div class="row m-0">
-                    <div class="col-2 sell" seq=1><a>판매상품</a></div>
-                    <div class="col-2 wish" seq=2><a>찜상품</a></div>
-                    <div class="col-2 soldout" seq=3><a>판매완료</a></div>
+            <div class="col-12 p-0">
+                <div class="row m-0 ">
+                    <div class="col-3 p-0 sell" seq=1><a>판매상품</a></div>
+                    <div class="col-3 p-0 wish" seq=2><a>찜상품</a></div>
+                    <div class="col-3 p-0 soldout" seq=3><a>판매완료</a></div>
                     <input type=hidden id="click" value="${seq}" >
-                    <input type=hidden id="id" value="${userID}" >
+                    <input type=hidden id="id" value="${loginID}" >
                 </div>
                 <div class="row m-0 mt-5">
                     <div class="col-12 count">전체<span>${Count }</span></div>
@@ -287,7 +294,7 @@ a{
                 <div class="row listbar" >
                 <c:choose>
                 	<c:when test="${Count == 0}">
-                		<div class="col-12"></div>
+                		<div class="col-12 zero">상품이 없습니다.</div>
                 	</c:when>
                 	<c:otherwise>
                 		
@@ -295,7 +302,7 @@ a{
                 </c:choose>
                  <c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>
@@ -340,11 +347,11 @@ a{
     	</c:when>
     	<c:otherwise>
     		<div class="row m-0">
-            <div class="col-3 p-0">
-                <div class="col-12 p-0 userID">${userID }<span>님</span></div>
-                <div class="col-12 p-0">{mdto.cm_address1}</div>
+            <div class="col-12 p-0 userBox">
+                <div class="col-12 p-0 mt-4 userID">${userID }<span>님</span></div>
+                <input type=hidden id="id" value="${userID}" >
             </div>
-            <div class="col-9 p-0">
+            <div class="col-12 p-0">
                 <div class="row m-0 mt-5">
                     <div class="col-12 count">전체<span>${Count }</span></div>
                 </div>
@@ -356,7 +363,7 @@ a{
                 	<c:otherwise>
                 		<c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>

@@ -32,7 +32,7 @@ public class HomeController {
 		List<Camp_infoDTO> list = service.indexlist();
 		
 		int rating = gservice.selectRating();  
-		List<ReProductDTO> rlist = rservice.HomeThumbnail(1, 3);
+		List<ReProductDTO> rlist = rservice.HomeThumbnail(1, 4);
 		model.addAttribute("rlist",rlist);
 		model.addAttribute("list",list);
 		model.addAttribute("rating",rating);

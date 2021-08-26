@@ -56,6 +56,8 @@
 	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
 	  #count{margin-left:8px; font-weight:bold;}
       .schResult{padding-left:24px;}
+      
+      
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -439,7 +441,7 @@ a{
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
 				<div class="col-12 mb-1 link">${i.rep_name }</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${i.rep_price }<span>원</span></div>
@@ -459,7 +461,7 @@ a{
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
-                <a href="/rep/myJG?index=1&seq=1&id="+${loginID}>내중고마켓</a>
+                <a href="/rep/myJG?index=1&seq=1&id=${loginID}">${loginID}내중고마켓</a>
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>
@@ -485,7 +487,7 @@ a{
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
 			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
 				<div class="col-12 mb-1 link">${i.rep_name }</div>
 				<div class="row m-0 ">
 					<div class="col-6 price">${i.rep_price }<span>원</span></div>
@@ -497,8 +499,9 @@ a{
 				<input type=hidden value="${i.rep_seq}" class="seq">
 			</div>       
 		</c:forEach>
-		</div> 
+		</div>
     </div>
+    
 	</c:otherwise>
 </c:choose>
 
