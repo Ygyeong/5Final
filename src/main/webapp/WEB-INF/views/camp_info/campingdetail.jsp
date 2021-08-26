@@ -18,8 +18,85 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ce179a320cf4d7ee0e06336563f2a077&libraries=LIBRARY&libraries=services"></script>
 <link href="/css/campdetail.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
 </head>
 <style>
+
+#reservebtn {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 28px;
+    background-color: #EEEE;
+    border-radius: 7px;
+    border: 1px solid blcak;
+    display: inline-block;
+    color: black;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 7%;
+}
+
+#wishbox{
+    width: 20%;
+    float: left;
+    margin-right: 3%;
+    margin-left: 27%;
+	
+}
+
+.infotable1 {
+	width: 90%;
+	border-bottom: solid 3px #BDBDBD;
+	border-top: solid 3px #BDBDBD;
+	margin: auto;
+}
+
+.infotable1 th {
+	border-bottom: solid 1.5px #BDBDBD;
+	height:45px;
+}
+
+.infotable1 td {
+	border-bottom: solid 1px #BDBDBD;
+	height:45px;
+}
+
+#namebox {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: 50px;
+}
+
+#lineintro {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin: 1%;
+   font-family: 'Do Hyeon', sans-serif;
+   font-size: 25px;
+}
+
+#camptab li {
+    float: left;
+    width: 49%;
+    font-size: 22px;
+    text-align: center;
+    background-color: #EAEAEA;
+    margin: 0 1px;
+    padding: 1% 0;
+}
+
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -29,6 +106,11 @@
 body {
     margin: 0;
     
+}
+
+body{
+	background-color:#EAEAEA;
+	
 }
 a{
     text-decoration: none;
@@ -154,6 +236,10 @@ a{
 <Script>
    $(function(){
 
+	   $("#reservebtn").on("click", function(){
+		   reservebtn
+	   }
+	   
       $(".likeicon").on("click", function(){
 
          var like = $(".likeicon").attr('id');
@@ -473,7 +559,6 @@ a{
             <ul id=camptab>
                <li id="camp_guide">안내</li>
                <li id="camp_map">위치</li>
-               <li id="camp_review">후기</li>
             </ul>
          </div>
       </div>
@@ -487,7 +572,6 @@ a{
                </div>   
 
                <div id="themaEnvrnClbox">
-                  <div id="themaEnvrnClName"> keyword! </div>
                   <div id="themaEnvrnCl">      </div>
                </div>
 
