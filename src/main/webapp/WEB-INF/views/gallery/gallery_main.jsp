@@ -10,6 +10,7 @@
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
 		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		
         <!-- Favicon -->
         <link href="aboutGallery/img/favicon.ico" rel="icon">
 
