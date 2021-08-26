@@ -319,7 +319,7 @@ html {
                     	<span class="badge badge-primary"> ${wish }</span>
                     </c:if>
                     </button>
-                    <button>경태</button>
+                    <button class="btn btn-warning"><a href="/rep/myJG?index=1&seq=1&id=${loginID}">내중고장터</a></button>
 
                 </div>
             </div>
