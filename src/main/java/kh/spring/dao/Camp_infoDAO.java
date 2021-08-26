@@ -63,4 +63,8 @@ public class Camp_infoDAO {
 	public int imageinsert(Camp_photoDTO dto) {
 		return mybatis.insert("Camp_info.imageinsert", dto);
 	}
+	
+	public List<Camp_infoDTO> indexlist(){
+		return mybatis.selectList("Camp_info.indexlist");
+	}
 }
