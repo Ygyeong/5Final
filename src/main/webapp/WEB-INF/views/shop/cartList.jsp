@@ -130,6 +130,7 @@ a{text-decoration: none;color: white;}
 			if(result){
 				submit;
 			}
+			return false;
 			
 		})
 		
@@ -231,7 +232,7 @@ a{text-decoration: none;color: white;}
 					<table class="calculation1">
 						<thead>
 							<tr>
-								<th colspan="9" style="text-align: left; padding-left: 10px;">일반상품</th>
+								<th colspan="6" style="text-align: left; padding-left: 10px;">일반상품</th>
 							</tr>
 
 							<tr>
@@ -254,7 +255,7 @@ a{text-decoration: none;color: white;}
 						<td colspan="5" style="border-right:none; text-align:left; padding-left:10px;">
 							<span>[기본배송]</span>
 						</td>
-						<td colspan="3">
+						<td colspan=>
 						상품금액 <span><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>+ <span>배송비 0원 = </span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
 						</td>
 						</tr>
@@ -322,11 +323,12 @@ a{text-decoration: none;color: white;}
 									<img style="width:80%" src="/img/"/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
 								${list.p_name}
-								<input type="hidden" name="p_seq" value="${list.p_seq}">
+								
 								</td>
 								<td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
 								<td style="width:20px;" colspan="2">
 									<input style="text-align:right; margin-bottom:5px;"value="${list.c_qty}"/>
+									<input type="hidden" name="p_seq" value="${list.p_seq}">
 									<button class="btn default" style="border-radius:3px; size:10px;" type="submit">변경</button>
 								</td>
 								<td colspan="2"><span><fmt:formatNumber value="${list.c_price}" maxFractionDigits="3"/></span>원</td>
@@ -341,14 +343,6 @@ a{text-decoration: none;color: white;}
 								
 						</tbody>
 						<tfoot>
-						<tr style="height:60px;">
-						<td colspan="5" style="border-right:none; text-align:left; padding-left:10px;">
-							<span>[기본배송]</span>
-						</td>
-						<td>
-						상품금액 <span><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>+ <span>배송비 ${list.delivery} = </span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
-						</td>
-						</tr>
 						</tfoot>
 					</table>
 					<div style="margin:10px 0;">
