@@ -32,7 +32,7 @@
      #infoBox{padding-left:8px; padding-top:3px;}
      #name{font-size: 1.2em; padding-left:8px;}
      #price{font-size: 1.8em;padding-left:8px; font-weight: bold; }
-   	 .cmtBox{border-bottom: 1px solid #ddd; padding-bottom: 45px; margin: 20px 80px 0px 12px;}
+   	 .cmtBox{border-bottom: 1px solid #ddd; padding-bottom: 45px; margin: 20px 70px 0px 12px;}
      #content{resize: none; width: 97%; height: 95%; margin: 0px; padding: 8px; border:1px solid #ddd; border-radius:5px;}
      #cmtBtn{ width:75px; height:40px; margin:11px 0px 10px 0px; padding:8px 0px 0px 8px; border-radius:5px;
      		background-color:black; color:white; font-size:0.9em;}
@@ -79,6 +79,7 @@
      .del{margin-left:5px;}
      #img{margin:0px 40px 0px 20px;}
      #img div{height:96%;}
+     .cmtBtnBox{width:100%; padding:0px;}
      .carousel-item img{width:100%; height:100%;}
      
 /*네비바 스타일  */     
@@ -819,7 +820,7 @@ a{
                 <div class="col-11 p-0">
                     <textarea name="recmt_comments" id=content placeholder=""></textarea>
                 </div>
-                <div class="col-1" id=cmtBtn>댓글등록
+                <div class="col-1" id=cmtBtn >댓글등록
                 </div>
             </div>
 			<div class="box">

@@ -128,7 +128,7 @@ $(function(){
             <div class="col-2 p-0 txt">금액</div>
             <div class="col-5 p-0">
             	<div class=col-12><input type="text" name=rep_price class="form-control" id=price></div>
-            	<div class="col-12" id="ex">*가격은 천만원 단위까지 작성가능</div> 
+            	<div class="col-12" id="ex">*가격은 천만원 단위까지 작성가능 ( 숫자로만 입력가능 )</div> 
             </div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
