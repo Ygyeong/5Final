@@ -30,7 +30,7 @@
             <div class="col-12 top">주문 감사합니다</div>
         </div>
         <div class="row m-0">
-            <div class="col-12 txt">님의 결제 내용은 다음과 같습니다</div>
+            <div class="col-12 txt">${dto.o_name}님의 결제 내용은 다음과 같습니다</div>
         </div>
             <div class="row m-0 mt-4 p-0 box topB">
                 <div class="col-3 infoT">주문번호</div>

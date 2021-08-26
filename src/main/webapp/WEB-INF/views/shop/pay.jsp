@@ -69,7 +69,7 @@
     	        */
     	        name: '별보러갈래',
     	        //결제창에서 보여질 이름
-    	        amount: 100,
+    	        amount: '{dto.o_allSum}',
     	        //가격
     	        buyer_name: '${dto.m_id}',
     	        buyer_tel: '${dto.o_phone}',
