@@ -254,10 +254,7 @@ a{
 			console.log(searchOption);
 			location.href="/info/list?index=1&keyword="+$("#keyword").val() +"&searchOption="+searchOption;
 		})
-		
-		$("#data").on("click",function(){
-			location.href="/info/imagelist";
-		})
+
 		
 		function getSearchList(){
 			$.ajax({
