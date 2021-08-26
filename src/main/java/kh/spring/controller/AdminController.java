@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.config.AdminConfig;
+import kh.spring.config.ReProductConfig;
 import kh.spring.dao.AdminDAO;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
@@ -116,7 +116,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping("newProduct")
-	public String np(HttpServletRequest request) throws Exception {
+	public String np(int index, Model model) throws Exception {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<ProductsDTO> list = pservice.Thumbnail(startNum,endNum);
+		model.addAttribute("list",list);
+		
 		
 	    return "admin/adminNewP";
 	}
