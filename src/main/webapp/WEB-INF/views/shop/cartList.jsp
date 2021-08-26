@@ -88,9 +88,8 @@ border-radius:5px;
 
 .footerbtn{float:right; font-weight:bolder; font-size:12pt; border-radius:3px;}
 #allProduct,#productClear, #footerbtn{padding:11px 25px;}
-#allProduct{margin-left:140px; background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
+#allProduct{background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
 #productClear{background-color:gray; color:#fff; font-weight:bold; font-size:12pt;}
-
 .aa:hover{cursor:pointer;}
 
 /*네비바 스타일 시작
@@ -226,19 +225,8 @@ a{text-decoration: none;color: white;}
 <div class="container">
 		<div id="frame">
 			<form>
-				<div id="frame2">
-					<span style="font-size: 16pt; font-weight: bold">장바구니</span> <span
-						class="home">홈 > 장바구니</span> <span> </span>
-				</div>
-				<br />
-
-				<div>
-					<table class="calculation1">
-						<tr>
-							<th class="aa">구매상품</th>
-							<th style="width: 700px;"></th>
-						</tr>
-					</table>
+				<div id="frame2"align="center">
+					<span style="font-size: 30pt; font-weight: bold;">장바구니</span>
 				</div>
 				<br />
 				<div>
@@ -249,8 +237,7 @@ a{text-decoration: none;color: white;}
 							</tr>
 
 							<tr>
-								<th><input type="checkbox" name="checkbox" id="check" /></th>
-								<th><span>이미지</span></th>
+								<th colspan="2"><span>이미지</span></th>
 								<th style="width: 550px;"><span>상품정보</span></th>
 								<th>판매가</th>
 								<th>수량</th>
@@ -267,7 +254,7 @@ a{text-decoration: none;color: white;}
 									<input type="checkbox" id="checkbox">
 								</td>
 								<td style="border-left:none; border-right:none;">
-									<img style="width:80%" src=""/></td>
+									<img style="width:80%" src="/img/"/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
 								${list.p_name}
 								</td>
@@ -301,8 +288,6 @@ a{text-decoration: none;color: white;}
 						</tfoot>
 					</table>
 					<div style="margin:10px 0;">
-						<span style="margin: 0 10px;" class="btnfloat">선택상품을</span>
-						<button class="btn default btnfloat" style="background-color:gray; color:#fff;">삭제하기</button>
 						<button class="btn default backBtn btnfloat2">장바구니 비우기</button>
 					</div>
 					<br/><br/>
@@ -321,10 +306,9 @@ a{text-decoration: none;color: white;}
 						</tr>
 					</table>
 					
-					<div align="center">
-						<button class="btn default" id="allProduct">전체상품</button>
-						<button class="btn default backBtn" id="productClear">선택상품주문</button>
-						<button class="btn default footerbtn" id="footerbtn">쇼핑계속하기</button>
+					<div align="center" style="margin-top:10px;">
+						<button class="btn default" id="allProduct">전체상품주문</button>
+						<button class="btn default backBtn" id="productClear">쇼핑계속하기</button>
 						<span class="clearboth"></span>
 					</div>
 					<br/><br/><br/><br/><br/>
