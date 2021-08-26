@@ -45,7 +45,8 @@ public class PublicImage extends HttpServlet {
         	dto.setContentId(((Long)camping.get("contentId")).intValue());
         	dto.setImageUrl((String)camping.get("imageUrl"));
         	dto.setSerialnum(((Long)camping.get("serialnum")).intValue());
-        	System.out.println((String)camping.get("imageUrl")); 
+        	System.out.println("이미지: "+(String)camping.get("imageUrl")); 
+        	
         	list.add(dto);
         	System.out.println(dto);       	
 
