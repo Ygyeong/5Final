@@ -38,7 +38,9 @@ public class MemberController {
 		ScheduleDTO dto = new ScheduleDTO();
 
 		dto.setCm_id(cm_id);
+		int result = ms.wishCount(cm_id);
 		List<ScheduleDTO> show = ss.showSchedule(dto);
+		session.setAttribute("wish", result);
 		session.setAttribute("list", show);
 		return "/member/myPage";
 	}
@@ -175,6 +177,6 @@ public class MemberController {
 		dto.setCm_id(cm_id);
 		List<Camp_wishlistDTO> wish = ms.wishListSelectAll(dto);
 		session.setAttribute("list", wish);
-		return "member/wishlist";
+		return "/member/wishPopup";
 	}
 }

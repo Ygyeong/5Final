@@ -81,9 +81,9 @@ $(function(){
 		let contents = $("#summernote").val();
 		
 		let blankRegex = /.*\S+/;
-		let titleLengthRegex = /^.{0,66}$/;
+		let titleLengthRegex = /^.{0,30}$/;
 		let writerLengthRegex = /^.{0,7}$/;
-		let contentsLengthRegex = /^.{0,1333}$/;
+		let contentsLengthRegex = /^.{0,500}$/;
 		
 		let bresult1 = blankRegex.test(title);
 		let bresult2 = blankRegex.test(writer);
@@ -100,9 +100,9 @@ $(function(){
 		}else if(!bresult4){
 			alert("내용을 입력해주세요!");
 		}else if(!titleResult){
-			alert("제목은 66글자 이내로 작성해주세요.")
+			alert("제목은 30 글자 이내로 작성해주세요.")
 		}else if(!contentsResult){
-			alert("내용은 1,333글자 이내로 작성해주세요.")
+			alert("내용은 500 글자 이내로 작성해주세요.")
 		}
 		else{
 			$("input[name=files]").remove();
