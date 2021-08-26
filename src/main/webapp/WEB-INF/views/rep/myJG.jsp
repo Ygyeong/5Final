@@ -300,7 +300,7 @@ a{
                 </c:choose>
                  <c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>
@@ -361,7 +361,7 @@ a{
                 	<c:otherwise>
                 		<c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>

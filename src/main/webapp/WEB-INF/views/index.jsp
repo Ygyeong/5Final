@@ -607,7 +607,7 @@
 									<a href="#" class="box-74">
 										<div class="thumbnail-74 rep"
 											style="width: 100%; height: 100%;">
-											<img src="/img/${i.thumsysName}" class="wide" alt="Thumbnail" style="width:200px; height:200px;" />
+											<img src="/img/rep/${i.thumsysName}" class="wide" alt="Thumbnail" style="width:200px; height:200px;" />
 										</div>
 										<div class="name-74 equalElement table wide">
 											<div class="cell left top">
