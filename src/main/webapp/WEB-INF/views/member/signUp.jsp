@@ -25,9 +25,15 @@ $(function(){
 	});
 	
 	$("#signup").on('click', function(){
-		$("#formaction").attr("action", "/member/signProc")
+		var email = $("#cm_email").val();
+		var regExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+					
+		if(!regExp.test(email)){
+			alert("이메일 형식이 틀립니다.")
+		}else{
+			$("#formaction").attr("action", "/member/signProc")
+		}
 	});
-	
 	
 	
 	// 주소 (PostAddress)
@@ -92,6 +98,7 @@ $(function(){
 			$(".pwCheckText").css("color", "red");
 			$(".pwCheckText").text("비밀번호 불일치");
 			$(".pwCheckText").attr("</br>")
+			return false;
 		}
 	});
 	
@@ -148,7 +155,7 @@ $(function(){
                             <div class="input-group-prepend">
                                 <span class="input-group-text"></span>
                             </div>
-                            <input type="text" id="cm_phone" name="cm_phone" class="form-control" placeholder="01012345678">
+                            <input type="text" id="cm_phone" name="cm_phone" class="form-control" placeholder="01012345678" required>
                         </div>
 
                         <div class="input-group form-group">

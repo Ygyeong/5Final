@@ -236,7 +236,7 @@ a{
 					let img = $("<div class='col-12 img'>");
 					let thum = $("<img src=''>");
 					
-					thum.attr("src","/img/"+resp[i].thumsysName);
+					thum.attr("src","/img/rep"+resp[i].thumsysName);
 					img.append(thum);
 					let name =$("<div class='col-12 mb-1 link'>");
 					name.text(resp[i].rep_name);
@@ -461,7 +461,6 @@ a{
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
-                <a href="/rep/myJG?index=1&seq=1&id=${loginID}">${loginID}내중고마켓</a>
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>

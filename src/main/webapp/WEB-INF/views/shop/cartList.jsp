@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,6 +107,7 @@ a{text-decoration: none;color: white;}
 .navbar_menu li:hover {background-color: steelblue; border-radius: 4px;}
 .navbar_member {list-style: none; color: white; display: flex; padding-left: 0; margin-bottom:-3px;}
 .navbar_member li{padding: 8px 12px;}
+
 .navbar_toogleBtn{display: none; position: absolute; right: 32px; font-size: 24px;}
 @media screen and (max-width: 768px) {
 .navbar{flex-direction: column;align-items: flex-start;padding: 8px 24px;}
@@ -122,29 +124,20 @@ a{text-decoration: none;color: white;}
 </head>
 <script>
 	$(document).ready(function(){
-		$(".calculation1 thead input:checkbox[id=check]").click(function(){
-			let bool = $(this).prop("checked");
-			$(".calculation1 tbody input:checkbox[name=checknox]").prop("checked",bool);
-		});
-	
-	
-		$(".calculation1 tbody input:checkbox[name=checkbox]").click(function(){
-			let flag = false;
-			$(".calculation1 tbody input:checkbox[name=checknox]").each(function(){
-				val bool = $(this).prop("checked");
-			
-				if(!bool){
-					$(".calculation1 thead input:checkbox[id=check]").prop("checked",false);
-					flag = true;
-					return false;
+		
+		$("#deleteBtn").on("click",function(){
+			let result = confirm("상품을 삭제하시겠습니까?");
+			let c_seq = $(this).attr('value');
+			let tr = $("calculation1tbody tr").val();
+			if(result){
+				if(tr==null){
+					
 				}
-			});
-		
-		if(!falag){
-			$(".calculation1 thead input:checkbox[id=check]").prop("checked",true);
-		}
-		
+				location.href="/cart/delete?c_seq="+c_seq;
+			}
+			
 		})
+		
 	})
 </script>
 <body>
@@ -252,7 +245,7 @@ a{text-decoration: none;color: white;}
 					<table class="calculation1">
 						<thead>
 							<tr>
-								<th colspan="10" style="text-align: left; padding-left: 10px;">일반상품</th>
+								<th colspan="9" style="text-align: left; padding-left: 10px;">일반상품</th>
 							</tr>
 
 							<tr>
@@ -261,7 +254,6 @@ a{text-decoration: none;color: white;}
 								<th style="width: 550px;"><span>상품정보</span></th>
 								<th>판매가</th>
 								<th>수량</th>
-								
 								<th>배송구분</th>
 								<th>배송비</th>
 								<th>합계</th>
@@ -269,6 +261,7 @@ a{text-decoration: none;color: white;}
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="list" items="${map.list}">
 							<tr style="height: 90px; background-color: #fff;">
 								<td style="text-align:left; text-align:center; border-right: none;">
 									<input type="checkbox" id="checkbox">
@@ -276,8 +269,9 @@ a{text-decoration: none;color: white;}
 								<td style="border-left:none; border-right:none;">
 									<img style="width:80%" src=""/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
+								${list.p_name}
 								</td>
-								<td><span style="padding-left:10px;">0</span>원</td>
+								<td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
 								<td style="width:80px;">
 									<input type="number" style="text-align:right; width:43px; margin-bottom:5px;" min="1" max="99" step="1" value="1"/>
 									<button class="btn default" style="border-radius:3px; size:10px;">변경</button>
@@ -285,14 +279,15 @@ a{text-decoration: none;color: white;}
 								
 								
 								<td>기본배송</td>
-								<td>2,500<br/>고정</td>
+								<td>2,500<br/>고</td>
 								<td><span>0</span>원</td>
 								
 								<td>
 									<button class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
-									<button class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;">삭제</button>
+									<button class="btn default" id="deleteBtn" value="${list.c_seq}" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;">삭제</button>
 								</td>
 								</tr>
+								</c:forEach>
 						</tbody>
 						<tfoot>
 						<tr style="height:60px;">
