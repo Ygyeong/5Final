@@ -14,6 +14,46 @@
 
 
 <style>
+	*{box-sizing: border-box;}
+	 .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
+       h2{text-align: center;}
+/* 	div{border:1px solid black;} */
+	   .jgBar{margin:60px 0px 60px 0px;}
+	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
+       #category{text-align:right; margin-right:10px;}
+       #category select{height:100%;}
+       input[type=text]:focus{outline:none;}
+       #searchBox{border:1px solid black; width:400px; height:100%; padding-top:5px; padding-bottom:5px; }
+       #searchBox img{height:18px; width:18px;}
+       #keyword{width:90%; border:none;padding-left:10px; margin-top:3px;}
+       #writeBox{text-align:right; padding:8px 10px 0px 0px;}
+       #write{ text-decoration:none; color:black; height:100%;}
+       #word{border:0px solid black; width:90%;}
+       #write,#writeNo:hover{cursor:pointer;}
+       /*  input:focus {outline:none;}*/
+      .listbar{height:330px; margin: 0px; margin-top: 40px; margin-bottom:50px;}
+      .list{height:100%; width:246px;  margin:0px 11px 50px 11px; border:1px solid #ddd; }
+      .list:hover{cursor:pointer;}
+      .list .img{height:217px; margin-bottom: 10px; }
+      .link{padding:0px 10px 0px 10px;}
+      
+      .img,.link:hover {cursor:pointer;}
+      .img img{width:100%; height:100%;}
+      .price{font-weight:bold;font-size:1.2em; padding:0px 0px 0px 10px;}
+      .price span{font-size:0.7em; display:inline-block;padding-left:2px;}
+      .diffD{padding:6px 12px 0px 0px; color:#a9a9a9; font-size:0.8em; text-align:right;}
+      .area{font-size:0.8em; color:#606060; font-weight:500;}
+      .ar{border-top:1px solid #ddd; margin-top:8px;}
+
+      .camp{width:100%;margin:auto; height:500px;}
+      .camp img{width:100%; height:100%; padding:0px;}
+	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
+	  #count{margin-left:8px; font-weight:bold;}
+      .schResult{padding-left:24px;}
+
+
+
+
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -241,7 +281,102 @@ a{
     
     
     <div class="body_txt" >
-    여기는 중고
+    <c:choose>
+	<c:when test="${loginID==null }">
+		<div class="container-fluid">
+        <div class="row jgBar">
+            <div class="col-6 " id="jg">
+                중고장터
+            </div>
+            <div class="col-5 p-0 search">
+                <div id=searchBox>
+                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                	<img src="/img/search.png" id=search>
+                	<input type=hidden value=${keyword } id=searchKey>
+                </div>
+
+            </div>
+            <div class="col-1 " id=writeBox>
+            	<a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
+            </div>
+        </div>
+        <!-- <div class="row camp m-0">
+        	<img src="/img/camp.jpg" >
+        </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
+        
+        <div class="row listbar" >
+        <c:forEach var="i" items="${list }">
+			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
+				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
+				<div class="col-12 mb-1 link">${i.rep_name }</div>
+				<div class="row m-0 ">
+					<div class="col-6 price">${i.rep_price }<span>원</span></div>
+					<div class="col-6 diffD">${i.rep_diff_date }</div>
+				</div>
+				<div class="row m-0 mt-2 pt-2 pb-2 ar">
+					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+				</div>
+				<input type=hidden value=${i.rep_seq } class=seq>
+			</div>       
+		</c:forEach>
+		</div> 
+    </div>
+	</c:when>
+	<c:otherwise>
+		<div class="container-fluid">
+        <div class="row jgBar">
+            <div class="col-6 " id="jg">
+                중고장터
+                <a href="/rep/myJG?index=1&seq=1&id=${loginID}">${loginID}내중고마켓</a>
+            </div>
+            <div class="col-5 p-0 search">
+                <div id=searchBox>
+                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                	<img src="/img/search.png" id=search>
+                	<input type=hidden value=${keyword } id=searchKey>
+                </div>
+            </div>
+            <div class="col-1 " id=writeBox>
+            	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
+            </div>
+        </div>
+        <!-- <div class="row camp m-0">
+        	<img src="/img/camp.jpg" >
+        </div> -->
+        <c:choose>
+        	<c:when test="${keyword != null }">
+        		<div class="row ">
+        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+       			 </div>
+        	</c:when>
+        </c:choose>
+        <div class="row listbar" >
+        <c:forEach var="i" items="${list }">
+			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
+				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
+				<div class="col-12 mb-1 link">${i.rep_name }</div>
+				<div class="row m-0 ">
+					<div class="col-6 price">${i.rep_price }<span>원</span></div>
+					<div class="col-6 diffD">${i.rep_diff_date}</div>
+				</div>
+				<div class="row m-0 mt-2 pt-2 pb-2 ar">
+					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+				</div>
+				<input type=hidden value="${i.rep_seq}" class="seq">
+			</div>       
+		</c:forEach>
+		</div>
+    </div>
+    
+	</c:otherwise>
+</c:choose>
 	</div>
 
 
