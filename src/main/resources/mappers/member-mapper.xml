@@ -11,24 +11,17 @@
 	<select id="idDuplCheck" parameterType="kh.spring.dto.MemberDTO" resultType="int">
 		select count(cm_id) from camp_mem where cm_id=#{cm_id}
 	</select>
+	<select id="idPwDuplCheck" parameterType="kh.spring.dto.MemberDTO" resultType="int">
+		select count(cm_id) from camp_mem where cm_id=#{cm_id} and cm_email=#{cm_email}
+	</select>
 	<select id="login" parameterType="kh.spring.dto.MemberDTO" resultType="kh.spring.dto.MemberDTO">
 		select * from camp_mem where cm_id = #{cm_id}
 	</select>
 	<select id="wishCount" parameterType="kh.spring.dto.Camp_wishlistDTO" resultType="int">
 		select count(cm_id) from camp_wishlist where cm_id = #{cm_id}
 	</select>
-	<select id="wishList" parameterType="kh.spring.dto.Camp_wishlistDTO" resultType="kh.spring.dto.Camp_wishDTO">
-		select * from camp_wishlist where cm_id = #{cm_id}
-		<!-- select * from camp_wishlist join camp_info on(camp_wishlist.contentid = camp_info.contentid) where cm_id = #{cm_id} -->
-		<!-- SELECT
-			*
-		FROM
-			camp_wishlist as a
-		JOIN
-			camp_info as b
-		ON b.contentId = a.contentId
-		WHERE
-			cm_id = #{cm_id} -->
+	<select id="wishList" parameterType="kh.spring.dto.Camp_wishlistDTO" resultType="int">
+		select contentId from camp_wishlist where cm_id = #{cm_id}
 	</select>
 	<delete id="memberOut">
 		delete from camp_mem where cm_id=#{cm_id}
@@ -42,5 +35,9 @@
 	
 	<select id="modifySelect" parameterType="kh.spring.dto.MemberDTO" resultType="kh.spring.dto.MemberDTO">
 		select * from camp_mem where cm_id = #{cm_id} 
+	</select>
+	
+	<select resultType="kh.spring.dto.Camp_infoDTO" id="selectList">
+		select * from camp_info
 	</select>
 </mapper>

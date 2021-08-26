@@ -117,7 +117,9 @@
                 <div class="card-body" style="text-align:center;">
                 </br></br>
 				         <form action="/member/pwIdDuplCheck">
-				            <input class="form-control" type="text" name="cm_id" placeholder="아이디를 입력해주세요.">
+				   			<input class="form-control" type="text" name="cm_email" placeholder="이메일을 입력해주세요.">
+				         </br>
+				             <input class="form-control" type="text" name="cm_id" placeholder="아이디를 입력해주세요.">
 				         </br>
 				            <input class="btn btn-success" type="submit" id="idCheck" value="확인">
 				        </form>
