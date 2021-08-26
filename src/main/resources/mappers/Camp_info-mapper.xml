@@ -60,7 +60,9 @@
 	</select>
 	
 	<insert id="imageinsert">
-		insert into camp_photo values (#{contentId},#{imageUrl, jdbcType = VARCHAR }, #{serialnum}) 
+		insert into camp_photo values (${contentId} ,'${imageUrl}', ${serialnum}) 
 	</insert>
+	
+
 
 </mapper>

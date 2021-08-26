@@ -376,18 +376,18 @@ a{
          <div id=namebox>
            ${i.facltNm}  
          </div></h1>
-
+         </c:forEach>
 
          <!-- 슬라이드 -->
          <div id=slidebox>
-            <div class="slick-sample"> 
-               <div><img src="/img/campinglist/camping01.jpg"></div> 
-               <div><img src="/img/campinglist/camping02.jpg"></div>
-               <div><img src="/img/campinglist/camping03.jpg"></div> 
-               <div><img src="/img/campinglist/camping04.jpg"></div> 
-               <div><img src="/img/campinglist/camping05.jpg"></div>  
+            <div class="slick-sample">
+             <c:forEach var="i" items="${image}"> 
+               <div><img src=" ${i.imageUrl}"></div> 
+			</c:forEach>
             </div>
          </div>
+
+ 		<c:forEach var="i" items="${list}">
          <!-- 정보 -->
          <div id=infobox>
             <div id=tablebox>

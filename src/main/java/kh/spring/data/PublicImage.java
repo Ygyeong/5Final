@@ -35,22 +35,25 @@ public class PublicImage extends HttpServlet {
         
         List <Camp_photoDTO> list = null;
         list = new ArrayList<Camp_photoDTO>();
-  
+    	
+    	
         for(int i = 0 ; i < parse_item.size(); i++) {
         		
-        	Camp_photoDTO dto = new Camp_photoDTO();
-            
         	camping = (JSONObject) parse_item.get(i);
-        	
+        	Camp_photoDTO dto = new Camp_photoDTO();
         	dto.setContentId(((Long)camping.get("contentId")).intValue());
         	dto.setImageUrl((String)camping.get("imageUrl"));
         	dto.setSerialnum(((Long)camping.get("serialnum")).intValue());
         	System.out.println("이미지: "+(String)camping.get("imageUrl")); 
+        	System.out.println("번호: "+((Long)camping.get("contentId")).intValue()); 
+        	System.out.println("시리얼: "+((Long)camping.get("serialnum")).intValue()); 
         	
         	list.add(dto);
+        	System.out.println(list.indexOf(dto));
         	System.out.println(dto);       	
 
         }
+        	System.out.println(list);
         	return list;
   
    }
