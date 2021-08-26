@@ -89,7 +89,7 @@ h2{text-align: center;}
 #word{border:0px solid black; width:90%;height:100%;}
 /*  input:focus {outline:none;}*/
 .listbar{height:330px; margin: 0px; margin-top: 60px; }
-.list{height:100%; width:246px;  margin:0px 10px 50px 10px; border:1px solid #ddd; }
+.list{height:100%; width:246px;  margin:0px 10px 50px 10px; border:1px solid #ddd; display:inline-block; }
 .list:hover{cursor:pointer;}
 .list .img{height:217px; margin-bottom: 10px; }
 .link{padding:0px 10px 0px 10px;}
@@ -310,7 +310,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -326,10 +326,10 @@ a{
     
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
-            <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/newProduct?index=1">새상품 관리</a></li>
+            <li><a href="/admin/re?index=1">중고상품 관리</a></li>
             <li><a href="/admin/pay">결제내역 관리</a></li>
-           	<li style="height:200px;"></li>
+           	<li style="height:300px;"></li>
 
         </ul>
         
