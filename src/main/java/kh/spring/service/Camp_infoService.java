@@ -69,8 +69,14 @@ public class Camp_infoService {
 		return dao.search(param);
 	}
 	
+	//이미지 뽑기용
 	public List<Camp_infoDTO> contentIdlist() {
 		return dao.contentIdlist();
+	}
+	
+	// 메인 리스트 뽑는 용
+	public List<Camp_infoDTO> indexlist() {
+		return dao.indexlist();
 	}
 	
 	

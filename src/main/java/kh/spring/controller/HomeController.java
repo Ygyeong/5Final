@@ -29,7 +29,8 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String home(HttpServletRequest request, Model model) throws Exception  {
-		List<Camp_infoDTO> list = service.selectAll(0,6);
+		List<Camp_infoDTO> list = service.indexlist();
+		
 		int rating = gservice.selectRating();  
 		List<ReProductDTO> rlist = rservice.HomeThumbnail(1, 3);
 		model.addAttribute("rlist",rlist);
