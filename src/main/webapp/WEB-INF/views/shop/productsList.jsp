@@ -95,7 +95,7 @@ $(function(){
       let documentHeight = $(document).height();
       console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
             "| documentHeight"+documentHeight)
-      if(scrollTop+windowHeight>=documentHeight){
+      if(scrollTop+windowHeight+50>=documentHeight){
          index++;
          setTimeout(getList(),2000);
          
@@ -300,10 +300,7 @@ $(function(){
       </c:otherwise>
    </c:choose>
    
-   <!--챗봇  -->
-   <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js">
-      
-   </script>
+  
    
    <!-- Bootstrap core JS-->
    <script botId="B2pe9j" src="https://www.closer.ai/js/webchat.min.js"></script>

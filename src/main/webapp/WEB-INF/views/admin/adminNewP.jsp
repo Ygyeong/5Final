@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +11,99 @@
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/4625b781d5.js" crossorigin="anonymous"></script>
-
+<script type="text/javascript">
+$(function(){
+    
+    $(".list").on("click",function(){
+       let p_seq=$(this).find(".p_seq").val();
+       location.href="/products/detail?p_seq="+p_seq;
+   })
+   $(document).on("click",".list",function(){
+      let p_seq=$(this).find(".p_seq").val();
+      location.href="/products/detail?p_seq="+p_seq;
+   })
+   
+   let index=1;
+   $(window).scroll(function(){
+      let $window = $(this);
+      let scrollTop = $(this).scrollTop();
+      let windowHeight = $window.height();
+      let documentHeight = $(document).height();
+      console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+            "| documentHeight"+documentHeight)
+      if(scrollTop+windowHeight>=documentHeight){
+         index++;
+         setTimeout(getList(),2000);
+         
+      }
+            
+   })
+   
+   function getList(){
+      $.ajax({
+         url:"/products/scrollList",
+         dataType:"json",
+         data:{"index":index}
+      }).done(function(resp){
+         for(let i=0;i<resp.length;i++){
+            let list = $("<div class='col-4 list'>");
+            
+            let img = $("<div id=img>");
+            img.text("사진");
+            let name =$("<div id=link>");
+            name.text(resp[i].rep_name);
+            let price = $("<div>");
+            price.text(resp[i].rep_price);
+            let date = $("<div>");
+            date.text(resp[i].rep_write_date);
+            let seq = $("<input type=hidden class=seq>");
+            seq.val(resp[i].rep_seq);
+            
+            list.append(img);
+            list.append(name);
+            list.append(price);
+            list.append(p_seq);
+            $(".listbar").append(list);
+            
+            
+         }
+      })
+   }
+})
+</script>
 
 
 <style>
+
+*{box-sizing: border-box;}
+.container-fluid{width:1100px;height: 1250px; margin: auto; margin-top:80px;}
+h2{text-align: center;}
+/*    div{border:1px solid black;} */
+#category{text-align:right; display:inline-block;}
+#category select{height:29px;}
+#searchBox{border:1px solid black;
+ padding-bottom:4px; width:300px; display:inline-block;}
+#searchBox img{height:18px; width:18px;margin-bottom:-5px;}
+#writeBox{text-align:right; display:inline-block;margin-left:300px;}
+#write{ text-decoration:none; color:black; height:100%;}
+#word{border:0px solid black; width:90%;height:100%;}
+/*  input:focus {outline:none;}*/
+.listbar{height:330px; margin: 0px; margin-top: 60px; }
+.list{height:100%; width:246px;  margin:0px 10px 50px 10px; border:1px solid #ddd; display:inline-block; }
+.list:hover{cursor:pointer;}
+.list .img{height:217px; margin-bottom: 10px; }
+.link{padding:0px 10px 0px 10px;}
+.img,.link:hover {cursor:pointer;}
+.img,.link:hover~.link{text-decoration:underline;}
+.img img{width:100%; height:100%;}
+.price{font-weight:bold;font-size:1.2em; padding:0px 0px 0px 10px;}
+.price span{font-size:0.7em; display:inline-block;padding-left:2px;}
+.diffD{padding:6px 12px 0px 0px; color:#a9a9a9; font-size:0.8em; text-align:right;}
+.area{font-size:0.8em; color:#606060; font-weight:500;}
+.ar{border-top:1px solid #ddd;}
+
+
+
 /*네비바 스타일  */     
 :root{
     --text-color:#f0f4f5;
@@ -25,10 +115,11 @@ body{
     
 }
 a{
+    
     text-decoration: none;
     color: white;
-
-
+    
+    
 }
 
 .navbar{
@@ -37,7 +128,7 @@ a{
     align-items: center;
     background-color: #263343;
     padding: 8px 12px;
-    
+    z-index:1000;
 
 }
 
@@ -154,9 +245,16 @@ a{
     align-items: center;
     background-color: #263343;
     padding-top:100px;
-   
+    z-index:100;
    
 }
+
+.side_nav{
+    
+     position:fixed;
+   
+}
+
 
 .side_menu{
 	list-style: none;
@@ -181,8 +279,9 @@ a{
 	
 	display:inline-block;
 	text-align:center;
-	top:250px; left:600px; 
+	top:50px; left:250px; 
 	position:absolute;
+	
 
 }
 
@@ -211,7 +310,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -227,10 +326,10 @@ a{
     
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
-            <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/newProduct?index=1">새상품 관리</a></li>
+            <li><a href="/admin/re?index=1">중고상품 관리</a></li>
             <li><a href="/admin/pay">결제내역 관리</a></li>
-           	<li style="height:200px;"></li>
+           	<li style="height:300px;"></li>
 
         </ul>
         
@@ -240,93 +339,54 @@ a{
     
     
     <div class="body_txt" >
-    <form name="orderform" id="orderform" method="post" class="orderform" action="/Page" onsubmit="return false;">
-		<input type="hidden" name="cmd" value="order">
-		<div class="basketdiv" id="basket">
-			<div class="row head">
-				<div class="subdiv">
-					<div class="check">선택</div>
-					<div class="img">이미지</div>
-					<div class="pname">상품명</div>
-				</div>
-				<div class="subdiv">
-					<div class="basketprice">가격</div>
-					<div class="num">수량</div>
-					<div class="sum">합계</div>
-				</div>
-				<div class="subdiv">
+    
+         <div class="container-fluid">
+            <h2>상품목록 관리</h2>
+            <div class="row m-0 mt-5 h-120">
+               <div class="col-2 p-0" id="category">
+                  <select name="rep_category">
+                     <option selected>전체종류</option>
+                     <option value="텐트/타프">텐트/타프</option>
+                     <option value="침낭/매트">침낭/매트</option>
+                     <option value="테이블/의자">테이블/의자</option>
+                     <option value="조명기구">조명기구</option>
+                     <option value="주방용품">주방용품</option>
+                     <option value="화로/버너/bbq">화로/버너/bbq</option>
+                     <option value="겨울용품">겨울용품</option>
+                     <option value="기타캠핑용품">기타캠핑용품</option>
+                  </select>
+               </div>
+               <div class="col-4" id=searchBox>
+                  <input type="text" id=word placeholder="상품명을 입력하세요."> <img
+                     src="/img/search.png">
+               </div>
+               <div class="col-5 p-0 pt-1" id=writeBox>
+                  <a href="/products/write" id=write><i
+                     class="fas fa-pen-square"></i>등록하기</a>
+               </div>
+            </div>
+            <div class="row listbar">
+               <c:forEach var="list" items="${list}">
+                  <div class="col-3 p-0 list" seq="${list.p_seq}">
+                     <div class="col-12 img">
+                        <img src="/img/${list.p_thumsysName}">
+                     </div>
+                     <div class="col-12 mb-1 link">${list.p_name}</div>
+                     <div class="row m-0 ">
+                        <div class="col-6 price">
+                        <fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/><span>원</span>
+                        </div>
+                        <div class="col-6 diffD">${list.p_rdate}</div>
+                     </div>
+                     <div class="row m-0 mt-2 pt-2 pb-2 ar">
+                     </div>
+                     <input type=hidden value="${list.p_seq}" class=p_seq>
+                  </div>
+               </c:forEach>
+            </div>
+         </div>
+      
 
-					<div class="basketcmd">삭제</div>
-				</div>
-				<div class="split"></div>
-			</div>
-			<c:forEach var="list" items="${map.list}">
-			<div class="row data">
-				<div class="subdiv">
-					<div class="check">
-						<input type="checkbox" name="buy" value="260" checked=""
-							onclick="javascript:basket.checkItem();">&nbsp;
-					</div>
-					<div class="img">
-						<img src="/img/surf.jpg" width="60">
-					</div>
-					<div class="pname">
-						<span>${list.p_name}</span>
-						<input type="hidden" value="${list.c_seq}" class="c_seq">
-						<input type="hidden" value="${list.p_seq}" class="p_seq">
-					</div>
-				</div>
-				<div class="subdiv">
-					<div class="basketprice">
-						<input type="hidden" name="p_price" id="p_price${list.c_seq}" class="p_price"
-							value="${list.p_price}">${list.p_price}
-					</div>
-					<div class="num">
-						<div class="updown">
-							<input type="text" name="p_num${list.c_seq}" id="p_num${list.c_seq}" size="2"
-								maxlength="4" class="p_num" value="${list.c_qty}"
-								onkeyup="javascript:basket.changePNum(${list.c_seq});"> <span
-								onclick="javascript:basket.changePNum(${list.c_seq});"><i
-								class="fas fa-arrow-alt-circle-up up"></i></span> <span
-								onclick="javascript:basket.changePNum(${list.c_seq});"><i
-								class="fas fa-arrow-alt-circle-down down"></i></span>
-						</div>
-					</div>
-					<div class="sum"></div>
-				</div>
-				<div class="subdiv">
-					<div class="basketcmd">
-						<a href="javascript:void(0)" class="abutton"
-							onclick="javascript:basket.delItem();">삭제</a>
-							
-					</div>
-				</div>
-			</div>
-			</c:forEach>
-		</div>
-
-		<div class="right-align basketrowcmd">
-			<a href="javascript:void(0)" class="abutton"
-				onclick="javascript:basket.delCheckedItem();">선택상품삭제</a> <a
-				href="javascript:void(0)" class="abutton"
-				onclick="javascript:basket.delAllItem();">장바구니비우기</a>
-		</div>
-
-		<div class="bigtext right-align sumcount" id="sum_p_num">상품갯수:
-			4개</div>
-		<div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액:
-			${dto.c_price}</div>
-
-		<div id="goorder" class="">
-			<div class="clear"></div>
-			<div class="buttongroup center-align cmd">
-				<a href="javascript:void(0);">선택한 상품 주문</a>
-			</div>
-		</div>
-	</form>
-</body>
-<script type="text/javascript" src="/js/cartList.js"></script>
-<script src="/js/products.js"></script>
 	</div>
 	
 	
@@ -349,7 +409,11 @@ a{
 	
 	
 	
-	
+	<!-- Bootstrap core JS-->
+   
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Core theme JS-->
+   <script src="/js/products.js"></script>
 	
 	
 	
