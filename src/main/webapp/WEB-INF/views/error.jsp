@@ -12,12 +12,7 @@
 
 
 
-.container{
 
-    
-    background-color: chocolate;
- 
-}
 
 
 .logo{
@@ -65,7 +60,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            로고
+          	<img src="/assets/img/background/newLogo_negative.png">
         </div>
         <br>
         <br>
