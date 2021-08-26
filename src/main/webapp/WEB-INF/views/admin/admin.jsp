@@ -222,7 +222,7 @@ a{
 
         </ul>
         <ul class="navbar_member">
-            <li><a href="">관리자페이지</a></li>
+            <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
 
@@ -239,9 +239,9 @@ a{
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
             <li><a href="/admin/newProduct?index=1">새상품 관리</a></li>
-            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/re?index=1">중고상품 관리</a></li>
             <li><a href="/admin/pay">결제내역 관리</a></li>
-           	<li style="height:200px;"></li>
+           	<li style="height:300px;"></li>
 
         </ul>
         
@@ -251,7 +251,7 @@ a{
     
     
     <div class="body_txt" >
-    안녕하세요 관리자님!<br>
+    <h2>안녕하세요 관리자님!</h2><br><br><br>
     관리자 페이지에 오신걸 환영합니다!
 	</div>
 	<button id=dataupdate>DB 업데이트</button>

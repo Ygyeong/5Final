@@ -10,15 +10,18 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.Camp_wishlistDTO;
 import kh.spring.dto.MemberDTO;
 import kh.spring.dto.ScheduleDTO;
+import kh.spring.service.Camp_infoService;
 import kh.spring.service.MemberService;
 import kh.spring.service.ScheduleService;
 
@@ -31,17 +34,17 @@ public class MemberController {
 	public MemberService ms;
 	@Autowired
 	public ScheduleService ss;
+	
+	@Autowired
+	private Camp_infoService service;
 
 	@RequestMapping("myPage")
 	public String myPage(@RequestParam("cm_id") String cm_id, HttpServletRequest req) throws Exception {
 		HttpSession session = req.getSession();
-		ScheduleDTO dto = new ScheduleDTO();
-
-		dto.setCm_id(cm_id);
+		
+		
 		int result = ms.wishCount(cm_id);
-		List<ScheduleDTO> show = ss.showSchedule(dto);
 		session.setAttribute("wish", result);
-		session.setAttribute("list", show);
 		return "/member/myPage";
 	}
 
@@ -58,6 +61,15 @@ public class MemberController {
 	@RequestMapping("idCheck")
 	public String emailCheckPage() {
 		return "/member/idCheck";
+	}
+	
+	@RequestMapping("scheduleCheck")
+	public String scheduleCheck(@RequestParam("cm_id") String cm_id,Model model) throws Exception {
+		ScheduleDTO dto = new ScheduleDTO();
+		dto.setCm_id(cm_id);
+		List<ScheduleDTO> show = ss.showSchedule(dto);
+		model.addAttribute("list", show);
+		return "/member/schedule";
 	}
 
 	@RequestMapping("pwChange")
@@ -152,8 +164,11 @@ public class MemberController {
 	}
 
 	@RequestMapping("pwIdDuplCheck")
-	public String pwIdDuplCheck(String cm_id, HttpSession session, HttpServletResponse response) throws Exception {
-		int result = ms.idDuplCheck(cm_id);
+	public String pwIdDuplCheck(String cm_id,String cm_email ,HttpSession session, HttpServletResponse response) throws Exception {
+		MemberDTO dto = new MemberDTO();
+		dto.setCm_id(cm_id);
+		dto.setCm_email(cm_email);
+		int result = ms.idPwCheck(dto);
 		if(result > 0) {
 			session.setAttribute("member", cm_id);
 			return "/member/idCheckResult";
@@ -170,13 +185,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping("wishlist")
-	public String wishListSelectAll(@RequestParam("cm_id") String cm_id,HttpServletRequest req) {
-		HttpSession session = req.getSession();
+	public String wishListSelectAll(@RequestParam("cm_id") String cm_id,HttpServletRequest req,Model model) {
 		Camp_wishlistDTO dto = new Camp_wishlistDTO();
-
 		dto.setCm_id(cm_id);
-		List<Camp_wishlistDTO> wish = ms.wishListSelectAll(dto);
-		session.setAttribute("list", wish);
+		
+		List<Camp_wishlistDTO> wish = ms.wishListSelectAll(dto);;
+		List<Camp_infoDTO> list = ms.selectAll();
+		model.addAttribute("listAll", list);
+		model.addAttribute("listWish", wish);
 		return "/member/wishPopup";
 	}
 }

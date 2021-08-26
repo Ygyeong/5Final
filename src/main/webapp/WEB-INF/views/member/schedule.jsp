@@ -14,37 +14,50 @@
 
 <head>
 <meta charset="UTF-8">
-<title>** SCHEDULE INSERT **</title>
+<title>** SCHEDULE **</title>
 <script>
 $(function(){
 	$(".btn-danger").on('click', function(){
 		window.close();
 	})
+	
+	$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("#myTable tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	
 });
 </script>
 </head>
 <body>
 
-<div class="container">          
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>캠핑장 등록 번호</th>
-      </tr>
-    </thead>
-    <tbody>
- 		<c:forEach items="${listWish}" var = "i">
-			<tr>
-				<td><a href="/info/detail?contentId=${i }">${i}</a> </td>
-			</tr>
-		</c:forEach>
-    </tbody>
-  </table>
-</div>
-
+ <div id="tableBox" style="text-align: center;">
+        
+        	<input class="form-control" id="myInput" type="text" placeholder="키워드를 입력해주세요" style="width:600px;margin:auto; margin-top:10px;">
+			<table class="table table-striped" style="width:600px; margin:auto; margin-top:10px; margin-bottom:20px;">
+				
+				<thead class="thead-dark">
+				<tr><th> 날짜 </th><th> 일정 </th><th> 메모 </th></tr>
+				</thead>
+				
+				<tbody id="myTable">
+					<c:forEach items="${list}" var = "i">
+						<tr>
+							<td>${i.startDate}</td>
+							<td>${i.subject}</td>
+							<td>${i.memo}</td>
+						</tr>
+					</c:forEach>
+				</tbody>				
+		
+				</table>
+           </div>
            <div style="text-align:center;">
 				<button class="btn btn-danger"> 닫기 </button>
            </div>
+          
 
 </body>
 </html>

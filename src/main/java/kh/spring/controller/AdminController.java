@@ -20,9 +20,11 @@ import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.MemberDTO;
 import kh.spring.dto.ProductsDTO;
+import kh.spring.dto.ReProductDTO;
 import kh.spring.service.AdminService;
 import kh.spring.service.MemberService;
 import kh.spring.service.ProductsService;
+import kh.spring.service.ReProductService;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,6 +38,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProductsService pservice;
+	
+	@Autowired
+	private ReProductService rservice;
 	
 
 	@Autowired
@@ -145,8 +150,25 @@ public class AdminController {
 	
 	
 	@RequestMapping("re")
-	public String re(HttpServletRequest request) throws Exception {
+	public String re(int index,String keyword,Model m) throws Exception {
 		
+		
+			int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+			int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+			System.out.println(startNum);
+			System.out.println(keyword);
+			if(keyword == null || keyword.contentEquals("")) {
+				List<ReProductDTO> list = rservice.Thumbnail(startNum,endNum);
+				m.addAttribute("list",list);
+			}else {
+				List<ReProductDTO> list = rservice.search(keyword,startNum,endNum);
+				int listsize = list.size();
+				int total = (int)Math.ceil(listsize/(double)ReProductConfig.RECORD_COUNT_PER_LIST);
+				m.addAttribute("list",list);
+				m.addAttribute("keyword",keyword);
+				m.addAttribute("count",listsize);
+		
+			}
 	    return "admin/adminRe";
 	}
 	
