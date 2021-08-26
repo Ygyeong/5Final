@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +33,14 @@ public class OrderController {
 	public String payView(String product,String price ,Model m) {
 		System.out.println("결제페이지로 ㄱㄱ");
 		System.out.println(product+" : "+price);
+		
 		String id = ((String)session.getAttribute("loginID"));
 		MemberDTO mdto = mservice.login(id);
-		service.insert(mdto,product,price);
-		OrderDTO dto =service.select(id);
+		int seq=service.getSeq();
+		service.insert(seq, mdto,product,price);
+		OrderDTO dto =service.select(seq);
 		int o_seq = dto.getO_seq();
+		m.addAttribute("price",price);
 		m.addAttribute("o_seq",o_seq);
 		m.addAttribute("dto",dto);
 		return "shop/pay";
@@ -46,7 +51,7 @@ public class OrderController {
 		System.out.println("apply_num : "+apply_num);
 		service.update(apply_num, o_seq);
 		String id = (String)session.getAttribute("loginID");
-		OrderDTO dto =service.select(id);
+		OrderDTO dto =service.select(o_seq);
 		m.addAttribute("dto",dto);
 		return "shop/payResult";
 	}

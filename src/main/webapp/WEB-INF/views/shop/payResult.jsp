@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +15,24 @@
 
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <style>
-        .container-fluid{width: 1000px;margin: auto;}
+        .container-fluid{width: 1000px;margin: auto; margin-top:50px;}
         .top{width: 600px; height: 40px; line-height: 40px;font-size: 20px ;font-weight: bold; background-color: #ddd;text-align: center; margin: auto;}
         .txt{margin: auto; text-align: center;}
         .col-3{background-color: #e9e9e9;}
         div[class^=col]{height: 38px; line-height: 30px;}
-        .infoT{font-weight: bold;}
+        .infoT{font-weight: bold;padding-top: 3px;}
         .box{border: 1px solid #ddd;}
         .topB{border-top: 2px solid black;}
+        .btnBox>div {text-align: center; margin-top: 30px;}
+        .btn{width: 100px;  margin: auto; margin-top: 15px;  }
     </style>
+    <script>
+    	$(function(){
+    		$("#btn").on("click",function(){
+        		location.href="/products/selectAll?index=1";
+        	})
+    	})
+    </script>
 </head>
 <body>
     <div class="container-fluid">
@@ -34,20 +44,24 @@
         </div>
             <div class="row m-0 mt-4 p-0 box topB">
                 <div class="col-3 infoT">주문번호</div>
-                <div class="col-4"><input type="text" name="" value="${dto.o_num }"></div>
+                <div class="col-4">${dto.o_num }</div>
             </div>
+            <div class="row m-0 p-0 box">
+                <div class="col-3 infoT">결제금액</div>
+                <div class="col-4">${dto.o_allSum}<span style="margin-left:4px;">원</span></div>
+           </div>
         <div class="row m-0 p-0 box">
-            <div class="col-3 infoT">이름</div>
-            <div class="col-4"><input type="text" name="" value="${dto.o_name}"></div>
-        </div>
-        <div class="row m-0 p-0 box">
-             <div class="col-3 infoT">주소</div>
-             <div class="col-4"><input type="text" name="" value="${dto.o_address1 } ${dto.o_address2}"></div>
+            <div class="col-3 infoT">상품명</div>
+            <div class="col-4">${dto.o_product}</div>
         </div>
          <div class="row m-0 p-0 box">
-            <div class="col-3 infoT">상품</div>
-            <div class="col-4"><input type="text" name=""></div>
+            <div class="col-3 infoT">배송지</div>
+            <div class="col-4">${dto.o_address1 } ${dto.o_address2}</div>
         </div>
+        <div class="row p-0">
+            <div class=" col-2 btn"><button type=button class="btn btn-outline-dark" id=btn>확인</button></div>
+        </div>
+        
     </div>
 </body>
 </html>

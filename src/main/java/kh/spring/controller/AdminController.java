@@ -19,10 +19,12 @@ import kh.spring.dao.AdminDAO;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.OrderDTO;
 import kh.spring.dto.ProductsDTO;
 import kh.spring.dto.ReProductDTO;
 import kh.spring.service.AdminService;
 import kh.spring.service.MemberService;
+import kh.spring.service.OrderService;
 import kh.spring.service.ProductsService;
 import kh.spring.service.ReProductService;
 
@@ -42,7 +44,9 @@ public class AdminController {
 	@Autowired
 	private ReProductService rservice;
 	
-
+	@Autowired
+	private OrderService oservice;
+	
 	@Autowired
 	private AdminDAO dao;
 	
@@ -132,9 +136,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("pay")
-	public String pay(HttpServletRequest request) throws Exception {
+	public String pay(HttpServletRequest request,Model m) throws Exception {
+		List<OrderDTO> list = oservice.getAll();
 		
-	    return "admin/adminPay";
+	    m.addAttribute("list",list);
+		return "admin/adminPay";
 	}
 	
 	@RequestMapping("insert") // 상품등록

@@ -17,7 +17,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
     *{box-sizing: border-box;}
-    .container-fluid{width: 950px; margin: auto;}
+    .container-fluid{width: 950px; margin: auto; margin-top:50px;}
        
     .col-3{background-color: #e9e9e9;}
     .top{font-size: 31px; border-bottom:2px solid black ;}
@@ -34,7 +34,7 @@
 <script>
     $(function(){
     	  $("#payBtn").on("click",function () {
-    	        var IMP = window.IMP; // 생략가능
+    		  var IMP = window.IMP; // 생략가능
     	        IMP.init('imp81223023');
     	        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
     	        // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
@@ -69,13 +69,14 @@
     	        */
     	        name: '별보러갈래',
     	        //결제창에서 보여질 이름
-    	        amount: '{dto.o_allSum}',
+    	        amount: 100,
+    	        /* amount: '${dto.o_allSum }', */
     	        //가격
-    	        buyer_name: '${dto.m_id}',
+    	      	buyer_email: '${dto.o_email}',
+    	        buyer_name: '${dto.o_name}',
     	        buyer_tel: '${dto.o_phone}',
-    	        buyer_email: '${dto.o_email}',
-    	        buyer_addr: '${dto.o_address1}'+'${dto.o_address2 }',
-    	        buyer_postcode : '${dto.o_zipcode}',
+    	        buyer_addr: '${dto.o_address1}',
+    	        buyer_postcode: '${dto.o_zipcode}',
     	        m_redirect_url: 'https://www.yourdomain.com/payments/complete'
     	        /*
     	        모바일 결제시,
@@ -90,11 +91,10 @@
     	        msg += '상점 거래ID : ' + rsp.merchant_uid;
     	        msg += '결제 금액 : ' + rsp.paid_amount;
     	        msg += '카드 승인번호 : ' + rsp.apply_num;
-    	        location.href="/order/payResult?apply_num="+rsp.apply_num+"&o_seq="+$("#o_seq").val();
+    	       	location.href="/order/payResult?apply_num="+rsp.apply_num+"&o_seq="+$("#o_seq").val(); 
     	        } else {
     	        var msg = '결제에 실패하였습니다.';
     	        msg += '에러내용 : ' + rsp.error_msg;
-    	        location.href="error.jsp"
     	        }
     	        alert(msg);
     	        });
@@ -109,7 +109,7 @@
 </script>
 </head>
 <body>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 ">
         <div class="row m-0">
             <div class="col-12 top">주문/결제</div>
         </div>
@@ -144,14 +144,14 @@
         <div class="row m-0 mt-4">
             <div class="col-12 title">상품정보</div>
             <div class="row m-0 p-0 txt">
-                <div class="col-6">${dto.o_product}<span>${dto.o_qcy}</span></div>
+                <div class="col-6">${dto.o_product}<span style="margin-left:10px;">${dto.o_qcy}개</span></div>
             </div>
         </div>
         <div class="row m-0 mt-4">
             <div class="col-12 title">결제 정보</div>
             <div class="row m-0 p-0 txt">
-                <div class="col-3">총상품가격</div>
-                <div class="col-4"><input type="text" name="" value="${dto.o_allSum}"></div>
+                <div class="col-3">상품가격</div>
+                <div class="col-4"><input type="text" name="" value="${price}"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">배송비</div>
@@ -159,7 +159,7 @@
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">총결제금액</div>
-                <div class="col-4"><input type="text" name="" value="${dto.o_allSum}"+"${dto.o_delivery }"></div>
+                <div class="col-4"><input type="text" name="" value="${dto.o_allSum}"></div>
             </div>
             <div class="row m-0 p-0 txt">
                 <div class="col-3">결제방법</div>
