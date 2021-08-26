@@ -529,7 +529,7 @@
 					</div>
 					<div class="fix-12-12 margin-top-3">
 						<ul class="flex fixedSpaces later left">
-							<c:forEach var="i" items="${list}" begin="8" end="15">
+							<c:forEach var="i" items="${list}" begin="14" end="21">
 								<li class="col-3-12 col-tablet-1-2 col-phone-1-1"><a
 									href="/info/detail?contentId=${i.contentId }"
 									class="button rounded empty margin-bottom-2 ae-4"><img

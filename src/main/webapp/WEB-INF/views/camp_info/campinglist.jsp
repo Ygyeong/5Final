@@ -405,6 +405,7 @@ a{
                     <h2 class="section-heading text-uppercase">Camping</h2>
                     <h3 class="section-subheading text-muted"> 가고 싶은 캠핑장을 골라 보세요! </h3>
                 </div>
+               <!-- <button id=data>여기 </button>  -->
              <!--  검색 박스 -->
              <div id="searchbox"> 
              		<select id="searchOption">

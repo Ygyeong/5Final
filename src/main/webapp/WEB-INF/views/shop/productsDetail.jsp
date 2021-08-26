@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -226,7 +227,7 @@ a{text-decoration: none;color: white;}
 					</div>
 					<div class="col-5 " id=infoBox>
 						<div class="row m-0 mb-4">
-							<div class="col-2 txt">${dto.p_category}</div>
+							<div class="col-3 txt">${dto.p_category}</div>
 							<div class="col-2 ex">
 							</div>
 						</div>
@@ -235,7 +236,9 @@ a{text-decoration: none;color: white;}
 							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
 						</div>
 						<div class="row m-0" id=priceBox>
-							<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
+							<div class="col-12 p-0 pb-2" id=price>
+							<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+							</div>
 						</div>
 						<div class="row m-0 pb-2">
 							<div class="col-3 p-0">배송비</div>
@@ -289,7 +292,9 @@ a{text-decoration: none;color: white;}
 							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
 						</div>
 						<div class="row m-0" id=priceBox>
-							<div class="col-12 p-0 pb-2" id=price>${dto.p_price}원</div>
+							<div class="col-12 p-0 pb-2" id=price>
+							<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+							</div>
 						</div>
 						<div class="row m-0 pb-2">
 							<div class="col-3 p-0">배송비</div>
