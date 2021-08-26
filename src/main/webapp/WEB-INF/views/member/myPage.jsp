@@ -36,7 +36,10 @@ $(function(){
 		location.href="/"
 	})
 	$("#cartList").on("click",function(){
-		location.href="/cart/cartList?cm_id=${loginID}"
+		var url = "/cart/cartList?cm_id=${loginID}"
+		var name = "/cart/cartList"
+		var option = "width=600,height=600 left=100, top=50, location=no";
+		window.open(url, name, option)
 	})
 	$("#wishlist").on('click', function(){
 		var url = "/member/wishlist?cm_id=${loginID}";
@@ -44,6 +47,14 @@ $(function(){
 		var option = "width=600,height=600 left=100, top=50, location=no";
 		window.open(url, name, option)
 	})
+	
+	$("#sheduleCheck").on('click', function(){
+		var url = "/member/scheduleCheck?cm_id=${loginID}";
+		var name = "/member/scheduleCheck";
+		var option = "width=600,height=600 left=100, top=50, location=no";
+		window.open(url, name, option)
+	})
+	
 	
 	$(".days div").on('click', function(){
 		var a= $(".day div").html();
@@ -319,7 +330,7 @@ html {
                     	<span class="badge badge-primary"> ${wish }</span>
                     </c:if>
                     </button>
-                    <button>경태</button>
+                    <button class="btn btn-warning" id="sheduleCheck">메모확인</button>
 
                 </div>
             </div>
@@ -347,28 +358,7 @@ html {
           <div class="days"></div>
         </div>
     </div>
-        <div id="tableBox" style="text-align: center;">
-        
-        	<input class="form-control" id="myInput" type="text" placeholder="키워드를 입력해주세요" style="width:600px;margin:auto; margin-top:10px;">
-			<table class="table table-striped" style="width:600px; margin:auto; margin-top:10px; margin-bottom:20px;">
-				
-				<thead class="thead-dark">
-				<tr><th> 날짜 </th><th> 일정 </th><th> 메모 </th></tr>
-				</thead>
-				
-				<tbody id="myTable">
-					<c:forEach items="${list}" var = "i">
-						<tr>
-							<td>${i.startDate}</td>
-							<td>${i.subject}</td>
-							<td>${i.memo}</td>
-						</tr>
-					</c:forEach>
-				</tbody>				
-		
-				</table>
-           </div>
-    </div>  
+ </div>  
     
     
  <!--네비바 스크립트  -->

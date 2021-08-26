@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니 목록</title>
+<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!--네비바 링크  -->
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@ folat:rignt;
 }
 table.calculation1{
 clear:both;
-border: solid 1px #e0e0eb;
+border: solid qpx #e0e0eb;
 border-collapse:collapse;
 background-color:#f5f5f0;
 width:100%;
@@ -61,7 +61,6 @@ border:solid 1px #e0e0eb;
 }
 table.calculation2 td{
 boarder:solid 1px #e0e0eb;
-text-align:center;
 }
 .price{
 font-size:20pt;
@@ -77,17 +76,18 @@ font-size:13px;
 cursor:pointer;
 border-radius:5px;
 }
-.default{background-color:#fff; border:solid 1px gray; color:black;}
+.default{
+background-color:#fff; border:solid 1px gray; color:black;}
 .default:hover{background:#ddd;}
 .backBtn{background:#fff; border:solid 1px gray;}
 
 .btnfloat{float:left;}
-.btnfloat2{float:right;}
+.btnfloat2{folat:right;}
 .clearboth{clear:both;}
 
 .footerbtn{float:right; font-weight:bolder; font-size:12pt; border-radius:3px;}
-#allProduct,#productClear, #footerbtn{padding:11px 25px;}
-#allProduct{margin-left:140px; background-color:#264d73; color:#fff;, font-weight:bold; font-size:12pt;}
+#allProduct,#productClear, #footerbtn{apdding:11px 25px;}
+#allProduct{margin-left:140px; background-color:#264d73; color:#fff, font-weight:bold; font-size:12pt;}
 #productClear{background-color:gray; color:#fff; font-weight:bold; font-size:12pt;}
 
 .aa:hover{cursor:pointer;}
@@ -102,10 +102,10 @@ a{text-decoration: none;color: white;}
 .navbar_logo{font-size: 32px;color: white;font-family: 'Nanum Brush Script';}
 .navbar_logo i {color: white;}
 .navbar_menu{display: flex;list-style: none;padding-left: 0;margin-bottom:-3px;}
-.navbar_menu li {padding: 8px 12px;}
+.navbar_menu li {padding: 8px 12px; margin-top:-10px;}
 .navbar_menu li:hover {background-color: steelblue; border-radius: 4px;}
 .navbar_member {list-style: none; color: white; display: flex; padding-left: 0; margin-bottom:-3px;}
-.navbar_member li{padding: 8px 12px;}
+.navbar_member li{padding: 8px 12px; margin-top:-10px;}
 .navbar_toogleBtn{display: none; position: absolute; right: 32px; font-size: 24px;}
 @media screen and (max-width: 768px) {
 .navbar{flex-direction: column;align-items: flex-start;padding: 8px 24px;}
@@ -120,41 +120,14 @@ a{text-decoration: none;color: white;}
 --------------------------------------------------------------------------------------------------------------- */   
 </style>
 </head>
-<script>
-	$(document).ready(function(){
-		$(".calculation1 thead input:checkbox[id=check]").click(function(){
-			let bool = $(this).prop("checked");
-			$(".calculation1 tbody input:checkbox[name=checknox]").prop("checked",bool);
-		});
-	
-	
-		$(".calculation1 tbody input:checkbox[name=checkbox]").click(function(){
-			let flag = false;
-			$(".calculation1 tbody input:checkbox[name=checknox]").each(function(){
-				val bool = $(this).prop("checked");
-			
-				if(!bool){
-					$(".calculation1 thead input:checkbox[id=check]").prop("checked",false);
-					flag = true;
-					return false;
-				}
-			});
-		
-		if(!falag){
-			$(".calculation1 thead input:checkbox[id=check]").prop("checked",true);
-		}
-		
-		})
-	})
-</script>
 <body>
 <!-- 네비바 시작
 ----------------------------------------------------------------------------------------------------------------->
 <c:choose>
-<c:when test="${loginID == null }">
+<c:when test="${loginID==null }">
 <nav class="navbar">
         <div class="navbar_logo">
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-10px;">별보러갈래?</a>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
@@ -162,25 +135,20 @@ a{text-decoration: none;color: white;}
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/signPage">회원가입</a></li>
             <li><a href="/member/loginPage">로그인</a></li>
         </ul>
-
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-
 </c:when>
 <c:when test="${loginID=='admin'}">
 <nav class="navbar">
         <div class="navbar_logo">
-           
             <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
-
         </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
@@ -188,53 +156,45 @@ a{text-decoration: none;color: white;}
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
         </ul>
         <ul class="navbar_member">
             <li><a href="/admin/home">관리자페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
-
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-
 </c:when>
 <c:otherwise>
 <nav class="navbar">
         <div class="navbar_logo">
-            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-10px;">별보러갈래?</a>
-    </div>
+            <a href="/"><img src="/assets/img/background/newLogo_negative.png"style="width:90px;height:auto;margin-right:7px;margin-top:-12px;">별보러갈래?</a>
+        </div>
         <ul class="navbar_menu">
             <li><a href="/info/list?index=1">캠핑장</a></li>
             <li><a href="/CampTipBoard/selectAll">캠핑정보</a></li>
             <li><a href="/products/selectAll?index=1">SHOP</a></li>
             <li><a href="/rep/list?index=1">중고장터</a></li>
             <li><a href="/gal/list?cpage=1">캠핑후기</a></li>
-
         </ul>
         <ul class="navbar_member">
             <li><a href="/member/myPage?cm_id=${loginID}">마이페이지</a></li>
             <li><a href="/member/logOutProc">로그아웃</a></li>
         </ul>
-
         <a href="#" class="navbar_toogleBtn">
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-
 </c:otherwise>
-
-
 </c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-<div class="container">
+	<div class="container">
 		<div id="frame">
 			<form>
 				<div id="frame2">
-					<span style="font-size: 16pt; font-weight: bold">장바구니</span> <span
+					<span style="font-size: 16pt; font-whight: bold">장바구니</span> <span
 						class="home">홈 > 장바구니</span> <span> </span>
 				</div>
 				<br />
@@ -258,10 +218,9 @@ a{text-decoration: none;color: white;}
 							<tr>
 								<th><input type="checkbox" name="checkbox" id="check" /></th>
 								<th><span>이미지</span></th>
-								<th style="width: 550px;"><span>상품정보</span></th>
+								<th style="width: 550px"><span>상품정보</span></th>
 								<th>판매가</th>
 								<th>수량</th>
-								
 								<th>배송구분</th>
 								<th>배송비</th>
 								<th>합계</th>
@@ -270,20 +229,19 @@ a{text-decoration: none;color: white;}
 						</thead>
 						<tbody>
 							<tr style="height: 90px; background-color: #fff;">
-								<td style="text-align:left; text-align:center; border-right: none;">
-									<input type="checkbox" id="checkbox">
+								<td style="border-lefet: none; border-right: none;"><input
+									type="checkbox" id="checkbox">
 								</td>
-								<td style="border-left:none; border-right:none;">
-									<img style="width:80%" src=""/></td>
+								<td style="border-left:none; border-right:none;"><img style="width:80%" src=""/></td>
 								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
 								</td>
-								<td><span style="padding-left:10px;">0</span>원</td>
+								<td><span style="padding-left:10px;"></span>원</td>
 								<td style="width:80px;">
 									<input type="number" style="text-align:right; width:43px; margin-bottom:5px;" min="1" max="99" step="1" value="1"/>
 									<button class="btn default" style="border-radius:3px; size:10px;">변경</button>
 								</td>
 								
-								
+								<td>-</td>
 								<td>기본배송</td>
 								<td>2,500<br/>고정</td>
 								<td><span>0</span>원</td>
@@ -314,9 +272,9 @@ a{text-decoration: none;color: white;}
 					
 					<table class="calculation2">
 						<tr>
-							<th>총 상품금액</th>
-							<th>총 배송비</th>
-							<th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
+						<th>총 상품금액</th>
+						<th>총 배송비</th>
+						<th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
 						</tr>
 						
 						<tr style="background-color:#fff;">
@@ -337,18 +295,15 @@ a{text-decoration: none;color: white;}
 			</form>
 		</div>
 	</div>
+</body>
+<script src="/js/products.js"></script>
 	<script>
-    
-    
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
-
     toogleBtn.addEventListener('click', () => {
         menu.classList.toggle('active');
         member.classList.toggle('active');
     });
-    
-    </script>
-</body>
+</script>
 </html>

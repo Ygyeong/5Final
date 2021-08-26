@@ -38,7 +38,9 @@
       .area{font-size:0.8em; color:#606060; font-weight:500;}
       .ar{border-top:1px solid #ddd;}
       .userID{font-size:25px;font-weight:bold; text-align:center;}
+      .myID{text-align:center; font-size:25px;font-weight:bold;  }
       .userID span{font-size:13px; margin-left:3px;}
+      
       #pageList{text-align:center; margin-top:30px;}
       #page{color:black; }
       .zero{width:100%; height:250px; text-align:center; line-height:240px;}
@@ -146,7 +148,7 @@ a{
     </style>
     <script>
     	$(function(){
-    		$(".userID").html($("#id").val()+"<span>님</span>");
+    		$(".userID").html($("#id").val()+"<span>님의 중고장터</span>");
     		
     		let cseq = $("#click").val();
     		console.log(cseq);
@@ -274,7 +276,7 @@ a{
     	<c:when test="${loginID==userID}">
     		<div class="row m-0">
             <div class="col-12 p-0 userBox">
-                <div class="col-12 p-0 mt-4 userID">${userID }<span>님</span></div>
+                <div class="col-12 p-0 mt-4 myID">내 중고장터</div>
                 <%-- <div class="col-12 p-0 pt-3">{mdto.cm_address1}</div>
                 <div class="col-12 p-0">상품<span id=total>${totalCount}</span></div> --%>
             </div>
@@ -300,7 +302,7 @@ a{
                 </c:choose>
                  <c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>
@@ -361,7 +363,7 @@ a{
                 	<c:otherwise>
                 		<c:forEach var="i" items="${list }">
                         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
-                            <div class="col-12 img"><img src="/img/${i.thumsysName}"></div>
+                            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
                             <div class="col-12 mb-1 link">${i.rep_name }</div>
                             <div class="row m-0 ">
                                 <div class="col-6 price">${i.rep_price }<span>원</span></div>

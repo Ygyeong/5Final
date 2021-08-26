@@ -11,18 +11,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.config.AdminConfig;
+import kh.spring.config.ReProductConfig;
 import kh.spring.dao.AdminDAO;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.MemberDTO;
 import kh.spring.dto.ProductsDTO;
+import kh.spring.dto.ReProductDTO;
 import kh.spring.service.AdminService;
 import kh.spring.service.MemberService;
 import kh.spring.service.ProductsService;
+import kh.spring.service.ReProductService;
 
 @Controller
 @RequestMapping("/admin")
@@ -36,6 +38,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProductsService pservice;
+	
+	@Autowired
+	private ReProductService rservice;
 	
 
 	@Autowired
@@ -116,7 +121,12 @@ public class AdminController {
 	}
 	
 	@RequestMapping("newProduct")
-	public String np(HttpServletRequest request) throws Exception {
+	public String np(int index, Model model) throws Exception {
+		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+		List<ProductsDTO> list = pservice.Thumbnail(startNum,endNum);
+		model.addAttribute("list",list);
+		
 		
 	    return "admin/adminNewP";
 	}
@@ -140,8 +150,25 @@ public class AdminController {
 	
 	
 	@RequestMapping("re")
-	public String re(HttpServletRequest request) throws Exception {
+	public String re(int index,String keyword,Model m) throws Exception {
 		
+		
+			int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
+			int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
+			System.out.println(startNum);
+			System.out.println(keyword);
+			if(keyword == null || keyword.contentEquals("")) {
+				List<ReProductDTO> list = rservice.Thumbnail(startNum,endNum);
+				m.addAttribute("list",list);
+			}else {
+				List<ReProductDTO> list = rservice.search(keyword,startNum,endNum);
+				int listsize = list.size();
+				int total = (int)Math.ceil(listsize/(double)ReProductConfig.RECORD_COUNT_PER_LIST);
+				m.addAttribute("list",list);
+				m.addAttribute("keyword",keyword);
+				m.addAttribute("count",listsize);
+		
+			}
 	    return "admin/adminRe";
 	}
 	
