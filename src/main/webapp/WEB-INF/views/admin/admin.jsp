@@ -239,8 +239,8 @@ a{
     	<ul class="side_menu">
             <li><a href="/admin/mem?cpage=1">회원관리</a></li>
             <li><a href="/admin/newProduct">새상품 관리</a></li>
-            <li><a href="/admin/pay">중고상품 관리</a></li>
-            <li><a href="/admin/re">결제내역 관리</a></li>
+            <li><a href="/admin/re">중고상품 관리</a></li>
+            <li><a href="/admin/pay">결제내역 관리</a></li>
            	<li style="height:200px;"></li>
 
         </ul>

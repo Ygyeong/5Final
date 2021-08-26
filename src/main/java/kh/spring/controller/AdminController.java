@@ -12,14 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.config.AdminConfig;
 import kh.spring.dao.AdminDAO;
 import kh.spring.data.PublicData;
 import kh.spring.dto.Camp_infoDTO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.ProductsDTO;
 import kh.spring.service.AdminService;
 import kh.spring.service.MemberService;
+import kh.spring.service.ProductsService;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,6 +33,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService service;
+	
+	@Autowired
+	private ProductsService pservice;
 	
 
 	@Autowired
@@ -120,6 +126,18 @@ public class AdminController {
 		
 	    return "admin/adminPay";
 	}
+	
+	@RequestMapping("insert") // 상품등록
+	public String insert(ProductsDTO dto,MultipartFile[] file) throws Exception {
+		
+		int p_seq = pservice.getP_seq();
+		dto.setCamp_id(String.valueOf(session.getAttribute("loginID")));
+		dto.setP_seq(p_seq);
+		String realPath = session.getServletContext().getRealPath("/resources/imgs");
+		pservice.insert(dto,p_seq,file,realPath);
+		return "/admin/adminPay?index=1";
+	}
+	
 	
 	@RequestMapping("re")
 	public String re(HttpServletRequest request) throws Exception {
