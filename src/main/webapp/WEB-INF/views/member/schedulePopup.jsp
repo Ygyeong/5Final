@@ -58,17 +58,17 @@ $(function(){
 			<input type="hidden" name="cm_id" value=${loginID }>
 			<div class="top">
 				<label>제목</label>
-				<input class="subject" id="subject" name="subject" type="text" placeholder="제목을 입력해주세요.">
+				<input class="subject" id="subject" name="subject" type="text" placeholder="제목을 입력해주세요." required>
 			</div>
 			<div class="domain">
 			<label>날짜</label>
-				<input class="date" id="startDate" name="startDate" type="text" readonly>
+				<input class="date" id="startDate" name="startDate" type="text" required>
 			</div>
 			<div class="domain">
 				<h3 class="zTree-h6"> 메모 </h3>
 			</div>
 			<div class="domain">
-				<textarea class="memo" id="memo" name="memo" rows="5" cols="30" placeholder="100글자까지 입력가능합니다."></textarea>
+				<textarea class="memo" id="memo" name="memo" rows="5" cols="30" placeholder="100글자까지 입력가능합니다." required  style="resize: none;"></textarea>
 			</div>
 			<input type="submit" class="btn btn-success" value="저장">
 			<button class="btn btn-danger"> 닫기 </button>
