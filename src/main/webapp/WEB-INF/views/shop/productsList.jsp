@@ -109,35 +109,56 @@ $(function(){
    })
    
    function getList(){
-      $.ajax({
-         url:"/products/scrollList",
-         dataType:"json",
-         data:{"index":index}
-      }).done(function(resp){
-         for(let i=0;i<resp.length;i++){
-            let list = $("<div class='col-4 list'>");
-            
-            let img = $("<div id=img>");
-            img.text("사진");
-            let name =$("<div id=link>");
-            name.text(resp[i].rep_name);
-            let price = $("<div>");
-            price.text(resp[i].rep_price);
-            let date = $("<div>");
-            date.text(resp[i].rep_write_date);
-            let seq = $("<input type=hidden class=seq>");
-            seq.val(resp[i].rep_seq);
-            
-            list.append(img);
-            list.append(name);
-            list.append(price);
-            list.append(p_seq);
-            $(".listbar").append(list);
-            
-            
-         }
-      })
-   }
+		$.ajax({
+			url:"/products/scrollList",
+			dataType:"json",
+			data:{"index":index}
+		}).done(function(resp){
+			for(let i=0;i<resp.length;i++){
+				let list = $("<div class='col-3 p-0 list'>");
+				
+				let img = $("<div class='col-12 img'>");
+				let thum = $("<img src=''>");
+				
+				thum.attr("src","/img"+resp[i].p_thumsysName);
+				img.append(thum);
+				let name =$("<div class='col-12 mb-1 link'>");
+				name.text(resp[i].p_name);
+				
+				let row1 =$("<div class='row m-0'>");
+				let price = $("<div class='col-6 price'>");
+				let span = $("<span>");
+				span.text("원");
+				price.text(resp[i].p_price);
+				price.append(span);
+				
+				let date = $("<div class='col-6 diffD'>");
+				date.text(resp[i].rep_diff_date);
+				
+				row1.append(price);
+				row1.append(date);
+				
+				let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
+				let area = $("<div class='col-12 area'>");
+				let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
+				area.append(font);
+				area.append(resp[i].rep_area);
+				row2.append(area);
+				let seq = $("<input type=hidden class=p_seq>");
+				seq.val(resp[i].p_seq);
+				
+				
+				list.append(img);
+				list.append(name);
+				list.append(row1);
+				list.append(row2)
+				list.append(p_seq);
+				$(".listbar").append(list);
+				
+				
+			}
+		})
+	}
 })
 </script>
 </head>

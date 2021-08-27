@@ -75,7 +75,7 @@ public class CartController {
 	
 	@RequestMapping("update")
 	public String update(@RequestParam int[] c_qty, @RequestParam int[] p_seq, HttpSession session) {
-		String camp_id = (String)session.getAttribute("camp_id");
+		String camp_id = (String)session.getAttribute("loginID");
 		for(int i=0; i<p_seq.length; i++) {
 			CartDTO dto = new CartDTO();
 			dto.setCamp_id(camp_id);

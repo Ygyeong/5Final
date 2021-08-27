@@ -828,7 +828,7 @@ a{
                 	<c:forEach var="i" items="${list }">
                 	<div class="col-6 p-0 PMBox">
                 		<div class="col-6 userPrice">${i.rep_price}원</div>
-                		<div class="col-6 userRep"><img src="/img/${i.thumsysName}"></div>
+                		<div class="col-6 userRep"><img src="/img/rep/${i.thumsysName}"></div>
                 		<input type=hidden class="userRepSeq" value="${i.rep_seq}">
                 	</div>
                		</c:forEach>

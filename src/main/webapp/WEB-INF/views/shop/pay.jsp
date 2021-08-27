@@ -33,7 +33,14 @@
 </style>
 <script>
     $(function(){
-    	  $("#payBtn").on("click",function () {
+    	
+    	$("#payBtn").on("click",function () {
+    		let sum = $("#o_allSum").val();
+    		let email = $("#o_email").val();
+    		let name = $("#o_name").val();
+    		let phone = $("#o_phone").val();
+    		
+    		console.log(sum);
     		  var IMP = window.IMP; // 생략가능
     	        IMP.init('imp81223023');
     	        // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -69,14 +76,12 @@
     	        */
     	        name: '별보러갈래',
     	        //결제창에서 보여질 이름
-    	        amount: 100,
-    	        /* amount: '${dto.o_allSum }', */
+    	        //amount: 100, 
+    	        amount: sum, 
     	        //가격
-    	      	buyer_email: '${dto.o_email}',
-    	        buyer_name: '${dto.o_name}',
-    	        buyer_tel: '${dto.o_phone}',
-    	        buyer_addr: '${dto.o_address1}',
-    	        buyer_postcode: '${dto.o_zipcode}',
+    	      	buyer_email: email,
+    	        buyer_name: name,
+    	        buyer_tel: phone,
     	        m_redirect_url: 'https://www.yourdomain.com/payments/complete'
     	        /*
     	        모바일 결제시,
@@ -86,30 +91,115 @@
     	        }, function (rsp) {
     	        console.log(rsp);
     	        if (rsp.success) {
-    	        var msg = '결제가 완료되었습니다.';
-    	        msg += '고유ID : ' + rsp.imp_uid;
+    	         var msg = '결제가 완료되었습니다.';
+    	        /*msg += '고유ID : ' + rsp.imp_uid;
     	        msg += '상점 거래ID : ' + rsp.merchant_uid;
     	        msg += '결제 금액 : ' + rsp.paid_amount;
-    	        msg += '카드 승인번호 : ' + rsp.apply_num;
-    	       	location.href="/order/payResult?apply_num="+rsp.apply_num+"&o_seq="+$("#o_seq").val(); 
+    	        msg += '카드 승인번호 : ' + rsp.apply_num; */
+    	        
+    	       	location.href="/products/selectAll?index=1"; 
     	        } else {
     	        var msg = '결제에 실패하였습니다.';
     	        msg += '에러내용 : ' + rsp.error_msg;
     	        }
     	        alert(msg);
     	        });
-    	        });
+    	       
+    	        
+    	        $(".back").on("click",function(){
+    	        	alert("AAA");
+    	        	location.href="/cart/cartList";
+    	        })
+    	});
     	
+    	});
     	
-    	
-        $("#back").on("click",function(){
-        	location.href="/cart/cartList";
-        })
-    })
+  
+
 </script>
 </head>
 <body>
-    <div class="container-fluid p-0 ">
+	<c:choose>
+	<c:when test="${size!=null}">
+		 <div class="container-fluid p-0 ">
+        <div class="row m-0">
+            <div class="col-12 top">주문/결제</div>
+        </div>
+        <div class="row m-0 mt-4">
+            <div class="col-12 pb-2 title">구매자 정보</div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3 ">이름</div>
+                <div class="col-4"><input type="text" name="" value="${mdto.cm_id}" disabled></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">연락처</div>
+                <div class="col-4"><input type="text" name="" value="${mdto.cm_phone }"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">이메일</div>
+                <div class="col-4"><input type="text" name="" value="${mdto.cm_email}"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3 ">우편번호</div>
+                <div class="col-4 "><input type="text" name="" id=postcode value="${mdto.cm_zipcode}">
+                </div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">배송지주소</div>
+                <div class="col-6"><input type="text" name="" id=address1 value="${mdto.cm_address1 }"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">상세주소</div>
+                <div class="col-6"><input type="text" name="" id=address2 value="${mdto.cm_address2 }"></div>
+            </div>
+        </div>
+        <div class="row m-0 mt-4">
+            <div class="col-12 title">상품정보</div>
+            <c:forEach var="i" items="${list}" >
+            	<div class="row m-0 p-0 txt">
+                <div class="col-6">${i.o_product}<span style="margin-left:10px;">${i.o_qcy}개</span></div>
+            </div>
+            </c:forEach>
+            
+        </div>
+        <div class="row m-0 mt-4">
+            <div class="col-12 title">결제 정보</div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">상품가격</div>
+                <div class="col-4"><input type="text" name="" value="${sumMoney}"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">배송비</div>
+                <div class="col-4"><input type="text" name="" value="${delivery}"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">총결제금액</div>
+                <div class="col-4"><input type="text" name="" value="${allSum}"></div>
+            </div>
+            <div class="row m-0 p-0 txt">
+                <div class="col-3">결제방법</div>
+                <div class="col-9">
+                    <input type="radio" name=pay onclick="return(false);"> 계좌이체
+                    <input type="radio" name=pay checked> 신용/체크카드
+                    <input type="radio" name=pay onclick="return(false);"> 무통장입금
+                </div>
+            </div>
+            <input type=hidden id="o_seq" value="${o_seq }">
+            <input type=hidden id="o_allSum" value="${allSum }">
+            <input type=hidden id="o_email" value="${mdto.cm_email }">
+            <input type=hidden id="o_name" value="${mdto.cm_name }">
+            <input type=hidden id="o_phone" value="${mdto.cm_phone }">
+            <div class="row bt">
+                <div class="col-12 btnBox">
+                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
+                    <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+	</c:when>
+	<c:otherwise>
+		 <div class="container-fluid p-0 ">
         <div class="row m-0">
             <div class="col-12 top">주문/결제</div>
         </div>
@@ -170,13 +260,20 @@
                 </div>
             </div>
             <input type=hidden id="o_seq" value="${dto.o_seq }">
+            <input type=hidden id="o_allSum" value="${dto.o_allSum}">
+            <input type=hidden id="o_email" value="${dto.o_email }">
+            <input type=hidden id="o_name" value="${dto.o_name }">
+            <input type=hidden id="o_phone" value="${dto.o_phone }">
             <div class="row bt">
                 <div class="col-12 btnBox">
-                    <button type="button" id="back" class="btn btn-outline-dark">메인으로</button>
+                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
                     <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
                 </div>
             </div>
         </div>
     </div>
+	</c:otherwise>
+	</c:choose>
+   
 </body>
 </html>

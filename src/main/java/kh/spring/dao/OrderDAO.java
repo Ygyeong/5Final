@@ -18,6 +18,12 @@ public class OrderDAO {
 	public int insert(Map<String,Object> param) {
 		return mybatis.insert("Order.insert",param);
 	} 
+	public int AllInsert(OrderDTO dto) {
+		return mybatis.insert("Order.insert",dto);
+	} 
+	public OrderDTO getDetail(int seq) {
+		return mybatis.selectOne("Order.select",seq);
+	}
 	public OrderDTO select(int seq) {
 		return mybatis.selectOne("Order.select",seq);
 	}

@@ -74,12 +74,20 @@ public class ProductsController {
 		service.delete(p_seq);
 		return "redirect:/products/selectAll?index=1";
 	} 
-	@RequestMapping("modify") // 상품수정
-	public String update(@RequestParam(value="delete") String[] delete , MultipartFile[] file,ProductsDTO dto,Model m)throws Exception {
-		
-		String realPath = session.getServletContext().getRealPath("/resoures/imgs");
+	
+	@RequestMapping("modify")
+	public String update(int p_seq,Model m) {
+		ProductsDTO dto = service.detail(p_seq);
+		List<SummerDTO> sdto = service.filesBySeq(p_seq);
+		m.addAttribute("sdto",sdto);
+		m.addAttribute("dto",dto);
+		return "shop/productsModify";
+	} 
+	@RequestMapping("modifyProc")
+	public String modifyProc(@RequestParam(value="delete") String[] delete , MultipartFile[] file,ProductsDTO dto,Model m)throws Exception {
+		String realPath = session.getServletContext().getRealPath("/resources/imgs/");
 		String [] delTargets = delete;
-		service.modify(realPath, file, delTargets, dto);
+		service.modify(realPath,file,delTargets,dto);
 		return "redirect:/products/selectAll?index=1";
 	} 
 	
@@ -90,7 +98,7 @@ public class ProductsController {
 	public String scrollList(int index) { // 무한스크롤
 		int endNum=index*ReProductConfig.RECORD_COUNT_PER_LIST;
 		int startNum =endNum -(ReProductConfig.RECORD_COUNT_PER_LIST-1);
-		List<ProductsDTO> list = service.selectAll(startNum, endNum);
+		List<ProductsDTO> list = service.Thumbnail(startNum, endNum);
 		System.out.println(index);
 		return new Gson().toJson(list);
 	}

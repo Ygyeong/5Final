@@ -47,10 +47,10 @@ $(function(){
       let file = $("#input-file").val();
 	  let delivery = $('input:checkbox[name=rep_delivery]').is(':checked');
 	  
-      let nameRegex= /^.{4,20}$/;
+      let nameRegex= /^.{4,30}$/;
       let priceRegex = /^[1-9][0-9]{0,}$/;
       let areaRegex = /^.{1,10}$/;
-      let contentRegex = /^.{0,1000}$/;
+      let contentRegex = /^.{1,1000}$/;
       let fileRegex = /^.{1,}$/;
 
       let nameResult = nameRegex.test(name);
