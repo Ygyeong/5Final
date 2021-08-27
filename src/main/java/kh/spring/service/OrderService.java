@@ -57,7 +57,27 @@ public class OrderService {
 		return dao.insert(param);
 	} 
 
-
+	public void  insertAll(OrderDTO dto) {
+		Map<String,Object> param = new HashMap<>();
+		param.put("o_seq", dto.getO_seq());
+		param.put("m_id",dto.getM_id());
+		param.put("o_name",dto.getO_name());
+		param.put("o_phone",dto.getO_phone());
+		param.put("o_email",dto.getO_email());
+		param.put("o_zipcode",dto.getO_zipcode());
+		param.put("o_address1",dto.getO_address1());
+		param.put("o_address2",dto.getO_address2());
+		param.put("o_allSum",dto.getO_allSum());
+		param.put("o_delivery",dto.getO_delivery());
+		param.put("o_num",0);
+		param.put("o_check",0);
+		param.put("o_product",dto.getO_product());
+		param.put("o_qcy",dto.getO_qcy());
+		
+		
+		
+		dao.insert(param);
+	}
 	
 	
 	
@@ -106,6 +126,7 @@ public class OrderService {
 			dto.setO_seq(o_seq);
 			dto.setM_id(mdto.getCm_id());
 			dto.setO_name(mdto.getCm_name());
+			dto.setO_phone(mdto.getCm_phone());
 			dto.setO_email(mdto.getCm_email());
 			dto.setO_zipcode(mdto.getCm_zipcode());
 			dto.setO_address1(mdto.getCm_address1());
@@ -122,7 +143,7 @@ public class OrderService {
 				dto.setO_delivery(2500);
 			}
 			list.add(dto);
-			
+			//this.insertAll(dto);
 		}
 		
 		

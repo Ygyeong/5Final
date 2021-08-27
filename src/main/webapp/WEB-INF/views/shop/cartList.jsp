@@ -138,6 +138,12 @@ a{text-decoration: none;color: white;}
 			$("#form1").attr("action","/order/payAll");
 			$("#form1").submit();
 		})
+		$(".order").on("click",function(){
+			let price = $(this).siblings(".c_price").val();
+			let product = $(this).siblings(".p_name").val();
+			location.href="/order/payView?product="+product+"&price="+price;
+		})
+		
 	})
 </script>
 <body>
@@ -338,10 +344,12 @@ a{text-decoration: none;color: white;}
 								<td colspan="2"><span><fmt:formatNumber value="${list.c_price}" maxFractionDigits="3"/></span>원</td>
 								
 								<td>
-									<button class="btn default" type="button" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
+									<button class="btn default order" type="button" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
 									<a href="/cart/delete?c_seq=${list.c_seq}"><input id="deleteBtn"type="button" class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;" value="삭제하기"></a>
 									<input type=hidden class="c_seq" value="${list.c_seq}">
 									<input type=hidden class="c_qty" name="c_qty" value="${list.c_qty}">
+									<input type=hidden class="c_price" value="${list.c_price }">
+									<input type=hidden class="p_name" value="${list.p_name}">
 								</td>
 								</tr>
 								</c:forEach>

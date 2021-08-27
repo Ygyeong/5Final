@@ -59,18 +59,6 @@ public class OrderController {
 		
 		
 
-//		System.out.println("결제페이지로 ㄱㄱ");
-//		int o_seq = 0;
-//		int seq=service.getSeq();
-//		System.out.println(p_seq.length+" : "+sumMoney);
-//		String id = ((String)session.getAttribute("loginID"));
-//		MemberDTO mdto = mservice.login(id);
-//		service.allInsert(seq,mdto,p_seq,sumMoney);
-//		List<OrderDTO> dto = service.select(seq);
-//		
-//		for(OrderDTO d : dto) {
-//			o_seq = d.getO_seq();
-//		}
 		m.addAttribute("list",list);
 		m.addAttribute("sumMoney",sumMoney);
 		m.addAttribute("delivery",delivery);
