@@ -76,8 +76,8 @@
     	        */
     	        name: '별보러갈래',
     	        //결제창에서 보여질 이름
-    	        amount: 100, 
-    	        //amount: sum, 
+    	        //amount: 100, 
+    	        amount: sum, 
     	        //가격
     	      	buyer_email: email,
     	        buyer_name: name,
