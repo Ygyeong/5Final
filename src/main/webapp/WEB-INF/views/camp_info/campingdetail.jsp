@@ -238,7 +238,7 @@ a{
 
 	   $("#reservebtn").on("click", function(){
 		   reservebtn
-	   }
+	   })
 	   
       $(".likeicon").on("click", function(){
 

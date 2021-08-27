@@ -20,7 +20,6 @@ public class OrderDTO {
 	private int o_num;
 	private int o_check;
 	
-	
 	public OrderDTO() {
 		super();
 		// TODO Auto-generated constructor stub
