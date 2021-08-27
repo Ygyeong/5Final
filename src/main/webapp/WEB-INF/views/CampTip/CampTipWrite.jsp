@@ -177,7 +177,7 @@ $(function(){
 				<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">카테고리</label>
 					<div class="col-sm-10 writeDiv">
-						<select class="form-control" id="category" name="category">
+						<select class="form-control" id="category" name="category" required>
 							<option selected>선택하세요.</option>
 							<option value="봄">봄</option>
 							<option value="여름">여름</option>

@@ -54,9 +54,9 @@
 			location.href = "/CampTipBoard/write";
 		})
 		
-		$("#back").on("click", function() {
+/* 		$("#back").on("click", function() {
 			location.href = "javascript:history.back()";
-		})
+		}) */
 		// **원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
 	      
 	});
@@ -421,14 +421,14 @@ a {text-decoration: none;color: white;}
 							<c:when test="${loginID == null }">
 								<div class="row btns">
 									<div class="col-2 col-sm-4 col-md-6 col-lg-6 col-xl-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 									</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="row btns">
 									<div class="col-sm-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 										<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
 									</div>
 								</div>	
@@ -463,34 +463,34 @@ a {text-decoration: none;color: white;}
 			
 			<div class="ms-section" id="right2">
 				<input type="hidden" id="category" name="category" value="1">
-					<div class="logo">
+					<div class="logo d-none d-sm-block">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script'; font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
 						</a>
 					</div><br>
-				<div class="container">
-					<div class="body cnt">
-						<div class="tb_header bg-dark text-white">
+				<div class="row container">
+					<div class="col-12 body cnt">
+						<div class="col-12 tb_header bg-dark text-white">
 							<div class="row">
-								<div class="col-1 d-none d-md-block">분류</div>
-								<div class="col-1 d-none d-md-block">번호</div>
-								<div class="col-4 col-sm-4 col-md-4">제목</div>
-								<div class="col-2 d-none d-md-block">작성자</div>
-								<div class="col-2 d-none d-xl-block">등록일</div>
-								<div class="col-2 d-none d-xl-block">조회수</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">분류</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">번호</div>
+								<div class="col-md-7 col-lg-5">제목</div>
+								<div class="col-md-3 col-lg-2 d-none d-md-block">작성자</div>
+								<div class="col-lg-2 d-none d-xl-block">등록일</div>
+								<div class="col-lg-1 d-none d-xl-block">조회수</div>
 							</div>
 						</div>
 						<div class="tb_body">
 							<c:forEach var="i" items="${map.list}">
 								<div class="row">
-									<div class="col-1 d-none d-md-block">${i.category}</div>
-									<div class="col-1 d-none d-md-block">${i.camp_tip_num}</div>
-									<div class="col-4 col-sm-4 col-md-4" id="titleMove">
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.category}</div>
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.camp_tip_num}</div>
+									<div class="col-md-7 col-lg-5" id="titleMove">
 										<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
 									</div>
-									<div class="col-2 d-none d-md-block">${i.writer}</div>
-									<div class="col-2 d-none d-xl-block">${i.write_date}</div>
-									<div class="col-2 d-none d-xl-block">${i.view_count}</div>
+									<div class="col-md-3 col-lg-2 d-none d-md-block">${i.writer}</div>
+									<div class="col-lg-2 d-none d-xl-block">${i.write_date}</div>
+									<div class="col-lg-1 d-none d-xl-block">${i.view_count}</div>
 								</div>						
 							</c:forEach>
 						</div>
@@ -529,14 +529,14 @@ a {text-decoration: none;color: white;}
 							<c:when test="${loginID == null }">
 								<div class="row btns">
 									<div class="col-2 col-sm-4 col-md-6 col-lg-6 col-xl-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 									</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="row btns">
 									<div class="col-sm-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 										<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
 									</div>
 								</div>	
@@ -552,6 +552,7 @@ a {text-decoration: none;color: white;}
 								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
 								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
 								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+								            <option value="category" <c:out value="${map.searchOption == 'category'?'selected':''}"/> >카테고리</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -566,37 +567,37 @@ a {text-decoration: none;color: white;}
 						</div>
 					</div>
 				</div>
-			</div>
+				
 			<div class="ms-section" id="right3">
 				<input type="hidden" id="category" name="category" value="1">
-					<div class="logo">
+					<div class="logo d-none d-sm-block">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script'; font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
 						</a>
 					</div><br>
-				<div class="container">
-					<div class="body cnt">
-						<div class="tb_header bg-dark text-white">
+				<div class="row container">
+					<div class="col-12 body cnt">
+						<div class="col-12 tb_header bg-dark text-white">
 							<div class="row">
-								<div class="col-1 d-none d-md-block">분류</div>
-								<div class="col-1 d-none d-md-block">번호</div>
-								<div class="col-4 col-sm-4 col-md-4">제목</div>
-								<div class="col-2 d-none d-md-block">작성자</div>
-								<div class="col-2 d-none d-xl-block">등록일</div>
-								<div class="col-2 d-none d-xl-block">조회수</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">분류</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">번호</div>
+								<div class="col-md-7 col-lg-5">제목</div>
+								<div class="col-md-3 col-lg-2 d-none d-md-block">작성자</div>
+								<div class="col-lg-2 d-none d-xl-block">등록일</div>
+								<div class="col-lg-1 d-none d-xl-block">조회수</div>
 							</div>
 						</div>
 						<div class="tb_body">
 							<c:forEach var="i" items="${map.list}">
 								<div class="row">
-									<div class="col-1 d-none d-md-block">${i.category}</div>
-									<div class="col-1 d-none d-md-block">${i.camp_tip_num}</div>
-									<div class="col-4 col-sm-4 col-md-4" id="titleMove">
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.category}</div>
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.camp_tip_num}</div>
+									<div class="col-md-7 col-lg-5" id="titleMove">
 										<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
 									</div>
-									<div class="col-2 d-none d-md-block">${i.writer}</div>
-									<div class="col-2 d-none d-xl-block">${i.write_date}</div>
-									<div class="col-2 d-none d-xl-block">${i.view_count}</div>
+									<div class="col-md-3 col-lg-2 d-none d-md-block">${i.writer}</div>
+									<div class="col-lg-2 d-none d-xl-block">${i.write_date}</div>
+									<div class="col-lg-1 d-none d-xl-block">${i.view_count}</div>
 								</div>						
 							</c:forEach>
 						</div>
@@ -635,14 +636,14 @@ a {text-decoration: none;color: white;}
 							<c:when test="${loginID == null }">
 								<div class="row btns">
 									<div class="col-2 col-sm-4 col-md-6 col-lg-6 col-xl-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 									</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="row btns">
 									<div class="col-sm-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 										<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
 									</div>
 								</div>	
@@ -658,6 +659,7 @@ a {text-decoration: none;color: white;}
 								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
 								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
 								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+								            <option value="category" <c:out value="${map.searchOption == 'category'?'selected':''}"/> >카테고리</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -675,34 +677,34 @@ a {text-decoration: none;color: white;}
 			</div>
 			<div class="ms-section" id="right4">
 				<input type="hidden" id="category" name="category" value="1">
-					<div class="logo">
+					<div class="logo d-none d-sm-block">
 						<a href="/" title="Slides Framework" style="font-family: 'Nanum Brush Script'; font-size: 40px;">
 							<img src="/resources/assets/img/background/tent_logo.png" style="width: 60px; height: 50px; margin-bottom: -6px; margin-right: -10px;">별보러갈래?
 						</a>
 					</div><br>
-				<div class="container">
-					<div class="body cnt">
-						<div class="tb_header bg-dark text-white">
+				<div class="row container">
+					<div class="col-12 body cnt">
+						<div class="col-12 tb_header bg-dark text-white">
 							<div class="row">
-								<div class="col-1 d-none d-md-block">분류</div>
-								<div class="col-1 d-none d-md-block">번호</div>
-								<div class="col-4 col-sm-4 col-md-4">제목</div>
-								<div class="col-2 d-none d-md-block">작성자</div>
-								<div class="col-2 d-none d-xl-block">등록일</div>
-								<div class="col-2 d-none d-xl-block">조회수</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">분류</div>
+								<div class="col-md-1 col-lg-1 d-none d-md-block">번호</div>
+								<div class="col-md-7 col-lg-5">제목</div>
+								<div class="col-md-3 col-lg-2 d-none d-md-block">작성자</div>
+								<div class="col-lg-2 d-none d-xl-block">등록일</div>
+								<div class="col-lg-1 d-none d-xl-block">조회수</div>
 							</div>
 						</div>
 						<div class="tb_body">
 							<c:forEach var="i" items="${map.list}">
 								<div class="row">
-									<div class="col-1 d-none d-md-block">${i.category}</div>
-									<div class="col-1 d-none d-md-block">${i.camp_tip_num}</div>
-									<div class="col-4 col-sm-4 col-md-4" id="titleMove">
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.category}</div>
+									<div class="col-md-1 col-lg-1 d-none d-md-block">${i.camp_tip_num}</div>
+									<div class="col-md-7 col-lg-5" id="titleMove">
 										<a href="/CampTipBoard/detail?camp_tip_num=${i.camp_tip_num}&category=${i.category}" id="titleLink">${i.title}</a>
 									</div>
-									<div class="col-2 d-none d-md-block">${i.writer}</div>
-									<div class="col-2 d-none d-xl-block">${i.write_date}</div>
-									<div class="col-2 d-none d-xl-block">${i.view_count}</div>
+									<div class="col-md-3 col-lg-2 d-none d-md-block">${i.writer}</div>
+									<div class="col-lg-2 d-none d-xl-block">${i.write_date}</div>
+									<div class="col-lg-1 d-none d-xl-block">${i.view_count}</div>
 								</div>						
 							</c:forEach>
 						</div>
@@ -741,14 +743,14 @@ a {text-decoration: none;color: white;}
 							<c:when test="${loginID == null }">
 								<div class="row btns">
 									<div class="col-2 col-sm-4 col-md-6 col-lg-6 col-xl-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 									</div>
 								</div>
 							</c:when>
 							<c:otherwise>
 								<div class="row btns">
 									<div class="col-sm-12 btns" align="right"><br>
-										<button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button>
+										<!-- <button type="button" class="btn btn-outline-secondary" id="back">뒤로가기</button> -->
 										<button type="button" class="btn btn-outline-secondary write" id="write">글 쓰기</button>
 									</div>
 								</div>	
@@ -761,9 +763,10 @@ a {text-decoration: none;color: white;}
 								<div class="row col-12">
 									<div class="col-sm-12 col-lg-3">
 										<select class="form-control" name="searchOption" id="srch_item">
-						            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
-						            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
-						            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+								            <option value="writer" <c:out value="${map.searchOption == 'writer'?'selected':''}"/> >이름</option>
+								            <option value="contents" <c:out value="${map.searchOption == 'contents'?'selected':''}"/> >내용</option>
+								            <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+								            <option value="category" <c:out value="${map.searchOption == 'category'?'selected':''}"/> >카테고리</option>
 										</select>
 									</div>
 									<div class="col-sm-12 col-lg-7">
@@ -778,7 +781,6 @@ a {text-decoration: none;color: white;}
 						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 
