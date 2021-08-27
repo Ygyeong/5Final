@@ -41,6 +41,8 @@
 		update camp_cart set c_qty=c_qty+#{c_qty} where camp_id=#{camp_id} and p_seq=#{p_seq}
 	</update>
 	
-	
+	<select id="getC" resultType="int">
+		select c_qty from camp_cart where p_seq = #{value} 
+	</select>
 
 </mapper>

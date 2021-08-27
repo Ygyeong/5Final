@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,11 +17,16 @@ public class CartDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
+	@Autowired
+	private SqlSessionTemplate mybatis;
+	
 	public void insert(CartDTO dto) { // 장바구니 추가
 		sqlSession.insert("Cart.insert",dto);
 		
 	}
-	
+	public CartDTO getC(int p_seq) {
+		return mybatis.selectOne("Cart.getC",p_seq);
+	}
 	public List<CartDTO> list(String camp_id){ // 장바구니 목록
 		return sqlSession.selectList("Cart.list", camp_id);
 	}

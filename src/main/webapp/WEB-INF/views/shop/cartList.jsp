@@ -129,6 +129,15 @@ a{text-decoration: none;color: white;}
 			
 		})
 		
+		$(".default").on("click",function(){
+			let seq =$(this).siblings(".c_seq").val();
+			console.log(seq);
+		})
+		
+		$("#allProduct").on("click",function(){
+			$("#form1").attr("action","/order/payAll");
+			$("#form1").submit();
+		})
 	})
 </script>
 <body>
@@ -331,7 +340,8 @@ a{text-decoration: none;color: white;}
 								<td>
 									<button class="btn default" type="button" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
 									<a href="/cart/delete?c_seq=${list.c_seq}"><input id="deleteBtn"type="button" class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;" value="삭제하기"></a>
-									
+									<input type=hidden class="c_seq" value="${list.c_seq}">
+									<input type=hidden class="c_qty" name="c_qty" value="${list.c_qty}">
 								</td>
 								</tr>
 								</c:forEach>
@@ -358,7 +368,9 @@ a{text-decoration: none;color: white;}
 						<td>=<span class="price"><fmt:formatNumber value="${map.allSum}" maxFractionDigits="3"/></span>원</td>
 						</tr>
 					</table>
-					
+					<input type=hidden name=sumMoney value="${map.sumMoney}" >
+					<input type=hidden name=delivery value="${map.delivery}" >
+					<input type=hidden name=allSum value="${map.allSum}" >
 					<div align="center" style="margin-top:10px;">
 						<button class="btn default" id="allProduct">전체상품주문</button>
 						<button class="btn default backBtn" id="productClear">쇼핑계속하기</button>
