@@ -15,7 +15,7 @@
 	body{background-color:#F9F9F9;}
     *{box-sizing: border-box;}
     /* div{border: 1px solid black;} */
-    .container{margin-top: 70px; margin-bottom: 80px; width:950px; height: 1000px;padding:20px 30px 0px 30px; 
+    .container{margin-top: 70px; margin-bottom: 80px; width:950px; height: 1100px;padding:20px 30px 0px 30px; 
     border-radius:30px; background-color:white;}
     #title{font-weight:700; font-size: 1.7em; text-align: center; border-bottom:1px solid #ddd; 
     line-height: 70px; height: 70px; margin-bottom: 60px;}
@@ -26,6 +26,8 @@
     .txt{font-weight:580;}
     input[type=checkbox]:checked:after{color:black;}
     .note-btn-group.note-insert,.note-resizebar{display:none;}
+    .summer{margin-top:100px;}
+    .pic{}
     
 </style>
 <script>
@@ -119,8 +121,8 @@ $(function(){
             	<input type="text" name=rep_area class="form-control" value="${dto.rep_area}">
             </div>
         </div>
-        <div class="row m-0 mt-3 mb-3 box">
-            <div class="col-2 p-0 txt">사진</div>
+        <div class="row m-0 mt-3 mb-3 box pic">
+            <div class="col-2 p-0 txt ">사진</div>
             <div class="col-6 p-0">
            		<div class="row m-0">
             		<div class="col-12">
@@ -132,7 +134,7 @@ $(function(){
             	</div>
             </div>
         </div>
-        <div class="row m-0 mt-3 pt-4">
+        <div class="row  pt-4 summer">
 		        <textarea class="col-12" id="summernote" name=rep_detail>${dto.rep_detail}</textarea>
         </div>
         <div class="row m-0">

@@ -70,7 +70,10 @@ $(function(){
 			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		  });
 		});
-
+	
+	$("#myJG").on("click",function(){
+		location.href="/rep/myJG?index=1&seq=1&id=${loginID}";
+	})
 });
 </script>
 <style type="text/css">
@@ -330,7 +333,7 @@ html {
                     	<span class="badge badge-primary"> ${wish }</span>
                     </c:if>
                     </button>
-                    <button class="btn btn-warning"><a href="/rep/myJG?index=1&seq=1&id=${loginID}">내중고장터</a></button>
+                    <button class="btn btn-warning" id="myJG">내중고장터</button>
                     <button class="btn btn-warning" id="sheduleCheck">메모확인</button>
 
                 </div>
