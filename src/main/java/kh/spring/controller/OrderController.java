@@ -68,6 +68,22 @@ public class OrderController {
 		m.addAttribute("o_seq",o_seq);
 		return "shop/pay";
 	}
+	@RequestMapping("payQty")
+	public String payQty(String product,String price ,String qty,Model m) {
+		System.out.println("결제페이지로 ㄱㄱ");
+		
+		String id = ((String)session.getAttribute("loginID"));
+		MemberDTO mdto = mservice.login(id);
+		int seq=service.getSeq();
+		service.insert(seq, mdto,product,price,qty);
+		OrderDTO dto = service.getDetail(seq);
+		int o_seq = dto.getO_seq();
+		
+		m.addAttribute("price",price);
+		m.addAttribute("o_seq",o_seq);
+		m.addAttribute("dto",dto);
+		return "shop/pay";
+	}
 	@RequestMapping("payResult")
 	public String payResult(String apply_num,int o_seq,String allSum,Model m) {
 		System.out.println("결제완료");

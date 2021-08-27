@@ -139,9 +139,11 @@ a{text-decoration: none;color: white;}
 			$("#form1").submit();
 		})
 		$(".order").on("click",function(){
-			let price = $(this).siblings(".c_price").val();
+			let price = $(this).siblings(".p_price").val();
 			let product = $(this).siblings(".p_name").val();
-			location.href="/order/payView?product="+product+"&price="+price;
+			let qty = $(this).siblings(".qty").val(); 
+			location.href="/order/payQty?product="+product+"&price="+price+"&qty="+qty; 
+			
 		})
 		
 	})
@@ -348,8 +350,9 @@ a{text-decoration: none;color: white;}
 									<a href="/cart/delete?c_seq=${list.c_seq}"><input id="deleteBtn"type="button" class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;" value="삭제하기"></a>
 									<input type=hidden class="c_seq" value="${list.c_seq}">
 									<input type=hidden class="c_qty" name="c_qty" value="${list.c_qty}">
-									<input type=hidden class="c_price" value="${list.c_price }">
-									<input type=hidden class="p_name" value="${list.p_name}">
+									<input type=hidden class="p_price" name="price" value="${list.p_price }">
+									<input type=hidden class="p_name" name="product" value="${list.p_name}">
+									<input type=hidden class="qty" name="qty" value="${list.c_qty}">
 								</td>
 								</tr>
 								</c:forEach>
