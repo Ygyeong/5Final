@@ -192,7 +192,7 @@ $(function(){
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
 	<div class="container">
-        <form action="/rep/updateProc" method="post" enctype="multipart/form-data">
+        <form action="/products/modifyProc" method="post" enctype="multipart/form-data">
         <div id=title>상품 수정</div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">종류</div>
@@ -212,11 +212,11 @@ $(function(){
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">이름</div>
-            <div class="col-5 p-0"><input type="text" name=rep_name class="form-control" value="${dto.p_name}"></div>
+            <div class="col-5 p-0"><input type="text" name="p_name" class="form-control" value="${dto.p_name}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">금액</div>
-            <div class="col-5 p-0"><input type="text" name=rep_price class="form-control" value="${dto.p_price}"></div>
+            <div class="col-5 p-0"><input type="text" name="p_price" class="form-control" value="${dto.p_price}"></div>
         </div>
         <div class="row m-0 mt-3 mb-3 box">
             <div class="col-2 p-0 txt">사진</div>
@@ -232,7 +232,7 @@ $(function(){
             </div>
         </div>
         <div class="row m-0 mt-3 pt-4">
-		        <textarea class="col-12" id="summernote" name=rep_detail>${dto.p_contents}</textarea>
+		        <textarea class="col-12" id="summernote" name=p_contents>${dto.p_contents}</textarea>
         </div>
         <div class="row m-0">
             <div class="col-12"  id=btnBox>
@@ -240,7 +240,7 @@ $(function(){
                 <button type="button" class="btn btn-outline-dark" id=cancel onclick="history.go(-1)">취소</button>
             </div>
         </div>
-        <input type=hidden name="p_seq" value="${dto.p_seq }">
+        <input type=hidden name="p_seq" value="${dto.p_seq}">
         </form>
 	</div>
 	<!-- Bootstrap core JS-->
