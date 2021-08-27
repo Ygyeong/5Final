@@ -106,7 +106,8 @@
     	        });
     	       
     	        
-    	        $("#back").on("click",function(){
+    	        $(".back").on("click",function(){
+    	        	alert("AAA");
     	        	location.href="/cart/cartList";
     	        })
     	});
@@ -190,7 +191,7 @@
             <input type=hidden id="o_phone" value="${mdto.cm_phone }">
             <div class="row bt">
                 <div class="col-12 btnBox">
-                    <button type="button" id="back" class="btn btn-outline-dark">메인으로</button>
+                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
                     <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
                 </div>
             </div>
@@ -265,7 +266,7 @@
             <input type=hidden id="o_phone" value="${dto.o_phone }">
             <div class="row bt">
                 <div class="col-12 btnBox">
-                    <button type="button" id="back" class="btn btn-outline-dark">메인으로</button>
+                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
                     <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
                 </div>
             </div>
