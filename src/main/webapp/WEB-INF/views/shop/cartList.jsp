@@ -331,7 +331,7 @@ a{text-decoration: none;color: white;}
 								</td>
 								<td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
 								<td style="width:20px;" colspan="2">
-									<input style="text-align:right; margin-bottom:5px;"value="${list.c_qty}"/>
+									<input style="text-align:right; margin-bottom:5px;" name="c_qty" type="number" value="${list.c_qty}" min="1" />
 									<input type="hidden" name="p_seq" value="${list.p_seq}">
 									<button class="btn default" style="border-radius:3px; size:10px;" type="submit">변경</button>
 								</td>

@@ -21,7 +21,7 @@
 	</delete>
 	
 	<update id="update">
-		update camp_products set p_name=#{p_name},p_price=#{p_price},p_category=#{p_category},p_conents = #{rep_contents}  where p_seq = ${p_seq}
+		update camp_products set p_name=#{p_name},p_price=#{p_price},p_category=#{p_category},p_conents = #{p_contents}  where p_seq = ${p_seq}
 	</update>
 	
 	<select id="detail" resultType="kh.spring.dto.ProductsDTO">

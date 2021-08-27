@@ -105,56 +105,56 @@ a{text-decoration: none;color: white;}
 --------------------------------------------------------------------------------------------------------------- */   
 </style>
 <script>
- 	$(function(){
-		$("#modifyBtn").on("click",function(){
-			location.href="/products/modify?p_seq="+$("#p_seq").val();	
-		})
-		
-		$("#deleteBtn").on("click",function(){
-			let result = confirm("게시글을 삭제하시겠습니까?");
-			if(result){
-				location.href="/products/delete?p_seq="+$("#p_seq").val();
-			}
-		})
-		
-		$("#userBtn").on("click",function(){
-			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
-			if(result){
-				location.href="/member/loginPage";
-			}
-			$("#content").val("");
-		})
-		
- 	    $("#cartBtn").on("click",function(){
- 	    	
- 	    	if(${loginID==null}){
- 	    		let result1 = confirm("로그인이 필요합니다 기능입니다\n로그인하시겠습니까?");
- 	    		if(result1){
- 	    			location.href="/member/loginPage";
- 	    		}
- 	    	}else{
- 	    		location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
- 	    	}
- 	    	
- 	    })
- 	    $("#payBtn").on("click",function(){
- 	    	$("#payF").attr("action","/order/payView");
- 	    	$("#payF").submit();
- 	    })
- 	    $("#nullPayBtn").on("click",function(){
- 	    	let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
-			if(result){
-				location.href="/member/loginPage";
-			}
- 	    })
- 	    $("#nullCartBtn").on("click",function(){
- 	    	let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
-			if(result){
-				location.href="/member/loginPage";
-			}
- 	    })
+    $(function(){
+      $("#modifyBtn").on("click",function(){
+         location.href="/products/modify?p_seq="+$("#p_seq").val();   
+      })
+      
+      $("#deleteBtn").on("click",function(){
+         let result = confirm("게시글을 삭제하시겠습니까?");
+         if(result){
+            location.href="/products/delete?p_seq="+$("#p_seq").val();
+         }
+      })
+      
+      $("#userBtn").on("click",function(){
+         let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+         if(result){
+            location.href="/member/loginPage";
+         }
+         $("#content").val("");
+      })
+      
+        $("#cartBtn").on("click",function(){
+           
+           if(${loginID==null}){
+              let result1 = confirm("로그인이 필요합니다 기능입니다\n로그인하시겠습니까?");
+              if(result1){
+                 location.href="/member/loginPage";
+              }
+           }else{
+              location.href="/cart/insertCart?p_seq=${dto.p_seq}&c_qty=1";
+           }
+           
+        })
+        $("#payBtn").on("click",function(){
+           $("#payF").attr("action","/order/payView");
+           $("#payF").submit();
+        })
+        $("#nullPayBtn").on("click",function(){
+           let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+         if(result){
+            location.href="/member/loginPage";
+         }
+        })
+        $("#nullCartBtn").on("click",function(){
+           let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+         if(result){
+            location.href="/member/loginPage";
+         }
+        })
 
- 	})
+    })
 </script>
 </head>
 <body>
@@ -227,191 +227,191 @@ a{text-decoration: none;color: white;}
 </c:choose> 
 <!-- 네비바 끝
 ----------------------------------------------------------------------------------------------------------------->
-	<c:choose>
-		<c:when test="${loginID =='admin'}">
-			<div class="container-fluid">
-				<div class="row m-0" id=menu>
-					<div class="col-6 p-0" id=img>
-						<c:forEach var="i" items="${slist}">
-						<div class="col-2 p-0" id=img>
-							<img src="/img/${i.sysName}">
-						</div>
-					</c:forEach>
-					</div>
-					<div class="col-5 " id=infoBox>
-						<div class="row m-0 mb-4">
-							<div class="col-4 txt">${dto.p_category}</div>
-							<div class="col-2 ex">
-							</div>
-						</div>
+   <c:choose>
+      <c:when test="${loginID =='admin'}">
+         <div class="container-fluid">
+            <div class="row m-0" id=menu>
+               <div class="col-6 p-0" id=img>
+                  <c:forEach var="i" items="${slist}">
+                  <div class="col-2 p-0" id=img>
+                     <img src="/img/${i.sysName}">
+                  </div>
+               </c:forEach>
+               </div>
+               <div class="col-5 " id=infoBox>
+                  <div class="row m-0 mb-4">
+                     <div class="col-4 txt">${dto.p_category}</div>
+                     <div class="col-2 ex">
+                     </div>
+                  </div>
 
-						<div class="row m-0">
-							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
-						</div>
-						<div class="row m-0" id=priceBox>
-							<div class="col-12 p-0 pb-2" id=price>
-							<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
-							</div>
-						</div>
-						<div class="row m-0 pb-2">
-							<div class="col-3 p-0">배송비</div>
-							<div class="col-9 p-0">50,000이상 무료배송</div>
-							<div class="col-3 p-0"></div>
-							<div class="col-9 p-0">2,500원</div>
-						</div>
+                  <div class="row m-0">
+                     <div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
+                  </div>
+                  <div class="row m-0" id=priceBox>
+                     <div class="col-12 p-0 pb-2" id=price>
+                     <fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+                     </div>
+                  </div>
+                  <div class="row m-0 pb-2">
+                     <div class="col-3 p-0">배송비</div>
+                     <div class="col-9 p-0">50,000이상 무료배송</div>
+                     <div class="col-3 p-0"></div>
+                     <div class="col-9 p-0">2,500원</div>
+                  </div>
 
-						<div class="row m-0 pb-4">
-							<div class="col-3 p-0">거래지역</div>
-							<div class="col-9 p-0">전지역</div>
-						</div>
-						<div class="row pt-3" id=funcBox>
-							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="modifyBtn">수정하기</button>
-							</div>
-							<div class="col-5 p-0" id=like>
-								<button class="btn btn-outline-dark" id="deleteBtn">삭제하기</button>
-							</div>
+                  <div class="row m-0 pb-4">
+                     <div class="col-3 p-0">거래지역</div>
+                     <div class="col-9 p-0">전지역</div>
+                  </div>
+                  <div class="row pt-3" id=funcBox>
+                     <div class="col-5 p-0" id=like>
+                        <button class="btn btn-outline-dark" id="modifyBtn">수정하기</button>
+                     </div>
+                     <div class="col-5 p-0" id=like>
+                        <button class="btn btn-outline-dark" id="deleteBtn">삭제하기</button>
+                     </div>
 
-						</div>
-						<input type=hidden id=p_seq value="${dto.p_seq}">
-					</div>
-				</div>
-				<div class="row p-0 content">
-					<div class="col-11">
-						<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
-					</div>
-				</div>
-			</div>
-		</c:when>
-		<c:when test="${loginID ==null }">
-			<div class="container-fluid">
-			<form action="" method="post" id="payF">
-				<div class="row m-0" id=menu>
-					<div class="col-6 p-0" id=img>
-						<c:forEach var="i" items="${slist}">
-						<div class="col-2 p-0" id=img>
-							<img src="/img/${i.sysName}">
-						</div>
-					</c:forEach>
-					</div>
-					<div class="col-5 " id=infoBox>
-						<div class="row m-0 mb-4">
-							<div class="col-2 txt">${dto.p_category}</div>
-							<div class="col-2 ex">
-							</div>
-						</div>
+                  </div>
+                  <input type=hidden id=p_seq value="${dto.p_seq}">
+               </div>
+            </div>
+            <div class="row p-0 content">
+               <div class="col-11">
+                  <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                  <div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+               </div>
+            </div>
+         </div>
+      </c:when>
+      <c:when test="${loginID ==null }">
+         <div class="container-fluid">
+         <form action="" method="post" id="payF">
+            <div class="row m-0" id=menu>
+               <div class="col-6 p-0" id=img>
+                  <c:forEach var="i" items="${slist}">
+                  <div class="col-2 p-0" id=img>
+                     <img src="/img/${i.sysName}">
+                  </div>
+               </c:forEach>
+               </div>
+               <div class="col-5 " id=infoBox>
+                  <div class="row m-0 mb-4">
+                     <div class="col-2 txt">${dto.p_category}</div>
+                     <div class="col-2 ex">
+                     </div>
+                  </div>
 
-						<div class="row m-0">
-							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
-						</div>
-						<div class="row m-0" id=priceBox>
-							<div class="col-12 p-0 pb-2" id=price>
-							<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
-							</div>
-						</div>
-						<div class="row m-0 pb-2">
-							<div class="col-3 p-0">배송비</div>
-							<div class="col-9 p-0">50,000이상 무료배송</div>
-							<div class="col-3 p-0"></div>
-							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
-						</div>
+                  <div class="row m-0">
+                     <div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
+                  </div>
+                  <div class="row m-0" id=priceBox>
+                     <div class="col-12 p-0 pb-2" id=price>
+                     <fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+                     </div>
+                  </div>
+                  <div class="row m-0 pb-2">
+                     <div class="col-3 p-0">배송비</div>
+                     <div class="col-9 p-0">50,000이상 무료배송</div>
+                     <div class="col-3 p-0"></div>
+                     <div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
+                  </div>
 
-						<div class="row m-0 pb-4">
-							<div class="col-3 p-0">거래지역</div>
-							<div class="col-9 p-0">전지역</div>
-						</div>
-						<div class="row pt-3" id=funcBox>
-							<div class="col-5 p-0" id=like>
-								<button type=button class="btn btn-outline-dark" id="nullCartBtn">장바구니</button>
-							</div>
-							<div class="col-5 p-0" id=like>
-								<button type=button class="btn btn-outline-dark" id="nullPayBtn">결제하기</button>
-							</div>
+                  <div class="row m-0 pb-4">
+                     <div class="col-3 p-0">거래지역</div>
+                     <div class="col-9 p-0">전지역</div>
+                  </div>
+                  <div class="row pt-3" id=funcBox>
+                     <div class="col-5 p-0" id=like>
+                        <button type=button class="btn btn-outline-dark" id="nullCartBtn">장바구니</button>
+                     </div>
+                     <div class="col-5 p-0" id=like>
+                        <button type=button class="btn btn-outline-dark" id="nullPayBtn">결제하기</button>
+                     </div>
 
-						</div>
-						<input type=hidden id=p_seq value="${dto.p_seq}">
-					</div>
-				</div>
-				<div class="row p-0 content">
-					<div class="col-11">
-						<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
-					</div>
-				</div>
-				<input type=hidden name=product value="${dto.p_name }">
-				<input type=hidden name=price value="${dto.p_price }">
-				</form>
-			</div>
-		</c:when>
-		<c:otherwise>
-			<div class="container-fluid">
-			<form action="" method="post" id="payF">
-				<div class="row m-0" id=menu>
-					<div class="col-6 p-0" id=img>
-						<c:forEach var="i" items="${slist}">
-						<div class="col-2 p-0" id=img>
-							<img src="/img/${i.sysName}">
-						</div>
-					</c:forEach>
-					</div>
-					<div class="col-5 " id=infoBox>
-						<div class="row m-0 mb-4">
-							<div class="col-2 txt">${dto.p_category}</div>
-							<div class="col-2 ex">
-							</div>
-						</div>
+                  </div>
+                  <input type=hidden id=p_seq value="${dto.p_seq}">
+               </div>
+            </div>
+            <div class="row p-0 content">
+               <div class="col-11">
+                  <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                  <div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+               </div>
+            </div>
+            <input type=hidden name=product value="${dto.p_name }">
+            <input type=hidden name=price value="${dto.p_price }">
+            </form>
+         </div>
+      </c:when>
+      <c:otherwise>
+         <div class="container-fluid">
+         <form action="" method="post" id="payF">
+            <div class="row m-0" id=menu>
+               <div class="col-6 p-0" id=img>
+                  <c:forEach var="i" items="${slist}">
+                  <div class="col-2 p-0" id=img>
+                     <img src="/img/${i.sysName}">
+                  </div>
+               </c:forEach>
+               </div>
+               <div class="col-5 " id=infoBox>
+                  <div class="row m-0 mb-4">
+                     <div class="col-2 txt">${dto.p_category}</div>
+                     <div class="col-2 ex">
+                     </div>
+                  </div>
 
-						<div class="row m-0">
-							<div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
-						</div>
-						<div class="row m-0" id=priceBox>
-							<div class="col-12 p-0 pb-2" id=price>
-							<fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
-							</div>
-						</div>
-						<div class="row m-0 pb-2">
-							<div class="col-3 p-0">배송비</div>
-							<div class="col-9 p-0">50,000이상 무료배송</div>
-							<div class="col-3 p-0"></div>
-							<div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
-						</div>
+                  <div class="row m-0">
+                     <div class="col-12 p-0 pb-1" id=name>${dto.p_name}</div>
+                  </div>
+                  <div class="row m-0" id=priceBox>
+                     <div class="col-12 p-0 pb-2" id=price>
+                     <fmt:formatNumber value="${dto.p_price}" maxFractionDigits="3"/><span>원</span>
+                     </div>
+                  </div>
+                  <div class="row m-0 pb-2">
+                     <div class="col-3 p-0">배송비</div>
+                     <div class="col-9 p-0">50,000이상 무료배송</div>
+                     <div class="col-3 p-0"></div>
+                     <div class="col-9 p-0">2,500원 / 도서산간 5,000원</div>
+                  </div>
 
-						<div class="row m-0 pb-4">
-							<div class="col-3 p-0">거래지역</div>
-							<div class="col-9 p-0">전지역</div>
-						</div>
-						<div class="row pt-3" id=funcBox>
-							<div class="col-5 p-0" id=like>
-								<button type=button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
-							</div>
-							<div class="col-5 p-0" id=like>
-								<button type=button class="btn btn-outline-dark" id="payBtn">결제하기</button>
-							</div>
+                  <div class="row m-0 pb-4">
+                     <div class="col-3 p-0">거래지역</div>
+                     <div class="col-9 p-0">전지역</div>
+                  </div>
+                  <div class="row pt-3" id=funcBox>
+                     <div class="col-5 p-0" id=like>
+                        <button type=button class="btn btn-outline-dark" id="cartBtn">장바구니</button>
+                     </div>
+                     <div class="col-5 p-0" id=like>
+                        <button type=button class="btn btn-outline-dark" id="payBtn">결제하기</button>
+                     </div>
 
-						</div>
-						<input type=hidden id=p_seq value="${dto.p_seq}">
-					</div>
-				</div>
-				<div class="row p-0 content">
-					<div class="col-11">
-						<div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
-						<div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
-					</div>
-				</div>
-				<input type=hidden name=product value="${dto.p_name }">
-				<input type=hidden name=price value="${dto.p_price }">
-				</form>
-			</div>
-		</c:otherwise>
-	</c:choose>
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+                  </div>
+                  <input type=hidden id=p_seq value="${dto.p_seq}">
+               </div>
+            </div>
+            <div class="row p-0 content">
+               <div class="col-11">
+                  <div class="col-12 pb-2 pt-5" id=detailT>상세정보</div>
+                  <div class="col-12 pt-4 pb-4">${dto.p_contents}</div>
+               </div>
+            </div>
+            <input type=hidden name=product value="${dto.p_name }">
+            <input type=hidden name=price value="${dto.p_price }">
+            </form>
+         </div>
+      </c:otherwise>
+   </c:choose>
+   <!-- Bootstrap core JS-->
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 
-	<!-- Core theme JS-->
-	<script src="/js/products.js"></script>
-	<script>
+   <!-- Core theme JS-->
+   <script src="/js/products.js"></script>
+   <script>
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
