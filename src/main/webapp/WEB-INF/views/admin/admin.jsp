@@ -258,8 +258,8 @@ a{
     <h2>안녕하세요 관리자님!</h2><br><br><br>
     관리자 페이지에 오신걸 환영합니다!
 	</div>
-	<button id=dataupdate>DB 업데이트</button>
-	<button id=imageupdate>이미지 DB 입력</button>
+	<!-- <button id=dataupdate>DB 업데이트</button> -->
+	<!-- <button id=imageupdate>이미지 DB 입력</button> -->
 
 
 

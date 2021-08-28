@@ -36,10 +36,7 @@ $(function(){
 		location.href="/"
 	})
 	$("#cartList").on("click",function(){
-		var url = "/cart/cartList?cm_id=${loginID}"
-		var name = "/cart/cartList"
-		var option = "width=600,height=600 left=100, top=50, location=no";
-		window.open(url, name, option)
+		location.href="/cart/cartList?cm_id=${loginID}"
 	})
 	$("#wishlist").on('click', function(){
 		var url = "/member/wishlist?cm_id=${loginID}";
