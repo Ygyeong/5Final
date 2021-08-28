@@ -266,7 +266,7 @@
             <input type=hidden id="o_phone" value="${dto.o_phone }">
             <div class="row bt">
                 <div class="col-12 btnBox">
-                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
+                	<a href="/cart/cartList"><input type="button" id="back" class="btn btn-outline-dark back" value="메인으로"></a>
                     <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
                 </div>
             </div>

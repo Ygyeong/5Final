@@ -119,15 +119,10 @@ a{text-decoration: none;color: white;}
 <script>
 	$(document).ready(function(){
 		
-		$("#deleteBtn").on("click",function(){
-			let result = confirm("상품을 삭제하시겠습니까?");
-			
-			if(result){
-				submit;
-			}
-			return false;
-			
+		$("#productClear").on("click",function(){
+			location.href="/products/selectAll";
 		})
+		
 		
 		$(".default").on("click",function(){
 			let seq =$(this).siblings(".c_seq").val();
@@ -145,7 +140,15 @@ a{text-decoration: none;color: white;}
 			location.href="/order/payQty?product="+product+"&price="+price+"&qty="+qty; 
 			
 		})
-		
+		$("#allBtn").on("click",function(){
+			let result = confirm("상품을 전체 삭제하시겠습니까?");
+			
+			if(result){
+				location.href="/cart/deleteAll";
+			}
+			return false;
+			
+		})
 	})
 </script>
 <body>
@@ -273,9 +276,6 @@ a{text-decoration: none;color: white;}
 						</tr>
 						</tfoot>
 					</table>
-					<div style="margin:10px 0;">
-						<button class="btn default backBtn btnfloat2">장바구니 비우기</button>
-					</div>
 					<br/><br/>
 					
 					<table class="calculation2">
@@ -294,7 +294,7 @@ a{text-decoration: none;color: white;}
 					
 					<div align="center" style="margin-top:10px;">
 						<button class="btn default" id="allProduct">전체상품주문</button>
-						<button class="btn default backBtn" id="productClear">쇼핑계속하기</button>
+						<a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
 						<span class="clearboth"></span>
 					</div>
 					<br/><br/><br/><br/><br/>
@@ -362,7 +362,7 @@ a{text-decoration: none;color: white;}
 						</tfoot>
 					</table>
 					<div style="margin:10px 0;">
-						<button class="btn default backBtn btnfloat2">장바구니 비우기</button>
+						<button class="btn default backBtn btnfloat2" id="allBtn">장바구니 비우기</button>
 					</div>
 					<br/><br/>
 					
@@ -384,7 +384,7 @@ a{text-decoration: none;color: white;}
 					<input type=hidden name=allSum value="${map.allSum}" >
 					<div align="center" style="margin-top:10px;">
 						<button class="btn default" id="allProduct">전체상품주문</button>
-						<button class="btn default backBtn" id="productClear">쇼핑계속하기</button>
+						<a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
 						<span class="clearboth"></span>
 					</div>
 					<br/><br/><br/><br/><br/>

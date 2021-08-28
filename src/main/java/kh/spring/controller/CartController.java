@@ -72,6 +72,7 @@ public class CartController {
 		cservice.delete(c_seq);
 		return "redirect:/cart/cartList";
 	}
+
 	
 	@RequestMapping("update")
 	public String update(@RequestParam int[] c_qty, @RequestParam int[] p_seq, HttpSession session) {
