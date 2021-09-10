@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>결제하기</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -92,10 +92,10 @@
     	        console.log(rsp);
     	        if (rsp.success) {
     	         var msg = '결제가 완료되었습니다.';
-    	        /*msg += '고유ID : ' + rsp.imp_uid;
+    	        msg += '고유ID : ' + rsp.imp_uid;
     	        msg += '상점 거래ID : ' + rsp.merchant_uid;
     	        msg += '결제 금액 : ' + rsp.paid_amount;
-    	        msg += '카드 승인번호 : ' + rsp.apply_num; */
+    	        msg += '카드 승인번호 : ' + rsp.apply_num;
     	        
     	       	location.href="/products/selectAll?index=1"; 
     	        } else {
@@ -106,10 +106,7 @@
     	        });
     	       
     	        
-    	        $(".back").on("click",function(){
-    	        	alert("AAA");
-    	        	location.href="/cart/cartList";
-    	        })
+
     	});
     	
     	});
@@ -191,7 +188,7 @@
             <input type=hidden id="o_phone" value="${mdto.cm_phone }">
             <div class="row bt">
                 <div class="col-12 btnBox">
-                    <button type="button" id="back" class="btn btn-outline-dark back">메인으로</button>
+                    <a href="/cart/cartList"><input type="button" id="back" class="btn btn-outline-dark back" value="메인으로"></a>
                     <button type="button" id="payBtn" class="btn btn-dark">결제하기</button>
                 </div>
             </div>
@@ -274,6 +271,13 @@
     </div>
 	</c:otherwise>
 	</c:choose>
-   
+   <script>
+   		$(function(){
+	        $(".back").on("click",function(){
+	        	alert("결제를 취소합니다.");
+	        	location.href="/cart/cartList";
+	        })
+   		})
+   </script>
 </body>
 </html>

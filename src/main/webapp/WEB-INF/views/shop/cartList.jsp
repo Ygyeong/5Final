@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -117,39 +117,39 @@ a{text-decoration: none;color: white;}
 </style>
 </head>
 <script>
-	$(document).ready(function(){
-		
-		$("#productClear").on("click",function(){
-			location.href="/products/selectAll";
-		})
-		
-		
-		$(".default").on("click",function(){
-			let seq =$(this).siblings(".c_seq").val();
-			console.log(seq);
-		})
-		
-		$("#allProduct").on("click",function(){
-			$("#form1").attr("action","/order/payAll");
-			$("#form1").submit();
-		})
-		$(".order").on("click",function(){
-			let price = $(this).siblings(".p_price").val();
-			let product = $(this).siblings(".p_name").val();
-			let qty = $(this).siblings(".qty").val(); 
-			location.href="/order/payQty?product="+product+"&price="+price+"&qty="+qty; 
-			
-		})
-		$("#allBtn").on("click",function(){
-			let result = confirm("상품을 전체 삭제하시겠습니까?");
-			
-			if(result){
-				location.href="/cart/deleteAll";
-			}
-			return false;
-			
-		})
-	})
+   $(document).ready(function(){
+      
+      $("#productClear").on("click",function(){
+         location.href="/products/selectAll";
+      })
+      
+      
+      $(".default").on("click",function(){
+         let seq =$(this).siblings(".c_seq").val();
+         console.log(seq);
+      })
+      
+      $("#allProduct").on("click",function(){
+         $("#form1").attr("action","/order/payAll");
+         $("#form1").submit();
+      })
+      $(".order").on("click",function(){
+         let price = $(this).siblings(".p_price").val();
+         let product = $(this).siblings(".p_name").val();
+         let qty = $(this).siblings(".qty").val(); 
+         location.href="/order/payQty?product="+product+"&price="+price+"&qty="+qty; 
+         
+      })
+      $("#allBtn").on("click",function(){
+         let result = confirm("상품을 전체 삭제하시겠습니까?");
+         
+         if(result){
+            location.href="/cart/deleteAll";
+         }
+         return false;
+         
+      })
+   })
 </script>
 <body>
 <!-- 네비바 시작
@@ -203,7 +203,6 @@ a{text-decoration: none;color: white;}
             <i class="fas fa-bars"></i>
         </a>
     </nav>
-
 </c:when>
 <c:otherwise>
 <nav class="navbar">
@@ -237,167 +236,164 @@ a{text-decoration: none;color: white;}
 <c:choose>
 <c:when test="${map.count==0}">
 <div class="container">
-		<div id="frame">
-			<form name="form1" id="form1" method="post" action="/cart/update">
-				<div id="frame2"align="center">
-					<span style="font-size: 30pt; font-weight: bold;">장바구니</span>
-				</div>
-				<br />
-				<div>
-					<table class="calculation1">
-						<thead>
-							<tr>
-								<th colspan="6" style="text-align: left; padding-left: 10px;">일반상품</th>
-							</tr>
+      <div id="frame">
+         <form name="form1" id="form1" method="post" action="/cart/update">
+            <div id="frame2"align="center">
+               <span style="font-size: 30pt; font-weight: bold;">장바구니</span>
+            </div>
+            <br />
+            <div>
+               <table class="calculation1">
+                  <thead>
+                     <tr>
+                        <th colspan="6" style="text-align: left; padding-left: 10px;">일반상품</th>
+                     </tr>
+                     <tr>
+                        <th colspan="2"><span>이미지</span></th>
+                        <th style="width: 550px;"><span>상품정보</span></th>
+                        <th colspan="2">판매가</th>
+                        <th>수량</th>
+                        <th colspan="2">합계</th>
+                        <th>선택</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  <tr style="height: 90px; background-color: #fff;">
+                        <td style="border-left:none; border-right:none;" colspan="8">
+                           <span>장바구니에 등록된 상품이 없습니다.</span>
+                        <td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
+                  </tbody>
+                  <tfoot>
+                  <tr style="height:60px;">
+                  <td colspan="5" style="border-right:none; text-align:left; padding-left:10px;">
+                     <span>[기본배송]</span>
+                  </td>
+                  <td colspan=>
+                  상품금액 <span><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>+ <span>배송비 0원 = </span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
+                  </td>
+                  </tr>
+                  </tfoot>
+               </table>
+               <br/><br/>
+               
+               <table class="calculation2">
+                  <tr>
+                     <th>총 상품금액</th>
+                     <th>총 배송비</th>
+                     <th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
+                  </tr>
+                  
+                  <tr style="background-color:#fff;">
+                  <td style="padding:22px 0;"><span class="price"><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>원</td>
+                  <td>+<span class="price"><fmt:formatNumber value="0" maxFractionDigits="3"/></span>원</td>
+                  <td>=<span class="price"><fmt:formatNumber value="0" maxFractionDigits="3"/></span>원</td>
+                  </tr>
+               </table>
+               
+               <div align="center" style="margin-top:10px;">
+                  <button class="btn default" id="allProduct">전체상품주문</button>
+                  <a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
+                  <span class="clearboth"></span>
+               </div>
+               <br/><br/><br/><br/><br/>
+            </div>
+         </form>
+      </div>
+   </div>
+   </c:when>
+   <c:otherwise>
+   <div class="container">
+      <div id="frame">
+         <form name="form1" id="form1" method="post" action="/cart/update">
+            <div id="frame2"align="center">
+               <span style="font-size: 30pt; font-weight: bold;">장바구니</span>
+            </div>
+            <br />
+            <div>
+               <table class="calculation1">
+                  <thead>
+                     <tr>
+                        <th colspan="9" style="text-align: left; padding-left: 10px;">일반상품</th>
+                     </tr>
 
-							<tr>
-								<th colspan="2"><span>이미지</span></th>
-								<th style="width: 550px;"><span>상품정보</span></th>
-								<th colspan="2">판매가</th>
-								<th>수량</th>
-								<th colspan="2">합계</th>
-								<th>선택</th>
-							</tr>
-						</thead>
-						<tbody>
-						<tr style="height: 90px; background-color: #fff;">
-								<td style="border-left:none; border-right:none;" colspan="8">
-									<span>장바구니에 등록된 상품이 없습니다.</span>
-								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
-						</tbody>
-						<tfoot>
-						<tr style="height:60px;">
-						<td colspan="5" style="border-right:none; text-align:left; padding-left:10px;">
-							<span>[기본배송]</span>
-						</td>
-						<td colspan=>
-						상품금액 <span><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>+ <span>배송비 0원 = </span>&nbsp;<span style="font-whight:bold; font-size:15pt;">0</span>
-						</td>
-						</tr>
-						</tfoot>
-					</table>
-					<br/><br/>
-					
-					<table class="calculation2">
-						<tr>
-							<th>총 상품금액</th>
-							<th>총 배송비</th>
-							<th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
-						</tr>
-						
-						<tr style="background-color:#fff;">
-						<td style="padding:22px 0;"><span class="price"><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>원</td>
-						<td>+<span class="price"><fmt:formatNumber value="0" maxFractionDigits="3"/></span>원</td>
-						<td>=<span class="price"><fmt:formatNumber value="0" maxFractionDigits="3"/></span>원</td>
-						</tr>
-					</table>
-					
-					<div align="center" style="margin-top:10px;">
-						<button class="btn default" id="allProduct">전체상품주문</button>
-						<a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
-						<span class="clearboth"></span>
-					</div>
-					<br/><br/><br/><br/><br/>
-				</div>
-			</form>
-		</div>
-	</div>
-	</c:when>
-	<c:otherwise>
-	<div class="container">
-		<div id="frame">
-			<form name="form1" id="form1" method="post" action="/cart/update">
-				<div id="frame2"align="center">
-					<span style="font-size: 30pt; font-weight: bold;">장바구니</span>
-				</div>
-				<br />
-				<div>
-					<table class="calculation1">
-						<thead>
-							<tr>
-								<th colspan="9" style="text-align: left; padding-left: 10px;">일반상품</th>
-							</tr>
-
-							<tr>
-								<th colspan="2"><span>이미지</span></th>
-								<th style="width: 550px;"><span>상품정보</span></th>
-								<th colspan="2">판매가</th>
-								<th>수량</th>
-								<th colspan="2">합계</th>
-								<th>선택</th>
-							</tr>
-						</thead>
-						<tbody>
-						
-						<c:forEach var="list" items="${map.list}" varStatus="i">
-							<tr style="height: 90px; background-color: #fff;">
-								<td style="border-left:none; border-right:none;"colspan="2">
-									<img style="width:80%" src="/img/"/></td>
-								<td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
-								${list.p_name}
-								
-								</td>
-								<td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
-								<td style="width:20px;" colspan="2">
-									<input style="text-align:right; margin-bottom:5px;" name="c_qty" type="number" value="${list.c_qty}" min="1" />
-									<input type="hidden" name="p_seq" value="${list.p_seq}">
-									<button class="btn default" style="border-radius:3px; size:10px;" type="submit">변경</button>
-								</td>
-								<td colspan="2"><span><fmt:formatNumber value="${list.c_price}" maxFractionDigits="3"/></span>원</td>
-								
-								<td>
-									<button class="btn default order" type="button" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
-									<a href="/cart/delete?c_seq=${list.c_seq}"><input id="deleteBtn"type="button" class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;" value="삭제하기"></a>
-									<input type=hidden class="c_seq" value="${list.c_seq}">
-									<input type=hidden class="c_qty" name="c_qty" value="${list.c_qty}">
-									<input type=hidden class="p_price" name="price" value="${list.p_price }">
-									<input type=hidden class="p_name" name="product" value="${list.p_name}">
-									<input type=hidden class="qty" name="qty" value="${list.c_qty}">
-								</td>
-								</tr>
-								</c:forEach>
-								
-						</tbody>
-						<tfoot>
-						</tfoot>
-					</table>
-					<div style="margin:10px 0;">
-						<button class="btn default backBtn btnfloat2" id="allBtn">장바구니 비우기</button>
-					</div>
-					<br/><br/>
-					
-					<table class="calculation2">
-						<tr>
-							<th>총 상품금액</th>
-							<th>총 배송비</th>
-							<th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
-						</tr>
-						
-						<tr style="background-color:#fff;">
-						<td style="padding:22px 0;"><span class="price"><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>원</td>
-						<td>+<span class="price"><fmt:formatNumber value="${map.delivery}" maxFractionDigits="3"/></span>원</td>
-						<td>=<span class="price"><fmt:formatNumber value="${map.allSum}" maxFractionDigits="3"/></span>원</td>
-						</tr>
-					</table>
-					<input type=hidden name=sumMoney value="${map.sumMoney}" >
-					<input type=hidden name=delivery value="${map.delivery}" >
-					<input type=hidden name=allSum value="${map.allSum}" >
-					<div align="center" style="margin-top:10px;">
-						<button class="btn default" id="allProduct">전체상품주문</button>
-						<a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
-						<span class="clearboth"></span>
-					</div>
-					<br/><br/><br/><br/><br/>
-				</div>
-			</form>
-		</div>
-	</div>
-	</c:otherwise>
-	</c:choose>
-	
-	<script>
-    
-    
+                     <tr>
+                        <th colspan="2"><span></span></th>
+                        <th style="width: 550px;"><span>상품정보</span></th>
+                        <th colspan="2">판매가</th>
+                        <th>수량</th>
+                        <th colspan="2">합계</th>
+                        <th>선택</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <c:forEach var="list" items="${map.list}" varStatus="i">
+                     <tr style="height: 90px; background-color: #fff;">
+                     	<td style="border-left:none; border-right:none;"colspan="2"></td>
+                        <!-- <td style="border-left:none; border-right:none;"colspan="2">
+                           <img style="width:80%" src="/img/"/></td> -->
+                        <td style="text-align:left; padding-left:10px; border-left:none; font-weight:bold;">
+                        ${list.p_name}
+                        
+                        </td>
+                        <td><span><fmt:formatNumber value="${list.p_price}" maxFractionDigits="3"/></span>원</td>
+                        <td style="width:20px;" colspan="2">
+                           <input style="text-align:right; margin-bottom:5px;" name="c_qty" type="number" value="${list.c_qty}" min="1" />
+                           <input type="hidden" name="p_seq" value="${list.p_seq}">
+                           <button class="btn default" style="border-radius:3px; size:10px;" type="submit">변경</button>
+                        </td>
+                        <td colspan="2"><span><fmt:formatNumber value="${list.c_price}" maxFractionDigits="3"/></span>원</td>
+                        
+                        <td>
+                           <button class="btn default order" type="button" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px; background-color:#264d73; color:#fff">주문하기</button>
+                           <a href="/cart/delete?c_seq=${list.c_seq}"><input id="deleteBtn"type="button" class="btn default" style="border-radius:3px; width:90px; margin-button:3px; font-size:11px;" value="삭제하기"></a>
+                           <input type=hidden class="c_seq" value="${list.c_seq}">
+                           <input type=hidden class="c_qty" name="c_qty" value="${list.c_qty}">
+                           <input type=hidden class="p_price" name="price" value="${list.p_price }">
+                           <input type=hidden class="p_name" name="product" value="${list.p_name}">
+                           <input type=hidden class="qty" name="qty" value="${list.c_qty}">
+                        </td>
+                        </tr>
+                        </c:forEach>
+                        
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+               </table>
+               <div style="margin:10px 0;">
+                  <button class="btn default backBtn btnfloat2" id="allBtn">장바구니 비우기</button>
+               </div>
+               <br/><br/>
+               
+               <table class="calculation2">
+                  <tr>
+                     <th>총 상품금액</th>
+                     <th>총 배송비</th>
+                     <th style="width:750px; padding:22px 0;"><span>결제예정금액</span></th>
+                  </tr>
+                  
+                  <tr style="background-color:#fff;">
+                  <td style="padding:22px 0;"><span class="price"><fmt:formatNumber value="${map.sumMoney}" maxFractionDigits="3"/></span>원</td>
+                  <td>+<span class="price"><fmt:formatNumber value="${map.delivery}" maxFractionDigits="3"/></span>원</td>
+                  <td>=<span class="price"><fmt:formatNumber value="${map.allSum}" maxFractionDigits="3"/></span>원</td>
+                  </tr>
+               </table>
+               <input type=hidden name=sumMoney value="${map.sumMoney}" >
+               <input type=hidden name=delivery value="${map.delivery}" >
+               <input type=hidden name=allSum value="${map.allSum}" >
+               <div align="center" style="margin-top:10px;">
+                  <button class="btn default" id="allProduct">전체상품주문</button>
+                  <a href="/products/selectAll?index=1"><input type="button" class="btn default backBtn" id="productClear" value="쇼핑계속하기"></a>
+                  <span class="clearboth"></span>
+               </div>
+               <br/><br/><br/><br/><br/>
+            </div>
+         </form>
+      </div>
+   </div>
+   </c:otherwise>
+   </c:choose>
+   <script>
     const toogleBtn = document.querySelector('.navbar_toogleBtn');
     const menu = document.querySelector('.navbar_menu');
     const member = document.querySelector('navbar_member');
@@ -405,7 +401,6 @@ a{text-decoration: none;color: white;}
         menu.classList.toggle('active');
         member.classList.toggle('active');
     });
-    
     </script>
 </body>
 </html>

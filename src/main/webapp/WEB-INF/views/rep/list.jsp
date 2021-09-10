@@ -20,12 +20,12 @@
 
 
 <style>
-	 *{box-sizing: border-box;}
-	 .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
+    *{box-sizing: border-box;}
+    .container-fluid{width:1100px; margin: auto; margin-top:100px; margin-bottom:100px;}
        h2{text-align: center;}
-/* 	div{border:1px solid black;} */
-	   .jgBar{margin:60px 0px 60px 0px;}
-	   #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
+/*    div{border:1px solid black;} */
+      .jgBar{margin:60px 0px 60px 0px;}
+      #jg{font-size:30px; font-weight:bold; padding:0px 0px 0px 10px;}
        #category{text-align:right; margin-right:10px;}
        #category select{height:100%;}
        input[type=text]:focus{outline:none;}
@@ -53,8 +53,8 @@
 
       .camp{width:100%;margin:auto; height:500px;}
       .camp img{width:100%; height:100%; padding:0px;}
-	  #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
-	  #count{margin-left:8px; font-weight:bold;}
+     #searchWord{color:steelblue; font-weight:bold; font-size:20px;}
+     #count{margin-left:8px; font-weight:bold;}
       .schResult{padding-left:24px;}
       
       
@@ -125,7 +125,7 @@ a{
     color: white;
     display: flex;
     padding-left: 0;
-	margin-bottom:-3px;
+   margin-bottom:-3px;
 }
 
 .navbar_member li{
@@ -180,137 +180,157 @@ a{
 
 </style>
 <script>
-	$(function(){
-		
-		let index=1;
-		$(window).scroll(function(){
-			let $window = $(this);
-			let scrollTop = $(this).scrollTop();
-			let windowHeight = $window.height();
-			let documentHeight = $(document).height();
-			console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
-					"| documentHeight"+documentHeight)
-			if(scrollTop+windowHeight+30>=documentHeight){
-				index++;
-				if($("#searchKey").val()!=null){
-					 setTimeout(getSearchList(),2000);
-				}else{
-					setTimeout(getList(),2000);	
-				}
-				
-			}
-					
-		})
-		
-		$(".list").on("click",function(){
-			let seq=$(this).find(".seq").val();
-			location.href="/rep/detail?rep_seq="+seq;
+   $(function(){
+      
+      let index=1;
+      $(window).scroll(function(){
+         let $window = $(this);
+         let scrollTop = $(this).scrollTop();
+         let windowHeight = $window.height();
+         let documentHeight = $(document).height();
+         console.log("scrollTop : "+scrollTop+"| windowHeight : "+windowHeight+
+               "| documentHeight"+documentHeight)
+         if(scrollTop+windowHeight+30>=documentHeight){
+            index++;
+            if($("#searchKey").val()!=null){
+                setTimeout(getSearchList(),2000);
+            }else{
+               setTimeout(getList(),2000);   
+            }
+            
+         }
+               
+      })
+      
+      $(".list").on("click",function(){
+         let seq=$(this).find(".seq").val();
+         location.href="/rep/detail?rep_seq="+seq;
 
-		})
-		$(document).on("click",".list",function(){
-			let seq=$(this).find(".seq").val();
-			location.href="/rep/detail?rep_seq="+seq;
-		})
-		
-		
-		
-		$("#search").on("click",function(){
-			location.href="/rep/list?index=1&keyword="+$("#keyword").val();
-		})
-		$("#writeNo").on("click",function(){
-			let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
-			if(result){
-				location.href="/member/loginPage";
-			}
-		})
-		
-		function getList(){
-			$.ajax({
-				url:"/rep/scrollList",
-				dataType:"json",
-				data:{"index":index}
-			}).done(function(resp){
-				for(let i=0;i<resp.length;i++){
-					let list = $("<div class='col-3 p-0 list'>");
-					
-					let img = $("<div class='col-12 img'>");
-					let thum = $("<img src=''>");
-					
-					thum.attr("src","/img/rep"+resp[i].thumsysName);
-					img.append(thum);
-					let name =$("<div class='col-12 mb-1 link'>");
-					name.text(resp[i].rep_name);
-					
-					let row1 =$("<div class='row m-0'>");
-					let price = $("<div class='col-6 price'>");
-					let span = $("<span>");
-					span.text("원");
-					price.text(resp[i].rep_price);
-					price.append(span);
-					
-					let date = $("<div class='col-6 diffD'>");
-					date.text(resp[i].rep_diff_date);
-					
-					row1.append(price);
-					row1.append(date);
-					
-					let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
-					let area = $("<div class='col-12 area'>");
-					let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
-					area.append(font);
-					area.append(resp[i].rep_area);
-					row2.append(area);
-					let seq = $("<input type=hidden class=seq>");
-					seq.val(resp[i].rep_seq);
-					
-					
-					list.append(img);
-					list.append(name);
-					list.append(row1);
-					list.append(row2)
-					list.append(seq);
-					$(".listbar").append(list);
-					
-					
-				}
-			})
-		}
-		
-		function getSearchList(){
-			$.ajax({
-				url:"/rep/scrollSearchList",
-				dataType:"json",
-				data:{"index":index,"keyword":$("#searchKey").val}
-			}).done(function(resp){
-				for(let i=0;i<resp.length;i++){
-					let list = $("<div class='col-3 list'>");
-					
-					let img = $("<div id=img>");
-					img.text("사진");
-					let name =$("<div id=link>");
-					name.text(resp[i].rep_name);
-					let price = $("<div>");
-					price.text(resp[i].rep_price);
-					let date = $("<div>");
-					date.text(resp[i].rep_write_date);
-					let seq = $("<input type=hidden class=seq>");
-					seq.val(resp[i].rep_seq);
-					
-					list.append(img);
-					list.append(name);
-					list.append(price);
-					list.append(date);
-					list.append(seq);
-					$(".listbar").append(list);
-					
-					
-				}
-			})
-		}
-		
-		
-		
-	})
+      })
+      $(document).on("click",".list",function(){
+         let seq=$(this).find(".seq").val();
+         location.href="/rep/detail?rep_seq="+seq;
+      })
+      
+      
+      
+      $("#search").on("click",function(){
+         location.href="/rep/list?index=1&keyword="+$("#keyword").val();
+      })
+      $("#writeNo").on("click",function(){
+         let result = confirm("로그인이 필요한 기능입니다. 로그인하시겠습니까?");
+         if(result){
+            location.href="/member/loginPage";
+         }
+      })
+      
+      function getList(){
+         $.ajax({
+            url:"/rep/scrollList",
+            dataType:"json",
+            data:{"index":index}
+         }).done(function(resp){
+            for(let i=0;i<resp.length;i++){
+               let list = $("<div class='col-3 p-0 list'>");
+               
+               let img = $("<div class='col-12 img'>");
+               let thum = $("<img src=''>");
+               
+               thum.attr("src","/img/rep/"+resp[i].thumsysName);
+               img.append(thum);
+               let name =$("<div class='col-12 mb-1 link'>");
+               name.text(resp[i].rep_name);
+               
+               let row1 =$("<div class='row m-0'>");
+               let price = $("<div class='col-6 price'>");
+               let span = $("<span>");
+               span.text("원");
+               price.text(resp[i].rep_price);
+               price.append(span);
+               
+               let date = $("<div class='col-6 diffD'>");
+               date.text(resp[i].rep_diff_date);
+               
+               row1.append(price);
+               row1.append(date);
+               
+               let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
+               let area = $("<div class='col-12 area'>");
+               let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
+               area.append(font);
+               area.append(resp[i].rep_area);
+               row2.append(area);
+               let seq = $("<input type=hidden class=seq>");
+               seq.val(resp[i].rep_seq);
+               
+               
+               list.append(img);
+               list.append(name);
+               list.append(row1);
+               list.append(row2)
+               list.append(seq);
+               $(".listbar").append(list);
+               
+               
+            }
+         })
+      }
+      
+      function getSearchList(){
+         $.ajax({
+            url:"/rep/scrollSearchList",
+            dataType:"json",
+            data:{"index":index,"keyword":$("#searchKey").val}
+         }).done(function(resp){
+            for(let i=0;i<resp.length;i++){
+               let list = $("<div class='col-3 p-0 list'>");
+               
+               let img = $("<div class='col-12 img'>");
+               let thum = $("<img src=''>");
+               
+               thum.attr("src","/img/rep/"+resp[i].thumsysName);
+               img.append(thum);
+               let name =$("<div class='col-12 mb-1 link'>");
+               name.text(resp[i].rep_name);
+               
+               let row1 =$("<div class='row m-0'>");
+               let price = $("<div class='col-6 price'>");
+               let span = $("<span>");
+               span.text("원");
+               price.text(resp[i].rep_price);
+               price.append(span);
+               
+               let date = $("<div class='col-6 diffD'>");
+               date.text(resp[i].rep_diff_date);
+               
+               row1.append(price);
+               row1.append(date);
+               
+               let row2 =$("<div class='row m-0 mt-2 pt-2 pb-2 ar'>");
+               let area = $("<div class='col-12 area'>");
+               let font = $("<i class='fas fa-map-marker-alt' style='margin-right: 8px; color:#a9a9a9'>");
+               area.append(font);
+               area.append(resp[i].rep_area);
+               row2.append(area);
+               let seq = $("<input type=hidden class=seq>");
+               seq.val(resp[i].rep_seq);
+               
+               
+               list.append(img);
+               list.append(name);
+               list.append(row1);
+               list.append(row2)
+               list.append(seq);
+               $(".listbar").append(list);
+               
+               
+            }
+         })
+      }
+      
+      
+      
+   })
 </script>
 </head>
 <body>
@@ -409,99 +429,99 @@ a{
 
 
 <c:choose>
-	<c:when test="${loginID==null }">
-		<div class="container-fluid">
+   <c:when test="${loginID==null }">
+      <div class="container-fluid">
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>
-                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
-                	<img src="/img/search.png" id=search>
-                	<input type=hidden value=${keyword } id=searchKey>
+                   <input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                   <img src="/img/search.png" id=search>
+                   <input type=hidden value=${keyword } id=searchKey>
                 </div>
 
             </div>
             <div class="col-1 " id=writeBox>
-            	<a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
+               <a id=writeNo><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
         </div>
         <!-- <div class="row camp m-0">
-        	<img src="/img/camp.jpg" >
+           <img src="/img/camp.jpg" >
         </div> -->
         <c:choose>
-        	<c:when test="${keyword != null }">
-        		<div class="row ">
-        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
-       			 </div>
-        	</c:when>
+           <c:when test="${keyword != null }">
+              <div class="row ">
+                 <div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+                 </div>
+           </c:when>
         </c:choose>
         
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
-			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
-				<div class="col-12 mb-1 link">${i.rep_name }</div>
-				<div class="row m-0 ">
-					<div class="col-6 price">${i.rep_price }<span>원</span></div>
-					<div class="col-6 diffD">${i.rep_diff_date }</div>
-				</div>
-				<div class="row m-0 mt-2 pt-2 pb-2 ar">
-					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
-				</div>
-				<input type=hidden value=${i.rep_seq } class=seq>
-			</div>       
-		</c:forEach>
-		</div> 
+         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
+            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
+            <div class="col-12 mb-1 link">${i.rep_name }</div>
+            <div class="row m-0 ">
+               <div class="col-6 price">${i.rep_price }<span>원</span></div>
+               <div class="col-6 diffD">${i.rep_diff_date }</div>
+            </div>
+            <div class="row m-0 mt-2 pt-2 pb-2 ar">
+               <div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+            </div>
+            <input type=hidden value=${i.rep_seq } class=seq>
+         </div>       
+      </c:forEach>
+      </div> 
     </div>
-	</c:when>
-	<c:otherwise>
-		<div class="container-fluid">
+   </c:when>
+   <c:otherwise>
+      <div class="container-fluid">
         <div class="row jgBar">
             <div class="col-6 " id="jg">
                 중고장터
             </div>
             <div class="col-5 p-0 search">
                 <div id=searchBox>
-                	<input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
-                	<img src="/img/search.png" id=search>
-                	<input type=hidden value=${keyword } id=searchKey>
+                   <input type="text" id=keyword  placeholder="상품명, 지역명 입력하세요">
+                   <img src="/img/search.png" id=search>
+                   <input type=hidden value=${keyword } id=searchKey>
                 </div>
             </div>
             <div class="col-1 " id=writeBox>
-            	<a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
+               <a href="/rep/write" id=write><i class="fas fa-pen-square"></i>등록하기</a>
             </div>
         </div>
         <!-- <div class="row camp m-0">
-        	<img src="/img/camp.jpg" >
+           <img src="/img/camp.jpg" >
         </div> -->
         <c:choose>
-        	<c:when test="${keyword != null }">
-        		<div class="row ">
-        			<div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
-       			 </div>
-        	</c:when>
+           <c:when test="${keyword != null }">
+              <div class="row ">
+                 <div class="col-12 schResult"><span id=searchWord>${keyword}</span>의 검색결과<span id=count>${count }</span>개</div>
+                 </div>
+           </c:when>
         </c:choose>
         <div class="row listbar" >
         <c:forEach var="i" items="${list }">
-			<div class="col-3 p-0 list"  seq="${i.rep_seq }">
-				<div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
-				<div class="col-12 mb-1 link">${i.rep_name }</div>
-				<div class="row m-0 ">
-					<div class="col-6 price">${i.rep_price }<span>원</span></div>
-					<div class="col-6 diffD">${i.rep_diff_date}</div>
-				</div>
-				<div class="row m-0 mt-2 pt-2 pb-2 ar">
-					<div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
-				</div>
-				<input type=hidden value="${i.rep_seq}" class="seq">
-			</div>       
-		</c:forEach>
-		</div>
+         <div class="col-3 p-0 list"  seq="${i.rep_seq }">
+            <div class="col-12 img"><img src="/img/rep/${i.thumsysName}"></div>
+            <div class="col-12 mb-1 link">${i.rep_name }</div>
+            <div class="row m-0 ">
+               <div class="col-6 price">${i.rep_price }<span>원</span></div>
+               <div class="col-6 diffD">${i.rep_diff_date}</div>
+            </div>
+            <div class="row m-0 mt-2 pt-2 pb-2 ar">
+               <div class="col-12 area"><i class="fas fa-map-marker-alt" style="margin-right: 8px; color:#a9a9a9"></i>${i.rep_area}</div>
+            </div>
+            <input type=hidden value="${i.rep_seq}" class="seq">
+         </div>       
+      </c:forEach>
+      </div>
     </div>
     
-	</c:otherwise>
+   </c:otherwise>
 </c:choose>
 
 
